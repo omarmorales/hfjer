@@ -22,3 +22,16 @@ Route::get('profile', 'API\UserController@profile');
 Route::get('findUser', 'API\UserController@search');
 Route::put('profile', 'API\UserController@updateProfile');
 
+Route::apiResources(['organization' => 'API\OrganizationController']);
+
+Route::apiResources(['group' => 'API\GroupController']);
+
+Route::apiResources(['beneficiary' => 'API\BeneficiaryController']);
+
+Route::apiResources(['ytt1evaluation' => 'API\Ytt1EvaluationController']);
+Route::get('yttevaluationdate/{id}', 'API\Ytt1EvaluationController@evaluationDate');
+Route::get('yttevaluationresult/{id}', 'API\Ytt1EvaluationController@evaluationResult');
+
+Route::apiResources(['ytt1draft' => 'API\Ytt1DraftController']);
+
+Route::apiResources(['ytt2evaluation' => 'API\Ytt2EvaluationController']);

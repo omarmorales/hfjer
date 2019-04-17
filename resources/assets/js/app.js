@@ -48,8 +48,15 @@ Vue.use(VueProgressBar, {
 let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue') },
     { path: '/developer', component: require('./components/Developer.vue') },
-    { path: '/users', component: require('./components/Users.vue') },
+    { path: '/home', component: require('./components/Home.vue') },
+    { path: '/group/:id', component: require('./components/Group.vue') },
+    { path: '/beneficiary/:id', name: 'Beneficiary', component: require('./components/Beneficiary.vue'), props: true },
+    { path: '/evaluation', name: 'Evaluation', component: require('./components/Evaluation.vue'), props: true },
+    { path: '/app', component: require('./components/App.vue') },
     { path: '/profile', component: require('./components/Profile.vue') },
+    { path: '/global_report', component: require('./components/GlobalReport.vue') },
+    { path: '/comparative_report', component: require('./components/ComparativeReport.vue') },
+    { path: '/progress_report', component: require('./components/ProgressReport.vue') },
     { path: '*', component: require('./components/NotFound.vue') }
   ]
 
@@ -65,7 +72,7 @@ Vue.filter('upText', function(text){
 });
 
 Vue.filter('myDate',function(created){
-    return moment(created).format('MMMM Do YYYY');
+    return moment(created).locale("es").format('LL');
 });
 
 
@@ -98,8 +105,19 @@ Vue.component(
     require('./components/NotFound.vue')
 );
 
+Vue.component('chart-component', require('./components/ChartComponent.vue'));
+Vue.component('chart-component2', require('./components/ChartComponent2.vue'));
+Vue.component('chart-component3', require('./components/ChartComponent3.vue'));
+Vue.component('linechart-component', require('./components/LineChartComponent.vue'));
+Vue.component('beneficiaryprogress-card', require('./components/BeneficiaryProgressCard.vue'));
+Vue.component('linechart-component2', require('./components/LineChartComponent2.vue'));
+Vue.component('piechart-component', require('./components/PieChartComponent.vue'));
+Vue.component('piechart-component2', require('./components/PieChartComponent2.vue'));
+Vue.component('piechart-component3', require('./components/PieChartComponent3.vue'));
+Vue.component('chart-component4', require('./components/ChartComponent4.vue'));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
+Vue.component('users', require('./components/Users.vue'));
 
 const app = new Vue({
     el: '#app',
