@@ -96,7 +96,7 @@
                                     <label for="inputExperience" class="col-sm-2 control-label">Descripción</label>
 
                                     <div class="col-sm-12">
-                                    <textarea  v-model="form.bio" class="form-control" id="inputExperience" placeholder="Experience" :class="{ 'is-invalid': form.errors.has('bio') }"></textarea>
+                                    <textarea  v-model="form.bio" class="form-control" id="inputExperience" placeholder="Breve descripción..." :class="{ 'is-invalid': form.errors.has('bio') }"></textarea>
                                      <has-error :form="form" field="bio"></has-error>
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-12">
-                                    <button @click.prevent="updateInfo" type="submit" class="btn btn-success">Update</button>
+                                    <button @click.prevent="updateInfo" type="submit" class="btn btn-success">Actualizar</button>
                                     </div>
                                 </div>
                                 </form>

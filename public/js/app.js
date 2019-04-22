@@ -85092,7 +85092,7 @@ var render = function() {
                             class: { "is-invalid": _vm.form.errors.has("bio") },
                             attrs: {
                               id: "inputExperience",
-                              placeholder: "Experience"
+                              placeholder: "Breve descripción..."
                             },
                             domProps: { value: _vm.form.bio },
                             on: {
@@ -85201,7 +85201,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("Update")]
+                          [_vm._v("Actualizar")]
                         )
                       ])
                     ])
