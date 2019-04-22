@@ -17,6 +17,30 @@ Route::get('/group/{id}', function () {
     return view('home');
 });
 
+Route::get('/beneficiary/{id}', function () {
+    return view('home');
+});
+
+Route::get('/evaluation', function () {
+    return view('home');
+});
+
+Route::get('/evaluation/{id}', function () {
+    return view('home');
+});
+
+Route::get('/global_report', function () {
+    return view('home');
+});
+
+Route::get('/comparative_report', function () {
+    return view('home');
+});
+
+Route::get('/progress_report', function () {
+    return view('home');
+});
+
 Route::get('/users', function () {
     return view('home');
 });
