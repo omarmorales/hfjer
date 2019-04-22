@@ -98,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="/global_report" class="nav-link">
+                <router-link to="/home" class="nav-link">
                   <i class="fas fa-globe-americas nav-icon"></i>
                   <p>Reporte Global</p>
                 </router-link>
@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="/comparative_report" class="nav-link">
+                <router-link to="/home" class="nav-link">
                   <i class="fas fa-clock nav-icon"></i>
                   <p>Reporte comparativo</p>
                 </router-link>
@@ -114,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="/progress_report" class="nav-link">
+                <router-link to="/home" class="nav-link">
                   <i class="fas fa-spinner nav-icon"></i>
                   <p>Progreso implementación</p>
                 </router-link>
