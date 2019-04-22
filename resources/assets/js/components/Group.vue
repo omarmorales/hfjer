@@ -190,7 +190,9 @@ export default {
       axios.get('/api/beneficiary/').then(({data}) => (
         this.beneficiaries = data,
         this.loading = false
-      ));
+      )).catch(()=>{
+        this.loading = false;
+      });
     },
     newModal(){
       this.editmode = false;

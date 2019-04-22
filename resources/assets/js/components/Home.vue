@@ -142,7 +142,9 @@ export default {
         this.loading = false,
         this.groups = data
         )
-      );
+      ).catch(()=>{
+        this.loading = false;
+      });
       axios.get("api/profile").then(({ data }) => (this.user = data));
     },
     newModal(){
