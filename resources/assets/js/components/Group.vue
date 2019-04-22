@@ -159,27 +159,6 @@
         </div>
       </div>
     </div>
-    <!-- Modal beneficiary -->
-    <div class="modal fade" id="addShowBeneficiary" tabindex="-1" role="dialog" aria-labelledby="addShowBeneficiaryLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addShowBeneficiaryLabel">folio de beneficiario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-            <div class="modal-body">
-              Holi
-            </div>
-            <div class="modal-footer">
-              boli
-            </div>
-
-
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -273,7 +252,8 @@ export default {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Eliminar'
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: 'Cancelar',
       }).then((result) => {
 
         // Send request to the server

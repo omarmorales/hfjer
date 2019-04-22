@@ -52,6 +52,7 @@ let routes = [
     { path: '/group/:id', component: require('./components/Group.vue') },
     { path: '/beneficiary/:id', name: 'Beneficiary', component: require('./components/Beneficiary.vue'), props: true },
     { path: '/evaluation', name: 'Evaluation', component: require('./components/Evaluation.vue'), props: true },
+    { path: '/evaluation/:id', name: 'ShowEvaluation', component: require('./components/ShowEvaluation.vue'), props: true },
     { path: '/app', component: require('./components/App.vue') },
     { path: '/profile', component: require('./components/Profile.vue') },
     { path: '/global_report', component: require('./components/GlobalReport.vue') },

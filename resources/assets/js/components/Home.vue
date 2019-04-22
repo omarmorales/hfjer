@@ -41,30 +41,23 @@
       <div class="row">
         <div class="col-md-4 mt-3" v-for="group in groups" :key="group.id" v-show="group.user.organization_id == user.organization_id">
           <div class="card text-center" style="height:100%;">
-            <div class="card-header">
-              <h3 class="display-6 font-weight-bolder">{{ group.name }}</h3>
-            </div>
             <div class="card-body text-center">
-              <p class="ml-2 lead">{{ group.description }}</p>
+              <h3 class="display-6 font-weight-bolder">
+                <router-link :to="'/group/'+group.id" class="text-decoration-none text-reset">
+                  {{ group.name }}
+                </router-link>
+              </h3>
             </div>
             <div class="card-footer">
               <div class="row">
                 <div class="col mb-2 text-center">
-                  <router-link :to="'/group/'+group.id" class="btn btn-primary btn-sm" style="width:100%;">
-                    <i class="fas fa-eye"></i>
-                    Ver
-                  </router-link>
-                </div>
-                <div class="col mb-2 text-center">
                   <a href="#" @click="editModal(group)" class="btn btn-secondary btn-sm" style="width:100%;" tabindex="-1" role="button">
                     <i class="fas fa-pen"></i>
-                    Editar
                   </a>
                 </div>
                 <div class="col mb-2 text-center">
                   <a v-if="$gate.isAdminOrAuthor()" href="#" @click="deleteGroup(group.id)" class="btn btn-danger btn-sm" style="width:100%;" tabindex="-1" role="button">
                     <i class="fas fa-trash"></i>
-                    Eliminar
                   </a>
                 </div>
               </div>
@@ -174,7 +167,7 @@ export default {
         this.$Progress.finish();
       })
       .catch(()=>{
-
+        this.$Progress.fail();
       })
     },
     editModal(group){
@@ -210,7 +203,8 @@ export default {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Eliminar grupo'
+        confirmButtonText: 'Eliminar grupo',
+        cancelButtonText: 'Cancelar',
       }).then((result) => {
 
         // Send request to the server

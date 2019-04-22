@@ -83,7 +83,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" v-show="beneficiary.group.evaluation == 'yttv1'">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
@@ -143,7 +143,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" v-show="beneficiary.group.evaluation == 'yttv1'">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
@@ -209,7 +209,50 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" v-show="beneficiary.group.evaluation == 'yttv2'">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            Evaluaciones
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <col width="50">
+                  <col width="50">
+                  <col width="50">
+                  <col width="50">
+                  <col width="150">
+                  <col>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nivel de riesgo general</th>
+                    <th scope="col">Fecha de creación</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="ytt2_evaluation in beneficiary.ytt2_evaluations" v-show="ytt2_evaluation.beneficiary_id == beneficiary.id">
+                    <th scope="row">{{ ytt2_evaluation.id }}</th>
+                    <td>
+                      <span class="badge badge-success">{{ ytt2_evaluation.risk_level }}</span>
+                    </td>
+                    <td>{{ ytt2_evaluation.created_at | myDate }}</td>
+                    <td>
+                      <a href="#">
+                        <i class="fas fa-eye"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" v-show="beneficiary.group.evaluation == 'yttv1'">
       <div class="col-md-12">
         <beneficiaryprogress-card />
       </div>
@@ -228,7 +271,6 @@ export default {
 
   },
   created(){
-    this.$data.beneficiary = this.$route.params.id;
     axios.get('/api/beneficiary/'+this.$route.params.id).then(({data}) => (this.beneficiary = data));
   }
 }
