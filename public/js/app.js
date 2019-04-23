@@ -80777,7 +80777,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -80788,6 +80788,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -81127,6 +81132,30 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-12" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-success float-right mb-3",
+              attrs: {
+                to: {
+                  name: "Evaluation",
+                  params: { beneficiary: _vm.beneficiary }
+                }
+              }
+            },
+            [
+              _vm._v("\n        Nueva evaluación "),
+              _c("i", { staticClass: "fas fa-file-invoice" })
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
@@ -84044,6 +84073,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -84079,1227 +84118,1482 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "show-evaluation container" }, [
-    _c("section", { staticClass: "content-header" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row mb-2" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6" }, [
-            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
-              _c(
-                "li",
-                { staticClass: "breadcrumb-item" },
-                [
-                  _c("router-link", { attrs: { to: "/home" } }, [
-                    _vm._v("Grupos")
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "breadcrumb-item" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      attrs: {
-                        to: "/group/" + _vm.evaluation.beneficiary.group.id
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.evaluation.beneficiary.group.name))]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "breadcrumb-item" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      attrs: {
-                        to: "/beneficiary/" + _vm.evaluation.beneficiary.id
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.evaluation.beneficiary.folio))]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("li", { staticClass: "breadcrumb-item active" }, [
-                _vm._v("Evaluación")
-              ])
-            ])
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Persona beneficiaria")]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      "\n                                    " +
-                        _vm._s(_vm.evaluation.beneficiary.folio) +
-                        "\n                                "
-                    )
-                  ])
-                ]),
+    _vm.loading
+      ? _c(
+          "div",
+          {
+            staticClass: "row content-header",
+            staticStyle: { height: "100vh" }
+          },
+          [_vm._m(0)]
+        )
+      : _c("div", [
+          _c("section", { staticClass: "content-header" }, [
+            _c("div", { staticClass: "container-fluid" }, [
+              _c("div", { staticClass: "row mb-2" }, [
+                _vm._m(1),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Herramienta")]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      "\n                                    " +
-                        _vm._s(_vm.evaluation.beneficiary.group.evaluation) +
-                        "\n                                "
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Grupo")]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      "\n                                    " +
-                        _vm._s(_vm.evaluation.beneficiary.group.name) +
-                        "\n                                "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Fecha de creación")]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      "\n                                    " +
-                        _vm._s(_vm._f("myDate")(_vm.evaluation.created_at)) +
-                        "\n                                "
-                    )
+                _c("div", { staticClass: "col-sm-6" }, [
+                  _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+                    _c(
+                      "li",
+                      { staticClass: "breadcrumb-item" },
+                      [
+                        _c("router-link", { attrs: { to: "/home" } }, [
+                          _vm._v("Grupos")
+                        ])
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      { staticClass: "breadcrumb-item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to:
+                                "/group/" + _vm.evaluation.beneficiary.group.id
+                            }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(_vm.evaluation.beneficiary.group.name)
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      { staticClass: "breadcrumb-item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to:
+                                "/beneficiary/" + _vm.evaluation.beneficiary.id
+                            }
+                          },
+                          [_vm._v(_vm._s(_vm.evaluation.beneficiary.folio))]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "breadcrumb-item active" }, [
+                      _vm._v("Evaluación")
+                    ])
                   ])
                 ])
               ])
             ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _vm._m(2),
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "list-group" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Bajo rendimiento escolar")
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "card" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Persona beneficiaria")]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(_vm.evaluation.beneficiary.folio) +
+                              "\n                                    "
+                          )
+                        ])
                       ]),
                       _vm._v(" "),
-                      _c("small", [
-                        _vm.evaluation.answer1 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer1 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer1 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer1 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Herramienta")]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(
+                                _vm.evaluation.beneficiary.group.evaluation
+                              ) +
+                              "\n                                    "
+                          )
+                        ])
                       ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information1))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Ausencia de una figura parental")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Grupo")]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(_vm.evaluation.beneficiary.group.name) +
+                              "\n                                    "
+                          )
+                        ])
                       ]),
                       _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer2 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer2 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer2 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer2 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Fecha de creación")]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(
+                                _vm._f("myDate")(_vm.evaluation.created_at)
+                              ) +
+                              "\n                                    "
+                          )
+                        ])
                       ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information2))
+                    ])
                   ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Escasa habilidad de educar de los padres")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer3 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "card" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "list-group" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Bajo rendimiento escolar")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", [
+                              _vm.evaluation.answer1 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer1 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer1 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer1 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
                             ])
-                          : _vm.evaluation.answer3 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information1))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Ausencia de una figura parental")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer2 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer2 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer2 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer2 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
                             ])
-                          : _vm.evaluation.answer3 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information2))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Escasa habilidad de educar de los padres")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer3 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer3 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer3 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer3 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
                             ])
-                          : _vm.evaluation.answer3 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information3))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Rechazo de grupo de iguales")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer4 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer4 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer4 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer4 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
                             ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information3))
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information4))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Desorganización comunitaria")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer5 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer5 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer5 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer5 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information5))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v(
+                                "Falta de Apoyo Personal / Social de otros adultos"
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer6 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer6 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer6 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer6 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information6))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Exposición a la violencia en el hogar")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer7 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer7 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer7 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer7 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information7))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Historia de Maltrato en la niñez")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer8 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer8 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer8 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer8 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information8))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Bajo cumplimiento de metas o acuerdos")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer9 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer9 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer9 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer9 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information9))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v(
+                                "Los déficits de atención / hiperactividad"
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer10 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer10 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer10 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer10 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information10))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v(
+                                "Estrés/ incapacidad para enfrentar dificultades"
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer11 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer11 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer11 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer11 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information11))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Actitudes negativas")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer12 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer12 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer12 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer12 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information12))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Baja empatía / remordimiento")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer13 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer13 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer13 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer13 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information13))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Comportamiento impulsivo")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer14 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer14 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer14 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer14 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information14))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Problemas con el manejo del enfado")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer15 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer15 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer15 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer15 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information15))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Delincuencia en grupo de iguales")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer16 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer16 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer16 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer16 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information16))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Iniciación temprana en la violencia")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer17 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer17 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer17 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer17 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information17))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Violencia Previa")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer18 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer18 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer18 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer18 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information18))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v(
+                                "Historia de actos delictivos no violentos"
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer19 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer19 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer19 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer19 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information19))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Antecedentes de medidas judiciales")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer20 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer20 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer20 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer20 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information20))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Dificultades por el uso de sustancias")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer21 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer21 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer21 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer21 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information21))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v(
+                                "Historia de las autolesiones o intentos de suicidio"
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer22 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer22 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer22 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer22 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information22))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item list-group-item-action",
+                        attrs: { href: "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "d-flex w-100 justify-content-between"
+                          },
+                          [
+                            _c("h5", { staticClass: "mb-1" }, [
+                              _vm._v("Criminalidad de los padres / cuidador")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm.evaluation.answer23 == 0
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Bajo")]
+                                  )
+                                : _vm.evaluation.answer23 == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-warning" },
+                                    [_vm._v("Medio")]
+                                  )
+                                : _vm.evaluation.answer23 == 2
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Alto")]
+                                  )
+                                : _vm.evaluation.answer23 == 3
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-dark" },
+                                    [_vm._v("Crítico")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-secondary" },
+                                    [_vm._v("Sin respuesta")]
+                                  )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(_vm.evaluation.information23))
+                        ])
+                      ]
+                    )
                   ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Rechazo de grupo de iguales")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer4 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer4 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer4 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer4 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information4))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Desorganización comunitaria")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer5 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer5 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer5 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer5 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information5))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v(
-                          "Falta de Apoyo Personal / Social de otros adultos"
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer6 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer6 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer6 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer6 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information6))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Exposición a la violencia en el hogar")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer7 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer7 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer7 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer7 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information7))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Historia de Maltrato en la niñez")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer8 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer8 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer8 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer8 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information8))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Bajo cumplimiento de metas o acuerdos")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer9 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer9 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer9 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer9 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information9))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Los déficits de atención / hiperactividad")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer10 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer10 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer10 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer10 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information10))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v(
-                          "Estrés/ incapacidad para enfrentar dificultades"
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer11 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer11 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer11 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer11 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information11))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Actitudes negativas")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer12 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer12 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer12 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer12 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information12))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Baja empatía / remordimiento")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer13 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer13 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer13 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer13 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information13))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Comportamiento impulsivo")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer14 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer14 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer14 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer14 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information14))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Problemas con el manejo del enfado")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer15 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer15 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer15 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer15 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information15))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Delincuencia en grupo de iguales")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer16 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer16 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer16 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer16 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information16))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Iniciación temprana en la violencia")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer17 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer17 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer17 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer17 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information17))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Violencia Previa")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer18 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer18 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer18 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer18 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information18))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Historia de actos delictivos no violentos")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer19 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer19 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer19 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer19 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information19))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Antecedentes de medidas judiciales")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer20 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer20 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer20 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer20 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information20))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Dificultades por el uso de sustancias")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer21 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer21 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer21 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer21 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information21))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v(
-                          "Historia de las autolesiones o intentos de suicidio"
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer22 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer22 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer22 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer22 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information22))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item list-group-item-action",
-                  attrs: { href: "" }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex w-100 justify-content-between" },
-                    [
-                      _c("h5", { staticClass: "mb-1" }, [
-                        _vm._v("Criminalidad de los padres / cuidador")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm.evaluation.answer23 == 0
-                          ? _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Bajo")
-                            ])
-                          : _vm.evaluation.answer23 == 1
-                          ? _c("span", { staticClass: "badge badge-warning" }, [
-                              _vm._v("Medio")
-                            ])
-                          : _vm.evaluation.answer23 == 2
-                          ? _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Alto")
-                            ])
-                          : _vm.evaluation.answer23 == 3
-                          ? _c("span", { staticClass: "badge badge-dark" }, [
-                              _vm._v("Crítico")
-                            ])
-                          : _c(
-                              "span",
-                              { staticClass: "badge badge-secondary" },
-                              [_vm._v("Sin respuesta")]
-                            )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mb-1" }, [
-                    _vm._v(_vm._s(_vm.evaluation.information23))
-                  ])
-                ]
-              )
+                ])
+              ])
             ])
           ])
         ])
-      ])
-    ])
   ])
 }
 var staticRenderFns = [
@@ -85307,20 +85601,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-6" }, [
-      _c("h1", [
-        _vm._v("\n                        Evaluación YTT\n                    ")
-      ])
+    return _c("div", { staticClass: "col-md-12 text-center" }, [
+      _c("p", [_c("i", { staticClass: "fas fa-spinner fa-pulse fa-4x" })]),
+      _vm._v(" "),
+      _c("p", { staticClass: "h4" }, [_vm._v("Cargando...")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("p", { staticClass: "card-title" }, [
+    return _c("div", { staticClass: "col-sm-6" }, [
+      _c("h1", [
         _vm._v(
-          "\n                        Información general\n                    "
+          "\n                            Evaluación YTT\n                        "
         )
       ])
     ])
@@ -85331,7 +85625,21 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("p", { staticClass: "card-title" }, [
-        _vm._v("\n                        Respuestas\n                    ")
+        _vm._v(
+          "\n                            Información general\n                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "card-title" }, [
+        _vm._v(
+          "\n                            Respuestas\n                        "
+        )
       ])
     ])
   }

@@ -24,6 +24,11 @@
     </section>
     <div class="row">
       <div class="col-md-12">
+        <router-link class="btn btn-success float-right mb-3" :to="{ name: 'Evaluation', params: { beneficiary } }">
+          Nueva evaluación <i class="fas fa-file-invoice"></i>
+        </router-link>
+      </div>
+      <div class="col-md-12">
         <div class="card">
           <div class="card-header">
             Información general
