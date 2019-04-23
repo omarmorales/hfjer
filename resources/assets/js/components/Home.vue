@@ -14,7 +14,7 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1>
-                ¡Bienvenido {{ user.name }}!
+                ¡Bienvenido/a {{ user.name }}!
               </h1>
             </div>
             <div class="col-sm-6">

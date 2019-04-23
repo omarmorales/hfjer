@@ -69,6 +69,6 @@ class Ytt1Evaluation extends Model
 
   public function beneficiary()
   {
-    return $this->belongsTo('App\Beneficiary');
+    return $this->belongsTo('App\Beneficiary')->with('group');;
   }
 }

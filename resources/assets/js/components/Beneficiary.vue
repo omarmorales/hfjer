@@ -131,9 +131,9 @@
                     </td>
                     <td>{{ ytt1_evaluation.created_at | myDate }}</td>
                     <td>
-                      <a href="#">
+                      <router-link :to="'/evaluation/'+ytt1_evaluation.id">
                         <i class="fas fa-eye"></i>
-                      </a>
+                      </router-link>
                     </td>
                   </tr>
                 </tbody>

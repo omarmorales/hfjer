@@ -158,7 +158,7 @@ class Ytt1EvaluationController extends Controller
   */
   public function show($id)
   {
-    //
+    return Ytt1Evaluation::with('beneficiary')->find($id);
   }
 
   /**
