@@ -85739,7 +85739,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -85949,7 +85949,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         toast({
           type: 'success',
-          title: 'Organization Created in successfully'
+          title: 'Organización creada correctamente.'
         });
         _this3.$Progress.finish();
       }).catch(function () {});
@@ -85969,7 +85969,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.form.put('api/organization/' + this.form.id).then(function () {
         // success
         $('#addNewOrg').modal('hide');
-        swal('Updated!', 'Information has been updated.', 'success');
+        swal('Actualizado', 'Se ha actualizado correctamente.', 'success');
         _this4.$Progress.finish();
         Fire.$emit('AfterCreate');
       }).catch(function () {
@@ -85981,22 +85981,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       $('#myCollapsible').collapse('hide');
       swal({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: '¿Estás seguro?',
+        text: "No podrás revertir esto",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
       }).then(function (result) {
 
         // Send request to the server
         if (result.value) {
           _this5.form.delete('api/organization/' + id).then(function () {
-            swal('Deleted!', 'Your file has been deleted.', 'success');
+            swal('Eliminado', 'Se ha eliminado correctamente.', 'success');
             Fire.$emit('AfterCreate');
           }).catch(function () {
-            swal("Failed!", "There was something wrong.", "warning");
+            swal("Error", "Algo salió mal.", "warning");
           });
         }
       });

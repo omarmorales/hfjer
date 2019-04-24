@@ -184,7 +184,7 @@ export default {
 
         toast({
           type: 'success',
-          title: 'Organization Created in successfully'
+          title: 'Organización creada correctamente.'
         })
         this.$Progress.finish();
       })
@@ -207,8 +207,8 @@ export default {
         // success
         $('#addNewOrg').modal('hide');
         swal(
-          'Updated!',
-          'Information has been updated.',
+          'Actualizado',
+          'Se ha actualizado correctamente.',
           'success'
         )
         this.$Progress.finish();
@@ -221,26 +221,27 @@ export default {
     deleteOrganization(id){
       $('#myCollapsible').collapse('hide');
       swal({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: '¿Estás seguro?',
+        text: "No podrás revertir esto",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
       }).then((result) => {
 
         // Send request to the server
         if (result.value) {
           this.form.delete('api/organization/'+id).then(()=>{
             swal(
-              'Deleted!',
-              'Your file has been deleted.',
+              'Eliminado',
+              'Se ha eliminado correctamente.',
               'success'
             )
             Fire.$emit('AfterCreate');
           }).catch(()=> {
-            swal("Failed!", "There was something wrong.", "warning");
+            swal("Error", "Algo salió mal.", "warning");
           });
         }
       })
