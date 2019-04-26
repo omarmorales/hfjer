@@ -40,9 +40,15 @@
             <option value="2">Toma 2</option>
           </select>
         </div>
+        <div class="form-group" v-show="group == 7 && take == 1">
+          <button class="btn btn-primary" @click="generateReportOne">Generar reporte</button>
+        </div>
+        <div class="form-group" v-show="group == 7 && take == 2">
+          <button class="btn btn-primary" @click="generateReportTwo">Generar reporte</button>
+        </div>
       </div>
     </div>
-    <div class="row" v-show="group == 7 && take == 1">
+    <div class="row" v-show="report_one">
       <div class="col-md-12">
         <p class="h5">Descripción de la población</p>
       </div>
@@ -148,7 +154,7 @@
         </div>
       </div>
     </div>
-    <div class="row" v-show="group == 7 && take == 2">
+    <div class="row" v-show="report_two">
       <div class="col-md-12">
         <p class="h5">Descripción de la población</p>
       </div>
@@ -254,7 +260,7 @@
         </div>
       </div>
     </div>
-    <button v-if="group && take" type="button" class="btn btn-primary mb-3" name="button" @click.prevent="printme">
+    <button v-if="report_one | report_two" type="button" class="btn btn-primary mb-3" name="button" @click.prevent="printme">
       Imprimir
       <i class="fas fa-print"></i>
     </button>
@@ -265,6 +271,8 @@
 export default {
   data(){
     return {
+      report_one: false,
+      report_two: false, 
       group: '',
       take: '',
       user:[],
@@ -272,6 +280,14 @@ export default {
     }
   },
   methods: {
+    generateReportOne() {
+      this.report_one = true;
+      this.report_two= false;
+    },
+    generateReportTwo() {
+      this.report_one = false;
+      this.report_two= true;
+    },
     printme() {
         window.print();
     }

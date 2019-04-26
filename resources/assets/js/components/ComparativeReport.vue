@@ -32,22 +32,20 @@
       </div>
       <div class="col-md-6">
         <label for="">Toma base</label>
-        <select class="" name="" class="form-control" v-model="take_1">
-          <option value="">Selecciona una opción</option>
-          <option value="">1</option>
-          <option value="">2</option>
-        </select>
+        <input v-model="take_one" type="number" class="form-control">
       </div>
       <div class="col-md-6">
         <label for="">Toma comparativa</label>
-        <select class="" name="" class="form-control" v-model="take_2">
-          <option value="">Selecciona una opción</option>
-          <option value="">1</option>
-          <option value="">2</option>
-        </select>
+        <input v-model="take_two" type="number" class="form-control">
+      </div>
+      <div class="form-group col-md-12 mt-3" v-show="group">
+        <button class="btn btn-primary" @click="generateReport">Generar reporte</button>
       </div>
     </div>
-    <div class="row mt-3" v-if="group">
+    <div class="row mt-3" v-show="report">
+      <div class="col-md-12">
+        <p class="h5">Personas comparadas: 2</p>
+      </div>
       <div class="col-md-12">
         <p class="h5">Población desagregada por género</p>
       </div>
@@ -67,6 +65,10 @@
                     <tbody>
                       <tr>
                         <td>Masculino</td>
+                        <td>1</td>
+                      </tr>
+                      <tr>
+                        <td>Femenino</td>
                         <td>1</td>
                       </tr>
                     </tbody>
@@ -99,7 +101,7 @@
                     <tbody>
                       <tr>
                         <td>>24</td>
-                        <td>1</td>
+                        <td>2</td>
                       </tr>
                     </tbody>
                   </table>
@@ -218,11 +220,17 @@
 export default {
   data(){
     return {
+      report: false,
       group: '',
-      take_1: '',
-      take_2: '',
+      take_one: '',
+      take_two: '',
       user:[],
       groups: {},
+    }
+  },
+  methods: {
+    generateReport() {
+      this.report = true;
     }
   },
   created(){
