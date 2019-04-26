@@ -88760,8 +88760,8 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: _vm.group,
-              expression: "group"
+              value: _vm.group == 7 && _vm.take_one == 1 && _vm.take_two == 2,
+              expression: "group == 7 && take_one == 1 && take_two == 2"
             }
           ],
           staticClass: "form-group col-md-12 mt-3"

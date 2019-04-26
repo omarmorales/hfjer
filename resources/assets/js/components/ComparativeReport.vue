@@ -38,7 +38,7 @@
         <label for="">Toma comparativa</label>
         <input v-model="take_two" type="number" class="form-control">
       </div>
-      <div class="form-group col-md-12 mt-3" v-show="group">
+      <div class="form-group col-md-12 mt-3" v-show="group == 7 && take_one == 1 && take_two == 2">
         <button class="btn btn-primary" @click="generateReport">Generar reporte</button>
       </div>
     </div>
