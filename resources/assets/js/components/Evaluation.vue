@@ -118,7 +118,7 @@
             </form>
           </div>
           <div class="row" v-for="group_item in groups" v-if="group_item.id == group && group_item.evaluation == 'yttv2'">
-            <form @submit.prevent="createYtt2Evaluation()">
+            <form @submit.prevent="draftmode ?  createYtt2Draft() : createYtt2Evaluation()">
             <div class="col-md-12">
               <div class="card" v-for="(item, index) in yttv2_questionnarie">
                 <div class="card-header">
@@ -182,7 +182,7 @@
               <button v-show="group" type="submit" class="btn btn-secondary mb-4" @click="saveAsDraft">
                 Guardar borrador
               </button>
-              <button v-show="group" type="submit" class="btn btn-primary mb-4">Guardar evaluación</button>
+              <button v-show="group" type="submit" class="btn btn-primary mb-4" @click="saveEvaluation">Guardar evaluación</button>
             </div>
             </form>
           </div>
@@ -1169,7 +1169,26 @@ export default {
       .catch(()=>{
         this.$Progress.fail();
       })
-    }
+    },
+    createYtt2Draft() {
+      this.$Progress.start();
+
+      this.formYTTv2.beneficiary_id = this.beneficiary_election;
+
+      this.formYTTv2.post('api/ytt2draft').then(()=>{
+        Fire.$emit('AfterCreate');
+        this.formYTTv2.reset();
+        this.$router.push(`beneficiary/${this.beneficiary_election}`)
+        toast({
+          type: 'success',
+          title: 'Borrador YTT v2 creado con éxito.'
+        })
+        this.$Progress.finish();
+      })
+      .catch(()=>{
+        this.$Progress.fail();
+      })
+    },
   },
   created(){
     this.loadData();

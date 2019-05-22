@@ -37,4 +37,9 @@ class Beneficiary extends Model
   {
     return $this->hasMany('App\Ytt2Evaluation');
   }
+
+  public function ytt2_drafts()
+  {
+    return $this->hasMany('App\YTT2Draft'); 
+  }
 }

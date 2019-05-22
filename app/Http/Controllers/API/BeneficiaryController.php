@@ -61,7 +61,7 @@ class BeneficiaryController extends Controller
   */
   public function show($id)
   {
-    return Beneficiary::with('ytt1_evaluations')->with('ytt1_drafts')->with('ytt2_evaluations')->with('group')->find($id);
+    return Beneficiary::with('ytt1_evaluations')->with('ytt1_drafts')->with('ytt2_evaluations')->with('ytt2_drafts')->with('group')->find($id);
   }
 
   /**

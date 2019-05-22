@@ -35,3 +35,5 @@ Route::get('yttevaluationresult/{id}', 'API\Ytt1EvaluationController@evaluationR
 Route::apiResources(['ytt1draft' => 'API\Ytt1DraftController']);
 
 Route::apiResources(['ytt2evaluation' => 'API\Ytt2EvaluationController']);
+
+Route::apiResources(['ytt2draft' => 'API\Ytt2DraftController']);
