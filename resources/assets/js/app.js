@@ -58,6 +58,8 @@ let routes = [
     { path: '/global_report', component: require('./components/GlobalReport.vue') },
     { path: '/comparative_report', component: require('./components/ComparativeReport.vue') },
     { path: '/progress_report', component: require('./components/ProgressReport.vue') },
+    { path: '/resources-yttv1', component: require('./components/Resourcev1.vue') },
+    { path: '/resources-yttv2', component: require('./components/Resourcev2.vue') },
     { path: '*', component: require('./components/NotFound.vue') }
   ]
 

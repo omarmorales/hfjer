@@ -98,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="global_report" class="nav-link">
+                <router-link to="/global_report" class="nav-link">
                   <i class="fas fa-globe-americas nav-icon"></i>
                   <p>Reporte Global</p>
                 </router-link>
@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="comparative_report" class="nav-link">
+                <router-link to="/comparative_report" class="nav-link">
                   <i class="fas fa-clock nav-icon"></i>
                   <p>Reporte comparativo</p>
                 </router-link>
@@ -114,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="progress_report" class="nav-link">
+                <router-link to="/progress_report" class="nav-link">
                   <i class="fas fa-spinner nav-icon"></i>
                   <p>Progreso implementación</p>
                 </router-link>
@@ -122,6 +122,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           @endif
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book grey"></i>
+              <p>
+                Recursos
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <router-link to="/resources-yttv1" class="nav-link">
+                  <i class="fas fa-bookmark nav-icon"></i>
+                  <p>YTT v1</p>
+                </router-link>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <router-link to="/resources-yttv2" class="nav-link">
+                  <i class="fas fa-bookmark nav-icon"></i>
+                  <p>YTT v2</p>
+                </router-link>
+              </li>
+            </ul>
+          </li>
 
         @if(Gate::check('isAdmin') || Gate::check('isAuthor'))
           <li class="nav-item has-treeview">
