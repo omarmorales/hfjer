@@ -20,6 +20,6 @@ class Group extends Model
 
   public function beneficiaries()
   {
-    return $this->hasMany('App\Beneficiary')->with('ytt1_evaluations');
+    return $this->hasMany('App\Beneficiary')->with('ytt1_evaluations')->with('ytt1_drafts')->with('ytt2_evaluations')->with('group');
   }
 }

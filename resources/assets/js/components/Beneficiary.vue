@@ -25,7 +25,7 @@
     <div class="row">
       <div class="col-md-12">
         <router-link class="btn btn-success float-right mb-3" :to="{ name: 'Evaluation', params: { beneficiary } }">
-          Nueva evaluación <i class="fas fa-file-invoice"></i>
+          Nueva toma <i class="fas fa-file-invoice"></i>
         </router-link>
       </div>
       <div class="col-md-12">
@@ -232,6 +232,7 @@
                   <col>
                   <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Puntuación</th>
                     <th scope="col">Nivel de riesgo general</th>
                     <th scope="col">Fecha de creación</th>
                     <th></th>
@@ -241,7 +242,13 @@
                   <tr v-for="ytt2_evaluation in beneficiary.ytt2_evaluations" v-show="ytt2_evaluation.beneficiary_id == beneficiary.id">
                     <th scope="row">{{ ytt2_evaluation.id }}</th>
                     <td>
-                      <span class="badge badge-success">{{ ytt2_evaluation.risk_level }}</span>
+                      {{ ytt2_evaluation.risk_level }}
+                    </td>
+                    <td>
+                      <span class="badge badge-success" v-if="ytt2_evaluation.risk_level < 7">Bajo</span>
+                      <span class="badge badge-warning" v-else-if="ytt2_evaluation.risk_level < 13">Medio</span>
+                      <span class="badge badge-danger" v-else-if="ytt2_evaluation.risk_level < 20 ">Alto</span>
+                      <span class="badge badge-dark" v-else>Crítico</span>
                     </td>
                     <td>{{ ytt2_evaluation.created_at | myDate }}</td>
                     <td>

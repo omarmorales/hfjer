@@ -109,7 +109,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="password" class="col-sm-12 control-label">Contraseña</label>
+                                    <label for="password" class="col-sm-12 control-label">Actualizar contraseña</label>
 
                                     <div class="col-sm-12">
                                     <input type="password"

@@ -40,10 +40,10 @@
             <option value="2">Toma 2</option>
           </select>
         </div>
-        <div class="form-group" v-show="group == 7 && take == 1">
+        <div class="form-group" v-show="group == 1 && take == 1">
           <button class="btn btn-primary" @click="generateReportOne">Generar reporte</button>
         </div>
-        <div class="form-group" v-show="group == 7 && take == 2">
+        <div class="form-group" v-show="group == 1 && take == 2">
           <button class="btn btn-primary" @click="generateReportTwo">Generar reporte</button>
         </div>
       </div>

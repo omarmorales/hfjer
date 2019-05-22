@@ -37,6 +37,9 @@ class BeneficiaryController extends Controller
   {
     $this->validate($request,[
       'name' => 'required|string',
+      'lastname_one' => 'required|string',
+      'lastname_two' => 'required|string',
+      'gender' => 'required',
     ]);
 
     return Beneficiary::create([

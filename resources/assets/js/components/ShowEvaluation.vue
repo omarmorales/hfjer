@@ -389,6 +389,10 @@
                     </div>
                 </div>
             </div>
+            <button type="button" class="btn btn-primary mb-3" name="button" @click.prevent="printme">
+                Imprimir
+                <i class="fas fa-print"></i>
+            </button>
         </div>
     </div>
 </template>
@@ -400,6 +404,9 @@
             evaluation: [],
         }),
         methods: {
+            printme(){
+                window.print();
+            },
             loadData(){
                 this.loading = true;
                 axios.get(`/api/ytt1evaluation/${this.$route.params.id}`).then(({ data }) => 
