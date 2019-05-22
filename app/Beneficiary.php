@@ -28,9 +28,9 @@ class Beneficiary extends Model
     return $this->hasMany('App\Ytt1Evaluation');
   }
 
-  public function ytt1_drafts()
+  public function ytt1_draft()
   {
-    return $this->hasMany('App\YTT1Draft'); 
+    return $this->hasOne('App\YTT1Draft'); 
   }
 
   public function ytt2_evaluations()
@@ -38,8 +38,8 @@ class Beneficiary extends Model
     return $this->hasMany('App\Ytt2Evaluation');
   }
 
-  public function ytt2_drafts()
+  public function ytt2_draft()
   {
-    return $this->hasMany('App\YTT2Draft'); 
+    return $this->hasOne('App\YTT2Draft'); 
   }
 }

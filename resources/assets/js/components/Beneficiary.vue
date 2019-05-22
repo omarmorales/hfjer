@@ -92,7 +92,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            Evaluaciones
+            Tomas
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -106,28 +106,34 @@
                   <col>
                   <tr>
                     <th scope="col">#</th>
+                    <th>Puntuación nivel de riesgo general</th>
                     <th scope="col">Nivel de riesgo general</th>
+                    <th>Puntuación nivel de propensión a conductas violentas</th>
                     <th scope="col">Nivel de propensión a conductas violentas</th>
+                    <th>Puntuación nivel de exposición a la violencia</th>
                     <th scope="col">Nivel de exposición a la violencia</th>
                     <th scope="col">Fecha de creación</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="ytt1_evaluation in beneficiary.ytt1_evaluations" v-show="ytt1_evaluation.beneficiary_id == beneficiary.id">
-                    <th scope="row">{{ ytt1_evaluation.id }}</th>
-                    <td>
+                  <tr v-for="(ytt1_evaluation, index) in beneficiary.ytt1_evaluations" v-show="ytt1_evaluation.beneficiary_id == beneficiary.id">
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td class="text-center">{{ ytt1_evaluation.risk_level }}</td>
+                    <td class="text-center">
                       <span class="badge badge-success" v-if="ytt1_evaluation.risk_level < 2.5">Bajo</span>
                       <span class="badge badge-warning" v-else-if="ytt1_evaluation.risk_level < 5">Medio</span>
                       <span class="badge badge-danger" v-else-if="ytt1_evaluation.risk_level < 7.5 ">Alto</span>
                       <span class="badge badge-dark" v-else>Crítico</span>
                     </td>
-                    <td>
+                    <td class="text-center">{{ ytt1_evaluation.propensity_level }}</td>
+                    <td class="text-center">
                       <span class="badge badge-success" v-if="ytt1_evaluation.propensity_level < 2.5">Bajo</span>
                       <span class="badge badge-warning" v-else-if="ytt1_evaluation.propensity_level < 5">Medio</span>
                       <span class="badge badge-danger" v-else-if="ytt1_evaluation.propensity_level < 7.5 ">Alto</span>
                       <span class="badge badge-dark" v-else>Crítico</span>
                     </td>
+                    <td class="text-center">{{ ytt1_evaluation.exposure_level }}</td>
                     <td>
                       <span class="badge badge-success" v-if="ytt1_evaluation.exposure_level < 2.5">Bajo</span>
                       <span class="badge badge-warning" v-else-if="ytt1_evaluation.exposure_level < 5">Medio</span>
@@ -159,16 +165,14 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>Fecha de creación</th>
                     <th></th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="draft in beneficiary.ytt1_drafts" :key="draft.id">
-                    <th scope="row">{{ draft.id }}</th>
-                    <td>{{ draft.created_at | myDate }}</td>
+                  <tr v-if="beneficiary.ytt1_draft">
+                    <td>{{ beneficiary.ytt1_draft.created_at | myDate }}</td>
                     <td>
                       <router-link :to="{ name: 'Evaluation', params: { beneficiary } }">
                         <i class="fas fa-edit"></i>
@@ -180,27 +184,27 @@
                       </a>
                     </td>
                   </tr>
-                  <!-- <tr v-for="ytt1_draft in beneficiary.ytt1_drafts" v-show="ytt1_draft.beneficiary_id == beneficiary.id">
+                  <!-- <tr v-for="beneficiary.ytt1_draft in beneficiary.beneficiary.ytt1_drafts" v-show="beneficiary.ytt1_draft.beneficiary_id == beneficiary.id">
                     <th scope="row">{{ ytt1_evaluation.id }}</th>
                     <td>
-                      <span class="badge badge-success" v-if="ytt1_draft.risk_level < 2.5">Bajo</span>
-                      <span class="badge badge-warning" v-else-if="ytt1_draft.risk_level < 5">Medio</span>
-                      <span class="badge badge-danger" v-else-if="ytt1_draft.risk_level < 7.5 ">Alto</span>
+                      <span class="badge badge-success" v-if="beneficiary.ytt1_draft.risk_level < 2.5">Bajo</span>
+                      <span class="badge badge-warning" v-else-if="beneficiary.ytt1_draft.risk_level < 5">Medio</span>
+                      <span class="badge badge-danger" v-else-if="beneficiary.ytt1_draft.risk_level < 7.5 ">Alto</span>
                       <span class="badge badge-dark" v-else>Crítico</span>
                     </td>
                     <td>
-                      <span class="badge badge-success" v-if="ytt1_draft.propensity_level < 2.5">Bajo</span>
-                      <span class="badge badge-warning" v-else-if="ytt1_draft.propensity_level < 5">Medio</span>
-                      <span class="badge badge-danger" v-else-if="ytt1_draft.propensity_level < 7.5 ">Alto</span>
+                      <span class="badge badge-success" v-if="beneficiary.ytt1_draft.propensity_level < 2.5">Bajo</span>
+                      <span class="badge badge-warning" v-else-if="beneficiary.ytt1_draft.propensity_level < 5">Medio</span>
+                      <span class="badge badge-danger" v-else-if="beneficiary.ytt1_draft.propensity_level < 7.5 ">Alto</span>
                       <span class="badge badge-dark" v-else>Crítico</span>
                     </td>
                     <td>
-                      <span class="badge badge-success" v-if="ytt1_draft.exposure_level < 2.5">Bajo</span>
-                      <span class="badge badge-warning" v-else-if="ytt1_draft.exposure_level < 5">Medio</span>
-                      <span class="badge badge-danger" v-else-if="ytt1_draft.exposure_level < 7.5 ">Alto</span>
+                      <span class="badge badge-success" v-if="beneficiary.ytt1_draft.exposure_level < 2.5">Bajo</span>
+                      <span class="badge badge-warning" v-else-if="beneficiary.ytt1_draft.exposure_level < 5">Medio</span>
+                      <span class="badge badge-danger" v-else-if="beneficiary.ytt1_draft.exposure_level < 7.5 ">Alto</span>
                       <span class="badge badge-dark" v-else>Crítico</span>
                     </td>
-                    <td>{{ ytt1_draft.created_at | myDate }}</td>
+                    <td>{{ beneficiary.ytt1_draft.created_at | myDate }}</td>
                     <td>
                       <a href="#">
                         <i class="fas fa-eye"></i>
@@ -218,18 +222,12 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            Evaluaciones
+            Tomas
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
                 <thead>
-                  <col width="50">
-                  <col width="50">
-                  <col width="50">
-                  <col width="50">
-                  <col width="150">
-                  <col>
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Puntuación</th>
@@ -239,8 +237,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="ytt2_evaluation in beneficiary.ytt2_evaluations" v-show="ytt2_evaluation.beneficiary_id == beneficiary.id">
-                    <th scope="row">{{ ytt2_evaluation.id }}</th>
+                  <tr v-for="(ytt2_evaluation, index) in beneficiary.ytt2_evaluations" v-show="ytt2_evaluation.beneficiary_id == beneficiary.id">
+                    <th scope="row">{{ index + 1 }}</th>
                     <td>
                       {{ ytt2_evaluation.risk_level }}
                     </td>
@@ -254,6 +252,43 @@
                     <td>
                       <a href="#">
                         <i class="fas fa-eye"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <p>Borradores</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Fecha de creación</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-if="beneficiary.ytt2_draft">
+                    <th scope="row">{{ beneficiary.ytt2_draft.id }}</th>
+                    <td>{{ beneficiary.ytt2_draft.created_at | myDate }}</td>
+                    <td>
+                      <router-link :to="{ name: 'Evaluation', params: { beneficiary } }">
+                        <i class="fas fa-edit"></i>
+                      </router-link>
+                    </td>
+                    <td>
+                      <a href="#">
+                        <i class="fas fa-trash text-danger"></i>
                       </a>
                     </td>
                   </tr>

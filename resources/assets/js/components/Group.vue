@@ -153,6 +153,7 @@
           <form @submit.prevent="editmode ? updateBeneficiary() : createBeneficiary()">
             <div class="modal-body">
               <div class="form-group">
+                <label>Primer apellido</label>
                 <input v-model="form.lastname_one" type="text" name="lastname_one"
                 placeholder="Primer apellido"
                 class="form-control" :class="{ 'is-invalid': form.errors.has('lastname_one') }">
@@ -160,6 +161,7 @@
               </div>
 
               <div class="form-group">
+                <label>Segundo apellido</label>
                 <input v-model="form.lastname_two" type="text" name="lastname_two"
                 placeholder="Segundo apellido"
                 class="form-control" :class="{ 'is-invalid': form.errors.has('lastname_two') }">
@@ -167,6 +169,7 @@
               </div>
 
               <div class="form-group">
+                <label>Nombre</label>
                 <input v-model="form.name" type="text" name="name"
                 placeholder="Nombre"
                 class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
@@ -174,9 +177,11 @@
               </div>
 
               <div class="form-group">
+                <label>Fecha de nacimiento</label>
                 <input v-model="form.birthdate" type="date" name="birthdate"
                 placeholder="Fecha de nacimiento"
                 class="form-control" :class="{ 'is-invalid': form.errors.has('birthdate') }">
+                <small id="emailHelp" class="form-text text-muted">Si no conoce la fecha de nacimiento dejar en blanco.</small>
                 <has-error :form="form" field="birthdate"></has-error>
               </div>
 

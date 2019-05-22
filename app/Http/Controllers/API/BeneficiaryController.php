@@ -24,7 +24,7 @@ class BeneficiaryController extends Controller
   */
   public function index()
   {
-    return Beneficiary::with('ytt1_evaluations')->with('ytt1_drafts')->with('ytt2_evaluations')->with('group')->latest()->get();
+    return Beneficiary::with('ytt1_evaluations')->with('ytt1_draft')->with('ytt2_evaluations')->with('ytt2_draft')->with('group')->latest()->get();
   }
 
   /**
@@ -61,7 +61,7 @@ class BeneficiaryController extends Controller
   */
   public function show($id)
   {
-    return Beneficiary::with('ytt1_evaluations')->with('ytt1_drafts')->with('ytt2_evaluations')->with('ytt2_drafts')->with('group')->find($id);
+    return Beneficiary::with('ytt1_evaluations')->with('ytt1_draft')->with('ytt2_evaluations')->with('ytt2_draft')->with('group')->find($id);
   }
 
   /**

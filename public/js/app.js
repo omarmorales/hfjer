@@ -79736,7 +79736,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -79747,6 +79747,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -80540,6 +80545,8 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
+                        _c("label", [_vm._v("Primer apellido")]),
+                        _vm._v(" "),
                         _c("input", {
                           directives: [
                             {
@@ -80584,6 +80591,8 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
+                        _c("label", [_vm._v("Segundo apellido")]),
+                        _vm._v(" "),
                         _c("input", {
                           directives: [
                             {
@@ -80628,6 +80637,8 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
+                        _c("label", [_vm._v("Nombre")]),
+                        _vm._v(" "),
                         _c("input", {
                           directives: [
                             {
@@ -80666,6 +80677,8 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
+                        _c("label", [_vm._v("Fecha de nacimiento")]),
+                        _vm._v(" "),
                         _c("input", {
                           directives: [
                             {
@@ -80698,6 +80711,19 @@ var render = function() {
                             }
                           }
                         }),
+                        _vm._v(" "),
+                        _c(
+                          "small",
+                          {
+                            staticClass: "form-text text-muted",
+                            attrs: { id: "emailHelp" }
+                          },
+                          [
+                            _vm._v(
+                              "Si no conoce la fecha de nacimiento dejar en blanco."
+                            )
+                          ]
+                        ),
                         _vm._v(" "),
                         _c("has-error", {
                           attrs: { form: _vm.form, field: "birthdate" }
@@ -80958,7 +80984,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -80969,6 +80995,41 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -81466,7 +81527,7 @@ var render = function() {
         _c("div", { staticClass: "col-md-12" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-header" }, [
-              _vm._v("\n          Evaluaciones\n        ")
+              _vm._v("\n          Tomas\n        ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
@@ -81477,7 +81538,8 @@ var render = function() {
                   _c(
                     "tbody",
                     _vm._l(_vm.beneficiary.ytt1_evaluations, function(
-                      ytt1_evaluation
+                      ytt1_evaluation,
+                      index
                     ) {
                       return _c(
                         "tr",
@@ -81496,10 +81558,14 @@ var render = function() {
                         },
                         [
                           _c("th", { attrs: { scope: "row" } }, [
-                            _vm._v(_vm._s(ytt1_evaluation.id))
+                            _vm._v(_vm._s(index + 1))
                           ]),
                           _vm._v(" "),
-                          _c("td", [
+                          _c("td", { staticClass: "text-center" }, [
+                            _vm._v(_vm._s(ytt1_evaluation.risk_level))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "text-center" }, [
                             ytt1_evaluation.risk_level < 2.5
                               ? _c(
                                   "span",
@@ -81525,7 +81591,11 @@ var render = function() {
                                 )
                           ]),
                           _vm._v(" "),
-                          _c("td", [
+                          _c("td", { staticClass: "text-center" }, [
+                            _vm._v(_vm._s(ytt1_evaluation.propensity_level))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "text-center" }, [
                             ytt1_evaluation.propensity_level < 2.5
                               ? _c(
                                   "span",
@@ -81549,6 +81619,10 @@ var render = function() {
                                   { staticClass: "badge badge-dark" },
                                   [_vm._v("Crítico")]
                                 )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "text-center" }, [
+                            _vm._v(_vm._s(ytt1_evaluation.exposure_level))
                           ]),
                           _vm._v(" "),
                           _c("td", [
@@ -81638,42 +81712,42 @@ var render = function() {
                 _c("table", { staticClass: "table" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  _c(
-                    "tbody",
-                    _vm._l(_vm.beneficiary.ytt1_drafts, function(draft) {
-                      return _c("tr", { key: draft.id }, [
-                        _c("th", { attrs: { scope: "row" } }, [
-                          _vm._v(_vm._s(draft.id))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(_vm._f("myDate")(draft.created_at)))
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                attrs: {
-                                  to: {
-                                    name: "Evaluation",
-                                    params: { beneficiary: _vm.beneficiary }
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fas fa-edit" })]
+                  _c("tbody", [
+                    _vm.beneficiary.ytt1_draft
+                      ? _c("tr", [
+                          _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                _vm._f("myDate")(
+                                  _vm.beneficiary.ytt1_draft.created_at
+                                )
+                              )
                             )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm._m(2, true)
-                      ])
-                    }),
-                    0
-                  )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    to: {
+                                      name: "Evaluation",
+                                      params: { beneficiary: _vm.beneficiary }
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-edit" })]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _vm._m(2)
+                        ])
+                      : _vm._e()
+                  ])
                 ])
               ])
             ])
@@ -81699,7 +81773,7 @@ var render = function() {
         _c("div", { staticClass: "col-md-12" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-header" }, [
-              _vm._v("\n          Evaluaciones\n        ")
+              _vm._v("\n          Tomas\n        ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
@@ -81710,7 +81784,8 @@ var render = function() {
                   _c(
                     "tbody",
                     _vm._l(_vm.beneficiary.ytt2_evaluations, function(
-                      ytt2_evaluation
+                      ytt2_evaluation,
+                      index
                     ) {
                       return _c(
                         "tr",
@@ -81729,7 +81804,7 @@ var render = function() {
                         },
                         [
                           _c("th", { attrs: { scope: "row" } }, [
-                            _vm._v(_vm._s(ytt2_evaluation.id))
+                            _vm._v(_vm._s(index + 1))
                           ]),
                           _vm._v(" "),
                           _c("td", [
@@ -81784,6 +81859,61 @@ var render = function() {
               ])
             ])
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(5),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("table", { staticClass: "table" }, [
+                  _vm._m(6),
+                  _vm._v(" "),
+                  _c("tbody", [
+                    _vm.beneficiary.ytt2_draft
+                      ? _c("tr", [
+                          _c("th", { attrs: { scope: "row" } }, [
+                            _vm._v(_vm._s(_vm.beneficiary.ytt2_draft.id))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                _vm._f("myDate")(
+                                  _vm.beneficiary.ytt2_draft.created_at
+                                )
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    to: {
+                                      name: "Evaluation",
+                                      params: { beneficiary: _vm.beneficiary }
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-edit" })]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _vm._m(7)
+                        ])
+                      : _vm._e()
+                  ])
+                ])
+              ])
+            ])
+          ])
         ])
       ]
     ),
@@ -81833,13 +81963,21 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Puntuación nivel de riesgo general")]),
+        _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [
           _vm._v("Nivel de riesgo general")
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v("Puntuación nivel de propensión a conductas violentas")
         ]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [
           _vm._v("Nivel de propensión a conductas violentas")
         ]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Puntuación nivel de exposición a la violencia")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [
           _vm._v("Nivel de exposición a la violencia")
@@ -81849,6 +81987,68 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Fecha de creación")]),
+        _vm._v(" "),
+        _c("th"),
+        _vm._v(" "),
+        _c("th")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-trash text-danger" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Puntuación")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Nivel de riesgo general")
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha de creación")]),
+        _vm._v(" "),
+        _c("th")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-eye" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("p", [_vm._v("Borradores")])
     ])
   },
   function() {
@@ -81874,48 +82074,6 @@ var staticRenderFns = [
     return _c("td", [
       _c("a", { attrs: { href: "#" } }, [
         _c("i", { staticClass: "fas fa-trash text-danger" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("col", { attrs: { width: "50" } }),
-      _vm._v(" "),
-      _c("col", { attrs: { width: "50" } }),
-      _vm._v(" "),
-      _c("col", { attrs: { width: "50" } }),
-      _vm._v(" "),
-      _c("col", { attrs: { width: "50" } }),
-      _vm._v(" "),
-      _c("col", { attrs: { width: "150" } }),
-      _vm._v(" "),
-      _c("col"),
-      _vm._v(" "),
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Puntuación")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [
-          _vm._v("Nivel de riesgo general")
-        ]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha de creación")]),
-        _vm._v(" "),
-        _c("th")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fas fa-eye" })
       ])
     ])
   }
