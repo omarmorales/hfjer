@@ -84285,7 +84285,7 @@ var render = function() {
                               _vm._v("Bajo rendimiento escolar")
                             ]),
                             _vm._v(" "),
-                            _c("small", [
+                            _c("h5", [
                               _vm.evaluation.answer1 == 0
                                 ? _c(
                                     "span",
@@ -84342,7 +84342,7 @@ var render = function() {
                               _vm._v("Ausencia de una figura parental")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer2 == 0
                                 ? _c(
                                     "span",
@@ -84399,7 +84399,7 @@ var render = function() {
                               _vm._v("Escasa habilidad de educar de los padres")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer3 == 0
                                 ? _c(
                                     "span",
@@ -84456,7 +84456,7 @@ var render = function() {
                               _vm._v("Rechazo de grupo de iguales")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer4 == 0
                                 ? _c(
                                     "span",
@@ -84513,7 +84513,7 @@ var render = function() {
                               _vm._v("Desorganización comunitaria")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer5 == 0
                                 ? _c(
                                     "span",
@@ -84572,7 +84572,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer6 == 0
                                 ? _c(
                                     "span",
@@ -84629,7 +84629,7 @@ var render = function() {
                               _vm._v("Exposición a la violencia en el hogar")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer7 == 0
                                 ? _c(
                                     "span",
@@ -84686,7 +84686,7 @@ var render = function() {
                               _vm._v("Historia de Maltrato en la niñez")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer8 == 0
                                 ? _c(
                                     "span",
@@ -84743,7 +84743,7 @@ var render = function() {
                               _vm._v("Bajo cumplimiento de metas o acuerdos")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer9 == 0
                                 ? _c(
                                     "span",
@@ -84802,7 +84802,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer10 == 0
                                 ? _c(
                                     "span",
@@ -84861,7 +84861,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer11 == 0
                                 ? _c(
                                     "span",
@@ -84918,7 +84918,7 @@ var render = function() {
                               _vm._v("Actitudes negativas")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer12 == 0
                                 ? _c(
                                     "span",
@@ -84975,7 +84975,7 @@ var render = function() {
                               _vm._v("Baja empatía / remordimiento")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer13 == 0
                                 ? _c(
                                     "span",
@@ -85032,7 +85032,7 @@ var render = function() {
                               _vm._v("Comportamiento impulsivo")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer14 == 0
                                 ? _c(
                                     "span",
@@ -85089,7 +85089,7 @@ var render = function() {
                               _vm._v("Problemas con el manejo del enfado")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer15 == 0
                                 ? _c(
                                     "span",
@@ -85146,7 +85146,7 @@ var render = function() {
                               _vm._v("Delincuencia en grupo de iguales")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer16 == 0
                                 ? _c(
                                     "span",
@@ -85203,7 +85203,7 @@ var render = function() {
                               _vm._v("Iniciación temprana en la violencia")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer17 == 0
                                 ? _c(
                                     "span",
@@ -85260,7 +85260,7 @@ var render = function() {
                               _vm._v("Violencia Previa")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer18 == 0
                                 ? _c(
                                     "span",
@@ -85319,7 +85319,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer19 == 0
                                 ? _c(
                                     "span",
@@ -85376,7 +85376,7 @@ var render = function() {
                               _vm._v("Antecedentes de medidas judiciales")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer20 == 0
                                 ? _c(
                                     "span",
@@ -85433,7 +85433,7 @@ var render = function() {
                               _vm._v("Dificultades por el uso de sustancias")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer21 == 0
                                 ? _c(
                                     "span",
@@ -85492,7 +85492,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer22 == 0
                                 ? _c(
                                     "span",
@@ -85549,7 +85549,7 @@ var render = function() {
                               _vm._v("Criminalidad de los padres / cuidador")
                             ]),
                             _vm._v(" "),
-                            _c("small", { staticClass: "text-muted" }, [
+                            _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer23 == 0
                                 ? _c(
                                     "span",
