@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="col-md-12">
-          <a href="#" @click="newModal" class="btn btn-success float-right mb-3">Agregar beneficiario <i class="fas fa-plus"></i></a>
+          <a href="#" @click="newModal" class="btn btn-success float-right mb-3">Agregar persona beneficiaria <i class="fas fa-plus"></i></a>
         </div>
         <div class="col-md-12">
           <div class="card">
@@ -44,26 +44,64 @@
               <h3>Personas beneficiarias</h3>
             </div>
             <div class="card-body">
+              <p class="text-uppercase">
+                <i class="fas fa-tools"></i> {{ group.evaluation }}
+              </p>
               <div class="table-responsive">
                 <table class="table">
                   <thead>
                     <tr>
                       <th scope="col">Folio</th>
                       <th scope="col">Nombre</th>
-                      <th scope="col">Género</th>
-                      <th scope="col">Fecha de nacimiento</th>
-                      <th></th>
-                      <th></th>
-                      <th></th>
-                      <th v-if="$gate.isAdminOrAuthor()"></th>
+                      <th scope="col" class="text-center">Género</th>
+                      <th scope="col" class="text-center">Fecha de nacimiento</th>
+                      <th scope="col" class="text-center">No. de tomas</th>
+                      <th scope="col" class="text-center">Estatus</th>
+                      <th>Nueva toma</th>
+                      <th>Progreso</th>
+                      <th>Editar</th>
+                      <th v-if="$gate.isAdminOrAuthor()">Eliminar</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-for="beneficiary in beneficiaries" v-show="beneficiary.group_id == group.id">
-                      <th>{{ beneficiary.folio }}</th>
+                      <th>
+                        <span v-if="beneficiary.birthdate">
+                          {{ beneficiary.folio }}
+                        </span>
+                        <span v-else>
+                          {{ beneficiary.folio }}XXXX
+                        </span>
+                      </th>
                       <td>{{ beneficiary.name }} {{ beneficiary.lastname_one }} {{ beneficiary.lastname_two }} </td>
-                      <td>{{ beneficiary.gender }}</td>
-                      <td>{{ beneficiary.birthdate | myDate }}</td>
+                      <td class="text-center">{{ beneficiary.gender }}</td>
+                      <td class="text-center">
+                        <span v-if="beneficiary.birthdate">
+                          {{ beneficiary.birthdate | myDate }}
+                        </span>
+                        <span v-else>
+                          N/A
+                        </span>
+                      </td>
+                      
+                      <td class="text-center">
+                        <span v-if="group.evaluation == 'yttv1'">
+                          {{ beneficiary.ytt1_evaluations.length }}
+                        </span>
+                        <span v-else>
+                          {{ beneficiary.ytt2_evaluations.length }}
+                        </span>
+                      </td>
+                      <td class="text-center">
+                        <span v-if="beneficiary.birthdate">
+                          Completo
+                          <i class="fas fa-check-circle text-success"></i>
+                        </span>
+                        <span v-else>
+                          Incompleto
+                          <i class="fas fa-exclamation-circle text-danger"></i>
+                        </span>
+                      </td>
                       <td>
                         <router-link :to="{ name: 'Evaluation', params: { beneficiary } }">
                           <i class="fas fa-file-invoice" style="color:black;"></i>
@@ -93,6 +131,10 @@
 
             </div>
           </div>
+          <button type="button" class="btn btn-primary mb-3" name="button" @click.prevent="printme">
+            Imprimir
+            <i class="fas fa-print"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -184,6 +226,9 @@ export default {
     }
   },
   methods:{
+    printme(){
+      window.print();
+    },
     loadData(){
       this.loading = true;
       axios.get('/api/group/'+this.$route.params.id).then(({data}) => (this.group = data));
@@ -218,7 +263,11 @@ export default {
         this.$Progress.finish();
       })
       .catch(()=>{
-
+        this.$Progress.fail();
+        toast({
+          type: 'error',
+          title: 'Error al crear persona beneficiaria.'
+        })
       })
     },
     editModal(beneficiary){
@@ -229,6 +278,7 @@ export default {
     },
     updateBeneficiary(){
       this.$Progress.start();
+      this.form.folio = (this.form.lastname_one.substring(0,2) +  this.form.lastname_two.substring(0,2) +  this.form.name.substring(0,2)).toUpperCase() + this.form.birthdate.substring(2,4) + this.form.birthdate.substring(5,7) + this.form.birthdate.substring(8,10)
       // console.log('Editing data');
       this.form.put('/api/beneficiary/'+this.form.id)
       .then(() => {

@@ -29,9 +29,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label for="">Grupo</label>
-                <select class="form-control" id="group" v-model="group" @change="clearBeneficiarySelection">
-                  <option v-for="group in groups" :key="group.id" v-show="group.user_id == user.id" :value="group.id">{{ group.name }}</option>
-                </select>
+                <input class="form-control" disabled v-model="beneficiary_selected.group.name" type="text">
               </div>
               <div class="form-group" v-for="group_item in groups" v-show="group_item.id == group">
                 <label for="">Herramienta</label>
@@ -39,9 +37,12 @@
               </div>
               <div class="form-group">
                 <label for="">Persona beneficiaria</label>
-                <select class="form-control" id="group" v-model="beneficiary_election">
-                  <option v-for="beneficiary_item in beneficiaries" :key="beneficiary_item.id" v-show="beneficiary_item.group_id == group" :value="beneficiary_item.id">{{ beneficiary_item.name }}</option>
-                </select>
+                <input class="form-control" disabled v-model="beneficiary_selected.name + ' ' + beneficiary_selected.lastname_one" type="text">
+              </div>
+              <div class="form-group" v-if="beneficiary_selected != null">
+                <label for="">Número de toma</label>
+                <input class="form-control" type="number" :value="beneficiary_selected.ytt1_evaluations.length +1" v-if="beneficiary_selected.group.evaluation == 'yttv1'" disabled>
+                <input class="form-control" type="number" :value="beneficiary_selected.ytt2_evaluations.length +1" v-if="beneficiary_selected.group.evaluation == 'yttv2'" disabled>
               </div>
             </div>
           </div>
@@ -178,6 +179,9 @@
               </div>
             </div>
             <div class="col-md-12">
+              <button v-show="group" type="submit" class="btn btn-secondary mb-4" @click="saveAsDraft">
+                Guardar borrador
+              </button>
               <button v-show="group" type="submit" class="btn btn-primary mb-4">Guardar evaluación</button>
             </div>
             </form>
