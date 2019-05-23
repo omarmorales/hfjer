@@ -103,9 +103,9 @@
                         </span>
                       </td>
                       <td>
-                        <router-link :to="{ name: 'Evaluation', params: { beneficiary } }">
+                        <a @click="sendToEvaluation(beneficiary)">
                           <i class="fas fa-file-invoice" style="color:black;"></i>
-                        </router-link>
+                        </a>
                       </td>
                       <td>
                         <router-link :to="'/beneficiary/'+beneficiary.id">
@@ -186,6 +186,7 @@
               </div>
 
               <div class="form-group">
+                <label>Género</label>
                 <select name="type" v-model="form.gender" id="type" class="form-control" :class="{ 'is-invalid': form.errors.has('gender') }">
                   <option value="">Selecciona el género del beneficiario</option>
                   <option value="masculino">Masculino</option>
@@ -231,6 +232,30 @@ export default {
     }
   },
   methods:{
+    sendToEvaluation(beneficiary) {
+      if(beneficiary.ytt1_draft || beneficiary.ytt2_draft){
+          swal({
+          title: 'Tienes un borrador',
+          text: "¿Deseas continuar con los datos del borrador?",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sí',
+          cancelButtonText: 'No',
+        }).then((result) => {
+
+          // Send request to the server
+          if (result.value) {
+            this.$router.push({ name: 'Evaluation', params: { beneficiary } })
+          }
+        })
+      } else {
+        this.$router.push({ name: 'Evaluation', params: { beneficiary } })
+      }
+      
+      // this.$router.push({ name: 'Evaluation', params: { beneficiary } })
+    },
     printme(){
       window.print();
     },

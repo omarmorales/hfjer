@@ -1106,6 +1106,13 @@ export default {
       this.beneficiary_election = null;
     },
     loadData(){
+      if (this.$route.params.beneficiary.group.evaluation == 'yttv1' && this.$route.params.beneficiary.ytt1_draft) {
+        this.formYTTv1.reset();
+        this.formYTTv1.fill(this.$route.params.beneficiary.ytt1_draft);
+      } else if (this.$route.params.beneficiary.group.evaluation == 'yttv2' && this.$route.params.beneficiary.ytt2_draft) {
+        this.formYTTv2.reset();
+        this.formYTTv2.fill(this.$route.params.beneficiary.ytt2_draft);
+      }
       if (this.$route.params.beneficiary) {
         this.beneficiary_selected = this.$route.params.beneficiary;
         this.group = this.$route.params.beneficiary.group_id;

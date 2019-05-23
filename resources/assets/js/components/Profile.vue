@@ -13,47 +13,13 @@
 
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 mt-3">
-                <div class="card card-widget widget-user">
-                <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header text-white" style="background-image:url('./img/user-cover.jpg')">
-                    <h3 class="widget-user-username">{{this.form.name}}</h3>
-                    <h5 class="widget-user-desc">{{this.form.type}}</h5>
-                </div>
-                <div class="widget-user-image">
+        <div class="row justify-content-md-center">
+            <div class="col-md-8 mt-3 mb-3">
+                <div class="widget-user-image text-center mb-2">
                     <img class="img-circle" :src="getProfilePhoto()" alt="User Avatar">
                 </div>
-                <div class="card-footer">
-                    <div class="row">
-                    <div class="col-sm-4 border-right">
-                        <div class="description-block">
-                        <h5 class="description-header"></h5>
-                        <span class="description-text"></span>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-4 border-right">
-                        <div class="description-block">
-                        <h5 class="description-header"></h5>
-                        <span class="description-text"></span>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-4">
-                        <div class="description-block">
-                        <h5 class="description-header"></h5>
-                        <span class="description-text"></span>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                </div>
+                <p class="h3 text-center font-weight-bolder">{{ form.name }}</p>
+                <p class="h4 text-center text-secondary">{{ form.type }}</p>
             </div>
 
             <!-- tab -->
@@ -179,10 +145,16 @@
                 }
                 this.form.put('api/profile')
                 .then(()=>{
-                     Fire.$emit('AfterCreate');
+                    Fire.$emit('AfterCreate');
+                    swal(
+                        'Actualizado!',
+                        'Información del usuario actualizada.',
+                        'success'
+                    )
                     this.$Progress.finish();
                 })
                 .catch(() => {
+                    swal("Error", "Algo salió mal.", "warning");
                     this.$Progress.fail();
                 });
             },
