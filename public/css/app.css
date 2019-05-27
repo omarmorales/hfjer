@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins);/*!
+@import url(https://fonts.googleapis.com/css?family=Poppins);@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);/*!
  *   AdminLTE v3.0.0-alpha
  *   Author: Abdullah Almsaeed
  *	 Website: AdminLTE.io <http://adminlte.io>
@@ -31495,6 +31495,17 @@ readers do not read off random characters that represent icons */
 .router-link-exact-active {
   background-color: #3f51b5;
   color: #fff !important;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  font-family: 'Poppins';
+  content: ">" !important;
 }
 
 @media print {

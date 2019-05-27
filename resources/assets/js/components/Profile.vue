@@ -16,7 +16,7 @@
         <div class="row justify-content-md-center">
             <div class="col-md-8 mt-3 mb-3">
                 <div class="widget-user-image text-center mb-2">
-                    <img class="img-circle" :src="getProfilePhoto()" alt="User Avatar">
+                    <img class="img-circle" :src="getProfilePhoto()" alt="User Avatar" style="max-width: 30%;">
                 </div>
                 <p class="h3 text-center font-weight-bolder">{{ form.name }}</p>
                 <p class="h4 text-center text-secondary">{{ form.type }}</p>
@@ -42,42 +42,42 @@
                             <div class="tab-pane active show" id="settings">
                                 <form class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Nombre</label>
+                                    <label for="inputName" class="">Nombre</label>
 
-                                    <div class="col-sm-12">
+ 
                                     <input type="" v-model="form.name" class="form-control" id="inputName" placeholder="Name" :class="{ 'is-invalid': form.errors.has('name') }">
                                      <has-error :form="form" field="name"></has-error>
-                                    </div>
+
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-2 control-label">Correo</label>
+                                    <label for="inputEmail" class="">Correo</label>
 
-                                    <div class="col-sm-12">
+
                                     <input type="email" v-model="form.email" class="form-control" id="inputEmail" placeholder="Email"  :class="{ 'is-invalid': form.errors.has('email') }">
                                      <has-error :form="form" field="email"></has-error>
-                                    </div>
+
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputExperience" class="col-sm-2 control-label">Descripción</label>
+                                    <label for="inputExperience" class="">Descripción</label>
 
-                                    <div class="col-sm-12">
+
                                     <textarea  v-model="form.bio" class="form-control" id="inputExperience" placeholder="Breve descripción..." :class="{ 'is-invalid': form.errors.has('bio') }"></textarea>
                                      <has-error :form="form" field="bio"></has-error>
-                                    </div>
+
                                 </div>
                                 <div class="form-group">
-                                    <label for="photo" class="col-sm-2 control-label">Avatar</label>
-                                    <div class="col-sm-12">
+                                    <label for="photo" class="">Avatar</label>
+
                                         <input type="file" @change="updateProfile" name="photo" class="form-input">
-                                    </div>
+
 
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="password" class="col-sm-12 control-label">Actualizar contraseña</label>
+                                    <label for="password" class="">Actualizar contraseña</label>
 
-                                    <div class="col-sm-12">
+                                    <div class="">
                                     <input type="password"
                                         v-model="form.password"
                                         class="form-control"

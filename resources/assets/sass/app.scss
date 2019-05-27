@@ -1,6 +1,7 @@
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
 
 // Variables
 @import 'variables';
@@ -21,6 +22,16 @@ $fa-font-path: "../webfonts";
     background-color: #3f51b5;
     color:#fff !important;
 }
+
+h1, h2, h3  {
+  font-family: $font-family-sans-serif-open-sans;
+} 
+
+.breadcrumb-item + .breadcrumb-item::before {
+  font-family: 'Poppins';
+  content: ">" !important;
+}
+
 
 
 @media print {
