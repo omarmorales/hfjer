@@ -93,4 +93,11 @@ class GroupController extends Controller
 
     return ['message' => 'Group Deleted'];
   }
+
+  public function export_pdf($id)
+  {
+    $group = Group::find($id);
+    $pdf = PDF::loadView('pdf.invoice', compact('group'));
+    return $pdf->download('details.pdf');
+  }
 }

@@ -78864,7 +78864,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -78908,15 +78908,6 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -79162,26 +79153,12 @@ var render = function() {
           [_vm._m(0)]
         )
       : _c("div", [
-          _c("section", { staticClass: "content-header" }, [
-            _c("div", { staticClass: "container-fluid" }, [
-              _c("div", { staticClass: "row mb-2" }, [
-                _c("div", { staticClass: "col-sm-6" }, [
-                  _c("h1", [
-                    _vm._v(
-                      "\n              ¡Bienvenido/a " +
-                        _vm._s(_vm.user.name) +
-                        "!\n            "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(1)
-              ])
-            ])
-          ]),
+          _vm._m(1),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-12" }, [
+              _vm._m(2),
+              _vm._v(" "),
               _c(
                 "a",
                 {
@@ -79196,8 +79173,6 @@ var render = function() {
               )
             ])
           ]),
-          _vm._v(" "),
-          _vm._m(2),
           _vm._v(" "),
           _c(
             "div",
@@ -79604,9 +79579,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-6" }, [
-      _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
-        _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Inicio")])
+    return _c("section", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-12" }, [
+            _c("ol", { staticClass: "breadcrumb" }, [
+              _c("li", { staticClass: "breadcrumb-item active" }, [
+                _vm._v("Inicio")
+              ])
+            ])
+          ])
+        ])
       ])
     ])
   },
@@ -79614,14 +79597,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("h3", [
-          _c("i", { staticClass: "fas fa-users" }),
-          _vm._v("\n          Administrar grupos:\n        ")
-        ])
-      ])
-    ])
+    return _c(
+      "h3",
+      { staticClass: "font-weight-bolder text-uppercase text-center" },
+      [
+        _c("i", { staticClass: "fas fa-users" }),
+        _vm._v("\n          Administrar grupos:\n        ")
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -79736,7 +79719,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.table-headers {\r\n  position: relative;\r\n    bottom: 1em;\n}\r\n", ""]);
 
 // exports
 
@@ -79747,6 +79730,25 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -80137,17 +80139,7 @@ var render = function() {
           _c("section", { staticClass: "content-header" }, [
             _c("div", { staticClass: "container-fluid" }, [
               _c("div", { staticClass: "row mb-2" }, [
-                _c("div", { staticClass: "col-sm-6" }, [
-                  _c("h1", [
-                    _vm._v(
-                      "\n              " +
-                        _vm._s(_vm.group.name) +
-                        "\n            "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-6" }, [
+                _c("div", { staticClass: "col-sm-12" }, [
                   _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
                     _c(
                       "li",
@@ -80170,6 +80162,16 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c(
+                "h2",
+                {
+                  staticClass: "text-center font-weight-bolder text-uppercase"
+                },
+                [_vm._v("\n          " + _vm._s(_vm.group.name) + "\n        ")]
+              )
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", [
                 _c("p", { staticClass: "ml-2 lead" }, [
@@ -80211,58 +80213,56 @@ var render = function() {
                     _c("table", { staticClass: "table" }, [
                       _c("thead", [
                         _c("tr", [
-                          _c("th", { attrs: { scope: "col" } }, [
-                            _vm._v("Folio")
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c(
+                            "th",
+                            {
+                              staticClass: "text-center",
+                              attrs: { scope: "col" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                      Fecha de nacimiento\n                    "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "th",
+                            {
+                              staticClass: "text-center",
+                              attrs: { scope: "col" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                      No. de tomas\n                    "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c("th", [
+                            _vm._v(
+                              "\n                      Nueva toma\n                    "
+                            )
                           ]),
                           _vm._v(" "),
-                          _c("th", { attrs: { scope: "col" } }, [
-                            _vm._v("Nombre")
-                          ]),
+                          _vm._m(6),
                           _vm._v(" "),
-                          _c(
-                            "th",
-                            {
-                              staticClass: "text-center",
-                              attrs: { scope: "col" }
-                            },
-                            [_vm._v("Género")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "th",
-                            {
-                              staticClass: "text-center",
-                              attrs: { scope: "col" }
-                            },
-                            [_vm._v("Fecha de nacimiento")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "th",
-                            {
-                              staticClass: "text-center",
-                              attrs: { scope: "col" }
-                            },
-                            [_vm._v("No. de tomas")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "th",
-                            {
-                              staticClass: "text-center",
-                              attrs: { scope: "col" }
-                            },
-                            [_vm._v("Estatus")]
-                          ),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Nueva toma")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Progreso")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Editar")]),
+                          _vm._m(7),
                           _vm._v(" "),
                           _vm.$gate.isAdminOrAuthor()
-                            ? _c("th", [_vm._v("Eliminar")])
+                            ? _c("th", [
+                                _c("span", { staticClass: "table-headers" }, [
+                                  _vm._v("Eliminar")
+                                ])
+                              ])
                             : _vm._e()
                         ])
                       ]),
@@ -80546,7 +80546,7 @@ var render = function() {
                   [_vm._v("Editar beneficiario")]
                 ),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(8)
               ]),
               _vm._v(" "),
               _c(
@@ -80892,7 +80892,55 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("h3", [_vm._v("Personas beneficiarias")])
+      _c("p", { staticClass: "h4" }, [_vm._v("Personas beneficiarias")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("th", { attrs: { scope: "col" } }, [
+      _c("span", { staticClass: "table-headers" }, [_vm._v("Folio")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("th", { attrs: { scope: "col" } }, [
+      _c("span", { staticClass: "table-headers" }, [_vm._v("Nombre")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+      _c("span", { staticClass: "table-headers" }, [_vm._v("Género")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+      _c("span", { staticClass: "table-headers" }, [_vm._v("Estatus")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("th", [
+      _c("span", { staticClass: "table-headers" }, [_vm._v("Progreso")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("th", [
+      _c("span", { staticClass: "table-headers" }, [_vm._v("Editar")])
     ])
   },
   function() {
@@ -90381,6 +90429,173 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -90480,7 +90695,7 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("li", [
-              _c("a", { attrs: { href: "#" } }, [
+              _c("a", { attrs: { href: "#structure" } }, [
                 _vm._v(
                   "\n                        ESTRUCTURA DE LA PRUEBA\n                    "
                 )
@@ -91087,9 +91302,289 @@ var staticRenderFns = [
               _vm._v(
                 "\n                Otro indicador que se toma en cuenta en este análisis son los valores de las comunalidades de los reactivos, estos indican la estabilidad con la que se comporta ese reactivo, con respecto a la prueba completa. En este caso los valores mayores a 0.40 son los aceptables. En la tabla 1 se muestran los reactivos que no cumplieron con dicha condición:\n            "
               )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Reactivo")]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-center" }, [
+                      _vm._v("Valor de comunalidad")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Contexto escolar")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v("0.328")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Inseguridad comunitaria")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v("0.308")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Apoyo social percibido")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v("0.330")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Historia de maltrato en la niñez")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v("0.357")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Acoso")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v("0.213")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Duelo")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v("0.208")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Ideación e intento suicida")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v("0.239")])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                En un primer momento, aunque estos reactivos no cumplieron con el criterio de las comunalidades, se permitió que se mantuvieran en el análisis, con la finalidad de no perder reactivos importantes. Sin embargo, cuando se corrió el análisis, se observó que los reactivos: Duelo, Acoso e Ideación e intento suicida, no discriminaban para la agrupación de factores y que, aunque aparentemente había dos factores en la prueba, uno de ellos no tenía una agrupación suficiente de reactivos. Por ello, se corrió nuevamente el análisis reconociendo el único factor claro de la herramienta YYT, con todos los reactivos. En este paso se repitió la falta de asociación al factor de la prueba, de los reactivos: duelo, acoso e ideación e intento suicida.\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                Por este motivo se decidió quitar de la prueba estos tres reactivos y se volvió a correr el análisis. En este momento, se obtuvo un índice KMO=0.902; la herramienta YYT explica 36.48% de la varianza (es decir, es el porcentaje del problema, en este caso la violencia, que se logra medir con la herramienta YYT); y, todos los reactivos tienen una asociación al factor violencia mayor a 0.42 (véase tabla 2), lo cual indica que la herramienta YYT es unifactorial y tiene buenas propiedades psicométricas para la población de interés.\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-weight-bold" }, [
+              _vm._v(
+                "\n                Tabla 2. Matriz de componentes principales de la herramienta YYT\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Componentes")]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-center" }, [_vm._v("Factor")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Violencia reciente")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".716")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Problemas con la ley")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".692")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Iniciación temprana en la violencia")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".681")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Delincuencia en el grupo de iguales")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".667")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Comportamiento impulsivo")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".666")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Problemas con el manejo del enojo")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".654")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Inatención / hiperactividad")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".652")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Criminalidad de los padres / cuidador")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".649")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [
+                      _vm._v("Historia de actos delictivos no violentos")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".647")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Estilos de crianza")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".605")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Bajo cumplimiento de metas o acuerdos")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".605")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Dificultades por el uso de sustancias")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".591")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Empatía / remordimiento")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".590")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Actitudes hacia la violencia")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".590")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Contexto escolar")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".525")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Exposición a la violencia en el hogar")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".524")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Ausencia de figura parental")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".523")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Apoyo social percibido")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".507")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Historia de maltrato en la niñez")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".466")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Inseguridad comunitaria")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [_vm._v(".429")])
+                  ])
+                ])
+              ])
             ])
           ]
-        )
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12", attrs: { id: "structure" } }, [
+          _c("h3", { staticClass: "text-uppercase font-weight-bold" }, [
+            _vm._v(
+              "         \n                ESTRUCTURA DE LA PRUEBA\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                Anta la decisión de eliminar los reactivos que no discriminaban, la herramienta YTT quedó conformada por los 20 reactivos se describirán en la siguiente sección.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("span", { staticClass: "font-weight-bolder" }, [
+              _vm._v("1.-Contexto escolar:")
+            ]),
+            _vm._v(
+              " Hace referencia a la exploración del contexto actual del grado académico del adolescente y los motivos que lo llevaron a mantenerse en ese estado. Se explora sobre problemas de conducta, apoyo familiar, percepción de limitaciones escolares e indisciplina. \n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("span", { staticClass: "font-weight-bolder" }, [
+              _vm._v("2.- Ausencia de una figura parental:")
+            ]),
+            _vm._v(
+              " En este reactivo se busca explorar la relación inicial, temprana y actual con sus padres, se busca obtener información en relación de con quién vive actualmente, estado actual de la unión de sus padres, saber los motivos de separación en caso de que se confirme, además de explorar el motivo de mantenerse o separarse de ellos.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("span", { staticClass: "font-weight-bolder" }, [
+              _vm._v("3.-Estilos de crianza:")
+            ]),
+            _vm._v(
+              " Se explora el estado actual y previo de las reglas y obligaciones inculcadas en la casa de sus padres. Se hace una exploración sobre horarios, actividades, permisos para salir con amigos, consecuencia de no cumplir una regla. Además, se pone atención sobre el estado de conocimiento de sus padres sobre su tiempo libre, preocupaciones, necesidades, apoyo, convivencia y/o atención.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("span", { staticClass: "font-weight-bolder" }, [
+              _vm._v("4.-Exposición de violencia en el hogar:")
+            ]),
+            _vm._v(
+              " Se busca información relacionada al nivel de expresión de violencia presentada en su hogar. En caso de que se corrobore, las preguntas se orientan a identificar la frecuencia con la que se desarrollaba, la manera en la que surgía, quiénes eran participes, que rol jugaba él/ella y/o consecuencias.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("span", { staticClass: "font-weight-bolder" }, [
+              _vm._v("5.-Criminalidad de los padres/cuidador:")
+            ]),
+            _vm._v(
+              " El reactivo se enfoca en el historial de crímenes de los padres o tutores a cargo del evaluado, se indaga sobre delitos. En caso de que se corrobore, se indaga sobre el tipo de crimen o delito cometido, inicio del historial del tutor, si el evaluado ha sido testigo de algún acto, y/o si el tutor o padre estuvo o esta paga o pagó alguna sentencia.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("span", { staticClass: "font-weight-bolder" }, [
+              _vm._v("6.-Inseguridad comunitaria:")
+            ]),
+            _vm._v(
+              " En este reactivo la búsqueda se concentra en la relación que el evaluado tiene con la comunidad que se desenvolvió o se desenvuelve actualmente. Se explora el nivel de riesgo en relación a la existencia de delitos y/o crimen, peleas o riñas. Y en caso de que se confirmen se indaga la frecuencia, si participa activa o pasiva sobre ellos, si conocidos, familiares o él/ella ha sido víctima de ellos, además de la motivación para seguir viviendo ahí o irse.\n            "
+            )
+          ])
+        ])
       ])
     ])
   }

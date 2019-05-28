@@ -12,13 +12,8 @@
       <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1>
-                ¡Bienvenido/a {{ user.name }}!
-              </h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
+            <div class="col-sm-12">
+              <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Inicio</li>
               </ol>
             </div>
@@ -27,15 +22,11 @@
       </section>
       <div class="row">
         <div class="col-md-12">
-          <a href="#" @click="newModal" class="btn btn-success float-right">Agregar grupo <i class="fas fa-plus"></i></a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h3>
+          <h3 class="font-weight-bolder text-uppercase text-center">
             <i class="fas fa-users"></i>
             Administrar grupos:
           </h3>
+          <a href="#" @click="newModal" class="btn btn-success float-right">Agregar grupo <i class="fas fa-plus"></i></a>
         </div>
       </div>
       <div class="row">

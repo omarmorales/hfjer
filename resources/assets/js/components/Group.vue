@@ -12,12 +12,7 @@
       <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1>
-                {{ group.name }}
-              </h1>
-            </div>
-            <div class="col-sm-6">
+            <div class="col-sm-12">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item">
                   <router-link to="/home">Grupos</router-link>
@@ -30,6 +25,11 @@
       </section>
       <div class="row">
         <div class="col-md-12">
+          <h2 class="text-center font-weight-bolder text-uppercase">
+            {{ group.name }}
+          </h2>
+        </div>
+        <div class="col-md-12">
           <div>
             <p class="ml-2 lead">{{ this.group.description }}</p>
             <hr>
@@ -41,7 +41,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h3>Personas beneficiarias</h3>
+              <p class="h4">Personas beneficiarias</p>
             </div>
             <div class="card-body">
               <p class="text-uppercase">
@@ -51,16 +51,35 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">Folio</th>
-                      <th scope="col">Nombre</th>
-                      <th scope="col" class="text-center">Género</th>
-                      <th scope="col" class="text-center">Fecha de nacimiento</th>
-                      <th scope="col" class="text-center">No. de tomas</th>
-                      <th scope="col" class="text-center">Estatus</th>
-                      <th>Nueva toma</th>
-                      <th>Progreso</th>
-                      <th>Editar</th>
-                      <th v-if="$gate.isAdminOrAuthor()">Eliminar</th>
+                      <th scope="col">
+                        <span class="table-headers">Folio</span>
+                        
+                      </th>
+                      <th scope="col">
+                        <span class="table-headers">Nombre</span>
+                      </th>
+                      <th scope="col" class="text-center">
+                        <span class="table-headers">Género</span>
+                      </th>
+                      <th scope="col" class="text-center">
+                        Fecha de nacimiento
+                      </th>
+                      <th scope="col" class="text-center">
+                        No. de tomas
+                      </th>
+                      <th scope="col" class="text-center">
+                        <span class="table-headers">Estatus</span>
+                      </th>
+                      <th>
+                        Nueva toma
+                      </th>
+                      <th>
+                        <span class="table-headers">Progreso</span>
+                      </th>
+                      <th>
+                        <span class="table-headers">Editar</span>
+                      </th>
+                      <th v-if="$gate.isAdminOrAuthor()"><span class="table-headers">Eliminar</span></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -364,4 +383,8 @@ export default {
 </script>
 
 <style lang="css">
+.table-headers {
+  position: relative;
+    bottom: 1em;
+}
 </style>

@@ -1,6 +1,5 @@
 <?php
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -63,5 +62,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('invoice', function(){
     return view('invoice');
 });
+
+Route::get('/groups/pdf','GroupController@export_pdf');
 
 Route::get('{path}',"HomeController@index")->where( 'path', '([A-z\d-\/_.]+)?' );

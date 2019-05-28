@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#structure">
                             ESTRUCTURA DE LA PRUEBA
                         </a>
                     </li>
@@ -354,7 +354,174 @@
                 <p>
                     Otro indicador que se toma en cuenta en este análisis son los valores de las comunalidades de los reactivos, estos indican la estabilidad con la que se comporta ese reactivo, con respecto a la prueba completa. En este caso los valores mayores a 0.40 son los aceptables. En la tabla 1 se muestran los reactivos que no cumplieron con dicha condición:
                 </p>
-                
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Reactivo</th>
+                                <th class="text-center">Valor de comunalidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Contexto escolar</td>
+                                <td class="text-center">0.328</td>
+                            </tr>
+                            <tr>
+                                <td>Inseguridad comunitaria</td>
+                                <td class="text-center">0.308</td>
+                            </tr>
+                            <tr>
+                                <td>Apoyo social percibido</td>
+                                <td class="text-center">0.330</td>
+                            </tr>
+                            <tr>
+                                <td>Historia de maltrato en la niñez</td>
+                                <td class="text-center">0.357</td>
+                            </tr>
+                            <tr>
+                                <td>Acoso</td>
+                                <td class="text-center">0.213</td>
+                            </tr>
+                            <tr>
+                                <td>Duelo</td>
+                                <td class="text-center">0.208</td>
+                            </tr>
+                            <tr>
+                                <td>Ideación e intento suicida</td>
+                                <td class="text-center">0.239</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    En un primer momento, aunque estos reactivos no cumplieron con el criterio de las comunalidades, se permitió que se mantuvieran en el análisis, con la finalidad de no perder reactivos importantes. Sin embargo, cuando se corrió el análisis, se observó que los reactivos: Duelo, Acoso e Ideación e intento suicida, no discriminaban para la agrupación de factores y que, aunque aparentemente había dos factores en la prueba, uno de ellos no tenía una agrupación suficiente de reactivos. Por ello, se corrió nuevamente el análisis reconociendo el único factor claro de la herramienta YYT, con todos los reactivos. En este paso se repitió la falta de asociación al factor de la prueba, de los reactivos: duelo, acoso e ideación e intento suicida.
+                </p>
+                <p>
+                    Por este motivo se decidió quitar de la prueba estos tres reactivos y se volvió a correr el análisis. En este momento, se obtuvo un índice KMO=0.902; la herramienta YYT explica 36.48% de la varianza (es decir, es el porcentaje del problema, en este caso la violencia, que se logra medir con la herramienta YYT); y, todos los reactivos tienen una asociación al factor violencia mayor a 0.42 (véase tabla 2), lo cual indica que la herramienta YYT es unifactorial y tiene buenas propiedades psicométricas para la población de interés.
+                </p>
+                <p class="font-weight-bold">
+                    Tabla 2. Matriz de componentes principales de la herramienta YYT
+                </p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Componentes</th>
+                                <th class="text-center">Factor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Violencia reciente</td>
+                                <td class="text-center">.716</td>
+                            </tr>
+                            <tr>
+                                <td>Problemas con la ley</td>
+                                <td class="text-center">.692</td>
+                            </tr>
+                            <tr>
+                                <td>Iniciación temprana en la violencia</td>
+                                <td class="text-center">.681</td>
+                            </tr>
+                            <tr>
+                                <td>Delincuencia en el grupo de iguales</td>
+                                <td class="text-center">.667</td>
+                            </tr>
+                            <tr>
+                                <td>Comportamiento impulsivo</td>
+                                <td class="text-center">.666</td>
+                            </tr>
+                            <tr>
+                                <td>Problemas con el manejo del enojo</td>
+                                <td class="text-center">.654</td>
+                            </tr>
+                            <tr>
+                                <td>Inatención / hiperactividad</td>
+                                <td class="text-center">.652</td>
+                            </tr>
+
+                            <tr>
+                                <td>Criminalidad de los padres / cuidador</td>
+                                <td class="text-center">.649</td>
+                            </tr>
+                            <tr>
+                                <td>Historia de actos delictivos no violentos</td>
+                                <td class="text-center">.647</td>
+                            </tr>
+                            <tr>
+                                <td>Estilos de crianza</td>
+                                <td class="text-center">.605</td>
+                            </tr>
+                            <tr>
+                                <td>Bajo cumplimiento de metas o acuerdos</td>
+                                <td class="text-center">.605</td>
+                            </tr>
+                            <tr>
+                                <td>Dificultades por el uso de sustancias</td>
+                                <td class="text-center">.591</td>
+                            </tr>
+                            <tr>
+                                <td>Empatía / remordimiento</td>
+                                <td class="text-center">.590</td>
+                            </tr>
+                            <tr>
+                                <td>Actitudes hacia la violencia</td>
+                                <td class="text-center">.590</td>
+                            </tr>
+                            <tr>
+                                <td>Contexto escolar</td>
+                                <td class="text-center">.525</td>
+                            </tr>
+                            <tr>
+                                <td>Exposición a la violencia en el hogar</td>
+                                <td class="text-center">.524</td>
+                            </tr>
+                            <tr>
+                                <td>Ausencia de figura parental</td>
+                                <td class="text-center">.523</td>
+                            </tr>
+                            <tr>
+                                <td>Apoyo social percibido</td>
+                                <td class="text-center">.507</td>
+                            </tr>
+                            <tr>
+                                <td>Historia de maltrato en la niñez</td>
+                                <td class="text-center">.466</td>
+                            </tr>
+                            <tr>
+                                <td>Inseguridad comunitaria</td>
+                                <td class="text-center">.429</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12" id="structure">
+                <h3 class="text-uppercase font-weight-bold">         
+                    ESTRUCTURA DE LA PRUEBA
+                </h3>
+                <p>
+                    Anta la decisión de eliminar los reactivos que no discriminaban, la herramienta YTT quedó conformada por los 20 reactivos se describirán en la siguiente sección.
+                </p>
+                <p>
+                    <span class="font-weight-bolder">1.-Contexto escolar:</span> Hace referencia a la exploración del contexto actual del grado académico del adolescente y los motivos que lo llevaron a mantenerse en ese estado. Se explora sobre problemas de conducta, apoyo familiar, percepción de limitaciones escolares e indisciplina. 
+                </p>
+                <p>
+                    <span class="font-weight-bolder">2.- Ausencia de una figura parental:</span> En este reactivo se busca explorar la relación inicial, temprana y actual con sus padres, se busca obtener información en relación de con quién vive actualmente, estado actual de la unión de sus padres, saber los motivos de separación en caso de que se confirme, además de explorar el motivo de mantenerse o separarse de ellos.
+                </p>
+                <p>
+                    <span class="font-weight-bolder">3.-Estilos de crianza:</span> Se explora el estado actual y previo de las reglas y obligaciones inculcadas en la casa de sus padres. Se hace una exploración sobre horarios, actividades, permisos para salir con amigos, consecuencia de no cumplir una regla. Además, se pone atención sobre el estado de conocimiento de sus padres sobre su tiempo libre, preocupaciones, necesidades, apoyo, convivencia y/o atención.
+                </p>
+                <p>
+                    <span class="font-weight-bolder">4.-Exposición de violencia en el hogar:</span> Se busca información relacionada al nivel de expresión de violencia presentada en su hogar. En caso de que se corrobore, las preguntas se orientan a identificar la frecuencia con la que se desarrollaba, la manera en la que surgía, quiénes eran participes, que rol jugaba él/ella y/o consecuencias.
+                </p>
+                <p>
+                    <span class="font-weight-bolder">5.-Criminalidad de los padres/cuidador:</span> El reactivo se enfoca en el historial de crímenes de los padres o tutores a cargo del evaluado, se indaga sobre delitos. En caso de que se corrobore, se indaga sobre el tipo de crimen o delito cometido, inicio del historial del tutor, si el evaluado ha sido testigo de algún acto, y/o si el tutor o padre estuvo o esta paga o pagó alguna sentencia.
+                </p>
+                <p>
+                    <span class="font-weight-bolder">6.-Inseguridad comunitaria:</span> En este reactivo la búsqueda se concentra en la relación que el evaluado tiene con la comunidad que se desenvolvió o se desenvuelve actualmente. Se explora el nivel de riesgo en relación a la existencia de delitos y/o crimen, peleas o riñas. Y en caso de que se confirmen se indaga la frecuencia, si participa activa o pasiva sobre ellos, si conocidos, familiares o él/ella ha sido víctima de ellos, además de la motivación para seguir viviendo ahí o irse.
+                </p>
             </div>
         </div>
     </div>
