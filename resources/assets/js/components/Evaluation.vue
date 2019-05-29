@@ -46,7 +46,7 @@
               </div>
             </div>
           </div>
-          <div class="row" v-for="group_item in groups" v-if="group_item.id == group && group_item.evaluation == 'yttv1'">
+          <div class="row" v-if="beneficiary_selected.group.evaluation == 'yttv1'">
             <form @submit.prevent="draftmode ?  createYtt1Draft() : createYtt1Evaluation()">
             <div class="col-md-12">
               <div class="card" v-for="(item, index) in yttv1_questionnarie">
@@ -117,7 +117,7 @@
             </div>
             </form>
           </div>
-          <div class="row" v-for="group_item in groups" v-if="group_item.id == group && group_item.evaluation == 'yttv2'">
+          <div class="row" v-if="beneficiary_selected.group.evaluation == 'yttv2'">
             <form @submit.prevent="draftmode ?  createYtt2Draft() : createYtt2Evaluation()">
             <div class="col-md-12">
               <div class="card" v-for="(item, index) in yttv2_questionnarie">
@@ -988,7 +988,7 @@ export default {
           ]
         },
       ],
-      beneficiary_selected: '',
+      beneficiary_selected: {},
       groups: {},
       beneficiaries: {},
       group: '',
@@ -1106,46 +1106,53 @@ export default {
       this.beneficiary_election = null;
     },
     loadData(){
-      if (this.$route.params.beneficiary.group.evaluation == 'yttv1' && this.$route.params.beneficiary.ytt1_draft) {
-        this.formYTTv1.reset();
-        this.formYTTv1.fill(this.$route.params.beneficiary.ytt1_draft);
-      } else if (this.$route.params.beneficiary.group.evaluation == 'yttv2' && this.$route.params.beneficiary.ytt2_draft) {
-        this.formYTTv2.reset();
-        this.formYTTv2.fill(this.$route.params.beneficiary.ytt2_draft);
-      }
-      if (this.$route.params.beneficiary) {
-        this.beneficiary_selected = this.$route.params.beneficiary;
-        this.group = this.$route.params.beneficiary.group_id;
-        this.beneficiary_election = this.$route.params.beneficiary.id;
-      }
-      axios.get('api/group/').then(({data}) => (this.groups = data));
-      axios.get('api/beneficiary/').then(({data}) => (this.beneficiaries = data));
-      axios.get("api/profile").then(({ data }) => (this.user = data));
+      this.formYTTv1.reset();
+      this.formYTTv2.reset();
+      axios.get(`/api/beneficiary_by_folio/${this.$route.params.f}`).then(({data}) => {
+        if (data.ytt1_draft) this.formYTTv1.fill(data.ytt1_draft);
+        if (data.ytt2_draft) this.formYTTv2.fill(data.ytt2_draft);
+        this.beneficiary_selected = data;
+        this.group = data.group_id;
+        this.beneficiary_election = data.id;
+      }).catch(()=>{
+        toast({
+          type: 'error',
+          title: 'Error al cargar datos'
+        })
+      })
     },
     createYtt1Draft() {
       this.$Progress.start();
 
-      this.formYTTv1.beneficiary_id = this.beneficiary_election;
+      if(this.beneficiary_selected.ytt1_draft){
+        swal(
+          'Ya hay borrador!',
+          '',
+          'success'
+        )
+      } else {
+        this.formYTTv1.beneficiary_id = this.beneficiary_election;
 
-      this.formYTTv1.post('api/ytt1draft').then(()=>{
-        Fire.$emit('AfterCreate');
-        this.formYTTv1.reset();
-        this.$router.push(`beneficiary/${this.beneficiary_election}`)
-        toast({
-          type: 'success',
-          title: 'Borrador YTT v1 creado con éxito.'
+        this.formYTTv1.post('/api/ytt1draft').then(()=>{
+          Fire.$emit('AfterCreate');
+          this.formYTTv1.reset();
+          this.$router.push(`beneficiary/${this.beneficiary_election}`)
+          toast({
+            type: 'success',
+            title: 'Borrador YTT v1 creado con éxito.'
+          })
+          this.$Progress.finish();
         })
-        this.$Progress.finish();
-      })
-      .catch(()=>{
-        this.$Progress.fail();
-      })
+        .catch(()=>{
+          this.$Progress.fail();
+        })
+      }
     },
     createYtt1Evaluation(){
       this.$Progress.start();
       this.formYTTv1.beneficiary_id = this.beneficiary_election;
 
-      this.formYTTv1.post('api/ytt1evaluation').then(()=>{
+      this.formYTTv1.post('/api/ytt1evaluation').then(()=>{
         Fire.$emit('AfterCreate');
         this.formYTTv1.reset();
         this.$router.push(`beneficiary/${this.beneficiary_election}`)
@@ -1163,7 +1170,7 @@ export default {
       this.$Progress.start();
       this.formYTTv2.beneficiary_id = this.beneficiary_election;
 
-      this.formYTTv2.post('api/ytt2evaluation').then(()=>{
+      this.formYTTv2.post('/api/ytt2evaluation').then(()=>{
         Fire.$emit('AfterCreate');
         this.formYTTv1.reset();
         this.$router.push(`beneficiary/${this.beneficiary_election}`)
@@ -1180,21 +1187,48 @@ export default {
     createYtt2Draft() {
       this.$Progress.start();
 
-      this.formYTTv2.beneficiary_id = this.beneficiary_election;
-
-      this.formYTTv2.post('api/ytt2draft').then(()=>{
-        Fire.$emit('AfterCreate');
-        this.formYTTv2.reset();
-        this.$router.push(`beneficiary/${this.beneficiary_election}`)
-        toast({
-          type: 'success',
-          title: 'Borrador YTT v2 creado con éxito.'
+      if(this.beneficiary_selected.ytt2_draft){
+        this.formYTTv2.put('/api/ytt2draft/'+this.formYTTv2.id)
+        .then(() => {
+          // success
+          swal(
+            'Actualizado',
+            'La información se ha actualizado.',
+            'success'
+          )
+          this.$Progress.finish();
+          Fire.$emit('AfterCreate');
+          this.formYTTv2.reset();
+          this.$router.push(`beneficiary/${this.beneficiary_election}`)
         })
-        this.$Progress.finish();
-      })
-      .catch(()=>{
-        this.$Progress.fail();
-      })
+        .catch(() => {
+          this.$Progress.fail();
+          toast({
+            type: 'error',
+            title: 'Algo salió mal..'
+          })
+        });
+      } else {
+        this.formYTTv2.beneficiary_id = this.beneficiary_election;
+
+        this.formYTTv2.post('/api/ytt2draft').then(()=>{
+          Fire.$emit('AfterCreate');
+          this.formYTTv2.reset();
+          this.$router.push(`beneficiary/${this.beneficiary_election}`)
+          toast({
+            type: 'success',
+            title: 'Borrador YTT v2 creado con éxito.'
+          })
+          this.$Progress.finish();
+        })
+        .catch(()=>{
+          this.$Progress.fail();
+          toast({
+            type: 'error',
+            title: 'Algo salió mal..'
+          })
+        })
+      }
     },
   },
   created(){

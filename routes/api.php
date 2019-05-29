@@ -27,6 +27,7 @@ Route::apiResources(['organization' => 'API\OrganizationController']);
 Route::apiResources(['group' => 'API\GroupController']);
 
 Route::apiResources(['beneficiary' => 'API\BeneficiaryController']);
+Route::get('beneficiary_by_folio/{folio}', 'API\BeneficiaryController@beneficiarybyfolio');
 
 Route::apiResources(['ytt1evaluation' => 'API\Ytt1EvaluationController']);
 Route::get('yttevaluationdate/{id}', 'API\Ytt1EvaluationController@evaluationDate');

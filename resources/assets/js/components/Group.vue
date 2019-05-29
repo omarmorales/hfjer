@@ -256,24 +256,50 @@ export default {
           swal({
           title: 'Tienes un borrador',
           text: "¿Deseas continuar con los datos del borrador?",
-          type: 'warning',
+          type: 'info',
+          showCloseButton: true,
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
           confirmButtonText: 'Sí',
           cancelButtonText: 'No',
         }).then((result) => {
-
-          // Send request to the server
+          
           if (result.value) {
-            this.$router.push({ name: 'Evaluation', params: { beneficiary } })
+            swal(
+              'Continuar evaluación',
+              '',
+              'info'
+            )
+            this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
+          } else if (result.dismiss === 'cancel') {
+            if(beneficiary.ytt1_draft){
+              axios.delete(`/api/ytt1draft/${beneficiary.ytt1_draft.id}`, {data: { id: beneficiary.ytt1_draft.id}}).then(()=>{
+                swal(
+                  'Borrador eliminado!',
+                  '',
+                  'success'
+                )
+              }).catch(()=> {
+                swal("Error", "Algo salió mal.", "warning");
+              });
+            } else if (beneficiary.ytt2_draft) {
+              axios.delete(`/api/ytt2draft/${beneficiary.ytt2_draft.id}`, {data: { id: beneficiary.ytt2_draft.id}}).then(()=>{
+                swal(
+                  'Borrador eliminado!',
+                  '',
+                  'success'
+                )
+              }).catch(()=> {
+                swal("Error", "Algo salió mal.", "warning");
+              });
+            }
+            this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
           }
         })
       } else {
-        this.$router.push({ name: 'Evaluation', params: { beneficiary } })
+        this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
       }
-      
-      // this.$router.push({ name: 'Evaluation', params: { beneficiary } })
     },
     printme(){
       window.print();

@@ -36050,7 +36050,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_progressbar___default.a, {
     height: '3px'
 });
 
-var routes = [{ path: '/dashboard', component: __webpack_require__(197) }, { path: '/developer', component: __webpack_require__(200) }, { path: '/home', component: __webpack_require__(203) }, { path: '/group/:id', component: __webpack_require__(209) }, { path: '/beneficiary/:id', name: 'Beneficiary', component: __webpack_require__(214), props: true }, { path: '/evaluation', name: 'Evaluation', component: __webpack_require__(219), props: true }, { path: '/evaluation/:id', name: 'ShowEvaluation', component: __webpack_require__(224), props: true }, { path: '/app', component: __webpack_require__(229) }, { path: '/profile', component: __webpack_require__(234) }, { path: '/global_report', component: __webpack_require__(239) }, { path: '/comparative_report', component: __webpack_require__(244) }, { path: '/progress_report', component: __webpack_require__(249) }, { path: '/resources-yttv1', component: __webpack_require__(254) }, { path: '/resources-yttv2', component: __webpack_require__(259) }, { path: '*', component: __webpack_require__(154) }];
+var routes = [{ path: '/dashboard', component: __webpack_require__(197) }, { path: '/developer', component: __webpack_require__(200) }, { path: '/home', component: __webpack_require__(203) }, { path: '/group/:id', component: __webpack_require__(209) }, { path: '/beneficiary/:id', name: 'Beneficiary', component: __webpack_require__(214), props: true }, { path: '/group/:id/:f/evaluation', name: 'Evaluation', component: __webpack_require__(219), props: true }, { path: '/evaluation/:id', name: 'ShowEvaluation', component: __webpack_require__(224), props: true }, { path: '/app', component: __webpack_require__(229) }, { path: '/profile', component: __webpack_require__(234) }, { path: '/global_report', component: __webpack_require__(239) }, { path: '/comparative_report', component: __webpack_require__(244) }, { path: '/progress_report', component: __webpack_require__(249) }, { path: '/resources-yttv1', component: __webpack_require__(254) }, { path: '/resources-yttv2', component: __webpack_require__(259) }, { path: '*', component: __webpack_require__(154) }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]({
     mode: 'history',
@@ -80225,7 +80225,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         swal({
           title: 'Tienes un borrador',
           text: "¿Deseas continuar con los datos del borrador?",
-          type: 'warning',
+          type: 'info',
+          showCloseButton: true,
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
@@ -80233,16 +80234,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           cancelButtonText: 'No'
         }).then(function (result) {
 
-          // Send request to the server
           if (result.value) {
-            _this.$router.push({ name: 'Evaluation', params: { beneficiary: beneficiary } });
+            swal('Continuar evaluación', '', 'info');
+            _this.$router.push('/group/' + _this.$route.params.id + '/' + beneficiary.folio + '/evaluation');
+          } else if (result.dismiss === 'cancel') {
+            if (beneficiary.ytt1_draft) {
+              axios.delete('/api/ytt1draft/' + beneficiary.ytt1_draft.id, { data: { id: beneficiary.ytt1_draft.id } }).then(function () {
+                swal('Borrador eliminado!', '', 'success');
+              }).catch(function () {
+                swal("Error", "Algo salió mal.", "warning");
+              });
+            } else if (beneficiary.ytt2_draft) {
+              axios.delete('/api/ytt2draft/' + beneficiary.ytt2_draft.id, { data: { id: beneficiary.ytt2_draft.id } }).then(function () {
+                swal('Borrador eliminado!', '', 'success');
+              }).catch(function () {
+                swal("Error", "Algo salió mal.", "warning");
+              });
+            }
+            _this.$router.push('/group/' + _this.$route.params.id + '/' + beneficiary.folio + '/evaluation');
           }
         });
       } else {
-        this.$router.push({ name: 'Evaluation', params: { beneficiary: beneficiary } });
+        this.$router.push('/group/' + this.$route.params.id + '/' + beneficiary.folio + '/evaluation');
       }
-
-      // this.$router.push({ name: 'Evaluation', params: { beneficiary } })
     },
     printme: function printme() {
       window.print();
@@ -82479,7 +82493,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -82949,7 +82963,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         guide_questions: ['¿Alguna vez has consumido alcohol, tabaco, o algún tipo de droga?', '¿Qué tipo de sustancias?', '¿Cuántas veces la/s consumiste?', '¿Actualmente sigues consumiendo sustancia(s)?', '¿Con qué frecuencia lo haces?', 'Cuando consumes esa sustancia, ¿cómo te sientes?', '¿Qué tipo de problemas te ha traído consumir esta(s) sustancias (s)?'],
         explanation_risk_levels: ['Bajo si nunca ha tenido problemas con el consumo de sustancias tóxicas.', 'Moderado si de manera esporádica ha consumido, pero sin problemas de adicción.', 'Alto si ha tenido problemas de adicción en el pasado, aunque actualmente no los tenga.', 'Crítico si consume de manera constante, existe desadaptación en el entorno y/o han existido episodios violentos bajo el influjo de algunas sustancias.']
       }],
-      beneficiary_selected: '',
+      beneficiary_selected: {},
       groups: {},
       beneficiaries: {},
       group: '',
@@ -83070,29 +83084,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     loadData: function loadData() {
       var _this = this;
 
-      if (this.$route.params.beneficiary.group.evaluation == 'yttv1' && this.$route.params.beneficiary.ytt1_draft) {
-        this.formYTTv1.reset();
-        this.formYTTv1.fill(this.$route.params.beneficiary.ytt1_draft);
-      } else if (this.$route.params.beneficiary.group.evaluation == 'yttv2' && this.$route.params.beneficiary.ytt2_draft) {
-        this.formYTTv2.reset();
-        this.formYTTv2.fill(this.$route.params.beneficiary.ytt2_draft);
-      }
-      if (this.$route.params.beneficiary) {
-        this.beneficiary_selected = this.$route.params.beneficiary;
-        this.group = this.$route.params.beneficiary.group_id;
-        this.beneficiary_election = this.$route.params.beneficiary.id;
-      }
-      axios.get('api/group/').then(function (_ref) {
+      this.formYTTv1.reset();
+      this.formYTTv2.reset();
+      axios.get('/api/beneficiary_by_folio/' + this.$route.params.f).then(function (_ref) {
         var data = _ref.data;
-        return _this.groups = data;
-      });
-      axios.get('api/beneficiary/').then(function (_ref2) {
-        var data = _ref2.data;
-        return _this.beneficiaries = data;
-      });
-      axios.get("api/profile").then(function (_ref3) {
-        var data = _ref3.data;
-        return _this.user = data;
+
+        if (data.ytt1_draft) _this.formYTTv1.fill(data.ytt1_draft);
+        if (data.ytt2_draft) _this.formYTTv2.fill(data.ytt2_draft);
+        _this.beneficiary_selected = data;
+        _this.group = data.group_id;
+        _this.beneficiary_election = data.id;
+      }).catch(function () {
+        toast({
+          type: 'error',
+          title: 'Error al cargar datos'
+        });
       });
     },
     createYtt1Draft: function createYtt1Draft() {
@@ -83100,20 +83106,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       this.$Progress.start();
 
-      this.formYTTv1.beneficiary_id = this.beneficiary_election;
+      if (this.beneficiary_selected.ytt1_draft) {
+        swal('Ya hay borrador!', '', 'success');
+      } else {
+        this.formYTTv1.beneficiary_id = this.beneficiary_election;
 
-      this.formYTTv1.post('api/ytt1draft').then(function () {
-        Fire.$emit('AfterCreate');
-        _this2.formYTTv1.reset();
-        _this2.$router.push('beneficiary/' + _this2.beneficiary_election);
-        toast({
-          type: 'success',
-          title: 'Borrador YTT v1 creado con éxito.'
+        this.formYTTv1.post('/api/ytt1draft').then(function () {
+          Fire.$emit('AfterCreate');
+          _this2.formYTTv1.reset();
+          _this2.$router.push('beneficiary/' + _this2.beneficiary_election);
+          toast({
+            type: 'success',
+            title: 'Borrador YTT v1 creado con éxito.'
+          });
+          _this2.$Progress.finish();
+        }).catch(function () {
+          _this2.$Progress.fail();
         });
-        _this2.$Progress.finish();
-      }).catch(function () {
-        _this2.$Progress.fail();
-      });
+      }
     },
     createYtt1Evaluation: function createYtt1Evaluation() {
       var _this3 = this;
@@ -83121,7 +83131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$Progress.start();
       this.formYTTv1.beneficiary_id = this.beneficiary_election;
 
-      this.formYTTv1.post('api/ytt1evaluation').then(function () {
+      this.formYTTv1.post('/api/ytt1evaluation').then(function () {
         Fire.$emit('AfterCreate');
         _this3.formYTTv1.reset();
         _this3.$router.push('beneficiary/' + _this3.beneficiary_election);
@@ -83140,7 +83150,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$Progress.start();
       this.formYTTv2.beneficiary_id = this.beneficiary_election;
 
-      this.formYTTv2.post('api/ytt2evaluation').then(function () {
+      this.formYTTv2.post('/api/ytt2evaluation').then(function () {
         Fire.$emit('AfterCreate');
         _this4.formYTTv1.reset();
         _this4.$router.push('beneficiary/' + _this4.beneficiary_election);
@@ -83158,20 +83168,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       this.$Progress.start();
 
-      this.formYTTv2.beneficiary_id = this.beneficiary_election;
-
-      this.formYTTv2.post('api/ytt2draft').then(function () {
-        Fire.$emit('AfterCreate');
-        _this5.formYTTv2.reset();
-        _this5.$router.push('beneficiary/' + _this5.beneficiary_election);
-        toast({
-          type: 'success',
-          title: 'Borrador YTT v2 creado con éxito.'
+      if (this.beneficiary_selected.ytt2_draft) {
+        this.formYTTv2.put('/api/ytt2draft/' + this.formYTTv2.id).then(function () {
+          // success
+          swal('Actualizado', 'La información se ha actualizado.', 'success');
+          _this5.$Progress.finish();
+          Fire.$emit('AfterCreate');
+          _this5.formYTTv2.reset();
+          _this5.$router.push('beneficiary/' + _this5.beneficiary_election);
+        }).catch(function () {
+          _this5.$Progress.fail();
+          toast({
+            type: 'error',
+            title: 'Algo salió mal..'
+          });
         });
-        _this5.$Progress.finish();
-      }).catch(function () {
-        _this5.$Progress.fail();
-      });
+      } else {
+        this.formYTTv2.beneficiary_id = this.beneficiary_election;
+
+        this.formYTTv2.post('/api/ytt2draft').then(function () {
+          Fire.$emit('AfterCreate');
+          _this5.formYTTv2.reset();
+          _this5.$router.push('beneficiary/' + _this5.beneficiary_election);
+          toast({
+            type: 'success',
+            title: 'Borrador YTT v2 creado con éxito.'
+          });
+          _this5.$Progress.finish();
+        }).catch(function () {
+          _this5.$Progress.fail();
+          toast({
+            type: 'error',
+            title: 'Algo salió mal..'
+          });
+        });
+      }
     }
   },
   created: function created() {
@@ -83227,1078 +83258,1017 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-12" },
-        [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-md-12" },
-              [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "" } }, [_vm._v("Grupo")]),
-                  _vm._v(" "),
-                  _c("input", {
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-md-12" },
+            [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [_vm._v("Grupo")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.beneficiary_selected.group.name,
+                      expression: "beneficiary_selected.group.name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { disabled: "", type: "text" },
+                  domProps: { value: _vm.beneficiary_selected.group.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.beneficiary_selected.group,
+                        "name",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.groups, function(group_item) {
+                return _c(
+                  "div",
+                  {
                     directives: [
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.beneficiary_selected.group.name,
-                        expression: "beneficiary_selected.group.name"
+                        name: "show",
+                        rawName: "v-show",
+                        value: group_item.id == _vm.group,
+                        expression: "group_item.id == group"
                       }
                     ],
-                    staticClass: "form-control",
-                    attrs: { disabled: "", type: "text" },
-                    domProps: { value: _vm.beneficiary_selected.group.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.beneficiary_selected.group,
-                          "name",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
+                    staticClass: "form-group"
+                  },
+                  [
+                    _c("label", { attrs: { for: "" } }, [
+                      _vm._v("Herramienta")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { type: "text", disabled: "" },
+                      domProps: { value: group_item.evaluation }
+                    })
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Persona beneficiaria")
                 ]),
                 _vm._v(" "),
-                _vm._l(_vm.groups, function(group_item) {
-                  return _c(
-                    "div",
+                _c("input", {
+                  directives: [
                     {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: group_item.id == _vm.group,
-                          expression: "group_item.id == group"
-                        }
-                      ],
-                      staticClass: "form-group"
-                    },
-                    [
-                      _c("label", { attrs: { for: "" } }, [
-                        _vm._v("Herramienta")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: { type: "text", disabled: "" },
-                        domProps: { value: group_item.evaluation }
-                      })
-                    ]
-                  )
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "" } }, [
-                    _vm._v("Persona beneficiaria")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value:
-                          _vm.beneficiary_selected.name +
-                          " " +
-                          _vm.beneficiary_selected.lastname_one,
-                        expression:
-                          "beneficiary_selected.name + ' ' + beneficiary_selected.lastname_one"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { disabled: "", type: "text" },
-                    domProps: {
+                      name: "model",
+                      rawName: "v-model",
                       value:
                         _vm.beneficiary_selected.name +
                         " " +
-                        _vm.beneficiary_selected.lastname_one
-                    },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.beneficiary_selected.name +
-                            " " +
-                            _vm.beneficiary_selected,
-                          "lastname_one",
-                          $event.target.value
-                        )
-                      }
+                        _vm.beneficiary_selected.lastname_one,
+                      expression:
+                        "beneficiary_selected.name + ' ' + beneficiary_selected.lastname_one"
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm.beneficiary_selected != null
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [
-                        _vm._v("Número de toma")
-                      ]),
-                      _vm._v(" "),
-                      _vm.beneficiary_selected.group.evaluation == "yttv1"
-                        ? _c("input", {
-                            staticClass: "form-control",
-                            attrs: { type: "number", disabled: "" },
-                            domProps: {
-                              value:
-                                _vm.beneficiary_selected.ytt1_evaluations
-                                  .length + 1
-                            }
-                          })
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.beneficiary_selected.group.evaluation == "yttv2"
-                        ? _c("input", {
-                            staticClass: "form-control",
-                            attrs: { type: "number", disabled: "" },
-                            domProps: {
-                              value:
-                                _vm.beneficiary_selected.ytt2_evaluations
-                                  .length + 1
-                            }
-                          })
-                        : _vm._e()
-                    ])
-                  : _vm._e()
-              ],
-              2
-            )
-          ]),
-          _vm._v(" "),
-          _vm._l(_vm.groups, function(group_item) {
-            return group_item.id == _vm.group &&
-              group_item.evaluation == "yttv1"
-              ? _c("div", { staticClass: "row" }, [
-                  _c(
-                    "form",
-                    {
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          _vm.draftmode
-                            ? _vm.createYtt1Draft()
-                            : _vm.createYtt1Evaluation()
-                        }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { disabled: "", type: "text" },
+                  domProps: {
+                    value:
+                      _vm.beneficiary_selected.name +
+                      " " +
+                      _vm.beneficiary_selected.lastname_one
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                    },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "col-md-12" },
-                        _vm._l(_vm.yttv1_questionnarie, function(item, index) {
-                          return _c("div", { staticClass: "card" }, [
-                            _c("div", { staticClass: "card-header" }, [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(item.question_title) +
-                                  "\n              "
+                      _vm.$set(
+                        _vm.beneficiary_selected.name +
+                          " " +
+                          _vm.beneficiary_selected,
+                        "lastname_one",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm.beneficiary_selected != null
+                ? _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "" } }, [
+                      _vm._v("Número de toma")
+                    ]),
+                    _vm._v(" "),
+                    _vm.beneficiary_selected.group.evaluation == "yttv1"
+                      ? _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "number", disabled: "" },
+                          domProps: {
+                            value:
+                              _vm.beneficiary_selected.ytt1_evaluations.length +
+                              1
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.beneficiary_selected.group.evaluation == "yttv2"
+                      ? _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "number", disabled: "" },
+                          domProps: {
+                            value:
+                              _vm.beneficiary_selected.ytt2_evaluations.length +
+                              1
+                          }
+                        })
+                      : _vm._e()
+                  ])
+                : _vm._e()
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _vm.beneficiary_selected.group.evaluation == "yttv1"
+          ? _c("div", { staticClass: "row" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      _vm.draftmode
+                        ? _vm.createYtt1Draft()
+                        : _vm.createYtt1Evaluation()
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "col-md-12" },
+                    _vm._l(_vm.yttv1_questionnarie, function(item, index) {
+                      return _c("div", { staticClass: "card" }, [
+                        _c("div", { staticClass: "card-header" }, [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(item.question_title) +
+                              "\n              "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body" }, [
+                          _c("div", { staticClass: "row mb-3" }, [
+                            _c("div", { staticClass: "col-md-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "card",
+                                  staticStyle: { height: "100%" }
+                                },
+                                [
+                                  _c("div", { staticClass: "card-body" }, [
+                                    _c(
+                                      "p",
+                                      { staticClass: "font-weight-bold" },
+                                      [_vm._v("Preguntas guía")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "ul",
+                                      { staticStyle: { padding: "0" } },
+                                      _vm._l(item.guide_questions, function(
+                                        guide_question
+                                      ) {
+                                        return _c(
+                                          "li",
+                                          {
+                                            staticClass: "mb-0",
+                                            staticStyle: {
+                                              "list-style-type": "none"
+                                            }
+                                          },
+                                          [_vm._v(_vm._s(guide_question))]
+                                        )
+                                      }),
+                                      0
+                                    )
+                                  ])
+                                ]
                               )
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "card-body" }, [
-                              _c("div", { staticClass: "row mb-3" }, [
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "card",
-                                      staticStyle: { height: "100%" }
-                                    },
-                                    [
-                                      _c("div", { staticClass: "card-body" }, [
-                                        _c(
-                                          "p",
-                                          { staticClass: "font-weight-bold" },
-                                          [_vm._v("Preguntas guía")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "ul",
-                                          { staticStyle: { padding: "0" } },
-                                          _vm._l(item.guide_questions, function(
-                                            guide_question
-                                          ) {
-                                            return _c(
-                                              "li",
-                                              {
-                                                staticClass: "mb-0",
-                                                staticStyle: {
-                                                  "list-style-type": "none"
-                                                }
-                                              },
-                                              [_vm._v(_vm._s(guide_question))]
-                                            )
-                                          }),
-                                          0
-                                        )
-                                      ])
-                                    ]
-                                  )
+                            _c("div", { staticClass: "col-md-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "card bg-secondary",
+                                  staticStyle: { height: "100%" }
+                                },
+                                [
+                                  _c("div", { staticClass: "card-body" }, [
+                                    _c(
+                                      "ul",
+                                      { staticStyle: { padding: "0" } },
+                                      _vm._l(
+                                        item.explanation_risk_levels,
+                                        function(explanation_risk_level) {
+                                          return _c(
+                                            "li",
+                                            {
+                                              staticClass: "mb-0",
+                                              staticStyle: {
+                                                "list-style-type": "none"
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass:
+                                                  "fas fa-dot-circle fa-xs"
+                                              }),
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(explanation_risk_level)
+                                              )
+                                            ]
+                                          )
+                                        }
+                                      ),
+                                      0
+                                    )
+                                  ])
+                                ]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-md-6" }, [
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", { attrs: { for: "" } }, [
+                                  _vm._v("Respuestas / Información")
                                 ]),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _c(
-                                    "div",
+                                _c("textarea", {
+                                  directives: [
                                     {
-                                      staticClass: "card bg-secondary",
-                                      staticStyle: { height: "100%" }
-                                    },
-                                    [
-                                      _c("div", { staticClass: "card-body" }, [
-                                        _c(
-                                          "ul",
-                                          { staticStyle: { padding: "0" } },
-                                          _vm._l(
-                                            item.explanation_risk_levels,
-                                            function(explanation_risk_level) {
-                                              return _c(
-                                                "li",
-                                                {
-                                                  staticClass: "mb-0",
-                                                  staticStyle: {
-                                                    "list-style-type": "none"
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass:
-                                                      "fas fa-dot-circle fa-xs"
-                                                  }),
-                                                  _vm._v(
-                                                    " " +
-                                                      _vm._s(
-                                                        explanation_risk_level
-                                                      )
-                                                  )
-                                                ]
-                                              )
-                                            }
-                                          ),
-                                          0
-                                        )
-                                      ])
-                                    ]
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "row" }, [
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _c("div", { staticClass: "form-group" }, [
-                                    _c("label", { attrs: { for: "" } }, [
-                                      _vm._v("Respuestas / Información")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("textarea", {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.formYTTv1[item.information_slug],
+                                      expression:
+                                        "formYTTv1[item.information_slug]"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  domProps: {
+                                    value: _vm.formYTTv1[item.information_slug]
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.formYTTv1,
+                                        item.information_slug,
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-md-6" }, [
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", { attrs: { for: "" } }, [
+                                  _vm._v("Nivel de riesgo")
+                                ]),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "form-check form-check-inline"
+                                  },
+                                  [
+                                    _c("input", {
                                       directives: [
                                         {
                                           name: "model",
                                           rawName: "v-model",
                                           value:
-                                            _vm.formYTTv1[
-                                              item.information_slug
-                                            ],
+                                            _vm.formYTTv1[item.answer_slug],
                                           expression:
-                                            "formYTTv1[item.information_slug]"
+                                            "formYTTv1[item.answer_slug]"
                                         }
                                       ],
-                                      staticClass: "form-control",
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name:
+                                          "inlineRadioOptions" +
+                                          item.answer_slug,
+                                        id: "inlineRadio1" + item.answer_slug,
+                                        value: "0"
+                                      },
                                       domProps: {
-                                        value:
-                                          _vm.formYTTv1[item.information_slug]
+                                        checked: _vm._q(
+                                          _vm.formYTTv1[item.answer_slug],
+                                          "0"
+                                        )
                                       },
                                       on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
+                                        change: function($event) {
+                                          return _vm.$set(
                                             _vm.formYTTv1,
-                                            item.information_slug,
-                                            $event.target.value
+                                            item.answer_slug,
+                                            "0"
                                           )
                                         }
                                       }
-                                    })
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _c("div", { staticClass: "form-group" }, [
-                                    _c("label", { attrs: { for: "" } }, [
-                                      _vm._v("Nivel de riesgo")
-                                    ]),
-                                    _c("br"),
+                                    }),
                                     _vm._v(" "),
                                     _c(
-                                      "div",
+                                      "label",
                                       {
-                                        staticClass:
-                                          "form-check form-check-inline"
+                                        staticClass: "form-check-label",
+                                        attrs: {
+                                          for: "inlineRadio1" + item.answer_slug
+                                        }
                                       },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.formYTTv1[item.answer_slug],
-                                              expression:
-                                                "formYTTv1[item.answer_slug]"
-                                            }
-                                          ],
-                                          staticClass: "form-check-input",
-                                          attrs: {
-                                            type: "radio",
-                                            name:
-                                              "inlineRadioOptions" +
-                                              item.answer_slug,
-                                            id:
-                                              "inlineRadio1" + item.answer_slug,
-                                            value: "0"
-                                          },
-                                          domProps: {
-                                            checked: _vm._q(
-                                              _vm.formYTTv1[item.answer_slug],
-                                              "0"
-                                            )
-                                          },
-                                          on: {
-                                            change: function($event) {
-                                              return _vm.$set(
-                                                _vm.formYTTv1,
-                                                item.answer_slug,
-                                                "0"
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "label",
-                                          {
-                                            staticClass: "form-check-label",
-                                            attrs: {
-                                              for:
-                                                "inlineRadio1" +
-                                                item.answer_slug
-                                            }
-                                          },
-                                          [_vm._v("Bajo")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "form-check form-check-inline"
-                                      },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.formYTTv1[item.answer_slug],
-                                              expression:
-                                                "formYTTv1[item.answer_slug]"
-                                            }
-                                          ],
-                                          staticClass: "form-check-input",
-                                          attrs: {
-                                            type: "radio",
-                                            name:
-                                              "inlineRadioOptions" +
-                                              item.answer_slug,
-                                            id:
-                                              "inlineRadio2" + item.answer_slug,
-                                            value: "1"
-                                          },
-                                          domProps: {
-                                            checked: _vm._q(
-                                              _vm.formYTTv1[item.answer_slug],
-                                              "1"
-                                            )
-                                          },
-                                          on: {
-                                            change: function($event) {
-                                              return _vm.$set(
-                                                _vm.formYTTv1,
-                                                item.answer_slug,
-                                                "1"
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "label",
-                                          {
-                                            staticClass: "form-check-label",
-                                            attrs: {
-                                              for:
-                                                "inlineRadio2" +
-                                                item.answer_slug
-                                            }
-                                          },
-                                          [_vm._v("Medio")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "form-check form-check-inline"
-                                      },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.formYTTv1[item.answer_slug],
-                                              expression:
-                                                "formYTTv1[item.answer_slug]"
-                                            }
-                                          ],
-                                          staticClass: "form-check-input",
-                                          attrs: {
-                                            type: "radio",
-                                            name:
-                                              "inlineRadioOptions" +
-                                              item.answer_slug,
-                                            id:
-                                              "inlineRadio3" + item.answer_slug,
-                                            value: "2"
-                                          },
-                                          domProps: {
-                                            checked: _vm._q(
-                                              _vm.formYTTv1[item.answer_slug],
-                                              "2"
-                                            )
-                                          },
-                                          on: {
-                                            change: function($event) {
-                                              return _vm.$set(
-                                                _vm.formYTTv1,
-                                                item.answer_slug,
-                                                "2"
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "label",
-                                          {
-                                            staticClass: "form-check-label",
-                                            attrs: {
-                                              for:
-                                                "inlineRadio3" +
-                                                item.answer_slug
-                                            }
-                                          },
-                                          [_vm._v("Alto")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "form-check form-check-inline"
-                                      },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.formYTTv1[item.answer_slug],
-                                              expression:
-                                                "formYTTv1[item.answer_slug]"
-                                            }
-                                          ],
-                                          staticClass: "form-check-input",
-                                          attrs: {
-                                            type: "radio",
-                                            name:
-                                              "inlineRadioOptions" +
-                                              item.answer_slug,
-                                            id:
-                                              "inlineRadio4" + item.answer_slug,
-                                            value: "3"
-                                          },
-                                          domProps: {
-                                            checked: _vm._q(
-                                              _vm.formYTTv1[item.answer_slug],
-                                              "3"
-                                            )
-                                          },
-                                          on: {
-                                            change: function($event) {
-                                              return _vm.$set(
-                                                _vm.formYTTv1,
-                                                item.answer_slug,
-                                                "3"
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "label",
-                                          {
-                                            staticClass: "form-check-label",
-                                            attrs: {
-                                              for:
-                                                "inlineRadio4" +
-                                                item.answer_slug
-                                            }
-                                          },
-                                          [_vm._v("Crítico")]
-                                        )
-                                      ]
+                                      [_vm._v("Bajo")]
                                     )
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ])
-                        }),
-                        0
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-12" }, [
-                        _c(
-                          "button",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.group,
-                                expression: "group"
-                              }
-                            ],
-                            staticClass: "btn btn-secondary mb-4",
-                            attrs: { type: "submit" },
-                            on: { click: _vm.saveAsDraft }
-                          },
-                          [
-                            _vm._v(
-                              "\n              Guardar borrador\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.group,
-                                expression: "group"
-                              }
-                            ],
-                            staticClass: "btn btn-primary mb-4",
-                            attrs: { type: "submit" },
-                            on: { click: _vm.saveEvaluation }
-                          },
-                          [
-                            _vm._v(
-                              "\n              Guardar evaluación\n            "
-                            )
-                          ]
-                        )
-                      ])
-                    ]
-                  )
-                ])
-              : _vm._e()
-          }),
-          _vm._v(" "),
-          _vm._l(_vm.groups, function(group_item) {
-            return group_item.id == _vm.group &&
-              group_item.evaluation == "yttv2"
-              ? _c("div", { staticClass: "row" }, [
-                  _c(
-                    "form",
-                    {
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          _vm.draftmode
-                            ? _vm.createYtt2Draft()
-                            : _vm.createYtt2Evaluation()
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "col-md-12" },
-                        _vm._l(_vm.yttv2_questionnarie, function(item, index) {
-                          return _c("div", { staticClass: "card" }, [
-                            _c("div", { staticClass: "card-header" }, [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(item.question_title) +
-                                  "\n              "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "card-body" }, [
-                              _c("div", { staticClass: "row mb-3" }, [
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "card",
-                                      staticStyle: { height: "100%" }
-                                    },
-                                    [
-                                      _c("div", { staticClass: "card-body" }, [
-                                        _c(
-                                          "p",
-                                          { staticClass: "font-weight-bold" },
-                                          [_vm._v("Preguntas guía")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "ul",
-                                          { staticStyle: { padding: "0" } },
-                                          _vm._l(item.guide_questions, function(
-                                            guide_question
-                                          ) {
-                                            return _c(
-                                              "li",
-                                              {
-                                                staticClass: "mb-0",
-                                                staticStyle: {
-                                                  "list-style-type": "none"
-                                                }
-                                              },
-                                              [_vm._v(_vm._s(guide_question))]
-                                            )
-                                          }),
-                                          0
-                                        )
-                                      ])
-                                    ]
-                                  )
-                                ]),
+                                  ]
+                                ),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "card bg-secondary",
-                                      staticStyle: { height: "100%" }
-                                    },
-                                    [
-                                      _c("div", { staticClass: "card-body" }, [
-                                        _c(
-                                          "ul",
-                                          { staticStyle: { padding: "0" } },
-                                          _vm._l(
-                                            item.explanation_risk_levels,
-                                            function(explanation_risk_level) {
-                                              return _c(
-                                                "li",
-                                                {
-                                                  staticClass: "mb-0",
-                                                  staticStyle: {
-                                                    "list-style-type": "none"
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass:
-                                                      "fas fa-dot-circle fa-xs"
-                                                  }),
-                                                  _vm._v(
-                                                    " " +
-                                                      _vm._s(
-                                                        explanation_risk_level
-                                                      )
-                                                  )
-                                                ]
-                                              )
-                                            }
-                                          ),
-                                          0
-                                        )
-                                      ])
-                                    ]
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "row" }, [
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _c("div", { staticClass: "form-group" }, [
-                                    _c("label", { attrs: { for: "" } }, [
-                                      _vm._v("Respuestas / Información")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("textarea", {
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "form-check form-check-inline"
+                                  },
+                                  [
+                                    _c("input", {
                                       directives: [
                                         {
                                           name: "model",
                                           rawName: "v-model",
                                           value:
-                                            _vm.formYTTv2[
-                                              item.information_slug
-                                            ],
+                                            _vm.formYTTv1[item.answer_slug],
                                           expression:
-                                            "formYTTv2[item.information_slug]"
+                                            "formYTTv1[item.answer_slug]"
                                         }
                                       ],
-                                      staticClass: "form-control",
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name:
+                                          "inlineRadioOptions" +
+                                          item.answer_slug,
+                                        id: "inlineRadio2" + item.answer_slug,
+                                        value: "1"
+                                      },
                                       domProps: {
-                                        value:
-                                          _vm.formYTTv2[item.information_slug]
+                                        checked: _vm._q(
+                                          _vm.formYTTv1[item.answer_slug],
+                                          "1"
+                                        )
                                       },
                                       on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.formYTTv2,
-                                            item.information_slug,
-                                            $event.target.value
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.formYTTv1,
+                                            item.answer_slug,
+                                            "1"
                                           )
                                         }
                                       }
-                                    })
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _c("div", { staticClass: "form-group" }, [
-                                    _c("label", { attrs: { for: "" } }, [
-                                      _vm._v("Nivel de riesgo")
-                                    ]),
-                                    _c("br"),
+                                    }),
                                     _vm._v(" "),
                                     _c(
-                                      "div",
+                                      "label",
                                       {
-                                        staticClass:
-                                          "form-check form-check-inline"
+                                        staticClass: "form-check-label",
+                                        attrs: {
+                                          for: "inlineRadio2" + item.answer_slug
+                                        }
                                       },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.formYTTv2[item.answer_slug],
-                                              expression:
-                                                "formYTTv2[item.answer_slug]"
-                                            }
-                                          ],
-                                          staticClass: "form-check-input",
-                                          attrs: {
-                                            type: "radio",
-                                            name:
-                                              "inlineRadioOptions" +
-                                              item.answer_slug,
-                                            id:
-                                              "inlineRadio1" + item.answer_slug,
-                                            value: "0"
-                                          },
-                                          domProps: {
-                                            checked: _vm._q(
-                                              _vm.formYTTv2[item.answer_slug],
-                                              "0"
-                                            )
-                                          },
-                                          on: {
-                                            change: function($event) {
-                                              return _vm.$set(
-                                                _vm.formYTTv2,
-                                                item.answer_slug,
-                                                "0"
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "label",
-                                          {
-                                            staticClass: "form-check-label",
-                                            attrs: {
-                                              for:
-                                                "inlineRadio1" +
-                                                item.answer_slug
-                                            }
-                                          },
-                                          [_vm._v("Bajo")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "form-check form-check-inline"
-                                      },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.formYTTv2[item.answer_slug],
-                                              expression:
-                                                "formYTTv2[item.answer_slug]"
-                                            }
-                                          ],
-                                          staticClass: "form-check-input",
-                                          attrs: {
-                                            type: "radio",
-                                            name:
-                                              "inlineRadioOptions" +
-                                              item.answer_slug,
-                                            id:
-                                              "inlineRadio2" + item.answer_slug,
-                                            value: "1"
-                                          },
-                                          domProps: {
-                                            checked: _vm._q(
-                                              _vm.formYTTv2[item.answer_slug],
-                                              "1"
-                                            )
-                                          },
-                                          on: {
-                                            change: function($event) {
-                                              return _vm.$set(
-                                                _vm.formYTTv2,
-                                                item.answer_slug,
-                                                "1"
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "label",
-                                          {
-                                            staticClass: "form-check-label",
-                                            attrs: {
-                                              for:
-                                                "inlineRadio2" +
-                                                item.answer_slug
-                                            }
-                                          },
-                                          [_vm._v("Medio")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "form-check form-check-inline"
-                                      },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.formYTTv2[item.answer_slug],
-                                              expression:
-                                                "formYTTv2[item.answer_slug]"
-                                            }
-                                          ],
-                                          staticClass: "form-check-input",
-                                          attrs: {
-                                            type: "radio",
-                                            name:
-                                              "inlineRadioOptions" +
-                                              item.answer_slug,
-                                            id:
-                                              "inlineRadio3" + item.answer_slug,
-                                            value: "2"
-                                          },
-                                          domProps: {
-                                            checked: _vm._q(
-                                              _vm.formYTTv2[item.answer_slug],
-                                              "2"
-                                            )
-                                          },
-                                          on: {
-                                            change: function($event) {
-                                              return _vm.$set(
-                                                _vm.formYTTv2,
-                                                item.answer_slug,
-                                                "2"
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "label",
-                                          {
-                                            staticClass: "form-check-label",
-                                            attrs: {
-                                              for:
-                                                "inlineRadio3" +
-                                                item.answer_slug
-                                            }
-                                          },
-                                          [_vm._v("Alto")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "form-check form-check-inline"
-                                      },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.formYTTv2[item.answer_slug],
-                                              expression:
-                                                "formYTTv2[item.answer_slug]"
-                                            }
-                                          ],
-                                          staticClass: "form-check-input",
-                                          attrs: {
-                                            type: "radio",
-                                            name:
-                                              "inlineRadioOptions" +
-                                              item.answer_slug,
-                                            id:
-                                              "inlineRadio4" + item.answer_slug,
-                                            value: "3"
-                                          },
-                                          domProps: {
-                                            checked: _vm._q(
-                                              _vm.formYTTv2[item.answer_slug],
-                                              "3"
-                                            )
-                                          },
-                                          on: {
-                                            change: function($event) {
-                                              return _vm.$set(
-                                                _vm.formYTTv2,
-                                                item.answer_slug,
-                                                "3"
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "label",
-                                          {
-                                            staticClass: "form-check-label",
-                                            attrs: {
-                                              for:
-                                                "inlineRadio4" +
-                                                item.answer_slug
-                                            }
-                                          },
-                                          [_vm._v("Crítico")]
-                                        )
-                                      ]
+                                      [_vm._v("Medio")]
                                     )
-                                  ])
-                                ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "form-check form-check-inline"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.formYTTv1[item.answer_slug],
+                                          expression:
+                                            "formYTTv1[item.answer_slug]"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name:
+                                          "inlineRadioOptions" +
+                                          item.answer_slug,
+                                        id: "inlineRadio3" + item.answer_slug,
+                                        value: "2"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.formYTTv1[item.answer_slug],
+                                          "2"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.formYTTv1,
+                                            item.answer_slug,
+                                            "2"
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-check-label",
+                                        attrs: {
+                                          for: "inlineRadio3" + item.answer_slug
+                                        }
+                                      },
+                                      [_vm._v("Alto")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "form-check form-check-inline"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.formYTTv1[item.answer_slug],
+                                          expression:
+                                            "formYTTv1[item.answer_slug]"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name:
+                                          "inlineRadioOptions" +
+                                          item.answer_slug,
+                                        id: "inlineRadio4" + item.answer_slug,
+                                        value: "3"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.formYTTv1[item.answer_slug],
+                                          "3"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.formYTTv1,
+                                            item.answer_slug,
+                                            "3"
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-check-label",
+                                        attrs: {
+                                          for: "inlineRadio4" + item.answer_slug
+                                        }
+                                      },
+                                      [_vm._v("Crítico")]
+                                    )
+                                  ]
+                                )
                               ])
                             ])
                           ])
-                        }),
-                        0
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-12" }, [
-                        _c(
-                          "button",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.group,
-                                expression: "group"
-                              }
-                            ],
-                            staticClass: "btn btn-secondary mb-4",
-                            attrs: { type: "submit" },
-                            on: { click: _vm.saveAsDraft }
-                          },
-                          [
-                            _vm._v(
-                              "\n              Guardar borrador\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.group,
-                                expression: "group"
-                              }
-                            ],
-                            staticClass: "btn btn-primary mb-4",
-                            attrs: { type: "submit" },
-                            on: { click: _vm.saveEvaluation }
-                          },
-                          [_vm._v("Guardar evaluación")]
-                        )
+                        ])
                       ])
-                    ]
-                  )
-                ])
-              : _vm._e()
-          })
-        ],
-        2
-      )
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.group,
+                            expression: "group"
+                          }
+                        ],
+                        staticClass: "btn btn-secondary mb-4",
+                        attrs: { type: "submit" },
+                        on: { click: _vm.saveAsDraft }
+                      },
+                      [_vm._v("\n              Guardar borrador\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.group,
+                            expression: "group"
+                          }
+                        ],
+                        staticClass: "btn btn-primary mb-4",
+                        attrs: { type: "submit" },
+                        on: { click: _vm.saveEvaluation }
+                      },
+                      [
+                        _vm._v(
+                          "\n              Guardar evaluación\n            "
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.beneficiary_selected.group.evaluation == "yttv2"
+          ? _c("div", { staticClass: "row" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      _vm.draftmode
+                        ? _vm.createYtt2Draft()
+                        : _vm.createYtt2Evaluation()
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "col-md-12" },
+                    _vm._l(_vm.yttv2_questionnarie, function(item, index) {
+                      return _c("div", { staticClass: "card" }, [
+                        _c("div", { staticClass: "card-header" }, [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(item.question_title) +
+                              "\n              "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body" }, [
+                          _c("div", { staticClass: "row mb-3" }, [
+                            _c("div", { staticClass: "col-md-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "card",
+                                  staticStyle: { height: "100%" }
+                                },
+                                [
+                                  _c("div", { staticClass: "card-body" }, [
+                                    _c(
+                                      "p",
+                                      { staticClass: "font-weight-bold" },
+                                      [_vm._v("Preguntas guía")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "ul",
+                                      { staticStyle: { padding: "0" } },
+                                      _vm._l(item.guide_questions, function(
+                                        guide_question
+                                      ) {
+                                        return _c(
+                                          "li",
+                                          {
+                                            staticClass: "mb-0",
+                                            staticStyle: {
+                                              "list-style-type": "none"
+                                            }
+                                          },
+                                          [_vm._v(_vm._s(guide_question))]
+                                        )
+                                      }),
+                                      0
+                                    )
+                                  ])
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-md-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "card bg-secondary",
+                                  staticStyle: { height: "100%" }
+                                },
+                                [
+                                  _c("div", { staticClass: "card-body" }, [
+                                    _c(
+                                      "ul",
+                                      { staticStyle: { padding: "0" } },
+                                      _vm._l(
+                                        item.explanation_risk_levels,
+                                        function(explanation_risk_level) {
+                                          return _c(
+                                            "li",
+                                            {
+                                              staticClass: "mb-0",
+                                              staticStyle: {
+                                                "list-style-type": "none"
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass:
+                                                  "fas fa-dot-circle fa-xs"
+                                              }),
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(explanation_risk_level)
+                                              )
+                                            ]
+                                          )
+                                        }
+                                      ),
+                                      0
+                                    )
+                                  ])
+                                ]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-md-6" }, [
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", { attrs: { for: "" } }, [
+                                  _vm._v("Respuestas / Información")
+                                ]),
+                                _vm._v(" "),
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.formYTTv2[item.information_slug],
+                                      expression:
+                                        "formYTTv2[item.information_slug]"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  domProps: {
+                                    value: _vm.formYTTv2[item.information_slug]
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.formYTTv2,
+                                        item.information_slug,
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-md-6" }, [
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", { attrs: { for: "" } }, [
+                                  _vm._v("Nivel de riesgo")
+                                ]),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "form-check form-check-inline"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.formYTTv2[item.answer_slug],
+                                          expression:
+                                            "formYTTv2[item.answer_slug]"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name:
+                                          "inlineRadioOptions" +
+                                          item.answer_slug,
+                                        id: "inlineRadio1" + item.answer_slug,
+                                        value: "0"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.formYTTv2[item.answer_slug],
+                                          "0"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.formYTTv2,
+                                            item.answer_slug,
+                                            "0"
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-check-label",
+                                        attrs: {
+                                          for: "inlineRadio1" + item.answer_slug
+                                        }
+                                      },
+                                      [_vm._v("Bajo")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "form-check form-check-inline"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.formYTTv2[item.answer_slug],
+                                          expression:
+                                            "formYTTv2[item.answer_slug]"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name:
+                                          "inlineRadioOptions" +
+                                          item.answer_slug,
+                                        id: "inlineRadio2" + item.answer_slug,
+                                        value: "1"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.formYTTv2[item.answer_slug],
+                                          "1"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.formYTTv2,
+                                            item.answer_slug,
+                                            "1"
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-check-label",
+                                        attrs: {
+                                          for: "inlineRadio2" + item.answer_slug
+                                        }
+                                      },
+                                      [_vm._v("Medio")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "form-check form-check-inline"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.formYTTv2[item.answer_slug],
+                                          expression:
+                                            "formYTTv2[item.answer_slug]"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name:
+                                          "inlineRadioOptions" +
+                                          item.answer_slug,
+                                        id: "inlineRadio3" + item.answer_slug,
+                                        value: "2"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.formYTTv2[item.answer_slug],
+                                          "2"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.formYTTv2,
+                                            item.answer_slug,
+                                            "2"
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-check-label",
+                                        attrs: {
+                                          for: "inlineRadio3" + item.answer_slug
+                                        }
+                                      },
+                                      [_vm._v("Alto")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "form-check form-check-inline"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.formYTTv2[item.answer_slug],
+                                          expression:
+                                            "formYTTv2[item.answer_slug]"
+                                        }
+                                      ],
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name:
+                                          "inlineRadioOptions" +
+                                          item.answer_slug,
+                                        id: "inlineRadio4" + item.answer_slug,
+                                        value: "3"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.formYTTv2[item.answer_slug],
+                                          "3"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.formYTTv2,
+                                            item.answer_slug,
+                                            "3"
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-check-label",
+                                        attrs: {
+                                          for: "inlineRadio4" + item.answer_slug
+                                        }
+                                      },
+                                      [_vm._v("Crítico")]
+                                    )
+                                  ]
+                                )
+                              ])
+                            ])
+                          ])
+                        ])
+                      ])
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.group,
+                            expression: "group"
+                          }
+                        ],
+                        staticClass: "btn btn-secondary mb-4",
+                        attrs: { type: "submit" },
+                        on: { click: _vm.saveAsDraft }
+                      },
+                      [_vm._v("\n              Guardar borrador\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.group,
+                            expression: "group"
+                          }
+                        ],
+                        staticClass: "btn btn-primary mb-4",
+                        attrs: { type: "submit" },
+                        on: { click: _vm.saveEvaluation }
+                      },
+                      [_vm._v("Guardar evaluación")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          : _vm._e()
+      ])
     ])
   ])
 }

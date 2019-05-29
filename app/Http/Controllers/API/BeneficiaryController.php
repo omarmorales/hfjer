@@ -95,4 +95,12 @@ class BeneficiaryController extends Controller
     $beneficiary->delete();
     return ['message' => 'Beneficiary Deleted'];
   }
+
+  public function beneficiarybyfolio($folio)
+  {
+    $beneficiarySelected = Beneficiary::with('ytt1_evaluations')->with('ytt1_draft')->with('ytt2_evaluations')->with('ytt2_draft')->with('group')->where('folio', $folio)->first();
+    if (!$beneficiarySelected)
+            return abort(404);
+    return $beneficiarySelected;
+  }
 }
