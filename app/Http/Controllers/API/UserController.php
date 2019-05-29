@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserCreatedMail;
 
 
 class UserController extends Controller
@@ -49,6 +51,12 @@ class UserController extends Controller
       'email' => 'required|string|email|max:191|unique:users',
       'password' => 'required|string|min:6'
     ]);
+
+    $name = $request['name'];
+    $email = $request['email'];
+    $password = $request['password'];
+
+    Mail::to($email)->send(new UserCreatedMail($name, $email, $password));
 
     return User::create([
       'name' => $request['name'],

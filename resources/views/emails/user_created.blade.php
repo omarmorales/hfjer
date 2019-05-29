@@ -1,12 +1,11 @@
 @component('mail::message')
-# Hay una duda sobre la app!
+# Hola {{ $name }},
 
-Usuario: {{ $user->name }} ({{ $user->email }})
+Se ha creado un usuario para ti en la aplicacion de la herramienta YTT.
 
+Tu usuario es: {{ $email }}
 
-Titulo: {{ $title }}
-
-Descripcion: {{ $description }}
+Contraseña: {{ $password }}
 
 @component('mail::button', ['url' => 'localhost:8000'])
 Ir a la app
