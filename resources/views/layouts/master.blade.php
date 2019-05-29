@@ -184,6 +184,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
        </li>
        @endif --}}
           <li class="nav-item">
+            <a class="nav-link pointer" @click="openHelpDesk">
+              <i class="nav-icon fas fa-question-circle blue"></i>
+              <p class="text-white">
+                Ayuda
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <router-link to="/profile" class="nav-link">
               <i class="nav-icon fas fa-user orange"></i>
               <p>
@@ -218,6 +226,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
       <div class="container-fluid">
         <router-view></router-view>
+
+        <!-- Modal -->
+        <div class="modal fade" id="helpdesk" tabindex="-1" role="dialog" aria-labelledby="helpdeskLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h3 id="helpdeskLabel" class="font-weight-bolder text-uppercase">Mesa de ayuda</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+              
+              <div class="modal-body">
+                  <help-desk />
+              </div>       
+          </div>
+          </div>
+        </div>
 
         <vue-progress-bar></vue-progress-bar>
       </div><!-- /.container-fluid -->

@@ -25,7 +25,7 @@ class OrganizationController extends Controller
   public function index()
   {
     if (\Gate::allows('isAdmin') || \Gate::allows('isAuthor')) {
-      return Organization::latest()->paginate(9);
+      return Organization::latest()->paginate(200);
     }
   }
 

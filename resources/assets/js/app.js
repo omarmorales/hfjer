@@ -122,6 +122,8 @@ Vue.component('chart-component4', require('./components/ChartComponent4.vue'));
 
 Vue.component('users', require('./components/Users.vue'));
 
+Vue.component('help-desk', require('./components/HelpDesk.vue'));
+
 const app = new Vue({
     el: '#app',
     router,
@@ -135,6 +137,9 @@ const app = new Vue({
 
         printme() {
             window.print();
+        },
+        openHelpDesk() {
+            $('#helpdesk').modal('show');
         }
     }
 });

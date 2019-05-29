@@ -38,3 +38,5 @@ Route::apiResources(['ytt1draft' => 'API\Ytt1DraftController']);
 Route::apiResources(['ytt2evaluation' => 'API\Ytt2EvaluationController']);
 
 Route::apiResources(['ytt2draft' => 'API\Ytt2DraftController']);
+
+Route::apiResources(['question' => 'API\QuestionController']);
