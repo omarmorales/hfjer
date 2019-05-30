@@ -46,7 +46,7 @@ class QuestionController extends Controller
         $user = auth('api')->user();
         $title = $request['title'];
         $description = $request['description'];
-        $toEmail = "saul090594@gmail.com";
+        $toEmail = "kperez@mexicojpv.org";
 
         Mail::to($toEmail)->send(new QuestionMail($user, $title, $description));
     

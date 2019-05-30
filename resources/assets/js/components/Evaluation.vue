@@ -1136,7 +1136,7 @@ export default {
         this.formYTTv1.post('/api/ytt1draft').then(()=>{
           Fire.$emit('AfterCreate');
           this.formYTTv1.reset();
-          this.$router.push(`beneficiary/${this.beneficiary_election}`)
+          this.$router.push(`/beneficiary/${this.beneficiary_election}`)
           toast({
             type: 'success',
             title: 'Borrador YTT v1 creado con éxito.'
@@ -1155,7 +1155,7 @@ export default {
       this.formYTTv1.post('/api/ytt1evaluation').then(()=>{
         Fire.$emit('AfterCreate');
         this.formYTTv1.reset();
-        this.$router.push(`beneficiary/${this.beneficiary_election}`)
+        this.$router.push(`/group/${this.$route.params.id}/${this.$route.params.f}`)
         toast({
           type: 'success',
           title: 'Evaluación YTT v1 creada con éxito.'
@@ -1173,7 +1173,7 @@ export default {
       this.formYTTv2.post('/api/ytt2evaluation').then(()=>{
         Fire.$emit('AfterCreate');
         this.formYTTv1.reset();
-        this.$router.push(`beneficiary/${this.beneficiary_election}`)
+        this.$router.push(`/group/${this.$route.params.id}/${this.$route.params.f}`)
         toast({
           type: 'success',
           title: 'Evaluación YTT v2 creada con éxito.'

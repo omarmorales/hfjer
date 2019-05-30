@@ -96,30 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <router-link to="/global_report" class="nav-link">
-                  <i class="fas fa-globe-americas nav-icon"></i>
-                  <p>Reporte Global</p>
-                </router-link>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <router-link to="/comparative_report" class="nav-link">
-                  <i class="fas fa-clock nav-icon"></i>
-                  <p>Reporte comparativo</p>
-                </router-link>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <router-link to="/progress_report" class="nav-link">
-                  <i class="fas fa-spinner nav-icon"></i>
-                  <p>Progreso implementación</p>
-                </router-link>
-              </li>
-            </ul>
+
           </li>
           @endif
 
@@ -232,7 +209,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="modal-dialog" role="document">
           <div class="modal-content">
               <div class="modal-header">
-              <h3 id="helpdeskLabel" class="font-weight-bolder text-uppercase">Mesa de ayuda</h3>
+              <h3 id="helpdeskLabel" class="font-weight-bolder text-uppercase">Solicitud de ayuda</h3>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>

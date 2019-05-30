@@ -122,14 +122,14 @@
                         </span>
                       </td>
                       <td>
-                        <a @click="sendToEvaluation(beneficiary)">
+                        <a class="pointer" @click="sendToEvaluation(beneficiary)">
                           <i class="fas fa-file-invoice" style="color:black;"></i>
                         </a>
                       </td>
                       <td>
-                        <router-link :to="'/beneficiary/'+beneficiary.id">
+                        <a class="pointer" @click="sendToBeneficiary(beneficiary.folio)">
                           <i class="fa fa-chart-line" style="color:grey;"></i>
-                        </router-link>
+                        </a>
                       </td>
                       <td>
                         <a href="#" @click="editModal(beneficiary)">
@@ -251,6 +251,9 @@ export default {
     }
   },
   methods:{
+    sendToBeneficiary(folio){
+      this.$router.push(`/group/${this.$route.params.id}/${folio}`)
+    },
     sendToEvaluation(beneficiary) {
       if(beneficiary.ytt1_draft || beneficiary.ytt2_draft){
           swal({

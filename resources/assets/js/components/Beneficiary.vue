@@ -3,13 +3,8 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>
-              {{ beneficiary.folio }}
-            </h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+          <div class="col-sm-12">
+            <ol class="breadcrumb">
               <li class="breadcrumb-item">
                 <router-link to="/home">Grupos</router-link>
               </li>
@@ -23,10 +18,15 @@
       </div><!-- /.container-fluid -->
     </section>
     <div class="row">
+      <div class="col-sm-12">
+        <h2 class="text-center font-weight-bolder text-uppercase">
+          {{ beneficiary.folio }}
+        </h2>
+      </div>
       <div class="col-md-12">
-        <router-link class="btn btn-success float-right mb-3" :to="{ name: 'Evaluation', params: { beneficiary } }">
+        <a class="btn btn-success pointer float-right mb-3 text-white" @click="sendToEvaluation(beneficiary)">
           Nueva toma <i class="fas fa-file-invoice"></i>
-        </router-link>
+        </a>
       </div>
       <div class="col-md-12">
         <div class="card">
@@ -154,70 +154,7 @@
         </div>
       </div>
     </div>
-    <div class="row" v-show="beneficiary.group.evaluation == 'yttv1'">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            Borradores
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Fecha de creación</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-if="beneficiary.ytt1_draft">
-                    <td>{{ beneficiary.ytt1_draft.created_at | myDate }}</td>
-                    <td>
-                      <router-link :to="{ name: 'Evaluation', params: { beneficiary } }">
-                        <i class="fas fa-edit"></i>
-                      </router-link>
-                    </td>
-                    <td>
-                      <a href="#">
-                        <i class="fas fa-trash text-danger"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <!-- <tr v-for="beneficiary.ytt1_draft in beneficiary.beneficiary.ytt1_drafts" v-show="beneficiary.ytt1_draft.beneficiary_id == beneficiary.id">
-                    <th scope="row">{{ ytt1_evaluation.id }}</th>
-                    <td>
-                      <span class="badge badge-success" v-if="beneficiary.ytt1_draft.risk_level < 2.5">Bajo</span>
-                      <span class="badge badge-warning" v-else-if="beneficiary.ytt1_draft.risk_level < 5">Medio</span>
-                      <span class="badge badge-danger" v-else-if="beneficiary.ytt1_draft.risk_level < 7.5 ">Alto</span>
-                      <span class="badge badge-dark" v-else>Crítico</span>
-                    </td>
-                    <td>
-                      <span class="badge badge-success" v-if="beneficiary.ytt1_draft.propensity_level < 2.5">Bajo</span>
-                      <span class="badge badge-warning" v-else-if="beneficiary.ytt1_draft.propensity_level < 5">Medio</span>
-                      <span class="badge badge-danger" v-else-if="beneficiary.ytt1_draft.propensity_level < 7.5 ">Alto</span>
-                      <span class="badge badge-dark" v-else>Crítico</span>
-                    </td>
-                    <td>
-                      <span class="badge badge-success" v-if="beneficiary.ytt1_draft.exposure_level < 2.5">Bajo</span>
-                      <span class="badge badge-warning" v-else-if="beneficiary.ytt1_draft.exposure_level < 5">Medio</span>
-                      <span class="badge badge-danger" v-else-if="beneficiary.ytt1_draft.exposure_level < 7.5 ">Alto</span>
-                      <span class="badge badge-dark" v-else>Crítico</span>
-                    </td>
-                    <td>{{ beneficiary.ytt1_draft.created_at | myDate }}</td>
-                    <td>
-                      <a href="#">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </td>
-                  </tr> -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <div class="row" v-show="beneficiary.group.evaluation == 'yttv2'">
       <div class="col-md-12">
         <div class="card">
@@ -261,47 +198,10 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <p>Borradores</p>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Fecha de creación</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-if="beneficiary.ytt2_draft">
-                    <th scope="row">{{ beneficiary.ytt2_draft.id }}</th>
-                    <td>{{ beneficiary.ytt2_draft.created_at | myDate }}</td>
-                    <td>
-                      <router-link :to="{ name: 'Evaluation', params: { beneficiary } }">
-                        <i class="fas fa-edit"></i>
-                      </router-link>
-                    </td>
-                    <td>
-                      <a href="#">
-                        <i class="fas fa-trash text-danger"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="row" v-show="beneficiary.group.evaluation == 'yttv1'">
       <div class="col-md-12">
-        <beneficiaryprogress-card />
+
       </div>
     </div>
   </div>
@@ -315,10 +215,59 @@ export default {
     }
   },
   methods: {
-
+    sendToEvaluation(beneficiary) {
+      if(beneficiary.ytt1_draft || beneficiary.ytt2_draft){
+          swal({
+          title: 'Tienes un borrador',
+          text: "¿Deseas continuar con los datos del borrador?",
+          type: 'info',
+          showCloseButton: true,
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sí',
+          cancelButtonText: 'No',
+        }).then((result) => {
+          
+          if (result.value) {
+            swal(
+              'Continuar evaluación',
+              '',
+              'info'
+            )
+            this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
+          } else if (result.dismiss === 'cancel') {
+            if(beneficiary.ytt1_draft){
+              axios.delete(`/api/ytt1draft/${beneficiary.ytt1_draft.id}`, {data: { id: beneficiary.ytt1_draft.id}}).then(()=>{
+                swal(
+                  'Borrador eliminado!',
+                  '',
+                  'success'
+                )
+              }).catch(()=> {
+                swal("Error", "Algo salió mal.", "warning");
+              });
+            } else if (beneficiary.ytt2_draft) {
+              axios.delete(`/api/ytt2draft/${beneficiary.ytt2_draft.id}`, {data: { id: beneficiary.ytt2_draft.id}}).then(()=>{
+                swal(
+                  'Borrador eliminado!',
+                  '',
+                  'success'
+                )
+              }).catch(()=> {
+                swal("Error", "Algo salió mal.", "warning");
+              });
+            }
+            this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
+          }
+        })
+      } else {
+        this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
+      }
+    }
   },
   created(){
-    axios.get('/api/beneficiary/'+this.$route.params.id).then(({data}) => (this.beneficiary = data));
+    axios.get('/api/beneficiary_by_folio/'+this.$route.params.f).then(({data}) => (this.beneficiary = data));
   }
 }
 </script>

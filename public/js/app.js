@@ -31532,7 +31532,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(147);
-module.exports = __webpack_require__(294);
+module.exports = __webpack_require__(299);
 
 
 /***/ }),
@@ -31595,7 +31595,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_progressbar___default.a, {
     height: '3px'
 });
 
-var routes = [{ path: '/dashboard', component: __webpack_require__(181) }, { path: '/developer', component: __webpack_require__(184) }, { path: '/home', component: __webpack_require__(187) }, { path: '/group/:id', component: __webpack_require__(193) }, { path: '/beneficiary/:id', name: 'Beneficiary', component: __webpack_require__(198), props: true }, { path: '/group/:id/:f/evaluation', name: 'Evaluation', component: __webpack_require__(203), props: true }, { path: '/evaluation/:id', name: 'ShowEvaluation', component: __webpack_require__(208), props: true }, { path: '/app', component: __webpack_require__(213) }, { path: '/profile', component: __webpack_require__(218) }, { path: '/global_report', component: __webpack_require__(223) }, { path: '/comparative_report', component: __webpack_require__(228) }, { path: '/progress_report', component: __webpack_require__(233) }, { path: '/resources-yttv1', component: __webpack_require__(238) }, { path: '/resources-yttv2', component: __webpack_require__(243) }, { path: '*', component: __webpack_require__(145) }];
+var routes = [{ path: '/dashboard', component: __webpack_require__(181) }, { path: '/developer', component: __webpack_require__(184) }, { path: '/home', component: __webpack_require__(187) }, { path: '/group/:id', component: __webpack_require__(193) }, { path: '/group/:id/:f', name: 'Beneficiary', component: __webpack_require__(198), props: true }, { path: '/group/:id/:f/evaluation', name: 'Evaluation', component: __webpack_require__(203), props: true }, { path: '/evaluation/:id', name: 'ShowEvaluation', component: __webpack_require__(208), props: true }, { path: '/app', component: __webpack_require__(213) }, { path: '/profile', component: __webpack_require__(218) }, { path: '/global_report', component: __webpack_require__(223) }, { path: '/comparative_report', component: __webpack_require__(228) }, { path: '/progress_report', component: __webpack_require__(233) }, { path: '/resources-yttv1', component: __webpack_require__(238) }, { path: '/resources-yttv2', component: __webpack_require__(243) }, { path: '*', component: __webpack_require__(145) }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]({
     mode: 'history',
@@ -31639,7 +31639,7 @@ Vue.component('chart-component4', __webpack_require__(289));
 
 Vue.component('users', __webpack_require__(291));
 
-Vue.component('help-desk', __webpack_require__(310));
+Vue.component('help-desk', __webpack_require__(294));
 
 var app = new Vue({
     el: '#app',
@@ -75921,6 +75921,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    sendToBeneficiary: function sendToBeneficiary(folio) {
+      this.$router.push('/group/' + this.$route.params.id + '/' + folio);
+    },
     sendToEvaluation: function sendToEvaluation(beneficiary) {
       var _this = this;
 
@@ -76335,6 +76338,7 @@ var render = function() {
                                 _c(
                                   "a",
                                   {
+                                    staticClass: "pointer",
                                     on: {
                                       click: function($event) {
                                         return _vm.sendToEvaluation(beneficiary)
@@ -76350,26 +76354,27 @@ var render = function() {
                                 )
                               ]),
                               _vm._v(" "),
-                              _c(
-                                "td",
-                                [
-                                  _c(
-                                    "router-link",
-                                    {
-                                      attrs: {
-                                        to: "/beneficiary/" + beneficiary.id
+                              _c("td", [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "pointer",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.sendToBeneficiary(
+                                          beneficiary.folio
+                                        )
                                       }
-                                    },
-                                    [
-                                      _c("i", {
-                                        staticClass: "fa fa-chart-line",
-                                        staticStyle: { color: "grey" }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa fa-chart-line",
+                                      staticStyle: { color: "grey" }
+                                    })
+                                  ]
+                                )
+                              ]),
                               _vm._v(" "),
                               _c("td", [
                                 _c(
@@ -77007,7 +77012,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -77227,106 +77232,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -77335,13 +77240,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
 
-  methods: {},
-  created: function created() {
-    var _this = this;
+  methods: {
+    sendToEvaluation: function sendToEvaluation(beneficiary) {
+      var _this = this;
 
-    axios.get('/api/beneficiary/' + this.$route.params.id).then(function (_ref) {
+      if (beneficiary.ytt1_draft || beneficiary.ytt2_draft) {
+        swal({
+          title: 'Tienes un borrador',
+          text: "¿Deseas continuar con los datos del borrador?",
+          type: 'info',
+          showCloseButton: true,
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sí',
+          cancelButtonText: 'No'
+        }).then(function (result) {
+
+          if (result.value) {
+            swal('Continuar evaluación', '', 'info');
+            _this.$router.push('/group/' + _this.$route.params.id + '/' + beneficiary.folio + '/evaluation');
+          } else if (result.dismiss === 'cancel') {
+            if (beneficiary.ytt1_draft) {
+              axios.delete('/api/ytt1draft/' + beneficiary.ytt1_draft.id, { data: { id: beneficiary.ytt1_draft.id } }).then(function () {
+                swal('Borrador eliminado!', '', 'success');
+              }).catch(function () {
+                swal("Error", "Algo salió mal.", "warning");
+              });
+            } else if (beneficiary.ytt2_draft) {
+              axios.delete('/api/ytt2draft/' + beneficiary.ytt2_draft.id, { data: { id: beneficiary.ytt2_draft.id } }).then(function () {
+                swal('Borrador eliminado!', '', 'success');
+              }).catch(function () {
+                swal("Error", "Algo salió mal.", "warning");
+              });
+            }
+            _this.$router.push('/group/' + _this.$route.params.id + '/' + beneficiary.folio + '/evaluation');
+          }
+        });
+      } else {
+        this.$router.push('/group/' + this.$route.params.id + '/' + beneficiary.folio + '/evaluation');
+      }
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    axios.get('/api/beneficiary_by_folio/' + this.$route.params.f).then(function (_ref) {
       var data = _ref.data;
-      return _this.beneficiary = data;
+      return _this2.beneficiary = data;
     });
   }
 });
@@ -77358,18 +77304,8 @@ var render = function() {
     _c("section", { staticClass: "content-header" }, [
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row mb-2" }, [
-          _c("div", { staticClass: "col-sm-6" }, [
-            _c("h1", [
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.beneficiary.folio) +
-                  "\n          "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6" }, [
-            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+          _c("div", { staticClass: "col-sm-12" }, [
+            _c("ol", { staticClass: "breadcrumb" }, [
               _c(
                 "li",
                 { staticClass: "breadcrumb-item" },
@@ -77404,29 +77340,31 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-12" },
-        [
-          _c(
-            "router-link",
-            {
-              staticClass: "btn btn-success float-right mb-3",
-              attrs: {
-                to: {
-                  name: "Evaluation",
-                  params: { beneficiary: _vm.beneficiary }
-                }
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c(
+          "h2",
+          { staticClass: "text-center font-weight-bolder text-uppercase" },
+          [_vm._v("\n        " + _vm._s(_vm.beneficiary.folio) + "\n      ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-success pointer float-right mb-3 text-white",
+            on: {
+              click: function($event) {
+                return _vm.sendToEvaluation(_vm.beneficiary)
               }
-            },
-            [
-              _vm._v("\n        Nueva toma "),
-              _c("i", { staticClass: "fas fa-file-invoice" })
-            ]
-          )
-        ],
-        1
-      ),
+            }
+          },
+          [
+            _vm._v("\n        Nueva toma "),
+            _c("i", { staticClass: "fas fa-file-invoice" })
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card" }, [
@@ -77717,75 +77655,6 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.beneficiary.group.evaluation == "yttv1",
-            expression: "beneficiary.group.evaluation == 'yttv1'"
-          }
-        ],
-        staticClass: "row"
-      },
-      [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("\n          Borradores\n        ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "table-responsive" }, [
-                _c("table", { staticClass: "table" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("tbody", [
-                    _vm.beneficiary.ytt1_draft
-                      ? _c("tr", [
-                          _c("td", [
-                            _vm._v(
-                              _vm._s(
-                                _vm._f("myDate")(
-                                  _vm.beneficiary.ytt1_draft.created_at
-                                )
-                              )
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  attrs: {
-                                    to: {
-                                      name: "Evaluation",
-                                      params: { beneficiary: _vm.beneficiary }
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "fas fa-edit" })]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _vm._m(2)
-                        ])
-                      : _vm._e()
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
             value: _vm.beneficiary.group.evaluation == "yttv2",
             expression: "beneficiary.group.evaluation == 'yttv2'"
           }
@@ -77802,7 +77671,7 @@ var render = function() {
             _c("div", { staticClass: "card-body" }, [
               _c("div", { staticClass: "table-responsive" }, [
                 _c("table", { staticClass: "table" }, [
-                  _vm._m(3),
+                  _vm._m(1),
                   _vm._v(" "),
                   _c(
                     "tbody",
@@ -77872,67 +77741,12 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(4, true)
+                          _vm._m(2, true)
                         ]
                       )
                     }),
                     0
                   )
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _vm._m(5),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "table-responsive" }, [
-                _c("table", { staticClass: "table" }, [
-                  _vm._m(6),
-                  _vm._v(" "),
-                  _c("tbody", [
-                    _vm.beneficiary.ytt2_draft
-                      ? _c("tr", [
-                          _c("th", { attrs: { scope: "row" } }, [
-                            _vm._v(_vm._s(_vm.beneficiary.ytt2_draft.id))
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              _vm._s(
-                                _vm._f("myDate")(
-                                  _vm.beneficiary.ytt2_draft.created_at
-                                )
-                              )
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  attrs: {
-                                    to: {
-                                      name: "Evaluation",
-                                      params: { beneficiary: _vm.beneficiary }
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "fas fa-edit" })]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _vm._m(7)
-                        ])
-                      : _vm._e()
-                  ])
                 ])
               ])
             ])
@@ -77954,14 +77768,7 @@ var render = function() {
         ],
         staticClass: "row"
       },
-      [
-        _c(
-          "div",
-          { staticClass: "col-md-12" },
-          [_c("beneficiaryprogress-card")],
-          1
-        )
-      ]
+      [_c("div", { staticClass: "col-md-12" })]
     )
   ])
 }
@@ -78018,30 +77825,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Fecha de creación")]),
-        _vm._v(" "),
-        _c("th"),
-        _vm._v(" "),
-        _c("th")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fas fa-trash text-danger" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Puntuación")]),
@@ -78063,40 +77846,6 @@ var staticRenderFns = [
     return _c("td", [
       _c("a", { attrs: { href: "#" } }, [
         _c("i", { staticClass: "fas fa-eye" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("p", [_vm._v("Borradores")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Fecha de creación")]),
-        _vm._v(" "),
-        _c("th"),
-        _vm._v(" "),
-        _c("th")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fas fa-trash text-danger" })
       ])
     ])
   }
@@ -78817,7 +78566,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.formYTTv1.post('/api/ytt1draft').then(function () {
           Fire.$emit('AfterCreate');
           _this2.formYTTv1.reset();
-          _this2.$router.push('beneficiary/' + _this2.beneficiary_election);
+          _this2.$router.push('/beneficiary/' + _this2.beneficiary_election);
           toast({
             type: 'success',
             title: 'Borrador YTT v1 creado con éxito.'
@@ -78837,7 +78586,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.formYTTv1.post('/api/ytt1evaluation').then(function () {
         Fire.$emit('AfterCreate');
         _this3.formYTTv1.reset();
-        _this3.$router.push('beneficiary/' + _this3.beneficiary_election);
+        _this3.$router.push('/group/' + _this3.$route.params.id + '/' + _this3.$route.params.f);
         toast({
           type: 'success',
           title: 'Evaluación YTT v1 creada con éxito.'
@@ -78856,7 +78605,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.formYTTv2.post('/api/ytt2evaluation').then(function () {
         Fire.$emit('AfterCreate');
         _this4.formYTTv1.reset();
-        _this4.$router.push('beneficiary/' + _this4.beneficiary_election);
+        _this4.$router.push('/group/' + _this4.$route.params.id + '/' + _this4.$route.params.f);
         toast({
           type: 'success',
           title: 'Evaluación YTT v2 creada con éxito.'
@@ -106761,7 +106510,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     this.loaded = false;
-    axios.get('/api/yttevaluationdate/' + this.$route.params.id).then(function (_ref) {
+    axios.get('/api/yttevaluationdate/' + this.$route.params.f).then(function (_ref) {
       var data = _ref.data;
       return _this.chartData.labels = data.map(function (date) {
         return date.created_at;
@@ -108000,39 +107749,18 @@ if (false) {
 
 /***/ }),
 /* 294 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(311)
+  __webpack_require__(295)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(313)
+var __vue_script__ = __webpack_require__(297)
 /* template */
-var __vue_template__ = __webpack_require__(314)
+var __vue_template__ = __webpack_require__(298)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -108071,13 +107799,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 311 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(312);
+var content = __webpack_require__(296);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -108097,7 +107825,7 @@ if(false) {
 }
 
 /***/ }),
-/* 312 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -108111,7 +107839,7 @@ exports.push([module.i, "\n.btn-width[data-v-1476349e] {\n  width: 10rem;\n}\n",
 
 
 /***/ }),
-/* 313 */
+/* 297 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -108191,7 +107919,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 314 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -108313,6 +108041,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-1476349e", module.exports)
   }
 }
+
+/***/ }),
+/* 299 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

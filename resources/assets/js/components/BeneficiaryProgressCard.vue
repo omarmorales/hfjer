@@ -43,7 +43,7 @@ export default {
   },
   mounted(){
     this.loaded = false
-    axios.get('/api/yttevaluationdate/'+ this.$route.params.id).then(({data}) => (
+    axios.get(`/api/yttevaluationdate/${this.$route.params.f}`).then(({data}) => (
         this.chartData.labels = data.map(date => date.created_at),
         this.chartData.datasets[0].data = data.map(result => result.risk_level),
         this.loaded = true
