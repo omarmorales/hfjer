@@ -51,22 +51,19 @@
       </div>
       <div class="row">
         <div id="yttv1" class="col-md-12" v-if="yttv1_data_selected == true">
-          hola
-        </div>
-        <div id="yttv2" class="col-md-12" v-if="yttv2_data_selected == true">
           <div class="row">
             <div class="col-md-3">
               <div class="card">
                 <div class="card-body text-center">
                   <p class="font-weight-bolder h2">{{ total_beneficiaries_with_take_selected.length }}</p>
-                  <p>Muestra total</p>
+                  <p>Población total</p>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="card">
                 <div class="card-body text-center">
-                  <p class="font-weight-bolder h2">{{ total_beneficiaries_with_take_selected_female.length }}</p>
+                  <p class="font-weight-bolder h2">{{ gender.female.length }}</p>
                   <p>Mujer(es)</p>
                 </div>
               </div>
@@ -74,7 +71,7 @@
             <div class="col-md-3">
               <div class="card">
                 <div class="card-body text-center">
-                  <p class="font-weight-bolder h2">{{ total_beneficiaries_with_take_selected_male.length }}</p>
+                  <p class="font-weight-bolder h2">{{ gender.male.length }}</p>
                   <p>Hombre(s)</p>
                 </div>
               </div>
@@ -82,8 +79,184 @@
             <div class="col-md-3">
               <div class="card">
                 <div class="card-body text-center">
-                  <p class="font-weight-bolder h2">{{ total_beneficiaries_with_take_selected_other.length }}</p>
+                  <p class="font-weight-bolder h2">{{ gender.other.length }}</p>
                   <p>Otro(s)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col md-12">
+              <div class="card">
+                <div class="card-header">
+                  <p class="card-title">Población desagregada por grupo etario</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Grupo etario</th>
+                          <th>Número</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{ "<11" }}</td>
+                          <td>{{ age_group.less_than_11.length }}</td>
+                        </tr>
+                        <tr>
+                          <td>{{ "12-15" }}</td>
+                          <td>{{ age_group.between_12_and_15.length }}</td>
+                        </tr>
+                        <tr>
+                          <td>{{ "16-19" }}</td>
+                          <td>{{ age_group.between_16_and_19.length }}</td>
+                        </tr>
+                        <tr>
+                          <td>{{ "20-23" }}</td>
+                          <td>{{ age_group.between_20_and_23.length }}</td>
+                        </tr>
+                        <tr>
+                          <td>{{ ">=24" }}</td>
+                          <td>{{ age_group.more_than_24.length }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+                    <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <p class="card-title">Nivel de riesgo</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Nivel</th>
+                          <th>Número</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="yttv2" class="col-md-12" v-if="yttv2_data_selected == true">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p class="font-weight-bolder h2">{{ total_beneficiaries_with_take_selected.length }}</p>
+                  <p>Población total</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p class="font-weight-bolder h2">{{ gender.female.length }}</p>
+                  <p>Mujer(es)</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p class="font-weight-bolder h2">{{ gender.male.length }}</p>
+                  <p>Hombre(s)</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p class="font-weight-bolder h2">{{ gender.other.length }}</p>
+                  <p>Otro(s)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col md-12">
+              <div class="card">
+                <div class="card-header">
+                  <p class="card-title">Población desagregada por grupo etario</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Grupo etario</th>
+                          <th>Número</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{ "<11" }}</td>
+                          <td>{{ age_group.less_than_11.length }}</td>
+                        </tr>
+                        <tr>
+                          <td>{{ "12-15" }}</td>
+                          <td>{{ age_group.between_12_and_15.length }}</td>
+                        </tr>
+                        <tr>
+                          <td>{{ "16-19" }}</td>
+                          <td>{{ age_group.between_16_and_19.length }}</td>
+                        </tr>
+                        <tr>
+                          <td>{{ "20-23" }}</td>
+                          <td>{{ age_group.between_20_and_23.length }}</td>
+                        </tr>
+                        <tr>
+                          <td>{{ ">=24" }}</td>
+                          <td>{{ age_group.more_than_24.length }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <p class="card-title">Nivel de riesgo</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Nivel</th>
+                          <th>Número</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -110,9 +283,27 @@
         beneficiaries: '',
         beneficiaries_takes: [],
         total_beneficiaries_with_take_selected: '',
-        total_beneficiaries_with_take_selected_male: '',
-        total_beneficiaries_with_take_selected_female: '',
-        total_beneficiaries_with_take_selected_other: '',
+        beneficiaries_with_take_selected: [],
+        ages_of_beneficiaries_selected: [],
+        risk_level_of_beneficiaries_selected: [],
+        gender: {
+          male: '',
+          female: '',
+          other: ''
+        },
+        age_group: {
+          less_than_11: '',
+          between_12_and_15: '',
+          between_16_and_19: '',
+          between_20_and_23: '',
+          more_than_24: ''
+        },
+        risk_level: {
+          low: '',
+          medium: '',
+          high: '',
+          critical: ''
+        }
       }
     },
     methods:{
@@ -121,16 +312,39 @@
           this.yttv1_data_selected = false;
           this.yttv2_data_selected = true;
           this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(beneficiary => beneficiary.ytt2_evaluations.length >= this.take_selected);
-          this.total_beneficiaries_with_take_selected_male = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "masculino");
-          this.total_beneficiaries_with_take_selected_female = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "femenino");
-          this.total_beneficiaries_with_take_selected_other = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "otro");
+          
+          this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt2_evaluations[this.take_selected-1].risk_level);
+          
+          this.gender.male = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "masculino");
+          this.gender.female = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "femenino");
+          this.gender.other = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "otro");
+          
+          this.age_group.less_than_11 = this.ages_of_beneficiaries_selected.filter(age => age < 11);
+          this.age_group.between_12_and_15 = this.ages_of_beneficiaries_selected.filter(age => age >= 12 && age <= 15);
+          this.age_group.between_16_and_19 = this.ages_of_beneficiaries_selected.filter(age => age >= 16 && age <= 19);
+          this.age_group.between_20_and_23 = this.ages_of_beneficiaries_selected.filter(age => age >= 20 && age <= 23);
+          this.age_group.more_than_24 = this.ages_of_beneficiaries_selected.filter(age => age >= 24);
+
+          this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level < 7);
+          this.risk_level.medium = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 8 && risk_level <= 13);
+          this.risk_level.high = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 14 && risk_level <= 20);
+          this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 24);
         } else if (this.group_selected.evaluation == "yttv1"){
           this.yttv1_data_selected = true;
           this.yttv2_data_selected = false;
           this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(beneficiary => beneficiary.ytt1_evaluations.length >= this.take_selected);
-          this.total_beneficiaries_with_take_selected_male = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "masculino");
-          this.total_beneficiaries_with_take_selected_female = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "femenino");
-          this.total_beneficiaries_with_take_selected_other = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "otro");
+          
+          this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt1_evaluations[this.take_selected-1].age);
+
+          this.gender.male = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "masculino");
+          this.gender.female = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "femenino");
+          this.gender.other = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "otro");
+
+          this.age_group.less_than_11 = this.ages_of_beneficiaries_selected.filter(age => age < 11);
+          this.age_group.between_12_and_15 = this.ages_of_beneficiaries_selected.filter(age => age >= 12 && age <= 15);
+          this.age_group.between_16_and_19 = this.ages_of_beneficiaries_selected.filter(age => age >= 16 && age <= 19);
+          this.age_group.between_20_and_23 = this.ages_of_beneficiaries_selected.filter(age => age >= 20 && age <= 23);
+          this.age_group.more_than_24 = this.ages_of_beneficiaries_selected.filter(age => age >= 24);
         }
       },
       showBtn(){

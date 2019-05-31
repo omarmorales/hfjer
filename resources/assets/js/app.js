@@ -59,7 +59,7 @@ let routes = [
     { path: '/progress_report', component: require('./components/views/ProgressReport.vue') },
     { path: '/resources-yttv1', component: require('./components/views/Resourcev1.vue') },
     { path: '/resources-yttv2', component: require('./components/views/Resourcev2.vue') },
-    { path: '/evaluation/:id', name: 'ShowEvaluation', component: require('./components/views/ShowEvaluation.vue'), props: true },
+    { path: '/group/:group/:user/evaluation/:id', name: 'ShowEvaluation', component: require('./components/views/ShowEvaluation.vue'), props: true },
     { path: '*', component: require('./components/extra/NotFound.vue') }
 ]
 

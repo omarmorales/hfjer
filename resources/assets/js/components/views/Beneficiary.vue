@@ -116,7 +116,7 @@
                     <th>Puntuación nivel de exposición a la violencia</th>
                     <th class="">Nivel de exposición a la violencia</th>
                     <th class="">Fecha de creación</th>
-                    <th></th>
+                    <th>Ver resultados</th>
                   </tr>
                 </thead>
                 <tbody>
