@@ -4,20 +4,19 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>
-              Nueva evaluación YTT
-            </h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+          
+          <div class="col-sm-12">
+            <ol class="breadcrumb">
               <li class="breadcrumb-item">
                 <router-link to="/home">Grupos</router-link>
               </li>
               <li class="breadcrumb-item">
-                <router-link :to="'/group/'+ group">{{ group }}</router-link>
+                <router-link :to="`/group/${$route.params.group}`">{{ $route.params.group }}</router-link>
               </li>
-              <li class="breadcrumb-item active">Nueva evaluación</li>
+              <li class="breadcrumb-item">
+                <router-link :to="`/group/${$route.params.group}/${$route.params.user}`">{{ $route.params.user }}</router-link>
+              </li>
+              <li class="breadcrumb-item active">Nueva toma</li>
             </ol>
           </div>
         </div>
@@ -25,28 +24,37 @@
     </section>
     <div class="row">
       <div class="col-md-12">
+        <h2 class="text-center font-weight-bolder text-uppercase">
+          Nueva toma
+        </h2>
+      </div>
+      <div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
                 <label for="">Grupo</label>
-                <input class="form-control" disabled v-model="beneficiary_selected.group.name" type="text">
+                <input class="form-control" disabled v-model="group_selected.name" type="text">
               </div>
-              <div class="form-group" v-for="group_item in groups" v-show="group_item.id == group">
+              <div class="form-group">
                 <label for="">Herramienta</label>
-                <input class="form-control" type="text" :value="group_item.evaluation" disabled>
+                <input class="form-control" type="text" :value="group_selected.evaluation" disabled>
               </div>
               <div class="form-group">
                 <label for="">Persona beneficiaria</label>
                 <input class="form-control" disabled v-model="beneficiary_selected.name + ' ' + beneficiary_selected.lastname_one" type="text">
               </div>
+              <div class="form-group">
+                <label for="">Edad actual</label>
+                <input class="form-control" disabled v-model="beneficiary_age" type="text">
+              </div>
               <div class="form-group" v-if="beneficiary_selected != null">
                 <label for="">Número de toma</label>
-                <input class="form-control" type="number" :value="beneficiary_selected.ytt1_evaluations.length +1" v-if="beneficiary_selected.group.evaluation == 'yttv1'" disabled>
-                <input class="form-control" type="number" :value="beneficiary_selected.ytt2_evaluations.length +1" v-if="beneficiary_selected.group.evaluation == 'yttv2'" disabled>
+                <input class="form-control" type="number" :value="beneficiary_selected.ytt1_evaluations.length +1" v-if="group_selected.evaluation == 'yttv1'" disabled>
+                <input class="form-control" type="number" :value="beneficiary_selected.ytt2_evaluations.length +1" v-if="group_selected.evaluation == 'yttv2'" disabled>
               </div>
             </div>
           </div>
-          <div class="row" v-if="beneficiary_selected.group.evaluation == 'yttv1'">
+          <div class="row" v-if="group_selected.evaluation == 'yttv1'">
             <form @submit.prevent="draftmode ?  createYtt1Draft() : createYtt1Evaluation()">
             <div class="col-md-12">
               <div class="card" v-for="(item, index) in yttv1_questionnarie">
@@ -117,7 +125,7 @@
             </div>
             </form>
           </div>
-          <div class="row" v-if="beneficiary_selected.group.evaluation == 'yttv2'">
+          <div class="row" v-if="group_selected.evaluation == 'yttv2'">
             <form @submit.prevent="draftmode ?  createYtt2Draft() : createYtt2Evaluation()">
             <div class="col-md-12">
               <div class="card" v-for="(item, index) in yttv2_questionnarie">
@@ -193,7 +201,7 @@
 
 <script>
 export default {
-  props: ['beneficiary'],
+  props: ['age'],
   data(){
     return {
       draftmode: false,
@@ -988,15 +996,18 @@ export default {
           ]
         },
       ],
+      loading:false,
       beneficiary_selected: {},
-      groups: {},
-      beneficiaries: {},
+      milliseconds_in_a_year: '',
       group: '',
+      group_selected: '',
       beneficiary_election: '',
+      beneficiary_age: '',
       user:[],
       formYTTv1: new Form({
         id: '',
         folio: '',
+        age: '',
         beneficiary_id: '',
         answer1: '',
         answer2: '',
@@ -1049,6 +1060,7 @@ export default {
       formYTTv2: new Form({
         id: '',
         folio: '',
+        age: '',
         beneficiary_id: '',
         answer1: '',
         answer2: '',
@@ -1106,37 +1118,53 @@ export default {
       this.beneficiary_election = null;
     },
     loadData(){
+      this.loading = true;
       this.formYTTv1.reset();
       this.formYTTv2.reset();
-      axios.get(`/api/beneficiary_by_folio/${this.$route.params.user}`).then(({data}) => {
+      axios.get(`/api/beneficiary_by_folio/${this.$route.params.user}`)
+      .then(({data}) => {
         if (data.ytt1_draft) this.formYTTv1.fill(data.ytt1_draft);
         if (data.ytt2_draft) this.formYTTv2.fill(data.ytt2_draft);
         this.beneficiary_selected = data;
         this.group = data.group_id;
+        this.group_selected = data.group;
         this.beneficiary_election = data.id;
+        this.loading = false;
       }).catch(()=>{
         toast({
           type: 'error',
           title: 'Error al cargar datos'
         })
+        this.loading = false;
       })
+      this.beneficiary_age = this.$props.age;
+      this.formYTTv1.age = this.$props.age;
+      this.formYTTv2.age = this.$props.age;
     },
     createYtt1Draft() {
       this.$Progress.start();
 
       if(this.beneficiary_selected.ytt1_draft){
-        swal(
-          'Ya hay borrador!',
-          '',
-          'success'
-        )
+        this.formYTTv1.put('/api/ytt1draft/'+this.formYTTv1.id)
+        .then(() => {
+          // success
+          swal(
+            'Actualizado',
+            'La información se ha actualizado.',
+            'success'
+          )
+          this.$Progress.finish();
+          Fire.$emit('AfterCreate');
+          this.formYTTv1.reset();
+          this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
+        })
       } else {
         this.formYTTv1.beneficiary_id = this.beneficiary_election;
 
         this.formYTTv1.post('/api/ytt1draft').then(()=>{
           Fire.$emit('AfterCreate');
           this.formYTTv1.reset();
-          this.$router.push(`/beneficiary/${this.beneficiary_election}`)
+          this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
           toast({
             type: 'success',
             title: 'Borrador YTT v1 creado con éxito.'
@@ -1152,7 +1180,18 @@ export default {
       this.$Progress.start();
       this.formYTTv1.beneficiary_id = this.beneficiary_election;
 
-      this.formYTTv1.post('/api/ytt1evaluation').then(()=>{
+      if(this.beneficiary_selected.ytt1_draft){
+        axios.delete(`/api/ytt1draft/${this.beneficiary_selected.ytt1_draft.id}`, {data: { id: this.beneficiary_selected.ytt1_draft.id}}).then(()=>{
+          swal(
+            'Borrador eliminado!',
+            '',
+            'success'
+          )
+        }).catch(()=> {
+          swal("Error", "Algo salió mal.", "warning");
+        });
+
+        this.formYTTv1.post('/api/ytt1evaluation').then(()=>{
         Fire.$emit('AfterCreate');
         this.formYTTv1.reset();
         this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
@@ -1165,24 +1204,69 @@ export default {
       .catch(()=>{
         this.$Progress.fail();
       })
+        toast({
+          type: 'success',
+          title: 'Evaluación YTT v1 creada con éxito.'
+        })
+      } else {
+        this.formYTTv1.post('/api/ytt1evaluation').then(()=>{
+          Fire.$emit('AfterCreate');
+          this.formYTTv1.reset();
+          this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
+          toast({
+            type: 'success',
+            title: 'Evaluación YTT v1 creada con éxito.'
+          })
+          this.$Progress.finish();
+        })
+        .catch(()=>{
+          this.$Progress.fail();
+        })
+      }
     },
     createYtt2Evaluation(){
       this.$Progress.start();
       this.formYTTv2.beneficiary_id = this.beneficiary_election;
 
-      this.formYTTv2.post('/api/ytt2evaluation').then(()=>{
-        Fire.$emit('AfterCreate');
-        this.formYTTv1.reset();
-        this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
-        toast({
-          type: 'success',
-          title: 'Evaluación YTT v2 creada con éxito.'
+      if(this.beneficiary_selected.ytt2_draft){
+        axios.delete(`/api/ytt2draft/${this.beneficiary_selected.ytt2_draft.id}`, {data: { id: this.beneficiary_selected.ytt2_draft.id}}).then(()=>{
+          swal(
+            'Borrador eliminado!',
+            '',
+            'success'
+          )
+        }).catch(()=> {
+          swal("Error", "Algo salió mal.", "warning");
+        });
+
+        this.formYTTv2.post('/api/ytt2evaluation').then(()=>{
+          Fire.$emit('AfterCreate');
+          this.formYTTv1.reset();
+          this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
+          toast({
+            type: 'success',
+            title: 'Evaluación YTT v2 creada con éxito.'
+          })
+          this.$Progress.finish();
         })
-        this.$Progress.finish();
-      })
-      .catch(()=>{
-        this.$Progress.fail();
-      })
+        .catch(()=>{
+          this.$Progress.fail();
+        })
+      }else{
+        this.formYTTv2.post('/api/ytt2evaluation').then(()=>{
+          Fire.$emit('AfterCreate');
+          this.formYTTv1.reset();
+          this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
+          toast({
+            type: 'success',
+            title: 'Evaluación YTT v2 creada con éxito.'
+          })
+          this.$Progress.finish();
+        })
+        .catch(()=>{
+          this.$Progress.fail();
+        })
+      }
     },
     createYtt2Draft() {
       this.$Progress.start();
@@ -1199,7 +1283,7 @@ export default {
           this.$Progress.finish();
           Fire.$emit('AfterCreate');
           this.formYTTv2.reset();
-          this.$router.push(`beneficiary/${this.beneficiary_election}`)
+          this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
         })
         .catch(() => {
           this.$Progress.fail();
@@ -1233,6 +1317,9 @@ export default {
   },
   created(){
     this.loadData();
+    this.beneficiary_age = this.$props.age;
+    this.formYTTv1.age = this.$props.age;
+    this.formYTTv2.age = this.$props.age;
   }
 }
 </script>

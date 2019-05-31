@@ -17,4 +17,9 @@ class Organization extends Model
   {
     return $this->hasMany('App\User');
   }
+
+  public function groups()
+  {
+    return $this->hasMany('App\Group')->with('beneficiaries');
+  }
 }

@@ -28,14 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </ul>
 
     <!-- SEARCH FORM -->
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" @keyup="searchit" v-model="search" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" @click="searchit">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </div>
+      
 
   </nav>
   <!-- /.navbar -->
@@ -96,7 +89,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
-
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <router-link to="/global_report" class="nav-link">
+                  <i class="fas fa-bookmark nav-icon"></i>
+                  <p>Reporte global</p>
+                </router-link>
+              </li>
+            </ul>
           </li>
           @endif
 

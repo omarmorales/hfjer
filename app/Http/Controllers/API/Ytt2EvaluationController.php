@@ -65,6 +65,7 @@ class Ytt2EvaluationController extends Controller
 
     return Ytt2Evaluation::create([
       'folio' => $request['folio'],
+      'age' => $request['age'],
       'beneficiary_id' => $request['beneficiary_id'],
       'answer1' => $request['answer1'],
       'answer2' => $request['answer2'],

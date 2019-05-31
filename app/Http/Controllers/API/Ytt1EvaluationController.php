@@ -96,6 +96,7 @@ class Ytt1EvaluationController extends Controller
     )/(11*3)*10;
 
     return Ytt1Evaluation::create([
+      'age' => $request['age'],
       'folio' => $request['folio'],
       'beneficiary_id' => $request['beneficiary_id'],
       'answer1' => $request['answer1'],

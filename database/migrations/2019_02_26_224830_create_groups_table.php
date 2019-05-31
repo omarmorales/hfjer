@@ -19,6 +19,7 @@ class CreateGroupsTable extends Migration
             $table->string('slug');
             $table->mediumText('description')->nullable();
             $table->integer('user_id')->unsigned();
+            $table->integer('organization_id')->unsigned();
             $table->string('evaluation')->nullable();
             $table->timestamps();
         });

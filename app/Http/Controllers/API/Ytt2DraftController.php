@@ -65,6 +65,7 @@ class Ytt2DraftController extends Controller
     
         return YTT2Draft::create([
             'folio' => $request['folio'],
+            'age' => $request['age'],
             'beneficiary_id' => $request['beneficiary_id'],
             'answer1' => $request['answer1'],
             'answer2' => $request['answer2'],
@@ -160,6 +161,7 @@ class Ytt2DraftController extends Controller
         );
     
         $draft->update([
+            'age' => $request['age'],
             'folio' => $request['folio'],
             'beneficiary_id' => $request['beneficiary_id'],
             'answer1' => $request['answer1'],

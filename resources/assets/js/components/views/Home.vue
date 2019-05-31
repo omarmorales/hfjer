@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4 mt-3" v-for="group in groups" :key="group.id" v-show="group.user.organization_id == user.organization_id">
+        <div class="col-md-4 mt-3" v-for="group in groups" :key="group.id">
           <div class="card text-center" style="height:100%;">
             <div class="card-body text-center">
               <h3 class="display-6 font-weight-bolder">
@@ -121,7 +121,8 @@ export default {
     return{
       loading: false,
       editmode: false,
-      groups:{},
+      groups:[],
+      organization:{},
       user: [],
       form: new Form({
         id: '',
@@ -129,6 +130,7 @@ export default {
         slug: '',
         description: '',
         user_id: '',
+        organization_id: '',
         evaluation: '',
       })
     }
@@ -136,15 +138,18 @@ export default {
   methods: {
     loadData(){
       this.loading = true;
-      axios.get("api/group").then(({ data }) => 
-        (
+      this.$Progress.start();
+
+      axios.get("api/profile").then(({ data }) => (
+        this.user = data,
+        this.organization = data.organization,
+        this.groups = data.organization.groups,
         this.loading = false,
-        this.groups = data
-        )
-      ).catch(()=>{
+        this.$Progress.finish()
+      )).catch(() => {
+        this.$Progress.fail();
         this.loading = false;
       });
-      axios.get("api/profile").then(({ data }) => (this.user = data));
     },
     newModal(){
       this.editmode = false;
@@ -155,6 +160,7 @@ export default {
       this.$Progress.start();
 
       this.form.user_id = this.user.id;
+      this.form.organization_id = this.organization.id;
 
       this.form.post('api/group')
       .then(()=>{
@@ -163,7 +169,7 @@ export default {
 
         toast({
           type: 'success',
-          title: 'Groupo creado correctamente.'
+          title: 'Grupo creado correctamente.'
         })
         this.$Progress.finish();
       })

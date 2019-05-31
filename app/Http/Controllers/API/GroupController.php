@@ -24,7 +24,7 @@ class GroupController extends Controller
   */
   public function index()
   {
-    return Group::with('user')->latest()->get();
+    return Group::with('user')->with('organization')->latest()->get();
   }
 
   /**
@@ -46,6 +46,7 @@ class GroupController extends Controller
       'slug' => $request['slug'],
       'description' => $request['description'],
       'user_id' => $request['user_id'],
+      'organization_id' => $request['organization_id'],
       'evaluation' => $request['evaluation'],
     ]);
   }

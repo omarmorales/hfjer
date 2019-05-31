@@ -15,6 +15,7 @@ class CreateYTT2DraftsTable extends Migration
     {
         Schema::create('y_t_t2_drafts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('age')->nullable();
 
             $table->string('folio')->nullable();
             $table->integer('beneficiary_id')->unsigned();

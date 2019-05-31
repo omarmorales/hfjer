@@ -91,7 +91,7 @@
 
 
 
-    <!-- <div class="row" v-show="beneficiary.group.evaluation == 'yttv1'">
+    <div class="row" v-show="group.evaluation == 'yttv1'">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
@@ -103,15 +103,15 @@
                 <thead>
                   <tr>
                     <th>
-                      <span class="table-headers">#</span> 
+                      <span class="">#</span> 
                     </th>
                     <th class="">
-                      <span class="table-headers">Puntuación nivel de riesgo general</span>
+                      <span class="">Puntuación nivel de riesgo general</span>
                     </th>
                     <th class="">Nivel de riesgo general</th>
                     <th>Puntuación nivel de propensión a conductas violentas</th>
                     <th class="">
-                      <span class="table-headers">Nivel de propensión a conductas violentas</span>
+                      <span class="">Nivel de propensión a conductas violentas</span>
                     </th>
                     <th>Puntuación nivel de exposición a la violencia</th>
                     <th class="">Nivel de exposición a la violencia</th>
@@ -155,8 +155,8 @@
             </div>
           </div>
         </div>
-      </div> -->
-
+      </div>
+    </div>
 
 
   </div>
@@ -172,6 +172,17 @@
     },
     methods: {
       sendToEvaluation(beneficiary) {
+        let today = new Date();
+        let birthdate = beneficiary.birthdate;
+        let date_array = birthdate.split('-');
+        let birthDate_calc = new Date(date_array[0],date_array[1],date_array[2]);
+        let b_age = today.getFullYear() - birthDate_calc.getFullYear();
+        let m = today.getMonth() - birthDate_calc.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate_calc.getDate())) {
+            b_age--;
+        }
+
+
         if(beneficiary.ytt1_draft || beneficiary.ytt2_draft){
             swal({
             title: 'Tienes un borrador',
@@ -191,7 +202,7 @@
                 '',
                 'info'
               )
-              this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
+              this.$router.push({name: 'Evaluation', params: {group:this.$route.params.group,user:beneficiary.folio,age:b_age}});
             } else if (result.dismiss === 'cancel') {
               if(beneficiary.ytt1_draft){
                 axios.delete(`/api/ytt1draft/${beneficiary.ytt1_draft.id}`, {data: { id: beneficiary.ytt1_draft.id}}).then(()=>{
@@ -214,11 +225,11 @@
                   swal("Error", "Algo salió mal.", "warning");
                 });
               }
-              this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
+              this.$router.push({name: 'Evaluation', params: {group:this.$route.params.group,user:beneficiary.folio,age:b_age}});
             }
           })
         } else {
-          this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
+          this.$router.push({name: 'Evaluation', params: {group:this.$route.params.group,user:beneficiary.folio,age:b_age}});
         }
       }
     },

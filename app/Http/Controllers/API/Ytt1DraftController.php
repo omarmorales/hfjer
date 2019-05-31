@@ -96,6 +96,7 @@ class Ytt1DraftController extends Controller
         )/(11*3)*10;
     
         return YTT1Draft::create([
+        'age' => $request['age'],
         'folio' => $request['folio'],
         'beneficiary_id' => $request['beneficiary_id'],
         'answer1' => $request['answer1'],
@@ -232,6 +233,7 @@ class Ytt1DraftController extends Controller
         )/(11*3)*10;
 
         $draft->update([
+        'age' => $request['age'],
         'folio' => $request['folio'],
         'beneficiary_id' => $request['beneficiary_id'],
         'answer1' => $request['answer1'],

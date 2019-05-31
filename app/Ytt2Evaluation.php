@@ -11,6 +11,7 @@ class Ytt2Evaluation extends Model
 
   protected $fillable = [
       'folio',
+      'age',
       'beneficiary_id',
       'answer1',
       'answer2',

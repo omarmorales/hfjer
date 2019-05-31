@@ -1,303 +1,193 @@
-<template lang="html">
+<template>
   <div class="container">
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item">
-                <router-link to="/overview">Inicio</router-link>
-              </li>
-              <li class="breadcrumb-item active">
-                Reporte global
-              </li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="m-0 text-dark text-center mt-4">
-          Reporte global
-        </h1>
+    <div class="row content-header" v-if="loading" style="height: 100vh">
+      <div class="col-md-12 text-center">
+        <p>
+          <i class="fas fa-spinner fa-pulse fa-4x"></i>
+        </p>
+        <p class="h4">Cargando...</p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="">Grupo</label>
-          <select class="form-control" id="group" v-model="group">
-            <option v-for="group in groups" :key="group.id" v-show="group.user_id == user.id" :value="group.id">{{ group.name }}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="">Número de toma</label>
-          <select class="form-control" id="group" v-model="take">
-            <option value="1">Toma 1</option>
-            <option value="2">Toma 2</option>
-          </select>
-        </div>
-        <div class="form-group" v-show="group == 1 && take == 1">
-          <button class="btn btn-primary" @click="generateReportOne">Generar reporte</button>
-        </div>
-        <div class="form-group" v-show="group == 1 && take == 2">
-          <button class="btn btn-primary" @click="generateReportTwo">Generar reporte</button>
-        </div>
-      </div>
-    </div>
-    <div class="row" v-show="report_one">
-      <div class="col-md-12">
-        <p class="h5">Descripción de la población</p>
-      </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Género</th>
-                        <th>Cantidad</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Masculino</td>
-                        <td>1</td>
-                      </tr>
-                      <tr>
-                        <td>Femenino</td>
-                        <td>1</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <piechart-component :height="150" />
-              </div>
+    <div v-else>
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-12">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item active">Reporte global</li>
+              </ol>
             </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="font-weight-bolder text-uppercase text-center">
+            <i class="fas fa-chart-bar"></i>
+            Reporte global de {{ user.organization.name }}
+          </h3>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="">Seleccionar grupo de personas beneficiarias</label>
+            <select class="form-control" id="group" v-model="group_selected" @change="getBeneficiaries()">
+              <option v-for="group in groups" :key="group.id" :value="group">{{ group.name }}</option>
+            </select>
+          </div>
+          <div class="form-group" v-show="group_selected">
+            <label for="">Versión de la herramienta</label>
+            <input type="text" :value="group_selected.evaluation" readonly class="form-control">
+          </div>
+          <div class="form-group" v-if="group_selected">
+            <label for="">Seleccionar toma</label>
+            <select class="form-control" id="take" v-model="take_selected" @change="showBtn()">
+              <option v-for="(take, index) in max_takes" :value="take">{{ take }}</option>
+            </select>
+          </div>
+          <div class="form-group" v-show="resultsBtn">
+            <button class="btn btn-primary" @click="showData">Obtener datos</button>
           </div>
         </div>
       </div>
-      <div class="col-md-12">
-        <p class="h5">Población desagregada por grupo etario</p>
-      </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Grupo etario</th>
-                        <th>Cantidad</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>>24</td>
-                        <td>2</td>
-                      </tr>
-                    </tbody>
-                  </table>
+      <div class="row">
+        <div id="yttv1" class="col-md-12" v-if="yttv1_data_selected == true">
+          hola
+        </div>
+        <div id="yttv2" class="col-md-12" v-if="yttv2_data_selected == true">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p class="font-weight-bolder h2">{{ total_beneficiaries_with_take_selected.length }}</p>
+                  <p>Muestra total</p>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <piechart-component2 :height="150" />
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <p class="h5">Resultados globales</p>
-      </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Nivel de riesgo</th>
-                        <th>Resultado</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Alto</td>
-                        <td>1</td>
-                      </tr>
-                      <tr>
-                        <td>Crítico</td>
-                        <td>1</td>
-                      </tr>
-                    </tbody>
-                  </table>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p class="font-weight-bolder h2">{{ total_beneficiaries_with_take_selected_female.length }}</p>
+                  <p>Mujer(es)</p>
                 </div>
               </div>
-              <div class="col-md-6">
-                <chart-component :height="150" />
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p class="font-weight-bolder h2">{{ total_beneficiaries_with_take_selected_male.length }}</p>
+                  <p>Hombre(s)</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p class="font-weight-bolder h2">{{ total_beneficiaries_with_take_selected_other.length }}</p>
+                  <p>Otro(s)</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row" v-show="report_two">
-      <div class="col-md-12">
-        <p class="h5">Descripción de la población</p>
-      </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Género</th>
-                        <th>Cantidad</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Masculino</td>
-                        <td>1</td>
-                      </tr>
-                      <tr>
-                        <td>Femenino</td>
-                        <td>1</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <piechart-component :height="150" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <p class="h5">Población desagregada por grupo etario</p>
-      </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Grupo etario</th>
-                        <th>Cantidad</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>>24</td>
-                        <td>2</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <piechart-component2 :height="150" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <p class="h5">Resultados globales</p>
-      </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Nivel de riesgo</th>
-                        <th>Resultado</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Bajo</td>
-                        <td>1</td>
-                      </tr>
-                      <tr>
-                        <td>Alto</td>
-                        <td>1</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <chart-component4 :height="150" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button v-if="report_one | report_two" type="button" class="btn btn-primary mb-3" name="button" @click.prevent="printme">
-      Imprimir
-      <i class="fas fa-print"></i>
-    </button>
   </div>
 </template>
 
 <script>
-export default {
-  data(){
-    return {
-      report_one: false,
-      report_two: false, 
-      group: '',
-      take: '',
-      user:[],
-      groups: {},
-    }
-  },
-  methods: {
-    generateReportOne() {
-      this.report_one = true;
-      this.report_two= false;
+  export default {
+    data(){
+      return{
+        yttv1_data_selected: false,
+        yttv2_data_selected: false,
+        resultsBtn: false,
+        loading: false,
+        groups: [],
+        max_takes: '',
+        take_selected: '',
+        group_selected: '',
+        user: '',
+        beneficiaries: '',
+        beneficiaries_takes: [],
+        total_beneficiaries_with_take_selected: '',
+        total_beneficiaries_with_take_selected_male: '',
+        total_beneficiaries_with_take_selected_female: '',
+        total_beneficiaries_with_take_selected_other: '',
+      }
     },
-    generateReportTwo() {
-      this.report_one = false;
-      this.report_two= true;
+    methods:{
+      showData(){
+        if (this.group_selected.evaluation == "yttv2"){
+          this.yttv1_data_selected = false;
+          this.yttv2_data_selected = true;
+          this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(beneficiary => beneficiary.ytt2_evaluations.length >= this.take_selected);
+          this.total_beneficiaries_with_take_selected_male = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "masculino");
+          this.total_beneficiaries_with_take_selected_female = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "femenino");
+          this.total_beneficiaries_with_take_selected_other = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "otro");
+        } else if (this.group_selected.evaluation == "yttv1"){
+          this.yttv1_data_selected = true;
+          this.yttv2_data_selected = false;
+          this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(beneficiary => beneficiary.ytt1_evaluations.length >= this.take_selected);
+          this.total_beneficiaries_with_take_selected_male = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "masculino");
+          this.total_beneficiaries_with_take_selected_female = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "femenino");
+          this.total_beneficiaries_with_take_selected_other = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "otro");
+        }
+      },
+      showBtn(){
+        if(this.take_selected){
+          this.resultsBtn = true
+        } else {
+          this.resultsBtn = false
+        }
+      },
+      getBeneficiaries(){
+        if(this.group_selected) {
+          this.beneficiaries = this.group_selected.beneficiaries.filter(beneficiary => beneficiary.birthdate !== null);
+          if(this.beneficiaries.length > 0){
+            if(this.group_selected.evaluation == "yttv2"){
+              this.beneficiaries_takes = this.beneficiaries.map(beneficiary => beneficiary.ytt2_evaluations.length);
+              this.max_takes = Math.max(...this.beneficiaries_takes);
+            } else if (this.group_selected.evaluation == "yttv1"){
+              this.beneficiaries_takes = this.beneficiaries.map(beneficiary => beneficiary.ytt1_evaluations.length);
+              this.max_takes = Math.max(...this.beneficiaries_takes);
+            }
+          } else{
+            toast({
+              type: 'error',
+              title: 'No se han creado tomas en este grupo.'
+            })
+            this.max_takes = '';
+            this.beneficiaries= '';
+            this.beneficiaries_takes= [];
+            this.yttv1_data_selected= false;
+            this.yttv2_data_selected= false;
+            this.resultsBtn = false;
+            this.take_selected = '';
+          }
+          
+          
+        }
+      },
+      loadUser(){
+        this.$Progress.start();
+        this.loading = true;
+        axios.get("api/profile").then(({ data }) => (
+          this.user = data,
+          this.groups = data.organization.groups,
+          this.$Progress.finish(),
+          this.loading = false
+        )).catch(() => {
+          this.loading = false;
+          this.$Progress.fail();
+        });
+      }
     },
-    printme() {
-        window.print();
+    created(){
+      this.loadUser();
     }
-  },
-  created(){
-    axios.get('/api/group/').then(({data}) => (this.groups = data));
-    axios.get("api/profile").then(({ data }) => (this.user = data));
   }
-}
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
+
 </style>

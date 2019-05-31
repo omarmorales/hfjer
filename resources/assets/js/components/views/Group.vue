@@ -250,6 +250,17 @@ export default {
       this.$router.push(`/group/${this.$route.params.group}/${folio}`)
     },
     sendToEvaluation(beneficiary) {
+      let today = new Date();
+      let birthdate = beneficiary.birthdate;
+      let date_array = birthdate.split('-');
+      let birthDate_calc = new Date(date_array[0],date_array[1],date_array[2]);
+      let b_age = today.getFullYear() - birthDate_calc.getFullYear();
+      let m = today.getMonth() - birthDate_calc.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate_calc.getDate())) {
+          b_age--;
+      }
+
+
       if(beneficiary.ytt1_draft || beneficiary.ytt2_draft){
           swal({
           title: 'Tienes un borrador',
@@ -269,7 +280,7 @@ export default {
               '',
               'info'
             )
-            this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
+            this.$router.push({name: 'Evaluation', params: {group:this.$route.params.group,user:beneficiary.folio,age:b_age}});
           } else if (result.dismiss === 'cancel') {
             if(beneficiary.ytt1_draft){
               axios.delete(`/api/ytt1draft/${beneficiary.ytt1_draft.id}`, {data: { id: beneficiary.ytt1_draft.id}}).then(()=>{
@@ -292,11 +303,11 @@ export default {
                 swal("Error", "Algo salió mal.", "warning");
               });
             }
-            this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
+            this.$router.push({name: 'Evaluation', params: {group:this.$route.params.group,user:beneficiary.folio,age:b_age}});
           }
         })
       } else {
-        this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
+        this.$router.push({name: 'Evaluation', params: {group:this.$route.params.group,user:beneficiary.folio,age:b_age}});
       }
     },
     printme(){

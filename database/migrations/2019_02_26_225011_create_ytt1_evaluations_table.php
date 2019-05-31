@@ -15,6 +15,7 @@ class CreateYtt1EvaluationsTable extends Migration
     {
         Schema::create('ytt1_evaluations', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('age')->nullable();
             $table->string('folio')->nullable();
             $table->integer('beneficiary_id')->unsigned();
 
