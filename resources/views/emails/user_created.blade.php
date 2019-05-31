@@ -7,7 +7,7 @@ Tu usuario es: {{ $email }}
 
 Contraseña: {{ $password }}
 
-@component('mail::button', ['url' => '134.209.64.16'])
+@component('mail::button', ['url' => URL::to('/')])
 Ir a la app
 @endcomponent
 

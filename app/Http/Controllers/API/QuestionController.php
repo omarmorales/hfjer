@@ -47,8 +47,12 @@ class QuestionController extends Controller
         $title = $request['title'];
         $description = $request['description'];
         $toEmail = "kperez@mexicojpv.org";
+        $otherEmail = ["falmanza@mexicojpv.org", "ytt@mexicojpv.org"];
 
-        Mail::to($toEmail)->send(new QuestionMail($user, $title, $description));
+
+        Mail::to($toEmail)
+            ->cc($otherEmail)
+            ->send(new QuestionMail($user, $title, $description));
     
         return Question::create([
             'title' => $request['title'],

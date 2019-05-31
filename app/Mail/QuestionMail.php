@@ -33,6 +33,6 @@ class QuestionMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.question');
+        return $this->subject('Duda sobre la YTT App')->markdown('emails.question');
     }
 }

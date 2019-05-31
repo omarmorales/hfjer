@@ -33,6 +33,6 @@ class UserCreatedMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.user_created');
+        return $this->subject('Usuario creado en YTT App')->markdown('emails.user_created');
     }
 }

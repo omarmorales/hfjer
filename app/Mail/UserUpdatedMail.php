@@ -33,6 +33,6 @@ class UserUpdatedMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.user_updated');
+        return $this->subject('Usuario Actualizado')->markdown('emails.user_updated');
     }
 }
