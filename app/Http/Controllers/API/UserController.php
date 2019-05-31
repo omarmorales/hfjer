@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserCreatedMail;
+use App\Mail\UserUpdatedMail;
 
 
 class UserController extends Controller
@@ -102,9 +103,14 @@ class UserController extends Controller
 
 
     if(!empty($request->password)){
+      $name_updated = $request['name'];
+      $email_updated = $request['email'];
+      $password_updated = $request['password'];
+
+      Mail::to($email_updated)->send(new UserUpdatedMail($name_updated, $email_updated, $password_updated));
+      
       $request->merge(['password' => Hash::make($request['password'])]);
     }
-
 
     $user->update($request->all());
     return ['message' => "Success"];

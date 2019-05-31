@@ -1,7 +1,7 @@
 @component('mail::message')
 # Hola {{ $name }},
 
-Se ha creado un usuario para ti en la aplicacion de la herramienta YTT.
+Se ha actualizado tu información.
 
 Tu usuario es: {{ $email }}
 

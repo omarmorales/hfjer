@@ -8,7 +8,7 @@ Titulo: {{ $title }}
 
 Descripcion: {{ $description }}
 
-@component('mail::button', ['url' => 'localhost:8000'])
+@component('mail::button', ['url' => '134.209.64.16'])
 Ir a la app
 @endcomponent
 
