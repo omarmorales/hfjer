@@ -47,14 +47,14 @@ Vue.use(VueProgressBar, {
 
 let routes = [
     { path: '/app', component: require('./components/views/App.vue') },
-    { path: '/group/:id/:f', name: 'Beneficiary', component: require('./components/views/Beneficiary.vue'), props: true },
+    { path: '/group/:group/:user', name: 'Beneficiary', component: require('./components/views/Beneficiary.vue'), props: true },
     { path: '/comparative_report', component: require('./components/views/ComparativeReport.vue') },
     { path: '/dashboard', component: require('./components/views/Dashboard.vue') },
     { path: '/developer', component: require('./components/views/Developer.vue') },
-    { path: '/group/:id/:f/evaluation', name: 'Evaluation', component: require('./components/views/Evaluation.vue'), props: true },
+    { path: '/group/:group/:user/evaluation', name: 'Evaluation', component: require('./components/views/Evaluation.vue'), props: true },
     { path: '/global_report', component: require('./components/views/GlobalReport.vue') },
     { path: '/home', component: require('./components/views/Home.vue') },
-    { path: '/group/:id', component: require('./components/views/Group.vue') },
+    { path: '/group/:group', component: require('./components/views/Group.vue') },
     { path: '/profile', component: require('./components/views/Profile.vue') },
     { path: '/progress_report', component: require('./components/views/ProgressReport.vue') },
     { path: '/resources-yttv1', component: require('./components/views/Resourcev1.vue') },

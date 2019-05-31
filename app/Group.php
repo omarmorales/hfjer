@@ -10,7 +10,7 @@ class Group extends Model
   use HasApiTokens;
 
   protected $fillable = [
-      'name', 'description', 'user_id', 'evaluation'
+      'name', 'slug', 'description', 'user_id', 'evaluation'
   ];
 
   public function user()

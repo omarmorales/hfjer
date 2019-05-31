@@ -1,5 +1,5 @@
-<template lang="html">
-  <div class="beneficiary">
+<template>
+  <div class="container">
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -9,7 +9,7 @@
                 <router-link to="/home">Grupos</router-link>
               </li>
               <li class="breadcrumb-item">
-                <router-link :to="'/group/'+beneficiary.group_id">{{ beneficiary.group.name }}</router-link>
+                <router-link :to="`/group/${$route.params.group}`">{{ $route.params.group }}</router-link>
               </li>
               <li class="breadcrumb-item active">{{ beneficiary.folio }}</li>
             </ol>
@@ -18,7 +18,7 @@
       </div><!-- /.container-fluid -->
     </section>
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-md-12">
         <h2 class="text-center font-weight-bolder text-uppercase">
           {{ beneficiary.folio }}
         </h2>
@@ -31,7 +31,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            Información general
+            <p class="card-title">Información general</p>
           </div>
           <div class="card-body">
             <div class="row">
@@ -71,7 +71,7 @@
                 <div class="form-group">
                   <label for="">Grupo</label>
                   <p>
-                    {{ beneficiary.group.name  }}
+                    {{ group.name  }}
                   </p>
                 </div>
               </div>
@@ -79,7 +79,7 @@
                 <div class="form-group">
                   <label for="">Herramienta</label>
                   <p>
-                    {{ beneficiary.group.evaluation  }}
+                    {{ group.evaluation  }}
                   </p>
                 </div>
               </div>
@@ -88,7 +88,10 @@
         </div>
       </div>
     </div>
-    <div class="row" v-show="beneficiary.group.evaluation == 'yttv1'">
+
+
+
+    <!-- <div class="row" v-show="beneficiary.group.evaluation == 'yttv1'">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
@@ -98,21 +101,21 @@
             <div class="table-responsive">
               <table class="table">
                 <thead>
-                  <col width="50">
-                  <col width="50">
-                  <col width="50">
-                  <col width="50">
-                  <col width="150">
-                  <col>
                   <tr>
-                    <th scope="col">#</th>
-                    <th>Puntuación nivel de riesgo general</th>
-                    <th scope="col">Nivel de riesgo general</th>
+                    <th>
+                      <span class="table-headers">#</span> 
+                    </th>
+                    <th class="">
+                      <span class="table-headers">Puntuación nivel de riesgo general</span>
+                    </th>
+                    <th class="">Nivel de riesgo general</th>
                     <th>Puntuación nivel de propensión a conductas violentas</th>
-                    <th scope="col">Nivel de propensión a conductas violentas</th>
+                    <th class="">
+                      <span class="table-headers">Nivel de propensión a conductas violentas</span>
+                    </th>
                     <th>Puntuación nivel de exposición a la violencia</th>
-                    <th scope="col">Nivel de exposición a la violencia</th>
-                    <th scope="col">Fecha de creación</th>
+                    <th class="">Nivel de exposición a la violencia</th>
+                    <th class="">Fecha de creación</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -152,125 +155,88 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div> -->
 
-    <div class="row" v-show="beneficiary.group.evaluation == 'yttv2'">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            Tomas
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Puntuación</th>
-                    <th scope="col">Nivel de riesgo general</th>
-                    <th scope="col">Fecha de creación</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(ytt2_evaluation, index) in beneficiary.ytt2_evaluations" v-show="ytt2_evaluation.beneficiary_id == beneficiary.id">
-                    <th scope="row">{{ index + 1 }}</th>
-                    <td>
-                      {{ ytt2_evaluation.risk_level }}
-                    </td>
-                    <td>
-                      <span class="badge badge-success" v-if="ytt2_evaluation.risk_level < 7">Bajo</span>
-                      <span class="badge badge-warning" v-else-if="ytt2_evaluation.risk_level < 13">Medio</span>
-                      <span class="badge badge-danger" v-else-if="ytt2_evaluation.risk_level < 20 ">Alto</span>
-                      <span class="badge badge-dark" v-else>Crítico</span>
-                    </td>
-                    <td>{{ ytt2_evaluation.created_at | myDate }}</td>
-                    <td>
-                      <a href="#">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row" v-show="beneficiary.group.evaluation == 'yttv1'">
-      <div class="col-md-12">
 
-      </div>
-    </div>
+
   </div>
 </template>
 
 <script>
-export default {
-  data(){
-    return{
-      beneficiary: {},
-    }
-  },
-  methods: {
-    sendToEvaluation(beneficiary) {
-      if(beneficiary.ytt1_draft || beneficiary.ytt2_draft){
-          swal({
-          title: 'Tienes un borrador',
-          text: "¿Deseas continuar con los datos del borrador?",
-          type: 'info',
-          showCloseButton: true,
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Sí',
-          cancelButtonText: 'No',
-        }).then((result) => {
-          
-          if (result.value) {
-            swal(
-              'Continuar evaluación',
-              '',
-              'info'
-            )
-            this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
-          } else if (result.dismiss === 'cancel') {
-            if(beneficiary.ytt1_draft){
-              axios.delete(`/api/ytt1draft/${beneficiary.ytt1_draft.id}`, {data: { id: beneficiary.ytt1_draft.id}}).then(()=>{
-                swal(
-                  'Borrador eliminado!',
-                  '',
-                  'success'
-                )
-              }).catch(()=> {
-                swal("Error", "Algo salió mal.", "warning");
-              });
-            } else if (beneficiary.ytt2_draft) {
-              axios.delete(`/api/ytt2draft/${beneficiary.ytt2_draft.id}`, {data: { id: beneficiary.ytt2_draft.id}}).then(()=>{
-                swal(
-                  'Borrador eliminado!',
-                  '',
-                  'success'
-                )
-              }).catch(()=> {
-                swal("Error", "Algo salió mal.", "warning");
-              });
+  export default {
+    data() {
+        return {
+          beneficiary: {},
+          group: {},
+        }
+    },
+    methods: {
+      sendToEvaluation(beneficiary) {
+        if(beneficiary.ytt1_draft || beneficiary.ytt2_draft){
+            swal({
+            title: 'Tienes un borrador',
+            text: "¿Deseas continuar con los datos del borrador?",
+            type: 'info',
+            showCloseButton: true,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí',
+            cancelButtonText: 'No',
+          }).then((result) => {
+            
+            if (result.value) {
+              swal(
+                'Continuar evaluación',
+                '',
+                'info'
+              )
+              this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
+            } else if (result.dismiss === 'cancel') {
+              if(beneficiary.ytt1_draft){
+                axios.delete(`/api/ytt1draft/${beneficiary.ytt1_draft.id}`, {data: { id: beneficiary.ytt1_draft.id}}).then(()=>{
+                  swal(
+                    'Borrador eliminado!',
+                    '',
+                    'success'
+                  )
+                }).catch(()=> {
+                  swal("Error", "Algo salió mal.", "warning");
+                });
+              } else if (beneficiary.ytt2_draft) {
+                axios.delete(`/api/ytt2draft/${beneficiary.ytt2_draft.id}`, {data: { id: beneficiary.ytt2_draft.id}}).then(()=>{
+                  swal(
+                    'Borrador eliminado!',
+                    '',
+                    'success'
+                  )
+                }).catch(()=> {
+                  swal("Error", "Algo salió mal.", "warning");
+                });
+              }
+              this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
             }
-            this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
-          }
-        })
-      } else {
-        this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
+          })
+        } else {
+          this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
+        }
       }
+    },
+    created(){
+      axios.get('/api/beneficiary_by_folio/'+this.$route.params.user).then(({data}) => (
+        this.beneficiary = data,
+        this.group = data.group
+      ));
     }
-  },
-  created(){
-    axios.get('/api/beneficiary_by_folio/'+this.$route.params.f).then(({data}) => (this.beneficiary = data));
   }
-}
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+  .table-headers {
+      position: relative;
+      bottom: 1em;
+  }
+  .table-name {
+      min-width: 14rem !important;
+  }
 </style>

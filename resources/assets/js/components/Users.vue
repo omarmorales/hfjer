@@ -12,8 +12,8 @@
               <th>Rol</th>
               <th>Organizacion</th>
               <th>Fecha de registro</th>
-              <th></th>
-              <th></th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
 
 

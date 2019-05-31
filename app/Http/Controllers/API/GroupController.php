@@ -37,11 +37,13 @@ class GroupController extends Controller
   {
     $this->validate($request,[
       'name' => 'required|string',
-      'description' => 'required',
+      'slug' => 'required|unique:groups|alpha_dash',
+      'evaluation' => 'required',
     ]);
 
     return Group::create([
       'name' => $request['name'],
+      'slug' => $request['slug'],
       'description' => $request['description'],
       'user_id' => $request['user_id'],
       'evaluation' => $request['evaluation'],
@@ -72,7 +74,8 @@ class GroupController extends Controller
 
     $this->validate($request,[
       'name' => 'required|string',
-      'description' => 'required',
+      'slug' => 'required|unique:groups|alpha_dash',
+      'evaluation' => 'required',
     ]);
 
     $group->update($request->all());
@@ -99,5 +102,13 @@ class GroupController extends Controller
     $group = Group::find($id);
     $pdf = PDF::loadView('pdf.invoice', compact('group'));
     return $pdf->download('details.pdf');
+  }
+
+  public function groupbyslug($slug)
+  {
+    $groupSelected = Group::with('beneficiaries')->with('user')->where('slug', $slug)->first();
+    if (!$groupSelected)
+            return abort(404);
+    return $groupSelected;
   }
 }

@@ -1108,7 +1108,7 @@ export default {
     loadData(){
       this.formYTTv1.reset();
       this.formYTTv2.reset();
-      axios.get(`/api/beneficiary_by_folio/${this.$route.params.f}`).then(({data}) => {
+      axios.get(`/api/beneficiary_by_folio/${this.$route.params.user}`).then(({data}) => {
         if (data.ytt1_draft) this.formYTTv1.fill(data.ytt1_draft);
         if (data.ytt2_draft) this.formYTTv2.fill(data.ytt2_draft);
         this.beneficiary_selected = data;
@@ -1155,7 +1155,7 @@ export default {
       this.formYTTv1.post('/api/ytt1evaluation').then(()=>{
         Fire.$emit('AfterCreate');
         this.formYTTv1.reset();
-        this.$router.push(`/group/${this.$route.params.id}/${this.$route.params.f}`)
+        this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
         toast({
           type: 'success',
           title: 'Evaluación YTT v1 creada con éxito.'
@@ -1173,7 +1173,7 @@ export default {
       this.formYTTv2.post('/api/ytt2evaluation').then(()=>{
         Fire.$emit('AfterCreate');
         this.formYTTv1.reset();
-        this.$router.push(`/group/${this.$route.params.id}/${this.$route.params.f}`)
+        this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
         toast({
           type: 'success',
           title: 'Evaluación YTT v2 creada con éxito.'

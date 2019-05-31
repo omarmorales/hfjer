@@ -34,7 +34,7 @@
           <div class="card text-center" style="height:100%;">
             <div class="card-body text-center">
               <h3 class="display-6 font-weight-bolder">
-                <router-link :to="'/group/'+group.id" class="text-decoration-none text-reset">
+                <router-link :to="'/group/'+group.slug" class="text-decoration-none text-reset">
                   {{ group.name }}
                 </router-link>
               </h3>
@@ -75,6 +75,13 @@
                   placeholder="Nombre de la grupo"
                   class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
                   <has-error :form="form" field="name"></has-error>
+                </div>
+
+                <div class="form-group">
+                  <input v-model="form.slug" type="text" name="slug"
+                  placeholder="Identificador único"
+                  class="form-control" :class="{ 'is-invalid': form.errors.has('slug') }">
+                  <has-error :form="form" field="slug"></has-error>
                 </div>
 
                 <div class="form-group">
@@ -119,6 +126,7 @@ export default {
       form: new Form({
         id: '',
         name : '',
+        slug: '',
         description: '',
         user_id: '',
         evaluation: '',

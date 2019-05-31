@@ -25,6 +25,7 @@ Route::put('profile', 'API\UserController@updateProfile');
 Route::apiResources(['organization' => 'API\OrganizationController']);
 
 Route::apiResources(['group' => 'API\GroupController']);
+Route::get('group_by_slug/{slug}', 'API\GroupController@groupbyslug');
 
 Route::apiResources(['beneficiary' => 'API\BeneficiaryController']);
 Route::get('beneficiary_by_folio/{folio}', 'API\BeneficiaryController@beneficiarybyfolio');

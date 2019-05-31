@@ -13,11 +13,11 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-12">
-              <ol class="breadcrumb float-sm-right">
+              <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                   <router-link to="/home">Grupos</router-link>
                 </li>
-                <li class="breadcrumb-item active">{{ group.name }}</li>
+                <li class="breadcrumb-item active">{{ group.slug }}</li>
               </ol>
             </div>
           </div>
@@ -55,7 +55,7 @@
                         <span class="table-headers">Folio</span>
                         
                       </th>
-                      <th scope="col">
+                      <th class="table-name" scope="col">
                         <span class="table-headers">Nombre</span>
                       </th>
                       <th scope="col" class="text-center">
@@ -70,7 +70,7 @@
                       <th scope="col" class="text-center">
                         <span class="table-headers">Estatus</span>
                       </th>
-                      <th>
+                      <th class="text-center">
                         Nueva toma
                       </th>
                       <th>
@@ -83,7 +83,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="beneficiary in beneficiaries" v-show="beneficiary.group_id == group.id">
+                    <tr v-for="beneficiary in group.beneficiaries" v-show="beneficiary.group_id == group.id">
                       <th>
                         <span v-if="beneficiary.birthdate">
                           {{ beneficiary.folio }}
@@ -121,22 +121,22 @@
                           <i class="fas fa-exclamation-circle text-danger"></i>
                         </span>
                       </td>
-                      <td>
+                      <td class="text-center">
                         <a class="pointer" @click="sendToEvaluation(beneficiary)">
                           <i class="fas fa-file-invoice" style="color:black;"></i>
                         </a>
                       </td>
-                      <td>
+                      <td class="text-center">
                         <a class="pointer" @click="sendToBeneficiary(beneficiary.folio)">
                           <i class="fa fa-chart-line" style="color:grey;"></i>
                         </a>
                       </td>
-                      <td>
+                      <td class="text-center">
                         <a href="#" @click="editModal(beneficiary)">
                           <i class="fa fa-edit blue"></i>
                         </a>
                       </td>
-                      <td v-if="$gate.isAdminOrAuthor()">
+                      <td class="text-center" v-if="$gate.isAdminOrAuthor()">
                         <a href="#" @click="deleteBeneficiary(beneficiary.id)">
                           <i class="fa fa-trash red"></i>
                         </a>
@@ -145,9 +145,6 @@
                   </tbody>
                 </table>
               </div>
-            </div>
-            <div class="card-footer">
-
             </div>
           </div>
           <button type="button" class="btn btn-primary mb-3" name="button" @click.prevent="printme">
@@ -234,10 +231,8 @@ export default {
   data(){
     return{
       loading: false,
-      beneficiary_selected: {},
       editmode: false,
       group:[],
-      beneficiaries:{},
       form: new Form({
         id: '',
         lastname_one : '',
@@ -252,7 +247,7 @@ export default {
   },
   methods:{
     sendToBeneficiary(folio){
-      this.$router.push(`/group/${this.$route.params.id}/${folio}`)
+      this.$router.push(`/group/${this.$route.params.group}/${folio}`)
     },
     sendToEvaluation(beneficiary) {
       if(beneficiary.ytt1_draft || beneficiary.ytt2_draft){
@@ -274,7 +269,7 @@ export default {
               '',
               'info'
             )
-            this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
+            this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
           } else if (result.dismiss === 'cancel') {
             if(beneficiary.ytt1_draft){
               axios.delete(`/api/ytt1draft/${beneficiary.ytt1_draft.id}`, {data: { id: beneficiary.ytt1_draft.id}}).then(()=>{
@@ -297,11 +292,11 @@ export default {
                 swal("Error", "Algo salió mal.", "warning");
               });
             }
-            this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
+            this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
           }
         })
       } else {
-        this.$router.push(`/group/${this.$route.params.id}/${beneficiary.folio}/evaluation`)
+        this.$router.push(`/group/${this.$route.params.group}/${beneficiary.folio}/evaluation`)
       }
     },
     printme(){
@@ -309,11 +304,16 @@ export default {
     },
     loadData(){
       this.loading = true;
-      axios.get('/api/group/'+this.$route.params.id).then(({data}) => (this.group = data));
-      axios.get('/api/beneficiary/').then(({data}) => (
-        this.beneficiaries = data,
+      axios.get(`/api/group_by_slug/${this.$route.params.group}`)
+      .then(({data}) => (
+        this.group = data,
         this.loading = false
       )).catch(()=>{
+        this.$Progress.fail();
+        toast({
+          type: 'error',
+          title: 'Error al cargar datos.'
+        })
         this.loading = false;
       });
     },
@@ -415,5 +415,8 @@ export default {
 .table-headers {
   position: relative;
     bottom: 1em;
+}
+.table-name {
+  min-width: 14rem !important;
 }
 </style>
