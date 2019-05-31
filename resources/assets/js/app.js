@@ -46,22 +46,22 @@ Vue.use(VueProgressBar, {
   })
 
 let routes = [
-    { path: '/dashboard', component: require('./components/Dashboard.vue') },
-    { path: '/developer', component: require('./components/Developer.vue') },
-    { path: '/home', component: require('./components/Home.vue') },
-    { path: '/group/:id', component: require('./components/Group.vue') },
-    { path: '/group/:id/:f', name: 'Beneficiary', component: require('./components/Beneficiary.vue'), props: true },
-    { path: '/group/:id/:f/evaluation', name: 'Evaluation', component: require('./components/Evaluation.vue'), props: true },
-    { path: '/evaluation/:id', name: 'ShowEvaluation', component: require('./components/ShowEvaluation.vue'), props: true },
-    { path: '/app', component: require('./components/App.vue') },
-    { path: '/profile', component: require('./components/Profile.vue') },
-    { path: '/global_report', component: require('./components/GlobalReport.vue') },
-    { path: '/comparative_report', component: require('./components/ComparativeReport.vue') },
-    { path: '/progress_report', component: require('./components/ProgressReport.vue') },
-    { path: '/resources-yttv1', component: require('./components/Resourcev1.vue') },
-    { path: '/resources-yttv2', component: require('./components/Resourcev2.vue') },
-    { path: '*', component: require('./components/NotFound.vue') }
-  ]
+    { path: '/app', component: require('./components/views/App.vue') },
+    { path: '/group/:id/:f', name: 'Beneficiary', component: require('./components/views/Beneficiary.vue'), props: true },
+    { path: '/comparative_report', component: require('./components/views/ComparativeReport.vue') },
+    { path: '/dashboard', component: require('./components/views/Dashboard.vue') },
+    { path: '/developer', component: require('./components/views/Developer.vue') },
+    { path: '/group/:id/:f/evaluation', name: 'Evaluation', component: require('./components/views/Evaluation.vue'), props: true },
+    { path: '/global_report', component: require('./components/views/GlobalReport.vue') },
+    { path: '/home', component: require('./components/views/Home.vue') },
+    { path: '/group/:id', component: require('./components/views/Group.vue') },
+    { path: '/profile', component: require('./components/views/Profile.vue') },
+    { path: '/progress_report', component: require('./components/views/ProgressReport.vue') },
+    { path: '/resources-yttv1', component: require('./components/views/Resourcev1.vue') },
+    { path: '/resources-yttv2', component: require('./components/views/Resourcev2.vue') },
+    { path: '/evaluation/:id', name: 'ShowEvaluation', component: require('./components/views/ShowEvaluation.vue'), props: true },
+    { path: '*', component: require('./components/extra/NotFound.vue') }
+]
 
 const router = new VueRouter({
     mode: 'history',
@@ -105,7 +105,7 @@ Vue.component(
 
 Vue.component(
     'not-found',
-    require('./components/NotFound.vue')
+    require('./components/extra/NotFound.vue')
 );
 
 Vue.component('chart-component', require('./components/ChartComponent.vue'));
@@ -122,7 +122,7 @@ Vue.component('chart-component4', require('./components/ChartComponent4.vue'));
 
 Vue.component('users', require('./components/Users.vue'));
 
-Vue.component('help-desk', require('./components/HelpDesk.vue'));
+Vue.component('help-desk', require('./components/extra/HelpDesk.vue'));
 
 const app = new Vue({
     el: '#app',
