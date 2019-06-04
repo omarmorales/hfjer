@@ -120,7 +120,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(ytt1_evaluation, index) in beneficiary.ytt1_evaluations" v-show="ytt1_evaluation.beneficiary_id == beneficiary.id">
+                  <tr v-for="(ytt1_evaluation, index) in beneficiary.ytt1_evaluations" :key="index" v-show="ytt1_evaluation.beneficiary_id == beneficiary.id">
                     <th scope="row">{{ index + 1 }}</th>
                     <td class="text-center">{{ ytt1_evaluation.risk_level }}</td>
                     <td class="text-center">

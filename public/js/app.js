@@ -4674,19 +4674,6 @@
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(15);
-module.exports.easing = __webpack_require__(287);
-module.exports.canvas = __webpack_require__(288);
-module.exports.options = __webpack_require__(289);
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -4795,13 +4782,26 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(15);
+module.exports.easing = __webpack_require__(287);
+module.exports.canvas = __webpack_require__(288);
+module.exports.options = __webpack_require__(289);
+
+
+/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 module.exports = {
 	/**
@@ -5441,7 +5441,7 @@ module.exports = {
 
 
 var color = __webpack_require__(155);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 function interpolate(start, view, model, ease) {
 	var keys = Object.keys(model);
@@ -5603,7 +5603,7 @@ var VueCharts = {
 
 
 var defaults = __webpack_require__(3);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var layouts = __webpack_require__(12);
 
 module.exports = {
@@ -5693,7 +5693,7 @@ module.exports = g;
 "use strict";
 
 
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 function filterByPosition(array, position) {
 	return helpers.where(array, function(v) {
@@ -6121,7 +6121,7 @@ module.exports = {
 
 var defaults = __webpack_require__(3);
 var Element = __webpack_require__(7);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var Ticks = __webpack_require__(14);
 
 defaults._set('scale', {
@@ -7060,7 +7060,7 @@ module.exports = Element.extend({
 "use strict";
 
 
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 /**
  * Namespace to hold static tick generation functions
@@ -33476,7 +33476,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(264)
 /* template */
@@ -34068,7 +34068,7 @@ Object.defineProperty(exports.prototype, 'chartInstance', {
 
 
 var defaults = __webpack_require__(3);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('global', {
 	animation: {
@@ -34202,7 +34202,7 @@ module.exports = {
 "use strict";
 
 
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 /**
  * Helper function to get relative position for an event
@@ -34539,7 +34539,7 @@ module.exports = {
 "use strict";
 
 
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var basic = __webpack_require__(299);
 var dom = __webpack_require__(300);
 
@@ -34621,7 +34621,7 @@ module.exports = helpers.extend({
 
 
 var defaults = __webpack_require__(3);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('global', {
 	plugins: {}
@@ -35011,7 +35011,7 @@ module.exports = {
 
 var defaults = __webpack_require__(3);
 var Element = __webpack_require__(7);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('global', {
 	tooltips: {
@@ -35987,7 +35987,7 @@ exports.positioners = positioners;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(163);
-module.exports = __webpack_require__(356);
+module.exports = __webpack_require__(376);
 
 
 /***/ }),
@@ -36095,6 +36095,11 @@ Vue.component('chart-component4', __webpack_require__(346));
 Vue.component('users', __webpack_require__(348));
 
 Vue.component('help-desk', __webpack_require__(351));
+
+Vue.component('global-report-ytt', __webpack_require__(356));
+Vue.component('population-global-report', __webpack_require__(361));
+Vue.component('age-group-global-report', __webpack_require__(366));
+Vue.component('risk-level-global-report', __webpack_require__(371));
 
 var app = new Vue({
     el: '#app',
@@ -78824,7 +78829,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(198)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(201)
 /* template */
@@ -79743,7 +79748,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(204)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(206)
 /* template */
@@ -80287,7 +80292,8 @@ var render = function() {
                               expression:
                                 "ytt1_evaluation.beneficiary_id == beneficiary.id"
                             }
-                          ]
+                          ],
+                          key: index
                         },
                         [
                           _c("th", { attrs: { scope: "row" } }, [
@@ -80481,7 +80487,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(209)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(211)
 /* template */
@@ -81314,7 +81320,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(214)
 /* template */
@@ -81409,7 +81415,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(217)
 /* template */
@@ -81520,7 +81526,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(220)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(222)
 /* template */
@@ -83503,7 +83509,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(225)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(227)
 /* template */
@@ -83658,210 +83664,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -83878,14 +83680,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       beneficiaries: '',
       beneficiaries_takes: [],
       total_beneficiaries_with_take_selected: '',
-      beneficiaries_with_take_selected: [],
-      ages_of_beneficiaries_selected: [],
-      risk_level_of_beneficiaries_selected: [],
-      gender: {
-        male: '',
-        female: '',
-        other: ''
-      },
+      ages_of_beneficiaries_selected: '',
+      risk_level_of_beneficiaries_selected: '',
       age_group: {
         less_than_11: '',
         between_12_and_15: '',
@@ -83893,6 +83689,13 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         between_20_and_23: '',
         more_than_24: ''
       },
+
+      gender: {
+        male: '',
+        female: '',
+        other: ''
+      },
+
       risk_level: {
         low: '',
         medium: '',
@@ -83909,22 +83712,15 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       if (this.group_selected.evaluation == "yttv2") {
         this.yttv1_data_selected = false;
         this.yttv2_data_selected = true;
+
         this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(function (beneficiary) {
           return beneficiary.ytt2_evaluations.length >= _this.take_selected;
         });
-
+        this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
+          return beneficiary.ytt2_evaluations[_this.take_selected - 1].age;
+        });
         this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
           return beneficiary.ytt2_evaluations[_this.take_selected - 1].risk_level;
-        });
-
-        this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "masculino";
-        });
-        this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "femenino";
-        });
-        this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "otro";
         });
 
         this.age_group.less_than_11 = this.ages_of_beneficiaries_selected.filter(function (age) {
@@ -83941,6 +83737,16 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         });
         this.age_group.more_than_24 = this.ages_of_beneficiaries_selected.filter(function (age) {
           return age >= 24;
+        });
+
+        this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "masculino";
+        });
+        this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "femenino";
+        });
+        this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "otro";
         });
 
         this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
@@ -83953,27 +83759,20 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           return risk_level >= 14 && risk_level <= 20;
         });
         this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 24;
+          return risk_level >= 21;
         });
       } else if (this.group_selected.evaluation == "yttv1") {
         this.yttv1_data_selected = true;
         this.yttv2_data_selected = false;
+
         this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(function (beneficiary) {
           return beneficiary.ytt1_evaluations.length >= _this.take_selected;
         });
-
         this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
           return beneficiary.ytt1_evaluations[_this.take_selected - 1].age;
         });
-
-        this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "masculino";
-        });
-        this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "femenino";
-        });
-        this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "otro";
+        this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
+          return beneficiary.ytt1_evaluations[_this.take_selected - 1].risk_level;
         });
 
         this.age_group.less_than_11 = this.ages_of_beneficiaries_selected.filter(function (age) {
@@ -83990,6 +83789,29 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         });
         this.age_group.more_than_24 = this.ages_of_beneficiaries_selected.filter(function (age) {
           return age >= 24;
+        });
+
+        this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "masculino";
+        });
+        this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "femenino";
+        });
+        this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "otro";
+        });
+
+        this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+          return risk_level < 7;
+        });
+        this.risk_level.medium = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+          return risk_level >= 8 && risk_level <= 13;
+        });
+        this.risk_level.high = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+          return risk_level >= 14 && risk_level <= 20;
+        });
+        this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+          return risk_level >= 21;
         });
       }
     },
@@ -84208,9 +84030,11 @@ var render = function() {
                         }
                       },
                       _vm._l(_vm.max_takes, function(take, index) {
-                        return _c("option", { domProps: { value: take } }, [
-                          _vm._v(_vm._s(take))
-                        ])
+                        return _c(
+                          "option",
+                          { key: index, domProps: { value: take } },
+                          [_vm._v(_vm._s(take))]
+                        )
                       }),
                       0
                     )
@@ -84244,293 +84068,24 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm.yttv1_data_selected == true
-              ? _c(
-                  "div",
-                  { staticClass: "col-md-12", attrs: { id: "yttv1" } },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.total_beneficiaries_with_take_selected
-                                    .length
-                                )
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Población total")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.female.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Mujer(es)")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.male.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Hombre(s)")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.other.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Otro(s)")])
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col md-12" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "card-body" }, [
-                            _c("div", { staticClass: "table-responsive" }, [
-                              _c("table", { staticClass: "table" }, [
-                                _vm._m(3),
-                                _vm._v(" "),
-                                _c("tbody", [
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("<11"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.less_than_11.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("12-15"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_12_and_15.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("16-19"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_16_and_19.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("20-23"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_20_and_23.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s(">=24"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.more_than_24.length
-                                        )
-                                      )
-                                    ])
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(4)
-                  ]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.yttv2_data_selected == true
-              ? _c(
-                  "div",
-                  { staticClass: "col-md-12", attrs: { id: "yttv2" } },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.total_beneficiaries_with_take_selected
-                                    .length
-                                )
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Población total")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.female.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Mujer(es)")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.male.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Hombre(s)")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.other.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Otro(s)")])
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col md-12" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _vm._m(5),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "card-body" }, [
-                            _c("div", { staticClass: "table-responsive" }, [
-                              _c("table", { staticClass: "table" }, [
-                                _vm._m(6),
-                                _vm._v(" "),
-                                _c("tbody", [
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("<11"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.less_than_11.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("12-15"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_12_and_15.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("16-19"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_16_and_19.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("20-23"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_20_and_23.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s(">=24"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.more_than_24.length
-                                        )
-                                      )
-                                    ])
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(7)
-                  ]
-                )
-              : _vm._e()
-          ])
+          _c(
+            "div",
+            { staticClass: "row" },
+            [
+              _vm.yttv1_data_selected == true || _vm.yttv2_data_selected == true
+                ? _c("global-report-ytt", {
+                    attrs: {
+                      total_beneficiaries_with_take_selected:
+                        _vm.total_beneficiaries_with_take_selected,
+                      age_group: _vm.age_group,
+                      gender: _vm.gender,
+                      risk_level: _vm.risk_level
+                    }
+                  })
+                : _vm._e()
+            ],
+            1
+          )
         ])
   ])
 }
@@ -84562,110 +84117,6 @@ var staticRenderFns = [
         ])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("p", { staticClass: "card-title" }, [
-        _vm._v("Población desagregada por grupo etario")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Grupo etario")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Número")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("p", { staticClass: "card-title" }, [_vm._v("Nivel de riesgo")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "table-responsive" }, [
-              _c("table", { staticClass: "table" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Nivel")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Número")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody", [_c("tr", [_c("td"), _vm._v(" "), _c("td")])])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("p", { staticClass: "card-title" }, [
-        _vm._v("Población desagregada por grupo etario")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Grupo etario")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Número")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("p", { staticClass: "card-title" }, [_vm._v("Nivel de riesgo")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "table-responsive" }, [
-              _c("table", { staticClass: "table" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Nivel")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Número")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody", [_c("tr", [_c("td"), _vm._v(" "), _c("td")])])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -84686,7 +84137,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(230)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(232)
 /* template */
@@ -85549,7 +85000,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(235)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(237)
 /* template */
@@ -86909,7 +86360,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(240)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(242)
 /* template */
@@ -87510,7 +86961,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(245)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(247)
 /* template */
@@ -87797,7 +87248,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(250)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(252)
 /* template */
@@ -87974,7 +87425,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(255)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(257)
 /* template */
@@ -89602,7 +89053,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(260)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(262)
 /* template */
@@ -93455,7 +92906,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(267)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(269)
 /* template */
@@ -94474,7 +93925,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(272)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(274)
 /* template */
@@ -94795,7 +94246,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(277)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(279)
 /* template */
@@ -95585,7 +95036,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(282)
 /* template */
@@ -95891,7 +95342,7 @@ var Scatter = generateChart('scatter-chart', 'scatter');
  */
 var Chart = __webpack_require__(286)();
 
-Chart.helpers = __webpack_require__(1);
+Chart.helpers = __webpack_require__(2);
 
 // @todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!
 __webpack_require__(290)(Chart);
@@ -96654,7 +96105,7 @@ module.exports = {
 
 var color = __webpack_require__(155);
 var defaults = __webpack_require__(3);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var scaleService = __webpack_require__(9);
 
 module.exports = function() {
@@ -98480,7 +97931,7 @@ module.exports = {
 
 var defaults = __webpack_require__(3);
 var Element = __webpack_require__(7);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('global', {
 	elements: {
@@ -98594,7 +98045,7 @@ module.exports = Element.extend({
 
 var defaults = __webpack_require__(3);
 var Element = __webpack_require__(7);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 var globalDefaults = defaults.global;
 
@@ -98692,7 +98143,7 @@ module.exports = Element.extend({
 
 var defaults = __webpack_require__(3);
 var Element = __webpack_require__(7);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 var defaultColor = defaults.global.defaultColor;
 
@@ -99035,7 +98486,7 @@ module.exports = {
 
 
 
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 var EXPANDO_KEY = '$chartjs';
 var CSS_PREFIX = 'chartjs-';
@@ -99498,7 +98949,7 @@ helpers.removeEvent = removeEventListener;
 var Animation = __webpack_require__(156);
 var animations = __webpack_require__(157);
 var defaults = __webpack_require__(3);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var Interaction = __webpack_require__(158);
 var layouts = __webpack_require__(12);
 var platform = __webpack_require__(159);
@@ -100462,7 +99913,7 @@ module.exports = function(Chart) {
 "use strict";
 
 
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 module.exports = function(Chart) {
 
@@ -100798,7 +100249,7 @@ module.exports = function(Chart) {
 "use strict";
 
 
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var Scale = __webpack_require__(13);
 
 /**
@@ -101145,7 +100596,7 @@ module.exports = function() {
 
 
 var defaults = __webpack_require__(3);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var scaleService = __webpack_require__(9);
 var Ticks = __webpack_require__(14);
 
@@ -101343,7 +100794,7 @@ module.exports = function(Chart) {
 "use strict";
 
 
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var Scale = __webpack_require__(13);
 var scaleService = __webpack_require__(9);
 var Ticks = __webpack_require__(14);
@@ -101700,7 +101151,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(3);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var scaleService = __webpack_require__(9);
 var Ticks = __webpack_require__(14);
 
@@ -102241,7 +101692,7 @@ var moment = __webpack_require__(0);
 moment = typeof moment === 'function' ? moment : window.moment;
 
 var defaults = __webpack_require__(3);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var Scale = __webpack_require__(13);
 var scaleService = __webpack_require__(9);
 
@@ -103030,7 +102481,7 @@ module.exports = function() {
 
 var defaults = __webpack_require__(3);
 var elements = __webpack_require__(10);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('bar', {
 	hover: {
@@ -103518,7 +102969,7 @@ module.exports = function(Chart) {
 
 var defaults = __webpack_require__(3);
 var elements = __webpack_require__(10);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('bubble', {
 	hover: {
@@ -103698,7 +103149,7 @@ module.exports = function(Chart) {
 
 var defaults = __webpack_require__(3);
 var elements = __webpack_require__(10);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('doughnut', {
 	animation: {
@@ -104006,7 +103457,7 @@ module.exports = function(Chart) {
 
 var defaults = __webpack_require__(3);
 var elements = __webpack_require__(10);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('line', {
 	showLines: true,
@@ -104357,7 +103808,7 @@ module.exports = function(Chart) {
 
 var defaults = __webpack_require__(3);
 var elements = __webpack_require__(10);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('polarArea', {
 	scale: {
@@ -104619,7 +104070,7 @@ module.exports = function(Chart) {
 
 var defaults = __webpack_require__(3);
 var elements = __webpack_require__(10);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('radar', {
 	scale: {
@@ -104979,7 +104430,7 @@ module.exports.title = __webpack_require__(326);
 
 var defaults = __webpack_require__(3);
 var elements = __webpack_require__(10);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 
 defaults._set('global', {
 	plugins: {
@@ -105298,7 +104749,7 @@ module.exports = {
 
 var defaults = __webpack_require__(3);
 var Element = __webpack_require__(7);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var layouts = __webpack_require__(12);
 
 var noop = helpers.noop;
@@ -105881,7 +105332,7 @@ module.exports = {
 
 var defaults = __webpack_require__(3);
 var Element = __webpack_require__(7);
-var helpers = __webpack_require__(1);
+var helpers = __webpack_require__(2);
 var layouts = __webpack_require__(12);
 
 var noop = helpers.noop;
@@ -106136,7 +105587,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(328)
 /* template */
@@ -106208,7 +105659,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(330)
 /* template */
@@ -106280,7 +105731,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(332)
 /* template */
@@ -106360,7 +105811,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(334)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(336)
 /* template */
@@ -106553,7 +106004,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(339)
 /* template */
@@ -106642,7 +106093,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(341)
 /* template */
@@ -106718,7 +106169,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(343)
 /* template */
@@ -106794,7 +106245,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(345)
 /* template */
@@ -106870,7 +106321,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(347)
 /* template */
@@ -106959,7 +106410,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(349)
 /* template */
@@ -107743,7 +107194,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(352)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(354)
 /* template */
@@ -108031,6 +107482,867 @@ if (false) {
 
 /***/ }),
 /* 356 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(357)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(359)
+/* template */
+var __vue_template__ = __webpack_require__(360)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3edbeeca"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/GlobalReportYtt.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3edbeeca", Component.options)
+  } else {
+    hotAPI.reload("data-v-3edbeeca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 357 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(358);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("471ea54e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3edbeeca\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GlobalReportYtt.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3edbeeca\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GlobalReportYtt.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 358 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 359 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        total_beneficiaries_with_take_selected: Array,
+        age_group: Object,
+        gender: Object,
+        risk_level: Object
+    },
+    data: function data() {
+        return {};
+    },
+    methods: {},
+    created: function created() {}
+});
+
+/***/ }),
+/* 360 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "col-md-12" },
+    [
+      _c("population-global-report", {
+        attrs: {
+          gender: _vm.gender,
+          total_beneficiaries_with_take_selected:
+            _vm.total_beneficiaries_with_take_selected
+        }
+      }),
+      _vm._v(" "),
+      _c("age-group-global-report", { attrs: { age_group: _vm.age_group } }),
+      _vm._v(" "),
+      _c("risk-level-global-report", { attrs: { risk_level: _vm.risk_level } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3edbeeca", module.exports)
+  }
+}
+
+/***/ }),
+/* 361 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(362)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(364)
+/* template */
+var __vue_template__ = __webpack_require__(365)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3afd00ca"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/PopulationGlobalReport.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3afd00ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-3afd00ca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 362 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(363);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("c278169a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3afd00ca\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PopulationGlobalReport.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3afd00ca\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PopulationGlobalReport.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 363 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 364 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        total_beneficiaries_with_take_selected: Array,
+        gender: Object
+    },
+    data: function data() {
+        return {};
+    },
+    methods: {},
+    created: function created() {}
+});
+
+/***/ }),
+/* 365 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body text-center" }, [
+          _c("p", { staticClass: "font-weight-bolder h2" }, [
+            _vm._v(_vm._s(_vm.total_beneficiaries_with_take_selected.length))
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Población total")])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body text-center" }, [
+          _c("p", { staticClass: "font-weight-bolder h2" }, [
+            _vm._v(_vm._s(_vm.gender.female.length))
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Mujer(es)")])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body text-center" }, [
+          _c("p", { staticClass: "font-weight-bolder h2" }, [
+            _vm._v(_vm._s(_vm.gender.male.length))
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Hombre(s)")])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body text-center" }, [
+          _c("p", { staticClass: "font-weight-bolder h2" }, [
+            _vm._v(_vm._s(_vm.gender.other.length))
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Otro(s)")])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3afd00ca", module.exports)
+  }
+}
+
+/***/ }),
+/* 366 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(367)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(369)
+/* template */
+var __vue_template__ = __webpack_require__(370)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-622a26ce"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/AgeGroupGlobalReport.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-622a26ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-622a26ce", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 367 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(368);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("d0f49380", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-622a26ce\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AgeGroupGlobalReport.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-622a26ce\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AgeGroupGlobalReport.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 368 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 369 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        age_group: Object
+    },
+    data: function data() {
+        return {};
+    },
+    methods: {},
+    created: function created() {}
+});
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s("<11"))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.age_group.less_than_11.length))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s("12-15"))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(_vm.age_group.between_12_and_15.length))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s("16-19"))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(_vm.age_group.between_16_and_19.length))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s("20-23"))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(_vm.age_group.between_20_and_23.length))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s(">=24"))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.age_group.more_than_24.length))])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "card-title" }, [
+        _vm._v("Población desagregada por grupo etario")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Grupo etario")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Número")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-622a26ce", module.exports)
+  }
+}
+
+/***/ }),
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(372)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(374)
+/* template */
+var __vue_template__ = __webpack_require__(375)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-f0d654b6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/RiskLevelGlobalReport.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f0d654b6", Component.options)
+  } else {
+    hotAPI.reload("data-v-f0d654b6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(373);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("7be88b5a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f0d654b6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RiskLevelGlobalReport.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f0d654b6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RiskLevelGlobalReport.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 373 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 374 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        risk_level: Object
+    },
+    data: function data() {
+        return {};
+    },
+    methods: {},
+    created: function created() {}
+});
+
+/***/ }),
+/* 375 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("Bajo")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.risk_level.low.length))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Medio")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.risk_level.medium.length))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Alto")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.risk_level.high.length))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Critico")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.risk_level.critical.length))])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "card-title" }, [_vm._v("Nivel de riesgo")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Nivel")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Número")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f0d654b6", module.exports)
+  }
+}
+
+/***/ }),
+/* 376 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
