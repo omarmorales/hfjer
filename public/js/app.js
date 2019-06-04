@@ -31641,6 +31641,11 @@ Vue.component('users', __webpack_require__(291));
 
 Vue.component('help-desk', __webpack_require__(294));
 
+Vue.component('global-report-ytt', __webpack_require__(345));
+Vue.component('population-global-report', __webpack_require__(325));
+Vue.component('age-group-global-report', __webpack_require__(335));
+Vue.component('risk-level-global-report', __webpack_require__(340));
+
 var app = new Vue({
     el: '#app',
     router: router,
@@ -75985,7 +75990,8 @@ var render = function() {
                               expression:
                                 "ytt1_evaluation.beneficiary_id == beneficiary.id"
                             }
-                          ]
+                          ],
+                          key: index
                         },
                         [
                           _c("th", { attrs: { scope: "row" } }, [
@@ -79199,13 +79205,13 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(315)
+  __webpack_require__(209)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(211)
 /* template */
-var __vue_template__ = __webpack_require__(317)
+var __vue_template__ = __webpack_require__(212)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -79244,8 +79250,46 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 209 */,
-/* 210 */,
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(210);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("33f66baa", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-fefd99a2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GlobalReport.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-fefd99a2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GlobalReport.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
 /* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -79253,210 +79297,6 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -79538,14 +79378,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       beneficiaries: '',
       beneficiaries_takes: [],
       total_beneficiaries_with_take_selected: '',
-      beneficiaries_with_take_selected: [],
-      ages_of_beneficiaries_selected: [],
-      risk_level_of_beneficiaries_selected: [],
-      gender: {
-        male: '',
-        female: '',
-        other: ''
-      },
+      ages_of_beneficiaries_selected: '',
+      risk_level_of_beneficiaries_selected: '',
       age_group: {
         less_than_11: '',
         between_12_and_15: '',
@@ -79553,6 +79387,13 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         between_20_and_23: '',
         more_than_24: ''
       },
+
+      gender: {
+        male: '',
+        female: '',
+        other: ''
+      },
+
       risk_level: {
         low: '',
         medium: '',
@@ -79569,22 +79410,15 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       if (this.group_selected.evaluation == "yttv2") {
         this.yttv1_data_selected = false;
         this.yttv2_data_selected = true;
+
         this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(function (beneficiary) {
           return beneficiary.ytt2_evaluations.length >= _this.take_selected;
         });
-
+        this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
+          return beneficiary.ytt2_evaluations[_this.take_selected - 1].age;
+        });
         this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
           return beneficiary.ytt2_evaluations[_this.take_selected - 1].risk_level;
-        });
-
-        this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "masculino";
-        });
-        this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "femenino";
-        });
-        this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "otro";
         });
 
         this.age_group.less_than_11 = this.ages_of_beneficiaries_selected.filter(function (age) {
@@ -79601,6 +79435,16 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         });
         this.age_group.more_than_24 = this.ages_of_beneficiaries_selected.filter(function (age) {
           return age >= 24;
+        });
+
+        this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "masculino";
+        });
+        this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "femenino";
+        });
+        this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "otro";
         });
 
         this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
@@ -79613,27 +79457,20 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           return risk_level >= 14 && risk_level <= 20;
         });
         this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 24;
+          return risk_level >= 21;
         });
       } else if (this.group_selected.evaluation == "yttv1") {
         this.yttv1_data_selected = true;
         this.yttv2_data_selected = false;
+
         this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(function (beneficiary) {
           return beneficiary.ytt1_evaluations.length >= _this.take_selected;
         });
-
         this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
           return beneficiary.ytt1_evaluations[_this.take_selected - 1].age;
         });
-
-        this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "masculino";
-        });
-        this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "femenino";
-        });
-        this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "otro";
+        this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
+          return beneficiary.ytt1_evaluations[_this.take_selected - 1].risk_level;
         });
 
         this.age_group.less_than_11 = this.ages_of_beneficiaries_selected.filter(function (age) {
@@ -79650,6 +79487,29 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         });
         this.age_group.more_than_24 = this.ages_of_beneficiaries_selected.filter(function (age) {
           return age >= 24;
+        });
+
+        this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "masculino";
+        });
+        this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "femenino";
+        });
+        this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+          return beneficiary.gender == "otro";
+        });
+
+        this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+          return risk_level < 7;
+        });
+        this.risk_level.medium = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+          return risk_level >= 8 && risk_level <= 13;
+        });
+        this.risk_level.high = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+          return risk_level >= 14 && risk_level <= 20;
+        });
+        this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+          return risk_level >= 21;
         });
       }
     },
@@ -79712,7 +79572,261 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 });
 
 /***/ }),
-/* 212 */,
+/* 212 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _vm.loading
+      ? _c(
+          "div",
+          {
+            staticClass: "row content-header",
+            staticStyle: { height: "100vh" }
+          },
+          [_vm._m(0)]
+        )
+      : _c("div", [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c(
+                "h3",
+                {
+                  staticClass: "font-weight-bolder text-uppercase text-center"
+                },
+                [
+                  _c("i", { staticClass: "fas fa-chart-bar" }),
+                  _vm._v(
+                    "\n          Reporte global de " +
+                      _vm._s(_vm.user.organization.name) +
+                      "\n        "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Seleccionar grupo de personas beneficiarias")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.group_selected,
+                        expression: "group_selected"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "group" },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.group_selected = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.getBeneficiaries()
+                        }
+                      ]
+                    }
+                  },
+                  _vm._l(_vm.groups, function(group) {
+                    return _c(
+                      "option",
+                      { key: group.id, domProps: { value: group } },
+                      [_vm._v(_vm._s(group.name))]
+                    )
+                  }),
+                  0
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.group_selected,
+                      expression: "group_selected"
+                    }
+                  ],
+                  staticClass: "form-group"
+                },
+                [
+                  _c("label", { attrs: { for: "" } }, [
+                    _vm._v("Versión de la herramienta")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", readonly: "" },
+                    domProps: { value: _vm.group_selected.evaluation }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _vm.group_selected
+                ? _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "" } }, [
+                      _vm._v("Seleccionar toma")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.take_selected,
+                            expression: "take_selected"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "take" },
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.take_selected = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                            function($event) {
+                              return _vm.showBtn()
+                            }
+                          ]
+                        }
+                      },
+                      _vm._l(_vm.max_takes, function(take, index) {
+                        return _c(
+                          "option",
+                          { key: index, domProps: { value: take } },
+                          [_vm._v(_vm._s(take))]
+                        )
+                      }),
+                      0
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.resultsBtn,
+                      expression: "resultsBtn"
+                    }
+                  ],
+                  staticClass: "form-group"
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: { click: _vm.showData }
+                    },
+                    [_vm._v("Obtener datos")]
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row" },
+            [
+              _vm.yttv1_data_selected == true || _vm.yttv2_data_selected == true
+                ? _c("global-report-ytt", {
+                    attrs: {
+                      total_beneficiaries_with_take_selected:
+                        _vm.total_beneficiaries_with_take_selected,
+                      age_group: _vm.age_group,
+                      gender: _vm.gender,
+                      risk_level: _vm.risk_level
+                    }
+                  })
+                : _vm._e()
+            ],
+            1
+          )
+        ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12 text-center" }, [
+      _c("p", [_c("i", { staticClass: "fas fa-spinner fa-pulse fa-4x" })]),
+      _vm._v(" "),
+      _c("p", { staticClass: "h4" }, [_vm._v("Cargando...")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-12" }, [
+            _c("ol", { staticClass: "breadcrumb" }, [
+              _c("li", { staticClass: "breadcrumb-item active" }, [
+                _vm._v("Reporte global")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-fefd99a2", module.exports)
+  }
+}
+
+/***/ }),
 /* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -107525,23 +107639,84 @@ if (false) {
 /* 312 */,
 /* 313 */,
 /* 314 */,
-/* 315 */
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(326)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(328)
+/* template */
+var __vue_template__ = __webpack_require__(329)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3afd00ca"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/PopulationGlobalReport.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3afd00ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-3afd00ca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(316);
+var content = __webpack_require__(327);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("33f66baa", content, false, {});
+var update = __webpack_require__(3)("02de3053", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-fefd99a2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GlobalReport.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-fefd99a2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GlobalReport.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3afd00ca\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PopulationGlobalReport.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3afd00ca\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PopulationGlobalReport.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -107551,7 +107726,7 @@ if(false) {
 }
 
 /***/ }),
-/* 316 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -107565,486 +107740,349 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 317 */
+/* 328 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        total_beneficiaries_with_take_selected: Array,
+        gender: Object
+    },
+    data: function data() {
+        return {};
+    },
+    methods: {},
+    created: function created() {}
+});
+
+/***/ }),
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _vm.loading
-      ? _c(
-          "div",
-          {
-            staticClass: "row content-header",
-            staticStyle: { height: "100vh" }
-          },
-          [_vm._m(0)]
-        )
-      : _c("div", [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-12" }, [
-              _c(
-                "h3",
-                {
-                  staticClass: "font-weight-bolder text-uppercase text-center"
-                },
-                [
-                  _c("i", { staticClass: "fas fa-chart-bar" }),
-                  _vm._v(
-                    "\n          Reporte global de " +
-                      _vm._s(_vm.user.organization.name) +
-                      "\n        "
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-12" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "" } }, [
-                  _vm._v("Seleccionar grupo de personas beneficiarias")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.group_selected,
-                        expression: "group_selected"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { id: "group" },
-                    on: {
-                      change: [
-                        function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.group_selected = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        },
-                        function($event) {
-                          return _vm.getBeneficiaries()
-                        }
-                      ]
-                    }
-                  },
-                  _vm._l(_vm.groups, function(group) {
-                    return _c(
-                      "option",
-                      { key: group.id, domProps: { value: group } },
-                      [_vm._v(_vm._s(group.name))]
-                    )
-                  }),
-                  0
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.group_selected,
-                      expression: "group_selected"
-                    }
-                  ],
-                  staticClass: "form-group"
-                },
-                [
-                  _c("label", { attrs: { for: "" } }, [
-                    _vm._v("Versión de la herramienta")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", readonly: "" },
-                    domProps: { value: _vm.group_selected.evaluation }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _vm.group_selected
-                ? _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "" } }, [
-                      _vm._v("Seleccionar toma")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.take_selected,
-                            expression: "take_selected"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { id: "take" },
-                        on: {
-                          change: [
-                            function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.take_selected = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            },
-                            function($event) {
-                              return _vm.showBtn()
-                            }
-                          ]
-                        }
-                      },
-                      _vm._l(_vm.max_takes, function(take, index) {
-                        return _c("option", { domProps: { value: take } }, [
-                          _vm._v(_vm._s(take))
-                        ])
-                      }),
-                      0
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.resultsBtn,
-                      expression: "resultsBtn"
-                    }
-                  ],
-                  staticClass: "form-group"
-                },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      on: { click: _vm.showData }
-                    },
-                    [_vm._v("Obtener datos")]
-                  )
-                ]
-              )
-            ])
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body text-center" }, [
+          _c("p", { staticClass: "font-weight-bolder h2" }, [
+            _vm._v(_vm._s(_vm.total_beneficiaries_with_take_selected.length))
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm.yttv1_data_selected == true
-              ? _c(
-                  "div",
-                  { staticClass: "col-md-12", attrs: { id: "yttv1" } },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.total_beneficiaries_with_take_selected
-                                    .length
-                                )
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Población total")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.female.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Mujer(es)")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.male.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Hombre(s)")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.other.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Otro(s)")])
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col md-12" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "card-body" }, [
-                            _c("div", { staticClass: "table-responsive" }, [
-                              _c("table", { staticClass: "table" }, [
-                                _vm._m(3),
-                                _vm._v(" "),
-                                _c("tbody", [
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("<11"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.less_than_11.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("12-15"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_12_and_15.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("16-19"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_16_and_19.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("20-23"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_20_and_23.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s(">=24"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.more_than_24.length
-                                        )
-                                      )
-                                    ])
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(4)
-                  ]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.yttv2_data_selected == true
-              ? _c(
-                  "div",
-                  { staticClass: "col-md-12", attrs: { id: "yttv2" } },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.total_beneficiaries_with_take_selected
-                                    .length
-                                )
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Población total")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.female.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Mujer(es)")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.male.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Hombre(s)")])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body text-center" }, [
-                            _c("p", { staticClass: "font-weight-bolder h2" }, [
-                              _vm._v(_vm._s(_vm.gender.other.length))
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Otro(s)")])
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col md-12" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _vm._m(5),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "card-body" }, [
-                            _c("div", { staticClass: "table-responsive" }, [
-                              _c("table", { staticClass: "table" }, [
-                                _vm._m(6),
-                                _vm._v(" "),
-                                _c("tbody", [
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("<11"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.less_than_11.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("12-15"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_12_and_15.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("16-19"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_16_and_19.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s("20-23"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.between_20_and_23.length
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s(">=24"))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.age_group.more_than_24.length
-                                        )
-                                      )
-                                    ])
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(7)
-                  ]
-                )
-              : _vm._e()
+          _c("p", [_vm._v("Población total")])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body text-center" }, [
+          _c("p", { staticClass: "font-weight-bolder h2" }, [
+            _vm._v(_vm._s(_vm.gender.female.length))
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Mujer(es)")])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body text-center" }, [
+          _c("p", { staticClass: "font-weight-bolder h2" }, [
+            _vm._v(_vm._s(_vm.gender.male.length))
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Hombre(s)")])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body text-center" }, [
+          _c("p", { staticClass: "font-weight-bolder h2" }, [
+            _vm._v(_vm._s(_vm.gender.other.length))
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Otro(s)")])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3afd00ca", module.exports)
+  }
+}
+
+/***/ }),
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(336)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(338)
+/* template */
+var __vue_template__ = __webpack_require__(339)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-622a26ce"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/AgeGroupGlobalReport.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-622a26ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-622a26ce", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 336 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(337);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("538b4c40", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-622a26ce\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AgeGroupGlobalReport.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-622a26ce\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AgeGroupGlobalReport.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 337 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 338 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        age_group: Object
+    },
+    data: function data() {
+        return {};
+    },
+    methods: {},
+    created: function created() {}
+});
+
+/***/ }),
+/* 339 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s("<11"))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.age_group.less_than_11.length))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s("12-15"))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(_vm.age_group.between_12_and_15.length))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s("16-19"))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(_vm.age_group.between_16_and_19.length))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s("20-23"))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(_vm.age_group.between_20_and_23.length))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s(">=24"))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.age_group.more_than_24.length))])
+                ])
+              ])
+            ])
           ])
         ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -108052,34 +108090,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 text-center" }, [
-      _c("p", [_c("i", { staticClass: "fas fa-spinner fa-pulse fa-4x" })]),
-      _vm._v(" "),
-      _c("p", { staticClass: "h4" }, [_vm._v("Cargando...")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "content-header" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row mb-2" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c("ol", { staticClass: "breadcrumb" }, [
-              _c("li", { staticClass: "breadcrumb-item active" }, [
-                _vm._v("Reporte global")
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("p", { staticClass: "card-title" }, [
         _vm._v("Población desagregada por grupo etario")
@@ -108095,88 +108105,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Grupo etario")]),
         _vm._v(" "),
         _c("th", [_vm._v("Número")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("p", { staticClass: "card-title" }, [_vm._v("Nivel de riesgo")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "table-responsive" }, [
-              _c("table", { staticClass: "table" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Nivel")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Número")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody", [_c("tr", [_c("td"), _vm._v(" "), _c("td")])])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("p", { staticClass: "card-title" }, [
-        _vm._v("Población desagregada por grupo etario")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Grupo etario")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Número")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("p", { staticClass: "card-title" }, [_vm._v("Nivel de riesgo")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "table-responsive" }, [
-              _c("table", { staticClass: "table" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Nivel")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Número")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody", [_c("tr", [_c("td"), _vm._v(" "), _c("td")])])
-              ])
-            ])
-          ])
-        ])
       ])
     ])
   }
@@ -108186,7 +108114,403 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-fefd99a2", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-622a26ce", module.exports)
+  }
+}
+
+/***/ }),
+/* 340 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(341)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(343)
+/* template */
+var __vue_template__ = __webpack_require__(344)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-f0d654b6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/RiskLevelGlobalReport.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f0d654b6", Component.options)
+  } else {
+    hotAPI.reload("data-v-f0d654b6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 341 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(342);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("13c85bba", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f0d654b6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RiskLevelGlobalReport.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f0d654b6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RiskLevelGlobalReport.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 342 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 343 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        risk_level: Object
+    },
+    data: function data() {
+        return {};
+    },
+    methods: {},
+    created: function created() {}
+});
+
+/***/ }),
+/* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("Bajo")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.risk_level.low.length))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Medio")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.risk_level.medium.length))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Alto")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.risk_level.high.length))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Critico")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.risk_level.critical.length))])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "card-title" }, [_vm._v("Nivel de riesgo")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Nivel")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Número")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f0d654b6", module.exports)
+  }
+}
+
+/***/ }),
+/* 345 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(346)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(348)
+/* template */
+var __vue_template__ = __webpack_require__(349)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3edbeeca"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/GlobalReportYtt.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3edbeeca", Component.options)
+  } else {
+    hotAPI.reload("data-v-3edbeeca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 346 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(347);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("e9e7748e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3edbeeca\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GlobalReportYtt.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3edbeeca\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GlobalReportYtt.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 347 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 348 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        total_beneficiaries_with_take_selected: Array,
+        age_group: Object,
+        gender: Object,
+        risk_level: Object
+    },
+    data: function data() {
+        return {};
+    },
+    methods: {},
+    created: function created() {}
+});
+
+/***/ }),
+/* 349 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "col-md-12" },
+    [
+      _c("population-global-report", {
+        attrs: {
+          gender: _vm.gender,
+          total_beneficiaries_with_take_selected:
+            _vm.total_beneficiaries_with_take_selected
+        }
+      }),
+      _vm._v(" "),
+      _c("age-group-global-report", { attrs: { age_group: _vm.age_group } }),
+      _vm._v(" "),
+      _c("risk-level-global-report", { attrs: { risk_level: _vm.risk_level } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3edbeeca", module.exports)
   }
 }
 

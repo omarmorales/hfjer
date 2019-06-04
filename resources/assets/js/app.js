@@ -124,6 +124,11 @@ Vue.component('users', require('./components/Users.vue'));
 
 Vue.component('help-desk', require('./components/extra/HelpDesk.vue'));
 
+Vue.component('global-report-ytt', require('./components/GlobalReportYtt'));
+Vue.component('population-global-report', require('./components/PopulationGlobalReport'));
+Vue.component('age-group-global-report', require('./components/AgeGroupGlobalReport'));
+Vue.component('risk-level-global-report', require('./components/RiskLevelGlobalReport'));
+
 const app = new Vue({
     el: '#app',
     router,
