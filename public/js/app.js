@@ -80614,19 +80614,19 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("td", { staticClass: "text-center" }, [
-                            ytt2_evaluation.risk_level < 2.5
+                            ytt2_evaluation.risk_level < 7
                               ? _c(
                                   "span",
                                   { staticClass: "badge badge-success" },
                                   [_vm._v("Bajo")]
                                 )
-                              : ytt2_evaluation.risk_level < 5
+                              : ytt2_evaluation.risk_level < 13
                               ? _c(
                                   "span",
                                   { staticClass: "badge badge-warning" },
                                   [_vm._v("Medio")]
                                 )
-                              : ytt2_evaluation.risk_level < 7.5
+                              : ytt2_evaluation.risk_level < 20
                               ? _c(
                                   "span",
                                   { staticClass: "badge badge-danger" },
@@ -84099,16 +84099,16 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         });
 
         this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level < 7;
+          return risk_level < 2.5;
         });
         this.risk_level.medium = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 8 && risk_level <= 13;
+          return risk_level >= 2.5 && risk_level <= 5;
         });
         this.risk_level.high = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 14 && risk_level <= 20;
+          return risk_level >= 5.1 && risk_level <= 7.5;
         });
         this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 21;
+          return risk_level >= 7.6;
         });
       }
     },

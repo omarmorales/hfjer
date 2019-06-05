@@ -192,9 +192,9 @@
                     <th scope="row">{{ index + 1 }}</th>
                     <td class="text-center">{{ ytt2_evaluation.risk_level }}</td>
                     <td class="text-center">
-                      <span class="badge badge-success" v-if="ytt2_evaluation.risk_level < 2.5">Bajo</span>
-                      <span class="badge badge-warning" v-else-if="ytt2_evaluation.risk_level < 5">Medio</span>
-                      <span class="badge badge-danger" v-else-if="ytt2_evaluation.risk_level < 7.5 ">Alto</span>
+                      <span class="badge badge-success" v-if="ytt2_evaluation.risk_level < 7">Bajo</span>
+                      <span class="badge badge-warning" v-else-if="ytt2_evaluation.risk_level < 13">Medio</span>
+                      <span class="badge badge-danger" v-else-if="ytt2_evaluation.risk_level < 20 ">Alto</span>
                       <span class="badge badge-dark" v-else>Crítico</span>
                     </td>
                     <td>{{ ytt2_evaluation.created_at | myDate }}</td>

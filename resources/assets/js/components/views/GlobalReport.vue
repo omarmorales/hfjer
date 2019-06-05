@@ -145,10 +145,10 @@
           this.gender.female = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "femenino");
           this.gender.other = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "otro");
 
-          this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level < 7);
-          this.risk_level.medium = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 8 && risk_level <= 13);
-          this.risk_level.high = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 14 && risk_level <= 20);
-          this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 21);
+          this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level < 2.5);
+          this.risk_level.medium = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 2.5 && risk_level <= 5);
+          this.risk_level.high = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 5.1 && risk_level <= 7.5);
+          this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 7.6);
         }
       },
       showBtn(){
