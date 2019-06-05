@@ -107,7 +107,10 @@ class GroupController extends Controller
 
   public function groupbyslug($slug)
   {
-    $groupSelected = Group::with('beneficiaries')->with('user')->where('slug', $slug)->first();
+    if($slug){
+      $groupSelected = Group::with('beneficiaries')->with('user')->where('slug', $slug)->first();
+    }
+    
     if (!$groupSelected)
             return abort(404);
     return $groupSelected;

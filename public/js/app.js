@@ -85694,17 +85694,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       this.loading = true;
-      axios.get('/api/group_by_slug/' + this.$route.params.group).then(function (_ref) {
-        var data = _ref.data;
-        return _this2.group = data, _this2.loading = false;
-      }).catch(function () {
-        _this2.$Progress.fail();
-        toast({
-          type: 'error',
-          title: 'Error al cargar datos.'
+      if (this.$route.params.group) {
+        axios.get('/api/group_by_slug/' + this.$route.params.group).then(function (_ref) {
+          var data = _ref.data;
+          return _this2.group = data, _this2.loading = false;
+        }).catch(function () {
+          _this2.$Progress.fail();
+          toast({
+            type: 'error',
+            title: 'No se pudieron cargar los datos.'
+          });
+          _this2.loading = false;
         });
-        _this2.loading = false;
-      });
+      }
     },
     newModal: function newModal() {
       this.editmode = false;

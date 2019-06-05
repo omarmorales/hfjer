@@ -315,18 +315,20 @@ export default {
     },
     loadData(){
       this.loading = true;
-      axios.get(`/api/group_by_slug/${this.$route.params.group}`)
-      .then(({data}) => (
-        this.group = data,
-        this.loading = false
-      )).catch(()=>{
-        this.$Progress.fail();
-        toast({
-          type: 'error',
-          title: 'Error al cargar datos.'
-        })
-        this.loading = false;
-      });
+      if(this.$route.params.group){
+        axios.get(`/api/group_by_slug/${this.$route.params.group}`)
+        .then(({data}) => (
+          this.group = data,
+          this.loading = false
+        )).catch(()=>{
+          this.$Progress.fail();
+          toast({
+            type: 'error',
+            title: 'No se pudieron cargar los datos.'
+          })
+          this.loading = false;
+        });
+      }
     },
     newModal(){
       this.editmode = false;
