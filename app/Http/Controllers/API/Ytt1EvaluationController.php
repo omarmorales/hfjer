@@ -38,6 +38,29 @@ class Ytt1EvaluationController extends Controller
   {
     $this->validate($request,[
       'beneficiary_id' => 'required',
+      'answer1' => 'required',
+      'answer2' => 'required',
+      'answer3' => 'required',
+      'answer4' => 'required',
+      'answer5' => 'required',
+      'answer6' => 'required',
+      'answer7' => 'required',
+      'answer8' => 'required',
+      'answer9' => 'required',
+      'answer10' => 'required',
+      'answer11' => 'required',
+      'answer12' => 'required',
+      'answer13' => 'required',
+      'answer14' => 'required',
+      'answer15' => 'required',
+      'answer16' => 'required',
+      'answer17' => 'required',
+      'answer18' => 'required',
+      'answer19' => 'required',
+      'answer20' => 'required',
+      'answer21' => 'required',
+      'answer22' => 'required',
+      'answer23' => 'required',
     ]);
 
     $risk_level = (
@@ -182,7 +205,11 @@ class Ytt1EvaluationController extends Controller
   */
   public function destroy($id)
   {
-    //
+    $evaluation = Ytt1Evaluation::findOrFail($id);
+
+    $evaluation->delete();
+
+    return ['message' => 'Evaluation Deleted'];
   }
 
   public function evaluationDate($id)

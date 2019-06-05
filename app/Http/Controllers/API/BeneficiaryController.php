@@ -36,6 +36,7 @@ class BeneficiaryController extends Controller
   public function store(Request $request)
   {
     $this->validate($request,[
+      'folio' => 'required|unique:beneficiaries',
       'name' => 'required|string',
       'lastname_one' => 'required|string',
       'lastname_two' => 'required|string',
@@ -92,6 +93,7 @@ class BeneficiaryController extends Controller
   public function destroy($id)
   {
     $beneficiary = Beneficiary::findOrFail($id);
+
     $beneficiary->delete();
     return ['message' => 'Beneficiary Deleted'];
   }

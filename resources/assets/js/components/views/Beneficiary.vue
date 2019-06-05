@@ -117,6 +117,7 @@
                     <th class="">Nivel de exposición a la violencia</th>
                     <th class="">Fecha de creación</th>
                     <th>Ver resultados</th>
+                    <th>Eliminar toma</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -145,9 +146,14 @@
                     </td>
                     <td>{{ ytt1_evaluation.created_at | myDate }}</td>
                     <td>
-                      <router-link :to="'/evaluation/'+ytt1_evaluation.id">
+                      <router-link class="text-center" :to="`/group/${$route.params.group}/${beneficiary.folio}/evaluation/${ytt1_evaluation.id}`">
                         <i class="fas fa-eye"></i>
                       </router-link>
+                    </td>
+                    <td>
+                      <a class="text-danger text-center pointer" @click="deleteEvaluation(ytt1_evaluation.id)">
+                        <i class="fas fa-trash"></i>
+                      </a>
                     </td>
                   </tr>
                 </tbody>
@@ -158,6 +164,58 @@
       </div>
     </div>
 
+    <div class="row" v-show="group.evaluation == 'yttv2'">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            Tomas
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>
+                      <span class="">#</span> 
+                    </th>
+                    <th class="">
+                      <span class="">Puntuación nivel de riesgo general</span>
+                    </th>
+                    <th class="">Nivel de riesgo general</th>
+                    <th class="">Fecha de creación</th>
+                    <th>Ver resultados</th>
+                    <th>Eliminar toma</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(ytt2_evaluation, index) in beneficiary.ytt2_evaluations" :key="index" v-show="ytt2_evaluation.beneficiary_id == beneficiary.id">
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td class="text-center">{{ ytt2_evaluation.risk_level }}</td>
+                    <td class="text-center">
+                      <span class="badge badge-success" v-if="ytt2_evaluation.risk_level < 2.5">Bajo</span>
+                      <span class="badge badge-warning" v-else-if="ytt2_evaluation.risk_level < 5">Medio</span>
+                      <span class="badge badge-danger" v-else-if="ytt2_evaluation.risk_level < 7.5 ">Alto</span>
+                      <span class="badge badge-dark" v-else>Crítico</span>
+                    </td>
+                    <td>{{ ytt2_evaluation.created_at | myDate }}</td>
+                    <td>
+                      <router-link class="text-center" :to="`/group/${$route.params.group}/${beneficiary.folio}/evaluation/${ytt2_evaluation.id}`">
+                        <i class="fas fa-eye"></i>
+                      </router-link>
+                    </td>
+                    <td>
+                      <a class="text-danger text-center pointer" @click="deleteEvaluation(ytt2_evaluation.id)">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </template>
@@ -171,6 +229,59 @@
         }
     },
     methods: {
+      deleteEvaluation(id){
+        if(this.group.evaluation == "yttv1"){
+          swal({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+          }).then((result) => {
+            if (result.value) {
+              axios.delete(`/api/ytt1evaluation/${id}`, { data: { id: id } })
+              .then(()=>{
+                swal(
+                  '¡Eliminada!',
+                  'Toma eliminada.',
+                  'success'
+                )
+                Fire.$emit('AfterCreate');
+              }).catch(()=> {
+                swal("Error", "Algo salió mal.", "warning");
+              });
+            }
+          })
+        } else{
+          swal({
+            title: 'Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+          }).then((result) => {
+            if (result.value) {
+              axios.delete(`/api/ytt2evaluation/${id}`, { data: { id: id } })
+              .then(()=>{
+                swal(
+                  '¡Eliminada!',
+                  'Toma eliminada.',
+                  'success'
+                )
+                Fire.$emit('AfterCreate');
+              }).catch(()=> {
+                swal("Error", "Algo salió mal.", "warning");
+              });
+            }
+          })
+        }
+      },
       sendToEvaluation(beneficiary) {
         let today = new Date();
         let birthdate = beneficiary.birthdate;
@@ -234,6 +345,12 @@
       }
     },
     created(){
+      Fire.$on('AfterCreate',() => {
+        axios.get('/api/beneficiary_by_folio/'+this.$route.params.user).then(({data}) => (
+          this.beneficiary = data,
+          this.group = data.group
+        ))
+      });
       axios.get('/api/beneficiary_by_folio/'+this.$route.params.user).then(({data}) => (
         this.beneficiary = data,
         this.group = data.group

@@ -1181,32 +1181,29 @@ export default {
       this.formYTTv1.beneficiary_id = this.beneficiary_election;
 
       if(this.beneficiary_selected.ytt1_draft){
-        axios.delete(`/api/ytt1draft/${this.beneficiary_selected.ytt1_draft.id}`, {data: { id: this.beneficiary_selected.ytt1_draft.id}}).then(()=>{
+        axios.delete(`/api/ytt1draft/${this.beneficiary_selected.ytt1_draft.id}`, {data: { id: this.beneficiary_selected.ytt1_draft.id}})
+        .then(()=>{
           swal(
             'Borrador eliminado!',
             '',
             'success'
           )
         }).catch(()=> {
-          swal("Error", "Algo salió mal.", "warning");
+          swal("Error", "No se pudo eliminar el borrador.", "warning");
         });
 
         this.formYTTv1.post('/api/ytt1evaluation').then(()=>{
-        Fire.$emit('AfterCreate');
-        this.formYTTv1.reset();
-        this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
-        toast({
-          type: 'success',
-          title: 'Evaluación YTT v1 creada con éxito.'
-        })
-        this.$Progress.finish();
-      })
-      .catch(()=>{
-        this.$Progress.fail();
-      })
-        toast({
-          type: 'success',
-          title: 'Evaluación YTT v1 creada con éxito.'
+          Fire.$emit('AfterCreate');
+          this.formYTTv1.reset();
+          this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
+          toast({
+            type: 'success',
+            title: 'Evaluación YTT v1 creada con éxito.'
+          })
+          this.$Progress.finish();
+        }).catch(()=>{
+          swal("Error", "Completa todos los campos.", "warning");
+          this.$Progress.fail();
         })
       } else {
         this.formYTTv1.post('/api/ytt1evaluation').then(()=>{
@@ -1220,6 +1217,7 @@ export default {
           this.$Progress.finish();
         })
         .catch(()=>{
+          swal("Error", "Completa todos los campos.", "warning");
           this.$Progress.fail();
         })
       }
@@ -1229,7 +1227,8 @@ export default {
       this.formYTTv2.beneficiary_id = this.beneficiary_election;
 
       if(this.beneficiary_selected.ytt2_draft){
-        axios.delete(`/api/ytt2draft/${this.beneficiary_selected.ytt2_draft.id}`, {data: { id: this.beneficiary_selected.ytt2_draft.id}}).then(()=>{
+        axios.delete(`/api/ytt2draft/${this.beneficiary_selected.ytt2_draft.id}`, {data: { id: this.beneficiary_selected.ytt2_draft.id}})
+        .then(()=>{
           swal(
             'Borrador eliminado!',
             '',
@@ -1250,6 +1249,7 @@ export default {
           this.$Progress.finish();
         })
         .catch(()=>{
+          swal("Error", "Completa todos los campos.", "warning");
           this.$Progress.fail();
         })
       }else{
@@ -1264,6 +1264,7 @@ export default {
           this.$Progress.finish();
         })
         .catch(()=>{
+          swal("Error", "Completa todos los campos.", "warning");
           this.$Progress.fail();
         })
       }

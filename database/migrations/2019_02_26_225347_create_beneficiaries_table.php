@@ -23,6 +23,7 @@ class CreateBeneficiariesTable extends Migration
             $table->string('folio')->nullable();
             $table->integer('group_id')->unsigned();
             $table->timestamps();
+            
         });
     }
 

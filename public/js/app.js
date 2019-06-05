@@ -80000,6 +80000,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -80010,6 +80068,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    deleteEvaluation: function deleteEvaluation(id) {
+      if (this.group.evaluation == "yttv1") {
+        swal({
+          title: '¿Estás seguro?',
+          text: "¡No podrás revertir esto!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Eliminar',
+          cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+          if (result.value) {
+            axios.delete("/api/ytt1evaluation/" + id, { data: { id: id } }).then(function () {
+              swal('¡Eliminada!', 'Toma eliminada.', 'success');
+              Fire.$emit('AfterCreate');
+            }).catch(function () {
+              swal("Error", "Algo salió mal.", "warning");
+            });
+          }
+        });
+      } else {
+        swal({
+          title: 'Estás seguro?',
+          text: "¡No podrás revertir esto!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Eliminar',
+          cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+          if (result.value) {
+            axios.delete("/api/ytt2evaluation/" + id, { data: { id: id } }).then(function () {
+              swal('¡Eliminada!', 'Toma eliminada.', 'success');
+              Fire.$emit('AfterCreate');
+            }).catch(function () {
+              swal("Error", "Algo salió mal.", "warning");
+            });
+          }
+        });
+      }
+    },
     sendToEvaluation: function sendToEvaluation(beneficiary) {
       var _this = this;
 
@@ -80041,13 +80142,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.$router.push({ name: 'Evaluation', params: { group: _this.$route.params.group, user: beneficiary.folio, age: b_age } });
           } else if (result.dismiss === 'cancel') {
             if (beneficiary.ytt1_draft) {
-              axios.delete('/api/ytt1draft/' + beneficiary.ytt1_draft.id, { data: { id: beneficiary.ytt1_draft.id } }).then(function () {
+              axios.delete("/api/ytt1draft/" + beneficiary.ytt1_draft.id, { data: { id: beneficiary.ytt1_draft.id } }).then(function () {
                 swal('Borrador eliminado!', '', 'success');
               }).catch(function () {
                 swal("Error", "Algo salió mal.", "warning");
               });
             } else if (beneficiary.ytt2_draft) {
-              axios.delete('/api/ytt2draft/' + beneficiary.ytt2_draft.id, { data: { id: beneficiary.ytt2_draft.id } }).then(function () {
+              axios.delete("/api/ytt2draft/" + beneficiary.ytt2_draft.id, { data: { id: beneficiary.ytt2_draft.id } }).then(function () {
                 swal('Borrador eliminado!', '', 'success');
               }).catch(function () {
                 swal("Error", "Algo salió mal.", "warning");
@@ -80064,8 +80165,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   created: function created() {
     var _this2 = this;
 
-    axios.get('/api/beneficiary_by_folio/' + this.$route.params.user).then(function (_ref) {
-      var data = _ref.data;
+    Fire.$on('AfterCreate', function () {
+      axios.get('/api/beneficiary_by_folio/' + _this2.$route.params.user).then(function (_ref) {
+        var data = _ref.data;
+        return _this2.beneficiary = data, _this2.group = data.group;
+      });
+    });
+    axios.get('/api/beneficiary_by_folio/' + this.$route.params.user).then(function (_ref2) {
+      var data = _ref2.data;
       return _this2.beneficiary = data, _this2.group = data.group;
     });
   }
@@ -80404,15 +80511,181 @@ var render = function() {
                               _c(
                                 "router-link",
                                 {
+                                  staticClass: "text-center",
                                   attrs: {
-                                    to: "/evaluation/" + ytt1_evaluation.id
+                                    to:
+                                      "/group/" +
+                                      _vm.$route.params.group +
+                                      "/" +
+                                      _vm.beneficiary.folio +
+                                      "/evaluation/" +
+                                      ytt1_evaluation.id
                                   }
                                 },
                                 [_c("i", { staticClass: "fas fa-eye" })]
                               )
                             ],
                             1
-                          )
+                          ),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "text-danger text-center pointer",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteEvaluation(
+                                      ytt1_evaluation.id
+                                    )
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-trash" })]
+                            )
+                          ])
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.group.evaluation == "yttv2",
+            expression: "group.evaluation == 'yttv2'"
+          }
+        ],
+        staticClass: "row"
+      },
+      [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _vm._v("\n          Tomas\n        ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("table", { staticClass: "table" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.beneficiary.ytt2_evaluations, function(
+                      ytt2_evaluation,
+                      index
+                    ) {
+                      return _c(
+                        "tr",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                ytt2_evaluation.beneficiary_id ==
+                                _vm.beneficiary.id,
+                              expression:
+                                "ytt2_evaluation.beneficiary_id == beneficiary.id"
+                            }
+                          ],
+                          key: index
+                        },
+                        [
+                          _c("th", { attrs: { scope: "row" } }, [
+                            _vm._v(_vm._s(index + 1))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "text-center" }, [
+                            _vm._v(_vm._s(ytt2_evaluation.risk_level))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "text-center" }, [
+                            ytt2_evaluation.risk_level < 2.5
+                              ? _c(
+                                  "span",
+                                  { staticClass: "badge badge-success" },
+                                  [_vm._v("Bajo")]
+                                )
+                              : ytt2_evaluation.risk_level < 5
+                              ? _c(
+                                  "span",
+                                  { staticClass: "badge badge-warning" },
+                                  [_vm._v("Medio")]
+                                )
+                              : ytt2_evaluation.risk_level < 7.5
+                              ? _c(
+                                  "span",
+                                  { staticClass: "badge badge-danger" },
+                                  [_vm._v("Alto")]
+                                )
+                              : _c(
+                                  "span",
+                                  { staticClass: "badge badge-dark" },
+                                  [_vm._v("Crítico")]
+                                )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                _vm._f("myDate")(ytt2_evaluation.created_at)
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "text-center",
+                                  attrs: {
+                                    to:
+                                      "/group/" +
+                                      _vm.$route.params.group +
+                                      "/" +
+                                      _vm.beneficiary.folio +
+                                      "/evaluation/" +
+                                      ytt2_evaluation.id
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-eye" })]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "text-danger text-center pointer",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteEvaluation(
+                                      ytt2_evaluation.id
+                                    )
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-trash" })]
+                            )
+                          ])
                         ]
                       )
                     }),
@@ -80464,7 +80737,31 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", {}, [_vm._v("Fecha de creación")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Ver resultados")])
+        _c("th", [_vm._v("Ver resultados")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Eliminar toma")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_c("span", {}, [_vm._v("#")])]),
+        _vm._v(" "),
+        _c("th", {}, [
+          _c("span", {}, [_vm._v("Puntuación nivel de riesgo general")])
+        ]),
+        _vm._v(" "),
+        _c("th", {}, [_vm._v("Nivel de riesgo general")]),
+        _vm._v(" "),
+        _c("th", {}, [_vm._v("Fecha de creación")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ver resultados")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Eliminar toma")])
       ])
     ])
   }
@@ -81603,7 +81900,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -82271,7 +82568,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         axios.delete('/api/ytt1draft/' + this.beneficiary_selected.ytt1_draft.id, { data: { id: this.beneficiary_selected.ytt1_draft.id } }).then(function () {
           swal('Borrador eliminado!', '', 'success');
         }).catch(function () {
-          swal("Error", "Algo salió mal.", "warning");
+          swal("Error", "No se pudo eliminar el borrador.", "warning");
         });
 
         this.formYTTv1.post('/api/ytt1evaluation').then(function () {
@@ -82284,11 +82581,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           });
           _this3.$Progress.finish();
         }).catch(function () {
+          swal("Error", "Completa todos los campos.", "warning");
           _this3.$Progress.fail();
-        });
-        toast({
-          type: 'success',
-          title: 'Evaluación YTT v1 creada con éxito.'
         });
       } else {
         this.formYTTv1.post('/api/ytt1evaluation').then(function () {
@@ -82301,6 +82595,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           });
           _this3.$Progress.finish();
         }).catch(function () {
+          swal("Error", "Completa todos los campos.", "warning");
           _this3.$Progress.fail();
         });
       }
@@ -82328,6 +82623,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           });
           _this4.$Progress.finish();
         }).catch(function () {
+          swal("Error", "Completa todos los campos.", "warning");
           _this4.$Progress.fail();
         });
       } else {
@@ -82341,6 +82637,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           });
           _this4.$Progress.finish();
         }).catch(function () {
+          swal("Error", "Completa todos los campos.", "warning");
           _this4.$Progress.fail();
         });
       }

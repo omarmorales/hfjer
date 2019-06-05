@@ -92,6 +92,7 @@ class GroupController extends Controller
   public function destroy($id)
   {
     $group = Group::findOrFail($id);
+    $group->beneficiaries()->delete();
 
     $group->delete();
 
