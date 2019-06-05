@@ -82668,7 +82668,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.formYTTv2.post('/api/ytt2draft').then(function () {
           Fire.$emit('AfterCreate');
           _this5.formYTTv2.reset();
-          _this5.$router.push('beneficiary/' + _this5.beneficiary_election);
+          _this5.$router.push('/group/' + _this5.$route.params.group + '/' + _this5.$route.params.user);
           toast({
             type: 'success',
             title: 'Borrador YTT v2 creado con éxito.'

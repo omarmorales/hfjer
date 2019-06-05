@@ -1299,7 +1299,7 @@ export default {
         this.formYTTv2.post('/api/ytt2draft').then(()=>{
           Fire.$emit('AfterCreate');
           this.formYTTv2.reset();
-          this.$router.push(`beneficiary/${this.beneficiary_election}`)
+          this.$router.push(`/group/${this.$route.params.group}/${this.$route.params.user}`)
           toast({
             type: 'success',
             title: 'Borrador YTT v2 creado con éxito.'

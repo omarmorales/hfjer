@@ -92,8 +92,7 @@ class OrganizationController extends Controller
     $this->authorize('isAdmin');
 
     $organization = Organization::findOrFail($id);
-    $organization->users()->delete();
-    $organization->groups()->delete();
+
     $organization->delete();
 
     return ['message' => 'Organization Deleted'];

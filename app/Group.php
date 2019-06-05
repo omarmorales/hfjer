@@ -4,14 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
+use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
 
 class Group extends Model
 {
   use HasApiTokens;
+  use CascadesDeletes;
 
   protected $fillable = [
       'name', 'slug', 'description', 'user_id', 'evaluation', 'organization_id'
   ];
+
+  protected $cascadeDeletes = ['beneficiaries'];
 
   public function user()
   {

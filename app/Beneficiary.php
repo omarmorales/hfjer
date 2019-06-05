@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
+use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
 
 class Beneficiary extends Model
 {
   use HasApiTokens;
+  use CascadesDeletes;
 
   /**
    * The attributes that are mass assignable.
@@ -17,6 +19,8 @@ class Beneficiary extends Model
   protected $fillable = [
       'lastname_one', 'lastname_two', 'name', 'birthdate', 'gender', 'folio', 'group_id'
   ];
+
+  protected $cascadeDeletes = ['ytt1_evaluations', 'ytt1_draft', 'ytt2_evaluations', 'ytt2_draft'];
 
   public function group()
   {
