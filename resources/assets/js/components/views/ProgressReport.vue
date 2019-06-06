@@ -1,71 +1,87 @@
-<template lang="html">
-  <div class="container">
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-7">
-            <h1 class="m-0 text-dark">
-              Reporte de progreso de la implementación
-            </h1>
-          </div><!-- /.col -->
-          <div class="col-sm-5">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item">
-                <router-link to="/overview">Inicio</router-link>
-              </li>
-              <li class="breadcrumb-item active">
-                Reporte ed progreso de la implementación
-              </li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <p class="h5">Progreso promedio</p>
-      </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Tomas</th>
-                        <th>Resultado promedio</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>toma 1</td>
-                        <td>7.82</td>
-                      </tr>
-                      <tr>
-                        <td>toma 2</td>
-                        <td>3.77</td>
-                      </tr>
-                    </tbody>
-                  </table>
+<template>
+    <div class="container">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active">Reporte global</li>
+                        </ol>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <linechart-component2 :height="150" />
-              </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="font-weight-bolder text-uppercase text-center">
+                    <i class="fas fa-chart-bar"></i>
+                    Reporte de progreso de implementacion para {{ organization.name }}
+                </h3>
             </div>
-          </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Seleccionar grupo de personas beneficiarias</label>
+                    <select class="form-control" id="group" v-model="group_selected" @change="getBeneficiaries()">
+                        <option v-for="group in groups" :key="group.id" :value="group">{{ group.name }}</option>
+                    </select>
+                </div>
+                <div class="form-group" v-show="group_selected">
+                    <label for="">Versión de la herramienta</label>
+                    <input type="text" :value="group_selected.evaluation" readonly class="form-control">
+                </div>
+                <div class="form-group" v-show="resultsBtn">
+                    <button class="btn btn-primary" @click="showData">Obtener datos</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
-export default {
-}
+    export default {
+        data: () => ({
+            loading: false,
+            user: '',
+            organization: '',
+            groups: [],
+            group_selected: '',
+            resultsBtn: false,
+            beneficiaries: [],
+            beneficiaries_evaluations: [],
+        }),
+        methods:{
+            showData(){
+                
+            },
+            getBeneficiaries(){
+                if (this.group_selected) {
+                    this.resultsBtn = true
+                    this.beneficiaries = this.group_selected.beneficiaries.filter(beneficiary => beneficiary.birthdate !== null)
+                }else {
+                    this.resultsBtn = false;
+                }
+            },
+            loadUser(){
+                this.$Progress.start();
+                this.loading = true;
+                axios.get("api/profile").then(({ data }) => (
+                    this.user = data,
+                    this.organization = data.organization,
+                    this.groups = data.organization.groups,
+                    this.$Progress.finish(),
+                    this.loading = false
+                )).catch(() => {
+                    this.loading = false;
+                    this.$Progress.fail();
+                });
+            }
+        },
+        created(){
+            this.loadUser();
+        }
+    }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
+
 </style>

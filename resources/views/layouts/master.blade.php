@@ -96,6 +96,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Reporte global</p>
                 </router-link>
               </li>
+              <li class="nav-item">
+                <router-link to="/comparative_report" class="nav-link">
+                  <i class="fas fa-bookmark nav-icon"></i>
+                  <p>Reporte comparativo</p>
+                </router-link>
+              </li>
+              {{-- <li class="nav-item">
+                <router-link to="/progress_report" class="nav-link">
+                  <i class="fas fa-bookmark nav-icon"></i>
+                  <p>Reporte de progreso</p>
+                </router-link>
+              </li> --}}
             </ul>
           </li>
           @endif

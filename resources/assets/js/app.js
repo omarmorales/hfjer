@@ -112,7 +112,7 @@ Vue.component('chart-component', require('./components/ChartComponent.vue'));
 Vue.component('chart-component2', require('./components/ChartComponent2.vue'));
 Vue.component('chart-component3', require('./components/ChartComponent3.vue'));
 Vue.component('linechart-component', require('./components/LineChartComponent.vue'));
-Vue.component('beneficiaryprogress-card', require('./components/BeneficiaryProgressCardTest.vue'));
+Vue.component('beneficiaryprogress-card', require('./components/BeneficiaryProgressCard.vue'));
 Vue.component('linechart-component2', require('./components/LineChartComponent2.vue'));
 Vue.component('piechart-component', require('./components/PieChartComponent.vue'));
 Vue.component('piechart-component2', require('./components/PieChartComponent2.vue'));
