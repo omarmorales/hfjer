@@ -32,7 +32,7 @@
                 </a>
               </td>
               <td>
-                <a href="#" @click="deleteUser(user.id)">
+                <a href="#" @click="deleteUser(user.id)" v-if="$gate.isAdmin() || ($gate.isAuthor() && user.type != 'admin')">
                   <i class="fa fa-trash red"></i>
                 </a>
               </td>
