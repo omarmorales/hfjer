@@ -4,15 +4,8 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>
-              <i class="fas fa-building"></i>
-              <span v-if="$gate.isAdmin()">Organizaciones</span>
-              <span v-if="$gate.isAuthor()">Organización</span>
-            </h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+          <div class="col-sm-12">
+            <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Inicio</a></li>
               <li class="breadcrumb-item active">Administrar Aplicación</li>
             </ol>
@@ -20,6 +13,15 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center font-weight-bolder text-uppercase">
+          <i class="fas fa-building"></i>
+          <span v-if="$gate.isAdmin()">Organizaciones</span>
+          <span v-if="$gate.isAuthor()">Organización</span>
+        </h2>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12">
         <a v-if="$gate.isAdmin()" href="#" @click="newModal" class="btn btn-success float-right">Agregar organización <i class="fas fa-plus"></i></a>
