@@ -128,6 +128,7 @@ class Ytt2EvaluationController extends Controller
       'information19' => $request['information19'],
       'information20' => $request['information20'],
       'risk_level' => $risk_level,
+      'take_num' => $request['take_num'],
     ]);
   }
 

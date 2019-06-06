@@ -1056,6 +1056,7 @@ export default {
         information22: '',
         information23: '',
         id_post: 0,
+        take_num: '',
       }),
       formYTTv2: new Form({
         id: '',
@@ -1179,6 +1180,7 @@ export default {
     createYtt1Evaluation(){
       this.$Progress.start();
       this.formYTTv1.beneficiary_id = this.beneficiary_election;
+      this.formYTTv1.take_num = this.beneficiary_selected.ytt1_evaluations.length +1;
 
       if(this.beneficiary_selected.ytt1_draft){
         axios.delete(`/api/ytt1draft/${this.beneficiary_selected.ytt1_draft.id}`, {data: { id: this.beneficiary_selected.ytt1_draft.id}})
@@ -1225,6 +1227,7 @@ export default {
     createYtt2Evaluation(){
       this.$Progress.start();
       this.formYTTv2.beneficiary_id = this.beneficiary_election;
+      this.formYTTv2.take_num = this.beneficiary_selected.ytt2_evaluations.length +1;
 
       if(this.beneficiary_selected.ytt2_draft){
         axios.delete(`/api/ytt2draft/${this.beneficiary_selected.ytt2_draft.id}`, {data: { id: this.beneficiary_selected.ytt2_draft.id}})

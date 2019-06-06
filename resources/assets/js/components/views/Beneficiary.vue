@@ -217,6 +217,12 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <beneficiaryprogress-card :evaluations="evaluations" />
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -226,6 +232,7 @@
         return {
           beneficiary: {},
           group: {},
+          evaluations: [],
         }
     },
     methods: {
@@ -353,7 +360,8 @@
       });
       axios.get('/api/beneficiary_by_folio/'+this.$route.params.user).then(({data}) => (
         this.beneficiary = data,
-        this.group = data.group
+        this.group = data.group,
+        this.evaluations =  (data.group.evaluation == 'yttv1') ? data.ytt1_evaluations : data.ytt2_evaluations
       ));
     }
   }

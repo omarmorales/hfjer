@@ -171,6 +171,7 @@ class Ytt1EvaluationController extends Controller
       'risk_level' => $risk_level,
       'propensity_level' => $propensity_level,
       'exposure_level' => $exposure_level,
+      'take_num' => $request['take_num'],
     ]);
   }
 
