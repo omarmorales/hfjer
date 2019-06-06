@@ -89839,32 +89839,67 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             loading: false,
-            evaluation: []
+            evaluation_selected: '',
+            beneficiary: {},
+            group: {},
+            evaluation: {}
         };
     },
     methods: {
         printme: function printme() {
             window.print();
         },
-        loadData: function loadData() {
+        loadBeneficiary: function loadBeneficiary() {
             var _this = this;
 
             this.loading = true;
-            axios.get("/api/ytt1evaluation/" + this.$route.params.id).then(function (_ref) {
+            axios.get('/api/beneficiary_by_folio/' + this.$route.params.user).then(function (_ref) {
                 var data = _ref.data;
-                return _this.loading = false, _this.evaluation = data;
+                return _this.beneficiary = data, _this.group = data.group, _this.evaluation_selected = data.group.evaluation, _this.loading = false;
             }).catch(function () {
                 _this.loading = false;
             });
         }
     },
+    computed: {
+        getEvaluation: function getEvaluation() {
+            var _this2 = this;
+
+            if (this.evaluation_selected == 'yttv1') this.evaluation = this.beneficiary.ytt1_evaluations.find(function (evaluation) {
+                return evaluation.id == _this2.$route.params.id;
+            });else if (this.evaluation_selected == 'yttv2') this.evaluation = this.beneficiary.ytt2_evaluations.find(function (evaluation) {
+                return evaluation.id == _this2.$route.params.id;
+            });
+            return this.evaluation;
+        }
+    },
     created: function created() {
-        this.loadData();
+        this.loadBeneficiary();
     }
 });
 
@@ -89890,10 +89925,8 @@ var render = function() {
           _c("section", { staticClass: "content-header" }, [
             _c("div", { staticClass: "container-fluid" }, [
               _c("div", { staticClass: "row mb-2" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-6" }, [
-                  _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+                _c("div", { staticClass: "col-sm-12" }, [
+                  _c("ol", { staticClass: "breadcrumb" }, [
                     _c(
                       "li",
                       { staticClass: "breadcrumb-item" },
@@ -89912,16 +89945,9 @@ var render = function() {
                         _c(
                           "router-link",
                           {
-                            attrs: {
-                              to:
-                                "/group/" + _vm.evaluation.beneficiary.group.id
-                            }
+                            attrs: { to: "/group/" + _vm.$route.params.group }
                           },
-                          [
-                            _vm._v(
-                              _vm._s(_vm.evaluation.beneficiary.group.name)
-                            )
-                          ]
+                          [_vm._v(_vm._s(_vm.group.name))]
                         )
                       ],
                       1
@@ -89936,10 +89962,13 @@ var render = function() {
                           {
                             attrs: {
                               to:
-                                "/beneficiary/" + _vm.evaluation.beneficiary.id
+                                "/group/" +
+                                _vm.$route.params.group +
+                                "/" +
+                                _vm.$route.params.user
                             }
                           },
-                          [_vm._v(_vm._s(_vm.evaluation.beneficiary.folio))]
+                          [_vm._v(_vm._s(_vm.beneficiary.folio))]
                         )
                       ],
                       1
@@ -89955,7 +89984,9 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-12" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12 mt-3" }, [
               _c("div", { staticClass: "card" }, [
                 _vm._m(2),
                 _vm._v(" "),
@@ -89968,7 +89999,7 @@ var render = function() {
                         _c("p", [
                           _vm._v(
                             "\n                                        " +
-                              _vm._s(_vm.evaluation.beneficiary.folio) +
+                              _vm._s(_vm.beneficiary.folio) +
                               "\n                                    "
                           )
                         ])
@@ -89980,9 +90011,7 @@ var render = function() {
                         _c("p", [
                           _vm._v(
                             "\n                                        " +
-                              _vm._s(
-                                _vm.evaluation.beneficiary.group.evaluation
-                              ) +
+                              _vm._s(_vm.group.evaluation) +
                               "\n                                    "
                           )
                         ])
@@ -89996,7 +90025,7 @@ var render = function() {
                         _c("p", [
                           _vm._v(
                             "\n                                        " +
-                              _vm._s(_vm.evaluation.beneficiary.group.name) +
+                              _vm._s(_vm.group.name) +
                               "\n                                    "
                           )
                         ])
@@ -90026,6 +90055,10 @@ var render = function() {
                 _vm._m(3),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
+                  _c("span", { staticClass: "d-none" }, [
+                    _vm._v(_vm._s(_vm.getEvaluation.created_at))
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "list-group" }, [
                     _c(
                       "a",
@@ -90040,9 +90073,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Bajo rendimiento escolar")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Bajo rendimiento escolar")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Contexto escolar")]
+                            ),
                             _vm._v(" "),
                             _c("h5", [
                               _vm.evaluation.answer1 == 0
@@ -90154,9 +90215,41 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Escasa habilidad de educar de los padres")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [
+                                _vm._v(
+                                  "Escasa habilidad de educar de los padres"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Estilos de crianza")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer3 == 0
@@ -90211,9 +90304,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Rechazo de grupo de iguales")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Rechazo de grupo de iguales")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Exposición de violencia en el hogar")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer4 == 0
@@ -90268,9 +90389,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Desorganización comunitaria")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Desorganización comunitaria")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Criminalidad de los padres/cuidador")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer5 == 0
@@ -90325,11 +90474,41 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v(
-                                "Falta de Apoyo Personal / Social de otros adultos"
-                              )
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [
+                                _vm._v(
+                                  "Falta de Apoyo Personal / Social de otros adultos"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Inseguridad comunitaria")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer6 == 0
@@ -90384,9 +90563,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Exposición a la violencia en el hogar")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Exposición a la violencia en el hogar")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Apoyo social percibido")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer7 == 0
@@ -90441,9 +90648,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Historia de Maltrato en la niñez")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Historia de Maltrato en la niñez")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Historia de Maltrato en la niñez")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer8 == 0
@@ -90498,9 +90733,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Bajo cumplimiento de metas o acuerdos")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Bajo cumplimiento de metas o acuerdos")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Cumplimiento de metas o acuerdos")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer9 == 0
@@ -90555,11 +90818,41 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v(
-                                "Los déficits de atención / hiperactividad"
-                              )
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [
+                                _vm._v(
+                                  "Los déficits de atención / hiperactividad"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Inatención / hiperactividad")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer10 == 0
@@ -90614,11 +90907,41 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v(
-                                "Estrés/ incapacidad para enfrentar dificultades"
-                              )
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [
+                                _vm._v(
+                                  "Estrés/ incapacidad para enfrentar dificultades"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Actitudes hacia la violencia.")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer11 == 0
@@ -90673,9 +90996,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Actitudes negativas")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Actitudes negativas")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Empatía / remordimiento")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer12 == 0
@@ -90730,9 +91081,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Baja empatía / remordimiento")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Baja empatía / remordimiento")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Comportamiento impulsivo")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer13 == 0
@@ -90787,9 +91166,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Comportamiento impulsivo")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Comportamiento impulsivo")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Manejo del enojo")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer14 == 0
@@ -90844,9 +91251,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Problemas con el manejo del enfado")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Problemas con el manejo del enfado")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Delincuencia en grupo de iguales")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer15 == 0
@@ -90901,9 +91336,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Delincuencia en grupo de iguales")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Delincuencia en grupo de iguales")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Iniciación temprana en la violencia")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer16 == 0
@@ -90958,9 +91421,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Iniciación temprana en la violencia")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Iniciación temprana en la violencia")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Violencia física interpersonal")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer17 == 0
@@ -91015,9 +91506,41 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Violencia Previa")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Violencia Previa")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [
+                                _vm._v(
+                                  "Historia de actos delictivos no violentos"
+                                )
+                              ]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer18 == 0
@@ -91072,11 +91595,41 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v(
-                                "Historia de actos delictivos no violentos"
-                              )
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [
+                                _vm._v(
+                                  "Historia de actos delictivos no violentos"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Problemas con la ley")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer19 == 0
@@ -91131,9 +91684,37 @@ var render = function() {
                             staticClass: "d-flex w-100 justify-content-between"
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Antecedentes de medidas judiciales")
-                            ]),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv1",
+                                    expression: "evaluation_selected == 'yttv1'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Antecedentes de medidas judiciales")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h5",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.evaluation_selected == "yttv2",
+                                    expression: "evaluation_selected == 'yttv2'"
+                                  }
+                                ],
+                                staticClass: "mb-1"
+                              },
+                              [_vm._v("Dificultades por el uso de sustancias")]
+                            ),
                             _vm._v(" "),
                             _c("h5", { staticClass: "text-muted" }, [
                               _vm.evaluation.answer20 == 0
@@ -91175,178 +91756,200 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "list-group-item list-group-item-action",
-                        attrs: { href: "" }
-                      },
-                      [
-                        _c(
-                          "div",
+                    _vm.evaluation_selected == "yttv1"
+                      ? _c(
+                          "a",
                           {
-                            staticClass: "d-flex w-100 justify-content-between"
+                            staticClass:
+                              "list-group-item list-group-item-action",
+                            attrs: { href: "" }
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Dificultades por el uso de sustancias")
-                            ]),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "d-flex w-100 justify-content-between"
+                              },
+                              [
+                                _c("h5", { staticClass: "mb-1" }, [
+                                  _vm._v(
+                                    "Dificultades por el uso de sustancias"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("h5", { staticClass: "text-muted" }, [
+                                  _vm.evaluation.answer21 == 0
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-success" },
+                                        [_vm._v("Bajo")]
+                                      )
+                                    : _vm.evaluation.answer21 == 1
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-warning" },
+                                        [_vm._v("Medio")]
+                                      )
+                                    : _vm.evaluation.answer21 == 2
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-danger" },
+                                        [_vm._v("Alto")]
+                                      )
+                                    : _vm.evaluation.answer21 == 3
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-dark" },
+                                        [_vm._v("Crítico")]
+                                      )
+                                    : _c(
+                                        "span",
+                                        {
+                                          staticClass: "badge badge-secondary"
+                                        },
+                                        [_vm._v("Sin respuesta")]
+                                      )
+                                ])
+                              ]
+                            ),
                             _vm._v(" "),
-                            _c("h5", { staticClass: "text-muted" }, [
-                              _vm.evaluation.answer21 == 0
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-success" },
-                                    [_vm._v("Bajo")]
-                                  )
-                                : _vm.evaluation.answer21 == 1
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-warning" },
-                                    [_vm._v("Medio")]
-                                  )
-                                : _vm.evaluation.answer21 == 2
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-danger" },
-                                    [_vm._v("Alto")]
-                                  )
-                                : _vm.evaluation.answer21 == 3
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-dark" },
-                                    [_vm._v("Crítico")]
-                                  )
-                                : _c(
-                                    "span",
-                                    { staticClass: "badge badge-secondary" },
-                                    [_vm._v("Sin respuesta")]
-                                  )
+                            _c("p", { staticClass: "mb-1" }, [
+                              _vm._v(_vm._s(_vm.evaluation.information21))
                             ])
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-1" }, [
-                          _vm._v(_vm._s(_vm.evaluation.information21))
-                        ])
-                      ]
-                    ),
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "list-group-item list-group-item-action",
-                        attrs: { href: "" }
-                      },
-                      [
-                        _c(
-                          "div",
+                    _vm.evaluation_selected == "yttv1"
+                      ? _c(
+                          "a",
                           {
-                            staticClass: "d-flex w-100 justify-content-between"
+                            staticClass:
+                              "list-group-item list-group-item-action",
+                            attrs: { href: "" }
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v(
-                                "Historia de las autolesiones o intentos de suicidio"
-                              )
-                            ]),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "d-flex w-100 justify-content-between"
+                              },
+                              [
+                                _c("h5", { staticClass: "mb-1" }, [
+                                  _vm._v(
+                                    "Historia de las autolesiones o intentos de suicidio"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("h5", { staticClass: "text-muted" }, [
+                                  _vm.evaluation.answer22 == 0
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-success" },
+                                        [_vm._v("Bajo")]
+                                      )
+                                    : _vm.evaluation.answer22 == 1
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-warning" },
+                                        [_vm._v("Medio")]
+                                      )
+                                    : _vm.evaluation.answer22 == 2
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-danger" },
+                                        [_vm._v("Alto")]
+                                      )
+                                    : _vm.evaluation.answer22 == 3
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-dark" },
+                                        [_vm._v("Crítico")]
+                                      )
+                                    : _c(
+                                        "span",
+                                        {
+                                          staticClass: "badge badge-secondary"
+                                        },
+                                        [_vm._v("Sin respuesta")]
+                                      )
+                                ])
+                              ]
+                            ),
                             _vm._v(" "),
-                            _c("h5", { staticClass: "text-muted" }, [
-                              _vm.evaluation.answer22 == 0
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-success" },
-                                    [_vm._v("Bajo")]
-                                  )
-                                : _vm.evaluation.answer22 == 1
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-warning" },
-                                    [_vm._v("Medio")]
-                                  )
-                                : _vm.evaluation.answer22 == 2
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-danger" },
-                                    [_vm._v("Alto")]
-                                  )
-                                : _vm.evaluation.answer22 == 3
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-dark" },
-                                    [_vm._v("Crítico")]
-                                  )
-                                : _c(
-                                    "span",
-                                    { staticClass: "badge badge-secondary" },
-                                    [_vm._v("Sin respuesta")]
-                                  )
+                            _c("p", { staticClass: "mb-1" }, [
+                              _vm._v(_vm._s(_vm.evaluation.information22))
                             ])
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-1" }, [
-                          _vm._v(_vm._s(_vm.evaluation.information22))
-                        ])
-                      ]
-                    ),
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "list-group-item list-group-item-action",
-                        attrs: { href: "" }
-                      },
-                      [
-                        _c(
-                          "div",
+                    _vm.evaluation_selected == "yttv1"
+                      ? _c(
+                          "a",
                           {
-                            staticClass: "d-flex w-100 justify-content-between"
+                            staticClass:
+                              "list-group-item list-group-item-action",
+                            attrs: { href: "" }
                           },
                           [
-                            _c("h5", { staticClass: "mb-1" }, [
-                              _vm._v("Criminalidad de los padres / cuidador")
-                            ]),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "d-flex w-100 justify-content-between"
+                              },
+                              [
+                                _c("h5", { staticClass: "mb-1" }, [
+                                  _vm._v(
+                                    "Criminalidad de los padres / cuidador"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("h5", { staticClass: "text-muted" }, [
+                                  _vm.evaluation.answer23 == 0
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-success" },
+                                        [_vm._v("Bajo")]
+                                      )
+                                    : _vm.evaluation.answer23 == 1
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-warning" },
+                                        [_vm._v("Medio")]
+                                      )
+                                    : _vm.evaluation.answer23 == 2
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-danger" },
+                                        [_vm._v("Alto")]
+                                      )
+                                    : _vm.evaluation.answer23 == 3
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-dark" },
+                                        [_vm._v("Crítico")]
+                                      )
+                                    : _c(
+                                        "span",
+                                        {
+                                          staticClass: "badge badge-secondary"
+                                        },
+                                        [_vm._v("Sin respuesta")]
+                                      )
+                                ])
+                              ]
+                            ),
                             _vm._v(" "),
-                            _c("h5", { staticClass: "text-muted" }, [
-                              _vm.evaluation.answer23 == 0
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-success" },
-                                    [_vm._v("Bajo")]
-                                  )
-                                : _vm.evaluation.answer23 == 1
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-warning" },
-                                    [_vm._v("Medio")]
-                                  )
-                                : _vm.evaluation.answer23 == 2
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-danger" },
-                                    [_vm._v("Alto")]
-                                  )
-                                : _vm.evaluation.answer23 == 3
-                                ? _c(
-                                    "span",
-                                    { staticClass: "badge badge-dark" },
-                                    [_vm._v("Crítico")]
-                                  )
-                                : _c(
-                                    "span",
-                                    { staticClass: "badge badge-secondary" },
-                                    [_vm._v("Sin respuesta")]
-                                  )
+                            _c("p", { staticClass: "mb-1" }, [
+                              _vm._v(_vm._s(_vm.evaluation.information23))
                             ])
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-1" }, [
-                          _vm._v(_vm._s(_vm.evaluation.information23))
-                        ])
-                      ]
-                    )
+                        )
+                      : _vm._e()
                   ])
                 ])
               ])
@@ -91388,12 +91991,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-6" }, [
-      _c("h1", [
-        _vm._v(
-          "\n                            Evaluación YTT\n                        "
-        )
-      ])
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c(
+        "h2",
+        { staticClass: "text-center font-weight-bolder text-uppercase" },
+        [_vm._v("\n                    Evaluación YTT\n                ")]
+      )
     ])
   },
   function() {
