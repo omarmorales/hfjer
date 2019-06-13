@@ -56,6 +56,11 @@
           :age_group="age_group"
           :gender="gender"
           :risk_level="risk_level"
+          :loaded="loaded"
+          :chartData="chartData"
+          :chartOptions="chartOptions"
+          :chartDataRL="chartDataRL"
+          :chartOptionsRL="chartOptionsRL"
         />
 
       </div>
@@ -101,10 +106,44 @@
             high: '',
             critical: ''
         },
+        loaded: false,
+        chartData: {
+          labels: ['<11', '12-15', '16-19', '20-23', '>=24'],
+          datasets: [
+              {
+                label: 'Población',
+                fill: false,
+                backgroundColor: ['#002F6C','#00A9B7','#0E9E82','#FF6767','#BA0C2F'],
+                data: [1,1,1,1,1],
+              }
+          ]
+        },
+        chartOptions: {
+          legend: {
+              position: 'bottom'
+          }
+        },
+        chartDataRL: {
+          labels: ['Bajo','Medio','Alto','Crítico'],
+          datasets: [
+              {
+                label: 'Puntuación',
+                fill: false,
+                backgroundColor: ['#002F6C','#00A9B7','#0E9E82','#FF6767','#BA0C2F'],
+                data: [1,1],
+              }
+          ]
+        },
+        chartOptionsRL: {
+          legend: {
+              position: 'bottom'
+          }
+        },
       }
     },
     methods:{
       showData(){
+        this.loaded = true;
         if (this.group_selected.evaluation == "yttv2"){
           this.yttv1_data_selected = false;
           this.yttv2_data_selected = true;
@@ -113,20 +152,9 @@
           this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt2_evaluations[this.take_selected-1].age);
           this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt2_evaluations[this.take_selected-1].risk_level);
 
-          this.age_group.less_than_11 = this.ages_of_beneficiaries_selected.filter(age => age < 11);
-          this.age_group.between_12_and_15 = this.ages_of_beneficiaries_selected.filter(age => age >= 12 && age <= 15);
-          this.age_group.between_16_and_19 = this.ages_of_beneficiaries_selected.filter(age => age >= 16 && age <= 19);
-          this.age_group.between_20_and_23 = this.ages_of_beneficiaries_selected.filter(age => age >= 20 && age <= 23);
-          this.age_group.more_than_24 = this.ages_of_beneficiaries_selected.filter(age => age >= 24);
-
           this.gender.male = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "masculino");
           this.gender.female = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "femenino");
           this.gender.other = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "otro");
-
-          this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level < 7);
-          this.risk_level.medium = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 8 && risk_level <= 13);
-          this.risk_level.high = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 14 && risk_level <= 20);
-          this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 21);
         } else if (this.group_selected.evaluation == "yttv1"){
           this.yttv1_data_selected = true;
           this.yttv2_data_selected = false;
@@ -135,31 +163,66 @@
           this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt1_evaluations[this.take_selected-1].age);
           this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt1_evaluations[this.take_selected-1].risk_level);
 
-          this.age_group.less_than_11 = this.ages_of_beneficiaries_selected.filter(age => age < 11);
-          this.age_group.between_12_and_15 = this.ages_of_beneficiaries_selected.filter(age => age >= 12 && age <= 15);
-          this.age_group.between_16_and_19 = this.ages_of_beneficiaries_selected.filter(age => age >= 16 && age <= 19);
-          this.age_group.between_20_and_23 = this.ages_of_beneficiaries_selected.filter(age => age >= 20 && age <= 23);
-          this.age_group.more_than_24 = this.ages_of_beneficiaries_selected.filter(age => age >= 24);
-
           this.gender.male = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "masculino");
           this.gender.female = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "femenino");
           this.gender.other = this.total_beneficiaries_with_take_selected.filter(beneficiary => beneficiary.gender == "otro");
-
-          this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level < 2.5);
-          this.risk_level.medium = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 2.5 && risk_level <= 5);
-          this.risk_level.high = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 5.1 && risk_level <= 7.5);
-          this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 7.6);
         }
       },
       showBtn(){
+        this.yttv1_data_selected= false;
+        this.yttv2_data_selected= false;
+        this.resultsBtn = false;
+        this.loaded = false;
         if(this.take_selected){
           this.resultsBtn = true
+
+          if (this.group_selected.evaluation == "yttv2"){
+            this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(beneficiary => beneficiary.ytt2_evaluations.length >= this.take_selected);
+            this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt2_evaluations[this.take_selected-1].age);
+            this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt2_evaluations[this.take_selected-1].risk_level);
+
+            this.chartData.datasets[0].data[0] = this.ages_of_beneficiaries_selected.filter(age => age < 11).length;
+            this.chartData.datasets[0].data[1] = this.ages_of_beneficiaries_selected.filter(age => age >= 12 && age <= 15).length;
+            this.chartData.datasets[0].data[2] = this.ages_of_beneficiaries_selected.filter(age => age >= 16 && age <= 19).length;
+            this.chartData.datasets[0].data[3] = this.ages_of_beneficiaries_selected.filter(age => age >= 20 && age <= 23).length;
+            this.chartData.datasets[0].data[4] = this.ages_of_beneficiaries_selected.filter(age => age >= 24).length;
+
+            this.chartDataRL.datasets[0].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level < 7).length;
+            this.chartDataRL.datasets[0].data[1] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 8 && risk_level <= 13).length;
+            this.chartDataRL.datasets[0].data[2] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 14 && risk_level <= 20).length;
+            this.chartDataRL.datasets[0].data[3] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 21).length;
+          } else if (this.group_selected.evaluation == "yttv1") {
+            this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(beneficiary => beneficiary.ytt1_evaluations.length >= this.take_selected);
+            this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt1_evaluations[this.take_selected-1].age);
+            this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt1_evaluations[this.take_selected-1].risk_level);
+
+            this.chartData.datasets[0].data[0] = this.ages_of_beneficiaries_selected.filter(age => age < 11).length;
+            this.chartData.datasets[0].data[1] = this.ages_of_beneficiaries_selected.filter(age => age >= 12 && age <= 15).length;
+            this.chartData.datasets[0].data[2] = this.ages_of_beneficiaries_selected.filter(age => age >= 16 && age <= 19).length;
+            this.chartData.datasets[0].data[3] = this.ages_of_beneficiaries_selected.filter(age => age >= 20 && age <= 23).length;
+            this.chartData.datasets[0].data[4] = this.ages_of_beneficiaries_selected.filter(age => age >= 24).length;
+
+            this.chartDataRL.datasets[0].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level < 2.5).length;
+            this.chartDataRL.datasets[0].data[1] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 2.5 && risk_level <= 5).length;
+            this.chartDataRL.datasets[0].data[2] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 5.1 && risk_level <= 7.5).length;
+            this.chartDataRL.datasets[0].data[3] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 7.6).length;
+          }
         } else {
           this.resultsBtn = false
+          this.loaded = false
         }
       },
       getBeneficiaries(){
         if(this.group_selected) {
+          this.max_takes = '';
+          this.beneficiaries= '';
+          this.beneficiaries_takes= [];
+          this.yttv1_data_selected= false;
+          this.yttv2_data_selected= false;
+          this.resultsBtn = false;
+          this.loaded = false;
+          this.take_selected = '';
+
           this.beneficiaries = this.group_selected.beneficiaries.filter(beneficiary => beneficiary.birthdate !== null);
           if(this.beneficiaries.length > 0){
             if(this.group_selected.evaluation == "yttv2"){
@@ -180,6 +243,7 @@
             this.yttv1_data_selected= false;
             this.yttv2_data_selected= false;
             this.resultsBtn = false;
+            this.loaded = false;
             this.take_selected = '';
           }
           

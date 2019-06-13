@@ -50,10 +50,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <img src="{{ URL::to('/') }}/img/profile/{{ Auth::user()->photo }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">
+          <router-link to="/profile" class="d-block" style="background-color: transparent; color:#C2C7D0;">
               {{Auth::user()->name}}
-              {{-- <p>{{Auth::user()->type}}</p> --}}
-          </a>
+          </router-link>
         </div>
       </div>
 

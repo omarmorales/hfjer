@@ -36082,15 +36082,11 @@ Vue.component('passport-personal-access-tokens', __webpack_require__(276));
 Vue.component('not-found', __webpack_require__(154));
 
 Vue.component('chart-component', __webpack_require__(281));
-Vue.component('chart-component2', __webpack_require__(327));
-Vue.component('chart-component3', __webpack_require__(329));
-Vue.component('linechart-component', __webpack_require__(331));
 Vue.component('beneficiaryprogress-card', __webpack_require__(333));
 Vue.component('linechart-component2', __webpack_require__(338));
+
+Vue.component('linechart-component', __webpack_require__(331));
 Vue.component('piechart-component', __webpack_require__(340));
-Vue.component('piechart-component2', __webpack_require__(342));
-Vue.component('piechart-component3', __webpack_require__(344));
-Vue.component('chart-component4', __webpack_require__(346));
 
 Vue.component('users', __webpack_require__(348));
 
@@ -84350,6 +84346,11 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -84387,6 +84388,35 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         medium: '',
         high: '',
         critical: ''
+      },
+      loaded: false,
+      chartData: {
+        labels: ['<11', '12-15', '16-19', '20-23', '>=24'],
+        datasets: [{
+          label: 'Población',
+          fill: false,
+          backgroundColor: ['#002F6C', '#00A9B7', '#0E9E82', '#FF6767', '#BA0C2F'],
+          data: [1, 1, 1, 1, 1]
+        }]
+      },
+      chartOptions: {
+        legend: {
+          position: 'bottom'
+        }
+      },
+      chartDataRL: {
+        labels: ['Bajo', 'Medio', 'Alto', 'Crítico'],
+        datasets: [{
+          label: 'Puntuación',
+          fill: false,
+          backgroundColor: ['#002F6C', '#00A9B7', '#0E9E82', '#FF6767', '#BA0C2F'],
+          data: [1, 1]
+        }]
+      },
+      chartOptionsRL: {
+        legend: {
+          position: 'bottom'
+        }
       }
     };
   },
@@ -84395,6 +84425,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     showData: function showData() {
       var _this = this;
 
+      this.loaded = true;
       if (this.group_selected.evaluation == "yttv2") {
         this.yttv1_data_selected = false;
         this.yttv2_data_selected = true;
@@ -84409,22 +84440,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           return beneficiary.ytt2_evaluations[_this.take_selected - 1].risk_level;
         });
 
-        this.age_group.less_than_11 = this.ages_of_beneficiaries_selected.filter(function (age) {
-          return age < 11;
-        });
-        this.age_group.between_12_and_15 = this.ages_of_beneficiaries_selected.filter(function (age) {
-          return age >= 12 && age <= 15;
-        });
-        this.age_group.between_16_and_19 = this.ages_of_beneficiaries_selected.filter(function (age) {
-          return age >= 16 && age <= 19;
-        });
-        this.age_group.between_20_and_23 = this.ages_of_beneficiaries_selected.filter(function (age) {
-          return age >= 20 && age <= 23;
-        });
-        this.age_group.more_than_24 = this.ages_of_beneficiaries_selected.filter(function (age) {
-          return age >= 24;
-        });
-
         this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
           return beneficiary.gender == "masculino";
         });
@@ -84433,19 +84448,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         });
         this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
           return beneficiary.gender == "otro";
-        });
-
-        this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level < 7;
-        });
-        this.risk_level.medium = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 8 && risk_level <= 13;
-        });
-        this.risk_level.high = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 14 && risk_level <= 20;
-        });
-        this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 21;
         });
       } else if (this.group_selected.evaluation == "yttv1") {
         this.yttv1_data_selected = true;
@@ -84461,22 +84463,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           return beneficiary.ytt1_evaluations[_this.take_selected - 1].risk_level;
         });
 
-        this.age_group.less_than_11 = this.ages_of_beneficiaries_selected.filter(function (age) {
-          return age < 11;
-        });
-        this.age_group.between_12_and_15 = this.ages_of_beneficiaries_selected.filter(function (age) {
-          return age >= 12 && age <= 15;
-        });
-        this.age_group.between_16_and_19 = this.ages_of_beneficiaries_selected.filter(function (age) {
-          return age >= 16 && age <= 19;
-        });
-        this.age_group.between_20_and_23 = this.ages_of_beneficiaries_selected.filter(function (age) {
-          return age >= 20 && age <= 23;
-        });
-        this.age_group.more_than_24 = this.ages_of_beneficiaries_selected.filter(function (age) {
-          return age >= 24;
-        });
-
         this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
           return beneficiary.gender == "masculino";
         });
@@ -84486,30 +84472,113 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
           return beneficiary.gender == "otro";
         });
-
-        this.risk_level.low = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level < 2.5;
-        });
-        this.risk_level.medium = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 2.5 && risk_level <= 5;
-        });
-        this.risk_level.high = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 5.1 && risk_level <= 7.5;
-        });
-        this.risk_level.critical = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-          return risk_level >= 7.6;
-        });
       }
     },
     showBtn: function showBtn() {
+      var _this2 = this;
+
+      this.yttv1_data_selected = false;
+      this.yttv2_data_selected = false;
+      this.resultsBtn = false;
+      this.loaded = false;
       if (this.take_selected) {
         this.resultsBtn = true;
+
+        if (this.group_selected.evaluation == "yttv2") {
+          this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(function (beneficiary) {
+            return beneficiary.ytt2_evaluations.length >= _this2.take_selected;
+          });
+          this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
+            return beneficiary.ytt2_evaluations[_this2.take_selected - 1].age;
+          });
+          this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
+            return beneficiary.ytt2_evaluations[_this2.take_selected - 1].risk_level;
+          });
+
+          this.chartData.datasets[0].data[0] = this.ages_of_beneficiaries_selected.filter(function (age) {
+            return age < 11;
+          }).length;
+          this.chartData.datasets[0].data[1] = this.ages_of_beneficiaries_selected.filter(function (age) {
+            return age >= 12 && age <= 15;
+          }).length;
+          this.chartData.datasets[0].data[2] = this.ages_of_beneficiaries_selected.filter(function (age) {
+            return age >= 16 && age <= 19;
+          }).length;
+          this.chartData.datasets[0].data[3] = this.ages_of_beneficiaries_selected.filter(function (age) {
+            return age >= 20 && age <= 23;
+          }).length;
+          this.chartData.datasets[0].data[4] = this.ages_of_beneficiaries_selected.filter(function (age) {
+            return age >= 24;
+          }).length;
+
+          this.chartDataRL.datasets[0].data[0] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+            return risk_level < 7;
+          }).length;
+          this.chartDataRL.datasets[0].data[1] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+            return risk_level >= 8 && risk_level <= 13;
+          }).length;
+          this.chartDataRL.datasets[0].data[2] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+            return risk_level >= 14 && risk_level <= 20;
+          }).length;
+          this.chartDataRL.datasets[0].data[3] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+            return risk_level >= 21;
+          }).length;
+        } else if (this.group_selected.evaluation == "yttv1") {
+          this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(function (beneficiary) {
+            return beneficiary.ytt1_evaluations.length >= _this2.take_selected;
+          });
+          this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this2.take_selected - 1].age;
+          });
+          this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this2.take_selected - 1].risk_level;
+          });
+
+          this.chartData.datasets[0].data[0] = this.ages_of_beneficiaries_selected.filter(function (age) {
+            return age < 11;
+          }).length;
+          this.chartData.datasets[0].data[1] = this.ages_of_beneficiaries_selected.filter(function (age) {
+            return age >= 12 && age <= 15;
+          }).length;
+          this.chartData.datasets[0].data[2] = this.ages_of_beneficiaries_selected.filter(function (age) {
+            return age >= 16 && age <= 19;
+          }).length;
+          this.chartData.datasets[0].data[3] = this.ages_of_beneficiaries_selected.filter(function (age) {
+            return age >= 20 && age <= 23;
+          }).length;
+          this.chartData.datasets[0].data[4] = this.ages_of_beneficiaries_selected.filter(function (age) {
+            return age >= 24;
+          }).length;
+
+          this.chartDataRL.datasets[0].data[0] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+            return risk_level < 2.5;
+          }).length;
+          this.chartDataRL.datasets[0].data[1] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+            return risk_level >= 2.5 && risk_level <= 5;
+          }).length;
+          this.chartDataRL.datasets[0].data[2] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+            return risk_level >= 5.1 && risk_level <= 7.5;
+          }).length;
+          this.chartDataRL.datasets[0].data[3] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
+            return risk_level >= 7.6;
+          }).length;
+        }
       } else {
         this.resultsBtn = false;
+        this.loaded = false;
       }
     },
     getBeneficiaries: function getBeneficiaries() {
       if (this.group_selected) {
+        this.max_takes = '';
+        this.beneficiaries = '';
+        this.beneficiaries_takes = [];
+        this.yttv1_data_selected = false;
+        this.yttv2_data_selected = false;
+        this.resultsBtn = false;
+        this.loaded = false;
+        this.take_selected = '';
+
         this.beneficiaries = this.group_selected.beneficiaries.filter(function (beneficiary) {
           return beneficiary.birthdate !== null;
         });
@@ -84536,21 +84605,22 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           this.yttv1_data_selected = false;
           this.yttv2_data_selected = false;
           this.resultsBtn = false;
+          this.loaded = false;
           this.take_selected = '';
         }
       }
     },
     loadUser: function loadUser() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$Progress.start();
       this.loading = true;
       axios.get("api/profile").then(function (_ref) {
         var data = _ref.data;
-        return _this2.user = data, _this2.groups = data.organization.groups, _this2.$Progress.finish(), _this2.loading = false;
+        return _this3.user = data, _this3.groups = data.organization.groups, _this3.$Progress.finish(), _this3.loading = false;
       }).catch(function () {
-        _this2.loading = false;
-        _this2.$Progress.fail();
+        _this3.loading = false;
+        _this3.$Progress.fail();
       });
     }
   },
@@ -84765,7 +84835,12 @@ var render = function() {
                         _vm.total_beneficiaries_with_take_selected,
                       age_group: _vm.age_group,
                       gender: _vm.gender,
-                      risk_level: _vm.risk_level
+                      risk_level: _vm.risk_level,
+                      loaded: _vm.loaded,
+                      chartData: _vm.chartData,
+                      chartOptions: _vm.chartOptions,
+                      chartDataRL: _vm.chartDataRL,
+                      chartOptionsRL: _vm.chartOptionsRL
                     }
                   })
                 : _vm._e()
@@ -106926,150 +107001,10 @@ module.exports = {
 
 
 /***/ }),
-/* 327 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(328)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/ChartComponent2.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-16caba28", Component.options)
-  } else {
-    hotAPI.reload("data-v-16caba28", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 328 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Bar */],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['Personas que bajaron 1 categoría'],
-      datasets: [{
-        label: 'Hombres',
-        backgroundColor: '#FB8C00',
-        data: [1]
-      }]
-    });
-  }
-});
-
-/***/ }),
-/* 329 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(330)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/ChartComponent3.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-16ae8b26", Component.options)
-  } else {
-    hotAPI.reload("data-v-16ae8b26", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 330 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Bar */],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['>24'],
-      datasets: [{
-        label: 'Personas que bajaron 1 categoría',
-        backgroundColor: '#2196F3',
-        data: [1]
-      }]
-    });
-  }
-});
-
-/***/ }),
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
 /* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -107501,266 +107436,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    chartdata: {
+      type: Object,
+      default: null
+    },
+    options: {
+      type: Object,
+      default: null
+    }
+  },
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["c" /* Pie */],
+  mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* mixins */].reactiveProp],
   mounted: function mounted() {
     // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['Masculino', 'Femenino'],
-      datasets: [{
-        label: 'puntuación promedio',
-        backgroundColor: ['#FB8C00', '#C0C0C0'],
-        data: [1, 1]
-      }]
-    }, {
-      legend: {
-        position: 'left'
-      }
-    });
+    this.renderChart(this.chartData, this.options);
   }
 });
 
 /***/ }),
-/* 342 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(343)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/PieChartComponent2.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-16a56dc4", Component.options)
-  } else {
-    hotAPI.reload("data-v-16a56dc4", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 343 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["c" /* Pie */],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['>24'],
-      datasets: [{
-        label: 'puntuación promedio',
-        backgroundColor: ['#2196F3', '#C0C0C0'],
-        data: [2]
-      }]
-    }, {
-      legend: {
-        position: 'left'
-      }
-    });
-  }
-});
-
-/***/ }),
-/* 344 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(345)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/PieChartComponent3.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-16893ec2", Component.options)
-  } else {
-    hotAPI.reload("data-v-16893ec2", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 345 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["c" /* Pie */],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['Personas que bajaron 1 categoría'],
-      datasets: [{
-        label: 'Puntuación Promedio',
-        backgroundColor: '#4CAF50',
-        data: [1]
-      }]
-    }, {
-      legend: {
-        position: 'bottom'
-      }
-    });
-  }
-});
-
-/***/ }),
-/* 346 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(347)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/ChartComponent4.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-16925c24", Component.options)
-  } else {
-    hotAPI.reload("data-v-16925c24", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 347 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Bar */],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['Bajo', 'Alto'],
-      datasets: [{
-        label: 'Puntuación Promedio',
-        backgroundColor: '#03A9F4',
-        data: [1, 1]
-      }]
-    }, {
-      legend: {
-        position: 'top'
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-            callback: function callback(value) {
-              if (Number.isInteger(value)) {
-                return value;
-              }
-            },
-            stepSize: 1
-          }
-        }]
-      }
-    });
-  }
-});
-
-/***/ }),
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
 /* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -108950,13 +108650,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         total_beneficiaries_with_take_selected: Array,
         age_group: Object,
         gender: Object,
-        risk_level: Object
+        risk_level: Object,
+        chartData: Object,
+        chartOptions: Object,
+        chartDataRL: Object,
+        chartOptionsRL: Object,
+        loaded: Boolean
     },
     data: function data() {
         return {};
@@ -108985,9 +108696,23 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("age-group-global-report", { attrs: { age_group: _vm.age_group } }),
+      _c("age-group-global-report", {
+        attrs: {
+          age_group: _vm.age_group,
+          chartData: _vm.chartData,
+          chartOptions: _vm.chartOptions,
+          loaded: _vm.loaded
+        }
+      }),
       _vm._v(" "),
-      _c("risk-level-global-report", { attrs: { risk_level: _vm.risk_level } })
+      _c("risk-level-global-report", {
+        attrs: {
+          risk_level: _vm.risk_level,
+          chartDataRL: _vm.chartDataRL,
+          chartOptionsRL: _vm.chartOptionsRL,
+          loaded: _vm.loaded
+        }
+      })
     ],
     1
   )
@@ -109360,10 +109085,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        age_group: Object
+        age_group: Object,
+        chartData: Object,
+        chartOptions: Object,
+        loaded: Boolean
     },
     data: function data() {
         return {};
@@ -109386,48 +109121,73 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "table-responsive" }, [
-            _c("table", { staticClass: "table table-bordered" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [_vm._v(_vm._s("<11"))]),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("table", { staticClass: "table table-bordered" }, [
+                  _vm._m(1),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.age_group.less_than_11.length))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v(_vm._s("12-15"))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(_vm._s(_vm.age_group.between_12_and_15.length))
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", [_vm._v(_vm._s("<11"))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartData.datasets[0].data[0]))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v(_vm._s("12-15"))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartData.datasets[0].data[1]))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v(_vm._s("16-19"))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartData.datasets[0].data[2]))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v(_vm._s("20-23"))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartData.datasets[0].data[3]))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v(_vm._s(">=24"))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartData.datasets[0].data[4]))
+                      ])
+                    ])
                   ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v(_vm._s("16-19"))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(_vm._s(_vm.age_group.between_16_and_19.length))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v(_vm._s("20-23"))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(_vm._s(_vm.age_group.between_20_and_23.length))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v(_vm._s(">=24"))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.age_group.more_than_24.length))])
                 ])
               ])
-            ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-6" },
+              [
+                _vm.loaded
+                  ? _c("piechart-component", {
+                      attrs: {
+                        chartData: _vm.chartData,
+                        options: _vm.chartOptions,
+                        height: 250
+                      }
+                    })
+                  : _vm._e()
+              ],
+              1
+            )
           ])
         ])
       ])
@@ -109606,10 +109366,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        risk_level: Object
+        risk_level: Object,
+        chartDataRL: Object,
+        chartOptionsRL: Object,
+        loaded: Boolean
     },
     data: function data() {
         return {};
@@ -109632,36 +109402,65 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "table-responsive" }, [
-            _c("table", { staticClass: "table table-bordered" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [_vm._v("Bajo")]),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("table", { staticClass: "table table-bordered" }, [
+                  _vm._m(1),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.risk_level.low.length))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("Medio")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.risk_level.medium.length))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("Alto")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.risk_level.high.length))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("Critico")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.risk_level.critical.length))])
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", [_vm._v("Bajo")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRL.datasets[0].data[0]))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Medio")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRL.datasets[0].data[1]))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Alto")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRL.datasets[0].data[2]))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Critico")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRL.datasets[0].data[3]))
+                      ])
+                    ])
+                  ])
                 ])
               ])
-            ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-6" },
+              [
+                _vm.loaded
+                  ? _c("chart-component", {
+                      attrs: {
+                        chartData: _vm.chartDataRL,
+                        options: _vm.chartOptionsRL,
+                        height: 250
+                      }
+                    })
+                  : _vm._e()
+              ],
+              1
+            )
           ])
         ])
       ])

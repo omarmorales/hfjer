@@ -6,37 +6,44 @@
                     <p class="card-title">Población desagregada por grupo etario</p>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                <th>Grupo etario</th>
-                                <th>Número</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{ "<11" }}</td>
-                                    <td>{{ age_group.less_than_11.length }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ "12-15" }}</td>
-                                    <td>{{ age_group.between_12_and_15.length }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ "16-19" }}</td>
-                                    <td>{{ age_group.between_16_and_19.length }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ "20-23" }}</td>
-                                    <td>{{ age_group.between_20_and_23.length }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ ">=24" }}</td>
-                                    <td>{{ age_group.more_than_24.length }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th>Grupo etario</th>
+                                        <th>Número</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ "<11" }}</td>
+                                            <td>{{ chartData.datasets[0].data[0] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ "12-15" }}</td>
+                                            <td>{{ chartData.datasets[0].data[1] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ "16-19" }}</td>
+                                            <td>{{ chartData.datasets[0].data[2] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ "20-23" }}</td>
+                                            <td>{{ chartData.datasets[0].data[3] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ ">=24" }}</td>
+                                            <td>{{ chartData.datasets[0].data[4] }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <piechart-component v-if="loaded" :chartData="chartData" :options="chartOptions" :height="250" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,6 +55,9 @@
     export default {
         props: {
             age_group: Object,
+            chartData: Object,
+            chartOptions: Object,
+            loaded: Boolean
         },
         data: () => ({
             
