@@ -19,7 +19,7 @@
     </section>
     <div class="row">
       <div class="col-md-12">
-        <h2 class="text-center font-weight-bolder text-uppercase">
+        <h2 class="text-center font-weight-bold text-uppercase">
           {{ beneficiary.folio }}
         </h2>
       </div>

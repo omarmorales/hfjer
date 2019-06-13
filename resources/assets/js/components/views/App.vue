@@ -15,7 +15,7 @@
     </section>
     <div class="row">
       <div class="col-md-12">
-        <h2 class="text-center font-weight-bolder text-uppercase">
+        <h2 class="text-center font-weight-bold text-uppercase">
           <i class="fas fa-building"></i>
           <span v-if="$gate.isAdmin()">Organizaciones</span>
           <span v-if="$gate.isAuthor()">Organización</span>
@@ -32,7 +32,7 @@
         <div class="card text-center" style="height:100%;">
           <div class="card-body text-center">
             <a href="#" class="text-reset">
-              <h3 class="display-6 font-weight-bolder">{{ organization.name }}</h3>
+              <h3 class="display-6 font-weight-bold">{{ organization.name }}</h3>
             </a>
           </div>
           <div class="card-footer">
@@ -58,7 +58,7 @@
       <div class="col-md-12 mt-3" v-for="organization in organizations.data" :key="organization.id" v-if="organization.id == user.organization_id">
         <div class="card">
           <div class="card-header">
-            <h3 class="display-6 font-weight-bolder">{{ organization.name }}</h3>
+            <h3 class="display-6 font-weight-bold">{{ organization.name }}</h3>
           </div>
           <div class="card-body">
             <div>
@@ -78,7 +78,7 @@
       <div class="collapse col-md-12 mt-4" id="myCollapsible">
         <div class="card">
           <div class="card-header">
-            <h3 class="display-6 font-weight-bolder">{{ this.form.name }}</h3>
+            <h3 class="display-6 font-weight-bold">{{ this.form.name }}</h3>
           </div>
           <div class="card-body">
             <div>

@@ -13,7 +13,7 @@
         </section>
         <div class="row">
             <div class="col-md-12">
-                <h3 class="font-weight-bolder text-uppercase text-center">
+                <h3 class="font-weight-bold text-uppercase text-center">
                     <i class="fas fa-chart-bar"></i>
                     Reporte comparativo de {{ organization.name }}
                 </h3>
@@ -50,7 +50,7 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body text-center">
-                        <p class="font-weight-bolder h2">{{ total_beneficiaries_with_take_selected.length }}</p>
+                        <p class="font-weight-bold h2">{{ total_beneficiaries_with_take_selected.length }}</p>
                         <p>Población total</p>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body text-center">
-                        <p class="font-weight-bolder h2">{{ gender.female.length }}</p>
+                        <p class="font-weight-bold h2">{{ gender.female.length }}</p>
                         <p>Mujer(es)</p>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body text-center">
-                        <p class="font-weight-bolder h2">{{ gender.male.length }}</p>
+                        <p class="font-weight-bold h2">{{ gender.male.length }}</p>
                         <p>Hombre(s)</p>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body text-center">
-                        <p class="font-weight-bolder h2">{{ gender.other.length }}</p>
+                        <p class="font-weight-bold h2">{{ gender.other.length }}</p>
                         <p>Otro(s)</p>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
                         <div class="col-md-12 mb-3" v-if="group_selected.evaluation == 'yttv1'">
                             <chart-component v-if="loaded" :chartData="chartDataGR" :options="chartOptionsGR" :height="100" />
                         </div>
-                        <div class="col-md-12">
+                        <div :class="{ 'col-md-12' : group_selected.evaluation == 'yttv1', 'col-md-6' : group_selected.evaluation == 'yttv2' }">
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
@@ -79,8 +79,8 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="col-md-12 mb-3" v-if="group_selected.evaluation == 'yttv2'">
-                            <chart-component v-if="loaded" :chartData="chartDataRL" :options="chartOptionsRL" :height="100" />
+                        <div class="col-md-6" v-if="group_selected.evaluation == 'yttv2'">
+                            <chart-component v-if="loaded" :chartData="chartDataRL" :options="chartOptionsRL" :height="250" />
                         </div>
                     </div>
                 </div>

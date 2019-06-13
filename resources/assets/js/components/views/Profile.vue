@@ -18,7 +18,7 @@
                 <div class="widget-user-image text-center mb-2">
                     <img class="img-circle" :src="getProfilePhoto()" alt="User Avatar" style="max-width: 30%;">
                 </div>
-                <p class="h3 text-center font-weight-bolder">{{ form.name }}</p>
+                <p class="h3 text-center font-weight-bold">{{ form.name }}</p>
                 <p class="h4 text-center text-secondary">{{ form.type }}</p>
             </div>
 

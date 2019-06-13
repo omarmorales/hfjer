@@ -22,7 +22,7 @@
       </section>
       <div class="row">
         <div class="col-md-12">
-          <h3 class="font-weight-bolder text-uppercase text-center">
+          <h3 class="font-weight-bold text-uppercase text-center">
             <i class="fas fa-users"></i>
             Administrar grupos:
           </h3>
@@ -33,8 +33,8 @@
         <div class="col-md-4 mt-3" v-for="group in groups" :key="group.id">
           <div class="card text-center" style="height:100%;">
             <div class="card-body text-center">
-              <h3 class="display-6 font-weight-bolder">
-                <router-link :to="'/group/'+group.slug" class="text-decoration-none text-reset">
+              <h3 class="display-6 font-weight-bold">
+                <router-link :to="'/group/'+group.slug" class="text-decoration-none text-reset text-dark">
                   {{ group.name }}
                 </router-link>
               </h3>

@@ -31,7 +31,7 @@
             </section>
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center font-weight-bolder text-uppercase">
+                    <h2 class="text-center font-weight-bold text-uppercase">
                         Evaluación YTT
                     </h2>
                 </div>

@@ -22,7 +22,7 @@
       </section>
       <div class="row">
         <div class="col-md-12">
-          <h3 class="font-weight-bolder text-uppercase text-center">
+          <h3 class="font-weight-bold text-uppercase text-center">
             <i class="fas fa-chart-bar"></i>
             Reporte global de {{ user.organization.name }}
           </h3>

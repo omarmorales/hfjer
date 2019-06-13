@@ -16,7 +16,7 @@
         </section>
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-uppercase font-weight-bolder text-center">Herramienta YTT: herramienta de focalización de Jóvenes en Riesgo</h2>
+                <h2 class="text-uppercase font-weight-bold text-center">Herramienta YTT: herramienta de focalización de Jóvenes en Riesgo</h2>
             </div>
         </div>
         <div class="row">
@@ -505,22 +505,22 @@
                     Anta la decisión de eliminar los reactivos que no discriminaban, la herramienta YTT quedó conformada por los 20 reactivos se describirán en la siguiente sección.
                 </p>
                 <p>
-                    <span class="font-weight-bolder">1.-Contexto escolar:</span> Hace referencia a la exploración del contexto actual del grado académico del adolescente y los motivos que lo llevaron a mantenerse en ese estado. Se explora sobre problemas de conducta, apoyo familiar, percepción de limitaciones escolares e indisciplina. 
+                    <span class="font-weight-bold">1.-Contexto escolar:</span> Hace referencia a la exploración del contexto actual del grado académico del adolescente y los motivos que lo llevaron a mantenerse en ese estado. Se explora sobre problemas de conducta, apoyo familiar, percepción de limitaciones escolares e indisciplina. 
                 </p>
                 <p>
-                    <span class="font-weight-bolder">2.- Ausencia de una figura parental:</span> En este reactivo se busca explorar la relación inicial, temprana y actual con sus padres, se busca obtener información en relación de con quién vive actualmente, estado actual de la unión de sus padres, saber los motivos de separación en caso de que se confirme, además de explorar el motivo de mantenerse o separarse de ellos.
+                    <span class="font-weight-bold">2.- Ausencia de una figura parental:</span> En este reactivo se busca explorar la relación inicial, temprana y actual con sus padres, se busca obtener información en relación de con quién vive actualmente, estado actual de la unión de sus padres, saber los motivos de separación en caso de que se confirme, además de explorar el motivo de mantenerse o separarse de ellos.
                 </p>
                 <p>
-                    <span class="font-weight-bolder">3.-Estilos de crianza:</span> Se explora el estado actual y previo de las reglas y obligaciones inculcadas en la casa de sus padres. Se hace una exploración sobre horarios, actividades, permisos para salir con amigos, consecuencia de no cumplir una regla. Además, se pone atención sobre el estado de conocimiento de sus padres sobre su tiempo libre, preocupaciones, necesidades, apoyo, convivencia y/o atención.
+                    <span class="font-weight-bold">3.-Estilos de crianza:</span> Se explora el estado actual y previo de las reglas y obligaciones inculcadas en la casa de sus padres. Se hace una exploración sobre horarios, actividades, permisos para salir con amigos, consecuencia de no cumplir una regla. Además, se pone atención sobre el estado de conocimiento de sus padres sobre su tiempo libre, preocupaciones, necesidades, apoyo, convivencia y/o atención.
                 </p>
                 <p>
-                    <span class="font-weight-bolder">4.-Exposición de violencia en el hogar:</span> Se busca información relacionada al nivel de expresión de violencia presentada en su hogar. En caso de que se corrobore, las preguntas se orientan a identificar la frecuencia con la que se desarrollaba, la manera en la que surgía, quiénes eran participes, que rol jugaba él/ella y/o consecuencias.
+                    <span class="font-weight-bold">4.-Exposición de violencia en el hogar:</span> Se busca información relacionada al nivel de expresión de violencia presentada en su hogar. En caso de que se corrobore, las preguntas se orientan a identificar la frecuencia con la que se desarrollaba, la manera en la que surgía, quiénes eran participes, que rol jugaba él/ella y/o consecuencias.
                 </p>
                 <p>
-                    <span class="font-weight-bolder">5.-Criminalidad de los padres/cuidador:</span> El reactivo se enfoca en el historial de crímenes de los padres o tutores a cargo del evaluado, se indaga sobre delitos. En caso de que se corrobore, se indaga sobre el tipo de crimen o delito cometido, inicio del historial del tutor, si el evaluado ha sido testigo de algún acto, y/o si el tutor o padre estuvo o esta paga o pagó alguna sentencia.
+                    <span class="font-weight-bold">5.-Criminalidad de los padres/cuidador:</span> El reactivo se enfoca en el historial de crímenes de los padres o tutores a cargo del evaluado, se indaga sobre delitos. En caso de que se corrobore, se indaga sobre el tipo de crimen o delito cometido, inicio del historial del tutor, si el evaluado ha sido testigo de algún acto, y/o si el tutor o padre estuvo o esta paga o pagó alguna sentencia.
                 </p>
                 <p>
-                    <span class="font-weight-bolder">6.-Inseguridad comunitaria:</span> En este reactivo la búsqueda se concentra en la relación que el evaluado tiene con la comunidad que se desenvolvió o se desenvuelve actualmente. Se explora el nivel de riesgo en relación a la existencia de delitos y/o crimen, peleas o riñas. Y en caso de que se confirmen se indaga la frecuencia, si participa activa o pasiva sobre ellos, si conocidos, familiares o él/ella ha sido víctima de ellos, además de la motivación para seguir viviendo ahí o irse.
+                    <span class="font-weight-bold">6.-Inseguridad comunitaria:</span> En este reactivo la búsqueda se concentra en la relación que el evaluado tiene con la comunidad que se desenvolvió o se desenvuelve actualmente. Se explora el nivel de riesgo en relación a la existencia de delitos y/o crimen, peleas o riñas. Y en caso de que se confirmen se indaga la frecuencia, si participa activa o pasiva sobre ellos, si conocidos, familiares o él/ella ha sido víctima de ellos, además de la motivación para seguir viviendo ahí o irse.
                 </p>
             </div>
         </div>
