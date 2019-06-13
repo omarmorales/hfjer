@@ -61,6 +61,9 @@
           :chartOptions="chartOptions"
           :chartDataRL="chartDataRL"
           :chartOptionsRL="chartOptionsRL"
+          :chartDataGR="chartDataGR"
+          :chartOptionsGR="chartOptionsGR"
+          :group_selected="group_selected"
         />
 
       </div>
@@ -86,6 +89,7 @@
         total_beneficiaries_with_take_selected: '',
         ages_of_beneficiaries_selected: '',
         risk_level_of_beneficiaries_selected: '',
+        exposure_level_of_beneficiaries_selected: '',
         age_group: {
             less_than_11: '',
             between_12_and_15: '',
@@ -123,21 +127,89 @@
               position: 'bottom'
           }
         },
-        chartDataRL: {
-          labels: ['Bajo','Medio','Alto','Crítico'],
+        chartDataGR: {
+          labels: ['Nivel de riesgo','Nivel de exposición','Nivel de propensión'],
           datasets: [
               {
-                label: 'Puntuación',
+                label: 'Bajo',
                 fill: false,
-                backgroundColor: ['#002F6C','#00A9B7','#0E9E82','#FF6767','#BA0C2F'],
-                data: [1,1],
-              }
+                backgroundColor: '#002F6C',
+                data: [0,0,0],
+              },
+              {
+                label: 'Medio',
+                fill: false,
+                backgroundColor: '#00A9B7',
+                data: [0,0,0],
+              },
+              {
+                label: 'Alto',
+                fill: false,
+                backgroundColor: '#FF6767',
+                data: [0,0,0],
+              },
+              {
+                label: 'Crítico',
+                fill: false,
+                backgroundColor: '#BA0C2F',
+                data: [0,0,0],
+              },
+          ]
+        },
+        chartOptionsGR: {
+          legend: {
+              position: 'bottom'
+          },
+          scales: {	
+            yAxes: [{	
+              ticks: {	
+                beginAtZero: true,	
+                callback: function (value) { if (Number.isInteger(value)) { return value; } },	
+              }	
+            }]	
+          },	
+        },
+        chartDataRL: {
+          labels: ['Nivel de riesgo'],
+          datasets: [
+              {
+                label: 'Bajo',
+                fill: false,
+                backgroundColor: '#002F6C',
+                data: [0],
+              },
+              {
+                label: 'Medio',
+                fill: false,
+                backgroundColor: '#00A9B7',
+                data: [0],
+              },
+              {
+                label: 'Alto',
+                fill: false,
+                backgroundColor: '#FF6767',
+                data: [0],
+              },
+              {
+                label: 'Crítico',
+                fill: false,
+                backgroundColor: '#BA0C2F',
+                data: [0],
+              },
           ]
         },
         chartOptionsRL: {
           legend: {
               position: 'bottom'
-          }
+          },
+          scales: {	
+            yAxes: [{	
+              ticks: {	
+                beginAtZero: true,	
+                callback: function (value) { if (Number.isInteger(value)) { return value; } },	
+              }	
+            }]	
+          },	
         },
       }
     },
@@ -180,7 +252,6 @@
             this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(beneficiary => beneficiary.ytt2_evaluations.length >= this.take_selected);
             this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt2_evaluations[this.take_selected-1].age);
             this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt2_evaluations[this.take_selected-1].risk_level);
-
             this.chartData.datasets[0].data[0] = this.ages_of_beneficiaries_selected.filter(age => age < 11).length;
             this.chartData.datasets[0].data[1] = this.ages_of_beneficiaries_selected.filter(age => age >= 12 && age <= 15).length;
             this.chartData.datasets[0].data[2] = this.ages_of_beneficiaries_selected.filter(age => age >= 16 && age <= 19).length;
@@ -188,13 +259,15 @@
             this.chartData.datasets[0].data[4] = this.ages_of_beneficiaries_selected.filter(age => age >= 24).length;
 
             this.chartDataRL.datasets[0].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level < 7).length;
-            this.chartDataRL.datasets[0].data[1] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 8 && risk_level <= 13).length;
-            this.chartDataRL.datasets[0].data[2] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 14 && risk_level <= 20).length;
-            this.chartDataRL.datasets[0].data[3] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 21).length;
+            this.chartDataRL.datasets[1].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 8 && risk_level <= 13).length;
+            this.chartDataRL.datasets[2].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 14 && risk_level <= 20).length;
+            this.chartDataRL.datasets[3].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 21).length;
           } else if (this.group_selected.evaluation == "yttv1") {
             this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(beneficiary => beneficiary.ytt1_evaluations.length >= this.take_selected);
             this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt1_evaluations[this.take_selected-1].age);
             this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt1_evaluations[this.take_selected-1].risk_level);
+            this.exposure_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt1_evaluations[this.take_selected-1].exposure_level);
+            this.propensity_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(beneficiary => beneficiary.ytt1_evaluations[this.take_selected-1].propensity_level);
 
             this.chartData.datasets[0].data[0] = this.ages_of_beneficiaries_selected.filter(age => age < 11).length;
             this.chartData.datasets[0].data[1] = this.ages_of_beneficiaries_selected.filter(age => age >= 12 && age <= 15).length;
@@ -202,10 +275,18 @@
             this.chartData.datasets[0].data[3] = this.ages_of_beneficiaries_selected.filter(age => age >= 20 && age <= 23).length;
             this.chartData.datasets[0].data[4] = this.ages_of_beneficiaries_selected.filter(age => age >= 24).length;
 
-            this.chartDataRL.datasets[0].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level < 2.5).length;
-            this.chartDataRL.datasets[0].data[1] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 2.5 && risk_level <= 5).length;
-            this.chartDataRL.datasets[0].data[2] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 5.1 && risk_level <= 7.5).length;
-            this.chartDataRL.datasets[0].data[3] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 7.6).length;
+            this.chartDataGR.datasets[0].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level < 2.5).length;
+            this.chartDataGR.datasets[1].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 2.5 && risk_level <= 5).length;
+            this.chartDataGR.datasets[2].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 5.1 && risk_level <= 7.5).length;
+            this.chartDataGR.datasets[3].data[0] = this.risk_level_of_beneficiaries_selected.filter(risk_level => risk_level >= 7.6).length;
+            this.chartDataGR.datasets[0].data[1] = this.exposure_level_of_beneficiaries_selected.filter(exposure_level => exposure_level < 2.5).length;
+            this.chartDataGR.datasets[1].data[1] = this.exposure_level_of_beneficiaries_selected.filter(exposure_level => exposure_level >= 2.5 && exposure_level <= 5).length;
+            this.chartDataGR.datasets[2].data[1] = this.exposure_level_of_beneficiaries_selected.filter(exposure_level => exposure_level >= 5.1 && exposure_level <= 7.5).length;
+            this.chartDataGR.datasets[3].data[1] = this.exposure_level_of_beneficiaries_selected.filter(exposure_level => exposure_level >= 7.6).length;
+            this.chartDataGR.datasets[0].data[2] = this.propensity_level_of_beneficiaries_selected.filter(propensity_level => propensity_level < 2.5).length;
+            this.chartDataGR.datasets[1].data[2] = this.propensity_level_of_beneficiaries_selected.filter(propensity_level => propensity_level >= 2.5 && propensity_level <= 5).length;
+            this.chartDataGR.datasets[2].data[2] = this.propensity_level_of_beneficiaries_selected.filter(propensity_level => propensity_level >= 5.1 && propensity_level <= 7.5).length;
+            this.chartDataGR.datasets[3].data[2] = this.propensity_level_of_beneficiaries_selected.filter(propensity_level => propensity_level >= 7.6).length;
           }
         } else {
           this.resultsBtn = false

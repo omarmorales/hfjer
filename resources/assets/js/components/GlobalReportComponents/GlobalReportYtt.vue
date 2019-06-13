@@ -14,7 +14,10 @@
             :risk_level="risk_level" 
             :chartDataRL="chartDataRL"
             :chartOptionsRL="chartOptionsRL"
+            :chartDataGR="chartDataGR"
+            :chartOptionsGR="chartOptionsGR"
             :loaded="loaded"
+            :group_selected="group_selected"
         />
     </div>
 </template>
@@ -30,7 +33,10 @@
             chartOptions: Object,
             chartDataRL: Object,
             chartOptionsRL: Object,
-            loaded: Boolean
+            chartDataGR: Object,
+            chartOptionsGR: Object,
+            loaded: Boolean,
+            group_selected: Object
         },
         data: () => ({
             

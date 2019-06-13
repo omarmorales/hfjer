@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import numeral from 'numeral';
 import moment from 'moment';
 import { Form, HasError, AlertError } from 'vform';
 
@@ -77,6 +78,11 @@ Vue.filter('upText', function(text){
 Vue.filter('myDate',function(created){
     return moment(created).locale("es").format('LL');
 });
+
+Vue.filter('myNumberPercentage',function(number){
+    return numeral(number).format('0.00%');
+});
+    
 
 
 window.Fire =  new Vue();

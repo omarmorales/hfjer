@@ -1,35 +1,22 @@
 <script>
-import { Bar } from 'vue-chartjs'
+import { Bar, mixins } from 'vue-chartjs'
 
 export default {
+  props: {
+    chartdata: {
+      type: Object,
+      default: null
+    },
+    options: {
+      type: Object,
+      default: null
+    }
+  },
   extends: Bar,
+  mixins: [mixins.reactiveProp],
   mounted () {
     // Overwriting base render method with actual data.
-    this.renderChart(
-      {
-        labels: ['Alto','Crítico'],
-        datasets: [
-          {
-            label: 'Puntuación Promedio',
-            backgroundColor: '#03A9F4',
-            data: [1,1]
-          }
-        ]
-      },{
-        legend: {
-          position: 'top'
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              callback: function (value) { if (Number.isInteger(value)) { return value; } },
-              stepSize: 1
-            }
-          }]
-        },
-      }
-    )
+    this.renderChart(this.chartData,this.options)
   }
 }
 </script>
