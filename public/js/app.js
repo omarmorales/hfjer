@@ -30993,7 +30993,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(143);
-module.exports = __webpack_require__(304);
+module.exports = __webpack_require__(309);
 
 
 /***/ }),
@@ -31096,7 +31096,7 @@ Vue.component('not-found', __webpack_require__(141));
 
 Vue.component('chart-component', __webpack_require__(260));
 Vue.component('beneficiaryprogress-card', __webpack_require__(265));
-Vue.component('radarchart-component', __webpack_require__(325));
+Vue.component('radarchart-component', __webpack_require__(270));
 
 Vue.component('linechart-component', __webpack_require__(272));
 Vue.component('piechart-component', __webpack_require__(274));
@@ -31109,7 +31109,7 @@ Vue.component('global-report-ytt', __webpack_require__(284));
 Vue.component('population-global-report', __webpack_require__(289));
 Vue.component('age-group-global-report', __webpack_require__(294));
 Vue.component('risk-level-global-report', __webpack_require__(299));
-Vue.component('results-by-gender', __webpack_require__(320));
+Vue.component('results-by-gender', __webpack_require__(304));
 
 var app = new Vue({
     el: '#app',
@@ -107326,8 +107326,82 @@ if (false) {
 }
 
 /***/ }),
-/* 270 */,
-/* 271 */,
+/* 270 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(271)
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\RadarChartComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7851ae3e", Component.options)
+  } else {
+    hotAPI.reload("data-v-7851ae3e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 271 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(6);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    chartdata: {
+      type: Object,
+      default: null
+    },
+    options: {
+      type: Object,
+      default: null
+    }
+  },
+  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Radar */],
+  mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["e" /* mixins */].reactiveProp],
+  mounted: function mounted() {
+    // Overwriting base render method with actual data.
+    this.renderChart(this.chartData, this.options);
+  }
+});
+
+/***/ }),
 /* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -110037,39 +110111,18 @@ if (false) {
 
 /***/ }),
 /* 304 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */,
-/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(321)
+  __webpack_require__(305)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(323)
+var __vue_script__ = __webpack_require__(307)
 /* template */
-var __vue_template__ = __webpack_require__(324)
+var __vue_template__ = __webpack_require__(308)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -110108,13 +110161,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 321 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(322);
+var content = __webpack_require__(306);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -110134,7 +110187,7 @@ if(false) {
 }
 
 /***/ }),
-/* 322 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -110148,7 +110201,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 323 */
+/* 307 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110266,7 +110319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 324 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -110536,80 +110589,10 @@ if (false) {
 }
 
 /***/ }),
-/* 325 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 309 */
+/***/ (function(module, exports) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(326)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\RadarChartComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7851ae3e", Component.options)
-  } else {
-    hotAPI.reload("data-v-7851ae3e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 326 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(6);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    chartdata: {
-      type: Object,
-      default: null
-    },
-    options: {
-      type: Object,
-      default: null
-    }
-  },
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Radar */],
-  mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["e" /* mixins */].reactiveProp],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart(this.chartData, this.options);
-  }
-});
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

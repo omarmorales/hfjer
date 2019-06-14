@@ -4,10 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Iniciar sesión') }}</div>
-
+            <div class="card" style="margin-top: 7em;">
                 <div class="card-body">
+                    <h2 class="text-center font-weight-bold text-uppercase mb-3">
+                        Plataforma YTT
+                    </h2>
+                    <hr class="mb-4">
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Iniciar sesión') }}">
                         @csrf
 
