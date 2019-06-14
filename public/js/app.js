@@ -79684,6 +79684,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -79711,6 +79713,14 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         more_than_24: ''
       },
       risk_level_male: '',
+      risk_level_female: '',
+      risk_level_other: '',
+      exposure_level_male: '',
+      exposure_level_female: '',
+      exposure_level_other: '',
+      propensity_level_male: '',
+      propensity_level_female: '',
+      propensity_level_other: '',
       gender: {
         male: '',
         female: '',
@@ -79826,20 +79836,56 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           label: 'Mujeres',
           fill: false,
           backgroundColor: '#002F6C',
-          data: [1, 0, 0]
+          data: [0, 0, 0, 0]
         }, {
           label: 'Hombres',
           fill: false,
           backgroundColor: '#00A9B7',
-          data: [0, 1, 0]
+          data: [0, 0, 0, 0]
         }, {
           label: 'Otro',
           fill: false,
           backgroundColor: '#FF6767',
-          data: [0, 0, 3]
+          data: [0, 0, 0, 0]
         }]
       },
       chartOptionsRLG: {
+        legend: {
+          position: 'bottom'
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              callback: function callback(value) {
+                if (Number.isInteger(value)) {
+                  return value;
+                }
+              }
+            }
+          }]
+        }
+      },
+      chartDataELG: {
+        labels: ['Bajo', 'Medio', 'Alto', 'Crítico'],
+        datasets: [{
+          label: 'Mujeres',
+          fill: false,
+          backgroundColor: '#002F6C',
+          data: [0, 0, 0, 0]
+        }, {
+          label: 'Hombres',
+          fill: false,
+          backgroundColor: '#00A9B7',
+          data: [0, 0, 0, 0]
+        }, {
+          label: 'Otro',
+          fill: false,
+          backgroundColor: '#FF6767',
+          data: [0, 0, 0, 0]
+        }]
+      },
+      chartOptionsELG: {
         legend: {
           position: 'bottom'
         },
@@ -79949,15 +79995,120 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
             return beneficiary.gender == "masculino";
           });
-          this.risk_level_male = this.gender.male.map(function (beneficiary) {
-            return beneficiary.ytt1_evaluations[_this.take_selected - 1].risk_level;
-          });
           this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
             return beneficiary.gender == "femenino";
           });
           this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
             return beneficiary.gender == "otro";
           });
+
+          this.risk_level_male = this.gender.male.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].risk_level;
+          });
+          this.risk_level_female = this.gender.female.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].risk_level;
+          });
+          this.risk_level_other = this.gender.other.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].risk_level;
+          });
+
+          this.exposure_level_male = this.gender.male.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].exposure_level;
+          });
+          this.exposure_level_female = this.gender.female.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].exposure_level;
+          });
+          this.exposure_level_other = this.gender.other.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].exposure_level;
+          });
+
+          this.propensity_level_male = this.gender.male.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].propensity_level;
+          });
+          this.propensity_level_female = this.gender.female.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].propensity_level;
+          });
+          this.propensity_level_other = this.gender.other.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].propensity_level;
+          });
+
+          this.chartDataRLG.datasets[0].data[0] = this.risk_level_female.filter(function (risk_level) {
+            return risk_level < 2.5;
+          }).length;
+          this.chartDataRLG.datasets[0].data[1] = this.risk_level_female.filter(function (risk_level) {
+            return risk_level >= 2.5 && risk_level <= 5.0;
+          }).length;
+          this.chartDataRLG.datasets[0].data[2] = this.risk_level_female.filter(function (risk_level) {
+            return risk_level >= 5.1 && risk_level <= 7.5;
+          }).length;
+          this.chartDataRLG.datasets[0].data[3] = this.risk_level_female.filter(function (risk_level) {
+            return risk_level >= 7.5;
+          }).length;
+
+          this.chartDataRLG.datasets[1].data[0] = this.risk_level_male.filter(function (risk_level) {
+            return risk_level < 2.5;
+          }).length;
+          this.chartDataRLG.datasets[1].data[1] = this.risk_level_male.filter(function (risk_level) {
+            return risk_level >= 2.5 && risk_level <= 5.0;
+          }).length;
+          this.chartDataRLG.datasets[1].data[2] = this.risk_level_male.filter(function (risk_level) {
+            return risk_level >= 5.1 && risk_level <= 7.5;
+          }).length;
+          this.chartDataRLG.datasets[1].data[3] = this.risk_level_male.filter(function (risk_level) {
+            return risk_level >= 7.5;
+          }).length;
+
+          this.chartDataRLG.datasets[2].data[0] = this.risk_level_other.filter(function (risk_level) {
+            return risk_level < 2.5;
+          }).length;
+          this.chartDataRLG.datasets[2].data[1] = this.risk_level_other.filter(function (risk_level) {
+            return risk_level >= 2.5 && risk_level <= 5.0;
+          }).length;
+          this.chartDataRLG.datasets[2].data[2] = this.risk_level_other.filter(function (risk_level) {
+            return risk_level >= 5.1 && risk_level <= 7.5;
+          }).length;
+          this.chartDataRLG.datasets[2].data[3] = this.risk_level_other.filter(function (risk_level) {
+            return risk_level >= 7.5;
+          }).length;
+
+          this.chartDataELG.datasets[0].data[0] = this.exposure_level_female.filter(function (risk_level) {
+            return risk_level < 2.5;
+          }).length;
+          this.chartDataELG.datasets[0].data[1] = this.exposure_level_female.filter(function (risk_level) {
+            return risk_level >= 2.5 && risk_level <= 5.0;
+          }).length;
+          this.chartDataELG.datasets[0].data[2] = this.exposure_level_female.filter(function (risk_level) {
+            return risk_level >= 5.1 && risk_level <= 7.5;
+          }).length;
+          this.chartDataELG.datasets[0].data[3] = this.exposure_level_female.filter(function (risk_level) {
+            return risk_level >= 7.5;
+          }).length;
+
+          this.chartDataELG.datasets[1].data[0] = this.exposure_level_male.filter(function (risk_level) {
+            return risk_level < 2.5;
+          }).length;
+          this.chartDataELG.datasets[1].data[1] = this.exposure_level_male.filter(function (risk_level) {
+            return risk_level >= 2.5 && risk_level <= 5.0;
+          }).length;
+          this.chartDataELG.datasets[1].data[2] = this.exposure_level_male.filter(function (risk_level) {
+            return risk_level >= 5.1 && risk_level <= 7.5;
+          }).length;
+          this.chartDataELG.datasets[1].data[3] = this.exposure_level_male.filter(function (risk_level) {
+            return risk_level >= 7.5;
+          }).length;
+
+          this.chartDataELG.datasets[2].data[0] = this.exposure_level_other.filter(function (risk_level) {
+            return risk_level < 2.5;
+          }).length;
+          this.chartDataELG.datasets[2].data[1] = this.exposure_level_other.filter(function (risk_level) {
+            return risk_level >= 2.5 && risk_level <= 5.0;
+          }).length;
+          this.chartDataELG.datasets[2].data[2] = this.exposure_level_other.filter(function (risk_level) {
+            return risk_level >= 5.1 && risk_level <= 7.5;
+          }).length;
+          this.chartDataELG.datasets[2].data[3] = this.exposure_level_other.filter(function (risk_level) {
+            return risk_level >= 7.5;
+          }).length;
 
           this.chartData.datasets[0].data[0] = this.ages_of_beneficiaries_selected.filter(function (age) {
             return age < 11;
@@ -80290,6 +80441,8 @@ var render = function() {
                       chartOptionsRL: _vm.chartOptionsRL,
                       chartDataRLG: _vm.chartDataRLG,
                       chartOptionsRLG: _vm.chartOptionsRLG,
+                      chartDataELG: _vm.chartDataELG,
+                      chartOptionsELG: _vm.chartOptionsELG,
                       chartDataGR: _vm.chartDataGR,
                       chartOptionsGR: _vm.chartOptionsGR,
                       group_selected: _vm.group_selected
@@ -108759,6 +108912,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -108772,6 +108927,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         chartOptionsRL: Object,
         chartDataRLG: Object,
         chartOptionsRLG: Object,
+        chartDataELG: Object,
+        chartOptionsELG: Object,
         chartDataGR: Object,
         chartOptionsGR: Object,
         loaded: Boolean,
@@ -108830,6 +108987,8 @@ var render = function() {
           risk_level: _vm.risk_level,
           chartDataRLG: _vm.chartDataRLG,
           chartOptionsRLG: _vm.chartOptionsRLG,
+          chartDataELG: _vm.chartDataELG,
+          chartOptionsELG: _vm.chartOptionsELG,
           loaded: _vm.loaded,
           group_selected: _vm.group_selected
         }
@@ -110308,6 +110467,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         chartDataRLG: Object,
         chartOptionsRLG: Object,
+        chartDataELG: Object,
+        chartOptionsELG: Object,
         loaded: Boolean,
         group_selected: Object
     },
@@ -110408,22 +110569,34 @@ var render = function() {
                     _c("tr", [
                       _c("td", [_vm._v("Bajo")]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[0].data[0]))
+                      ]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[1].data[0]))
+                      ]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[2].data[0]))
+                      ]),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[0].data[0]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[1].data[0]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[2].data[0]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
@@ -110442,22 +110615,34 @@ var render = function() {
                     _c("tr", [
                       _c("td", [_vm._v("Medio")]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[0].data[1]))
+                      ]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[1].data[1]))
+                      ]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[2].data[1]))
+                      ]),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[0].data[1]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[1].data[1]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[2].data[1]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
@@ -110476,22 +110661,34 @@ var render = function() {
                     _c("tr", [
                       _c("td", [_vm._v("Alto")]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[0].data[2]))
+                      ]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[1].data[2]))
+                      ]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[2].data[2]))
+                      ]),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[0].data[2]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[1].data[2]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[2].data[2]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
@@ -110510,22 +110707,34 @@ var render = function() {
                     _c("tr", [
                       _c("td", [_vm._v("Crítico")]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[0].data[3]))
+                      ]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[1].data[3]))
+                      ]),
                       _vm._v(" "),
-                      _c("td"),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.chartDataRLG.datasets[2].data[3]))
+                      ]),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[0].data[3]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[1].data[3]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
-                        ? _c("td")
+                        ? _c("td", [
+                            _vm._v(_vm._s(_vm.chartDataELG.datasets[2].data[3]))
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.group_selected.evaluation == "yttv1"
@@ -110545,22 +110754,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-4" },
-              [
-                _vm.loaded
-                  ? _c("radarchart-component", {
-                      attrs: {
-                        chartData: _vm.chartDataRLG,
-                        options: _vm.chartOptionsRLG,
-                        height: 250
-                      }
-                    })
-                  : _vm._e()
-              ],
-              1
-            )
+            _c("div", { staticClass: "col-md-4" })
           ])
         ])
       ])

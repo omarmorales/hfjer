@@ -23,6 +23,8 @@
             :risk_level="risk_level" 
             :chartDataRLG="chartDataRLG"
             :chartOptionsRLG="chartOptionsRLG"
+            :chartDataELG="chartDataELG"
+            :chartOptionsELG="chartOptionsELG"
             :loaded="loaded"
             :group_selected="group_selected"
         />
@@ -42,6 +44,8 @@
             chartOptionsRL: Object,
             chartDataRLG: Object,
             chartOptionsRLG: Object,
+            chartDataELG: Object,
+            chartOptionsELG: Object,
             chartDataGR: Object,
             chartOptionsGR: Object,
             loaded: Boolean,

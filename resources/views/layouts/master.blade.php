@@ -220,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="modal-dialog" role="document">
           <div class="modal-content">
               <div class="modal-header">
-              <h3 id="helpdeskLabel" class="font-weight-bolder text-uppercase">Solicitud de ayuda</h3>
+              <h3 id="helpdeskLabel" class="font-weight-bold text-uppercase">Solicitud de ayuda</h3>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>

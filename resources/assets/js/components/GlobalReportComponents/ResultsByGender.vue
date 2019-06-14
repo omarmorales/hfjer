@@ -35,48 +35,48 @@
                                     <tbody>
                                         <tr>
                                             <td>Bajo</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
+                                            <td>{{ chartDataRLG.datasets[0].data[0] }}</td>
+                                            <td>{{ chartDataRLG.datasets[1].data[0] }}</td>
+                                            <td>{{ chartDataRLG.datasets[2].data[0] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[0].data[0] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[1].data[0] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[2].data[0] }}</td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                         </tr>
                                         <tr>
                                             <td>Medio</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
+                                            <td>{{ chartDataRLG.datasets[0].data[1] }}</td>
+                                            <td>{{ chartDataRLG.datasets[1].data[1] }}</td>
+                                            <td>{{ chartDataRLG.datasets[2].data[1] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[0].data[1] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[1].data[1] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[2].data[1] }}</td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                         </tr>
                                         <tr>
                                             <td>Alto</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
+                                            <td>{{ chartDataRLG.datasets[0].data[2] }}</td>
+                                            <td>{{ chartDataRLG.datasets[1].data[2] }}</td>
+                                            <td>{{ chartDataRLG.datasets[2].data[2] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[0].data[2] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[1].data[2] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[2].data[2] }}</td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                         </tr>
                                         <tr>
                                             <td>Crítico</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
-                                            <td v-if="group_selected.evaluation == 'yttv1'"></td>
+                                            <td>{{ chartDataRLG.datasets[0].data[3] }}</td>
+                                            <td>{{ chartDataRLG.datasets[1].data[3] }}</td>
+                                            <td>{{ chartDataRLG.datasets[2].data[3] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[0].data[3] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[1].data[3] }}</td>
+                                            <td v-if="group_selected.evaluation == 'yttv1'">{{ chartDataELG.datasets[2].data[3] }}</td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
                                             <td v-if="group_selected.evaluation == 'yttv1'"></td>
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <radarchart-component v-if="loaded" :chartData="chartDataRLG" :options="chartOptionsRLG" :height="250" />
+                            <!-- <radarchart-component v-if="loaded" :chartData="chartDataRLG" :options="chartOptionsRLG" :height="250" /> -->
                         </div>
                     </div>
                 </div>
@@ -100,6 +100,8 @@
         props: {
             chartDataRLG: Object,
             chartOptionsRLG: Object,
+            chartDataELG: Object,
+            chartOptionsELG: Object,
             loaded: Boolean,
             group_selected: Object
         },
