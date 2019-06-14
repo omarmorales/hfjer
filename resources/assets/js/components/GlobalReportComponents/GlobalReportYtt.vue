@@ -19,6 +19,13 @@
             :loaded="loaded"
             :group_selected="group_selected"
         />
+        <results-by-gender
+            :risk_level="risk_level" 
+            :chartDataRLG="chartDataRLG"
+            :chartOptionsRLG="chartOptionsRLG"
+            :loaded="loaded"
+            :group_selected="group_selected"
+        />
     </div>
 </template>
 
@@ -33,6 +40,8 @@
             chartOptions: Object,
             chartDataRL: Object,
             chartOptionsRL: Object,
+            chartDataRLG: Object,
+            chartOptionsRLG: Object,
             chartDataGR: Object,
             chartOptionsGR: Object,
             loaded: Boolean,

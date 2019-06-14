@@ -116,7 +116,7 @@ Vue.component(
 
 Vue.component('chart-component', require('./components/ChartComponent.vue'));
 Vue.component('beneficiaryprogress-card', require('./components/BeneficiaryProgressCard.vue'));
-Vue.component('linechart-component2', require('./components/LineChartComponent2.vue'));
+Vue.component('radarchart-component', require('./components/RadarChartComponent.vue'));
 
 Vue.component('linechart-component', require('./components/LineChartComponent.vue'));
 Vue.component('piechart-component', require('./components/PieChartComponent.vue'));
@@ -131,6 +131,7 @@ Vue.component('global-report-ytt', require('./components/GlobalReportComponents/
 Vue.component('population-global-report', require('./components/GlobalReportComponents/PopulationGlobalReport'));
 Vue.component('age-group-global-report', require('./components/GlobalReportComponents/AgeGroupGlobalReport'));
 Vue.component('risk-level-global-report', require('./components/GlobalReportComponents/RiskLevelGlobalReport'));
+Vue.component('results-by-gender', require('./components/GlobalReportComponents/ResultsByGender'));
 
 const app = new Vue({
     el: '#app',

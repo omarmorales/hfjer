@@ -5346,10 +5346,10 @@ module.exports = g;
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["e"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["f"]; });
 /* unused harmony reexport PolarArea */
-/* unused harmony reexport Radar */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["h"]; });
 /* unused harmony reexport Bubble */
 /* unused harmony reexport Scatter */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__mixins_index_js__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_0__mixins_index_js__["a"]; });
 /* unused harmony reexport generateChart */
 
 
@@ -31096,7 +31096,7 @@ Vue.component('not-found', __webpack_require__(141));
 
 Vue.component('chart-component', __webpack_require__(260));
 Vue.component('beneficiaryprogress-card', __webpack_require__(265));
-Vue.component('linechart-component2', __webpack_require__(270));
+Vue.component('radarchart-component', __webpack_require__(325));
 
 Vue.component('linechart-component', __webpack_require__(272));
 Vue.component('piechart-component', __webpack_require__(274));
@@ -31109,6 +31109,7 @@ Vue.component('global-report-ytt', __webpack_require__(284));
 Vue.component('population-global-report', __webpack_require__(289));
 Vue.component('age-group-global-report', __webpack_require__(294));
 Vue.component('risk-level-global-report', __webpack_require__(299));
+Vue.component('results-by-gender', __webpack_require__(320));
 
 var app = new Vue({
     el: '#app',
@@ -79681,6 +79682,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -79707,7 +79710,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         between_20_and_23: '',
         more_than_24: ''
       },
-
+      risk_level_male: '',
       gender: {
         male: '',
         female: '',
@@ -79816,65 +79819,59 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
             }
           }]
         }
+      },
+      chartDataRLG: {
+        labels: ['Bajo', 'Medio', 'Alto', 'Crítico'],
+        datasets: [{
+          label: 'Mujeres',
+          fill: false,
+          backgroundColor: '#002F6C',
+          data: [1, 0, 0]
+        }, {
+          label: 'Hombres',
+          fill: false,
+          backgroundColor: '#00A9B7',
+          data: [0, 1, 0]
+        }, {
+          label: 'Otro',
+          fill: false,
+          backgroundColor: '#FF6767',
+          data: [0, 0, 3]
+        }]
+      },
+      chartOptionsRLG: {
+        legend: {
+          position: 'bottom'
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              callback: function callback(value) {
+                if (Number.isInteger(value)) {
+                  return value;
+                }
+              }
+            }
+          }]
+        }
       }
     };
   },
 
   methods: {
     showData: function showData() {
-      var _this = this;
-
       this.loaded = true;
       if (this.group_selected.evaluation == "yttv2") {
         this.yttv1_data_selected = false;
         this.yttv2_data_selected = true;
-
-        this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(function (beneficiary) {
-          return beneficiary.ytt2_evaluations.length >= _this.take_selected;
-        });
-        this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
-          return beneficiary.ytt2_evaluations[_this.take_selected - 1].age;
-        });
-        this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
-          return beneficiary.ytt2_evaluations[_this.take_selected - 1].risk_level;
-        });
-
-        this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "masculino";
-        });
-        this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "femenino";
-        });
-        this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "otro";
-        });
       } else if (this.group_selected.evaluation == "yttv1") {
         this.yttv1_data_selected = true;
         this.yttv2_data_selected = false;
-
-        this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(function (beneficiary) {
-          return beneficiary.ytt1_evaluations.length >= _this.take_selected;
-        });
-        this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
-          return beneficiary.ytt1_evaluations[_this.take_selected - 1].age;
-        });
-        this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
-          return beneficiary.ytt1_evaluations[_this.take_selected - 1].risk_level;
-        });
-
-        this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "masculino";
-        });
-        this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "femenino";
-        });
-        this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
-          return beneficiary.gender == "otro";
-        });
       }
     },
     showBtn: function showBtn() {
-      var _this2 = this;
+      var _this = this;
 
       this.yttv1_data_selected = false;
       this.yttv2_data_selected = false;
@@ -79885,14 +79882,25 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
         if (this.group_selected.evaluation == "yttv2") {
           this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(function (beneficiary) {
-            return beneficiary.ytt2_evaluations.length >= _this2.take_selected;
+            return beneficiary.ytt2_evaluations.length >= _this.take_selected;
           });
           this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
-            return beneficiary.ytt2_evaluations[_this2.take_selected - 1].age;
+            return beneficiary.ytt2_evaluations[_this.take_selected - 1].age;
           });
           this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
-            return beneficiary.ytt2_evaluations[_this2.take_selected - 1].risk_level;
+            return beneficiary.ytt2_evaluations[_this.take_selected - 1].risk_level;
           });
+
+          this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+            return beneficiary.gender == "masculino";
+          });
+          this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+            return beneficiary.gender == "femenino";
+          });
+          this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+            return beneficiary.gender == "otro";
+          });
+
           this.chartData.datasets[0].data[0] = this.ages_of_beneficiaries_selected.filter(function (age) {
             return age < 11;
           }).length;
@@ -79923,19 +79931,32 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           }).length;
         } else if (this.group_selected.evaluation == "yttv1") {
           this.total_beneficiaries_with_take_selected = this.beneficiaries.filter(function (beneficiary) {
-            return beneficiary.ytt1_evaluations.length >= _this2.take_selected;
+            return beneficiary.ytt1_evaluations.length >= _this.take_selected;
           });
           this.ages_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
-            return beneficiary.ytt1_evaluations[_this2.take_selected - 1].age;
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].age;
           });
           this.risk_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
-            return beneficiary.ytt1_evaluations[_this2.take_selected - 1].risk_level;
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].risk_level;
           });
           this.exposure_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
-            return beneficiary.ytt1_evaluations[_this2.take_selected - 1].exposure_level;
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].exposure_level;
           });
           this.propensity_level_of_beneficiaries_selected = this.total_beneficiaries_with_take_selected.map(function (beneficiary) {
-            return beneficiary.ytt1_evaluations[_this2.take_selected - 1].propensity_level;
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].propensity_level;
+          });
+
+          this.gender.male = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+            return beneficiary.gender == "masculino";
+          });
+          this.risk_level_male = this.gender.male.map(function (beneficiary) {
+            return beneficiary.ytt1_evaluations[_this.take_selected - 1].risk_level;
+          });
+          this.gender.female = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+            return beneficiary.gender == "femenino";
+          });
+          this.gender.other = this.total_beneficiaries_with_take_selected.filter(function (beneficiary) {
+            return beneficiary.gender == "otro";
           });
 
           this.chartData.datasets[0].data[0] = this.ages_of_beneficiaries_selected.filter(function (age) {
@@ -79958,14 +79979,15 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
             return risk_level < 2.5;
           }).length;
           this.chartDataGR.datasets[1].data[0] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-            return risk_level >= 2.5 && risk_level <= 5;
+            return risk_level >= 2.5 && risk_level <= 5.0;
           }).length;
           this.chartDataGR.datasets[2].data[0] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
             return risk_level >= 5.1 && risk_level <= 7.5;
           }).length;
           this.chartDataGR.datasets[3].data[0] = this.risk_level_of_beneficiaries_selected.filter(function (risk_level) {
-            return risk_level >= 7.6;
+            return risk_level > 7.5;
           }).length;
+
           this.chartDataGR.datasets[0].data[1] = this.exposure_level_of_beneficiaries_selected.filter(function (exposure_level) {
             return exposure_level < 2.5;
           }).length;
@@ -79976,8 +79998,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
             return exposure_level >= 5.1 && exposure_level <= 7.5;
           }).length;
           this.chartDataGR.datasets[3].data[1] = this.exposure_level_of_beneficiaries_selected.filter(function (exposure_level) {
-            return exposure_level >= 7.6;
+            return exposure_level > 7.5;
           }).length;
+
           this.chartDataGR.datasets[0].data[2] = this.propensity_level_of_beneficiaries_selected.filter(function (propensity_level) {
             return propensity_level < 2.5;
           }).length;
@@ -79988,7 +80011,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
             return propensity_level >= 5.1 && propensity_level <= 7.5;
           }).length;
           this.chartDataGR.datasets[3].data[2] = this.propensity_level_of_beneficiaries_selected.filter(function (propensity_level) {
-            return propensity_level >= 7.6;
+            return propensity_level > 7.5;
           }).length;
         }
       } else {
@@ -80039,16 +80062,16 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       }
     },
     loadUser: function loadUser() {
-      var _this3 = this;
+      var _this2 = this;
 
       this.$Progress.start();
       this.loading = true;
       axios.get("api/profile").then(function (_ref) {
         var data = _ref.data;
-        return _this3.user = data, _this3.groups = data.organization.groups, _this3.$Progress.finish(), _this3.loading = false;
+        return _this2.user = data, _this2.groups = data.organization.groups, _this2.$Progress.finish(), _this2.loading = false;
       }).catch(function () {
-        _this3.loading = false;
-        _this3.$Progress.fail();
+        _this2.loading = false;
+        _this2.$Progress.fail();
       });
     }
   },
@@ -80265,6 +80288,8 @@ var render = function() {
                       chartOptions: _vm.chartOptions,
                       chartDataRL: _vm.chartDataRL,
                       chartOptionsRL: _vm.chartOptionsRL,
+                      chartDataRLG: _vm.chartDataRLG,
+                      chartOptionsRLG: _vm.chartOptionsRLG,
                       chartDataGR: _vm.chartDataGR,
                       chartOptionsGR: _vm.chartOptionsGR,
                       group_selected: _vm.group_selected
@@ -83596,6 +83621,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -83614,20 +83703,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "container" }, [
       _c("section", { staticClass: "content-header" }, [
         _c("div", { staticClass: "container-fluid" }, [
           _c("div", { staticClass: "row mb-2" }, [
-            _c("div", { staticClass: "col-sm-6" }, [
-              _c("h1", [
-                _vm._v(
-                  "\n                        Recursos\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-6" }, [
-              _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+            _c("div", { staticClass: "col-sm-12" }, [
+              _c("ol", { staticClass: "breadcrumb" }, [
                 _c("li", { staticClass: "breadcrumb-item" }, [
                   _c("a", { attrs: { href: "#" } }, [_vm._v("Recursos")])
                 ]),
@@ -83637,6 +83718,142 @@ var staticRenderFns = [
                 ])
               ])
             ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c(
+            "h2",
+            { staticClass: "text-uppercase font-weight-bold text-center mb-4" },
+            [
+              _vm._v(
+                "\n                Herramienta YTT: herramienta de focalización de Jóvenes en Riesgo\n            "
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("h3", { staticClass: "text-uppercase font-weight-bold" }, [
+            _vm._v("Introducción")
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n               Juntos para la Prevención de la Violencia (JPV) es un programa de la Agencia de los Estados Unidos para el Desarrollo Internacional (USAID) en México que persigue el objetivo central de construir capacidades en los distintos niveles de gobierno, organizaciones de la sociedad y sector privado para el diseño, implementación y evaluación de intervenciones de prevención de la violencia y el crimen basadas en evidencia, de forma que éstas puedan ser replicadas y escaladas en el contexto mexicano. \n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                Ante un contexto adverso para las juventudes, en donde esta población está siendo la más afectada por el crimen y la violencia, es necesario implementar planes, acciones, programas y modelos de intervención que le apuesten por un lado, a la identificación del nivel de riesgo en el que se encuentra la población con la que están trabajando e identificar el nivel de exposición a la violencia y criminalidad en donde se desenvuelven y, por el otro, donde se apueste a disminuir los comportamientos violentos que aumentan la propensión a generar actos violentos o delictivos de esa población.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                Desde el punto de vista de la prevención de la violencia que se genera en las juventudes, la función de la prevención debe consistir en generar condiciones que permitan disminuir el nivel de riesgo, disminuir los efectos de la exposición a la violencia y el crimen y la disminución de los comportamientos de riesgo que pueden generar mayor propensión a un joven que puedan llevarlo a cometer un acto violento y/o un delito.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                De esta forma, la herramienta de focalización de jóvenes en riesgo busca generar un proceso en el que los actores locales, generen información para que logren tener mayor claridad de los niveles de exposición y de propensión al crimen y a la violencia con los jóvenes que se encuentran trabajando en la implementación de sus modelos de prevención.\n            "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("h3", { staticClass: "text-uppercase font-weight-bold" }, [
+            _vm._v("Objetivo general de la herramienta")
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                Que los actores locales se apropien de la necesidad de utilizar ésta herramienta para que, por un lado, logren focalizar sus convocatorias para el trabajo con jóvenes, garantizando que estarán trabajando con población juvenil de alto riesgo y, por el otro, les permita establecer una línea base de la misma población, y definan estrategias de atención claras y acordes a sus necesidades dentro de sus modelos de atención, así como monitorear y evidenciar el cambio de comportamientos después de participar en sus proyectos.\n            "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("h3", { staticClass: "text-uppercase font-weight-bold" }, [
+            _vm._v("Objetivos específicos")
+          ]),
+          _vm._v(" "),
+          _c("ul", [
+            _c("li", [
+              _vm._v(
+                "\n                    Determinar el nivel de riesgo general en el que se encuentra un joven de acuerdo a los factores que lo rodean\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "\n                    Determinar el nivel de exposición a los contextos violentos en el que se encuentra un joven.\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "\n                    Determinar el nivel de propensión de un joven que pudiera llevarlo o motivarlo a generar un comportamiento violento.\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "\n                    Determinar, de manera grupal, la situación general en la que se encuentra un colectivo de jóvenes que están participando en una misma iniciativa de manera conjunta.\n                "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("h3", { staticClass: "text-uppercase font-weight-bold" }, [
+            _vm._v("Usuarios de la herramienta YTT")
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                La herramienta YTT busca fomentar, la generación de evidencia, sobre los perfiles de la población con quienes están trabajando, los diversos actores que, a nivel local, están realizando programas de prevención de violencia con jóvenes.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                En éste sentido podría ser el proyecto que está implementando alguna organización de la sociedad civil de trabajo con jóvenes, algún programa de gobierno local o, bien alguno desarrollado por la iniciativa privada.\n            "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("h3", { staticClass: "text-uppercase font-weight-bold" }, [
+            _vm._v("Estructura de la herramienta YTT")
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                La herramienta YTT está compuesta por tres secciones, las cuales a su vez cuentan con una serie de variables que permiten analizar los niveles de riesgo de un joven.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                La primera sección (ítems históricos) analiza una serie de variables que arrojen indicios sobre el inicio temprano de comportamientos de riesgo que hayan generado en conductas violentas, así como si existe el antecedente de haber sido canalizados a algún tipo de “servicio” para contrarrestar la problemática.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                La segunda sección (Sociales/culturales) nos ayudaran a estudiar la delincuencia entre el grupo de iguales o de pares con los que se relaciona un joven, así como las habilidades que cuentan sus padres para contener las situaciones de riesgo en las que están expuestos.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\n                La tercera sección (Individuales) contiene una serie de variables que permiten detectar la presencia de actitudes negativas, el nivel de empatía y/o remordimiento ante la presencia o ejecución de un acto violento de un joven.\n            "
+            )
           ])
         ])
       ])
@@ -91991,7 +92208,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Bar */],
-  mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* mixins */].reactiveProp],
+  mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["e" /* mixins */].reactiveProp],
   mounted: function mounted() {
     // Overwriting base render method with actual data.
     this.renderChart(this.chartData, this.options);
@@ -107109,95 +107326,8 @@ if (false) {
 }
 
 /***/ }),
-/* 270 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(271)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\LineChartComponent2.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-51fd1098", Component.options)
-  } else {
-    hotAPI.reload("data-v-51fd1098", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 271 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(6);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["b" /* Line */],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['07/02/2019', '08/02/2019'],
-      datasets: [{
-        label: 'puntuación promedio',
-        backgroundColor: '#03A9F4',
-        data: [7.82, 3.77]
-      }]
-    }, {
-      legend: {
-        position: 'bottom'
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-            callback: function callback(value) {
-              if (Number.isInteger(value)) {
-                return value;
-              }
-            },
-            stepSize: 2
-          }
-        }]
-      }
-    });
-  }
-});
-
-/***/ }),
+/* 270 */,
+/* 271 */,
 /* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -107266,7 +107396,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["b" /* Line */],
-  mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* mixins */].reactiveProp],
+  mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["e" /* mixins */].reactiveProp],
   mounted: function mounted() {
     // Overwriting base render method with actual data.
     this.renderChart(this.chartData, this.options);
@@ -107342,7 +107472,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["c" /* Pie */],
-  mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* mixins */].reactiveProp],
+  mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["e" /* mixins */].reactiveProp],
   mounted: function mounted() {
     // Overwriting base render method with actual data.
     this.renderChart(this.chartData, this.options);
@@ -108548,6 +108678,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -108559,6 +108696,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         chartOptions: Object,
         chartDataRL: Object,
         chartOptionsRL: Object,
+        chartDataRLG: Object,
+        chartOptionsRLG: Object,
         chartDataGR: Object,
         chartOptionsGR: Object,
         loaded: Boolean,
@@ -108607,6 +108746,16 @@ var render = function() {
           chartOptionsRL: _vm.chartOptionsRL,
           chartDataGR: _vm.chartDataGR,
           chartOptionsGR: _vm.chartOptionsGR,
+          loaded: _vm.loaded,
+          group_selected: _vm.group_selected
+        }
+      }),
+      _vm._v(" "),
+      _c("results-by-gender", {
+        attrs: {
+          risk_level: _vm.risk_level,
+          chartDataRLG: _vm.chartDataRLG,
+          chartOptionsRLG: _vm.chartOptionsRLG,
           loaded: _vm.loaded,
           group_selected: _vm.group_selected
         }
@@ -109891,6 +110040,576 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(321)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(323)
+/* template */
+var __vue_template__ = __webpack_require__(324)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1afdd5f6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\GlobalReportComponents\\ResultsByGender.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1afdd5f6", Component.options)
+  } else {
+    hotAPI.reload("data-v-1afdd5f6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(322);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("fa75ca12", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1afdd5f6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ResultsByGender.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1afdd5f6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ResultsByGender.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 323 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        chartDataRLG: Object,
+        chartOptionsRLG: Object,
+        loaded: Boolean,
+        group_selected: Object
+    },
+    data: function data() {
+        return {};
+    },
+    methods: {},
+    created: function created() {}
+});
+
+/***/ }),
+/* 324 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("table", { staticClass: "table table-bordered" }, [
+                  _c("thead", [
+                    _c("tr", [
+                      _c("th"),
+                      _vm._v(" "),
+                      _c(
+                        "th",
+                        { staticClass: "text-center", attrs: { colspan: "3" } },
+                        [_vm._v("Nivel de riesgo")]
+                      ),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c(
+                            "th",
+                            {
+                              staticClass: "text-center",
+                              attrs: { colspan: "3" }
+                            },
+                            [_vm._v("Nivel de exposición")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c(
+                            "th",
+                            {
+                              staticClass: "text-center",
+                              attrs: { colspan: "3" }
+                            },
+                            [_vm._v("Nivel de propensión")]
+                          )
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Nivel")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("M")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("H")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("O")]),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("th", [_vm._v("M")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("th", [_vm._v("H")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("th", [_vm._v("O")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("th", [_vm._v("M")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("th", [_vm._v("H")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("th", [_vm._v("O")])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", [_vm._v("Bajo")]),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Medio")]),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Alto")]),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Crítico")]),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.group_selected.evaluation == "yttv1"
+                        ? _c("td")
+                        : _vm._e()
+                    ])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-4" },
+              [
+                _vm.loaded
+                  ? _c("radarchart-component", {
+                      attrs: {
+                        chartData: _vm.chartDataRLG,
+                        options: _vm.chartOptionsRLG,
+                        height: 250
+                      }
+                    })
+                  : _vm._e()
+              ],
+              1
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "card-title" }, [
+        _vm._v("\n                    Resultados por género\n                ")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1afdd5f6", module.exports)
+  }
+}
+
+/***/ }),
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(326)
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\RadarChartComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7851ae3e", Component.options)
+  } else {
+    hotAPI.reload("data-v-7851ae3e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 326 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(6);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    chartdata: {
+      type: Object,
+      default: null
+    },
+    options: {
+      type: Object,
+      default: null
+    }
+  },
+  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Radar */],
+  mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["e" /* mixins */].reactiveProp],
+  mounted: function mounted() {
+    // Overwriting base render method with actual data.
+    this.renderChart(this.chartData, this.options);
+  }
+});
 
 /***/ })
 /******/ ]);
