@@ -25,6 +25,8 @@
             :chartOptionsRLG="chartOptionsRLG"
             :chartDataELG="chartDataELG"
             :chartOptionsELG="chartOptionsELG"
+            :chartDataPLG="chartDataPLG"
+            :chartOptionsPLG="chartOptionsPLG"
             :loaded="loaded"
             :group_selected="group_selected"
         />
@@ -46,6 +48,8 @@
             chartOptionsRLG: Object,
             chartDataELG: Object,
             chartOptionsELG: Object,
+            chartDataPLG: Object,
+            chartOptionsPLG: Object,
             chartDataGR: Object,
             chartOptionsGR: Object,
             loaded: Boolean,

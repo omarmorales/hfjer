@@ -65,6 +65,8 @@
           :chartOptionsRLG="chartOptionsRLG"
           :chartDataELG="chartDataELG"
           :chartOptionsELG="chartOptionsELG"
+          :chartDataPLG="chartDataPLG"
+          :chartOptionsPLG="chartOptionsPLG"
           :chartDataGR="chartDataGR"
           :chartOptionsGR="chartOptionsGR"
           :group_selected="group_selected"
@@ -295,6 +297,42 @@
             }]	
           },	
         },
+        chartDataPLG: {
+          labels: ['Bajo','Medio','Alto', 'Crítico'],
+          datasets: [
+              {
+                label: 'Mujeres',
+                fill: false,
+                backgroundColor: '#002F6C',
+                data: [0,0,0,0],
+              },
+              {
+                label: 'Hombres',
+                fill: false,
+                backgroundColor: '#00A9B7',
+                data: [0,0,0,0],
+              },
+              {
+                label: 'Otro',
+                fill: false,
+                backgroundColor: '#FF6767',
+                data: [0,0,0,0],
+              },
+          ]
+        },
+        chartOptionsPLG: {
+          legend: {
+              position: 'bottom'
+          },
+          scales: {	
+            yAxes: [{	
+              ticks: {	
+                beginAtZero: true,	
+                callback: function (value) { if (Number.isInteger(value)) { return value; } },	
+              }	
+            }]	
+          },	
+        },
       }
     },
     methods:{
@@ -387,6 +425,21 @@
             this.chartDataELG.datasets[2].data[1] = this.exposure_level_other.filter(risk_level => risk_level >= 2.5 && risk_level <= 5.0).length;
             this.chartDataELG.datasets[2].data[2] = this.exposure_level_other.filter(risk_level => risk_level >= 5.1 && risk_level <= 7.5).length;
             this.chartDataELG.datasets[2].data[3] = this.exposure_level_other.filter(risk_level => risk_level >= 7.5).length;
+
+            this.chartDataPLG.datasets[0].data[0] = this.propensity_level_female.filter(risk_level => risk_level < 2.5).length;
+            this.chartDataPLG.datasets[0].data[1] = this.propensity_level_female.filter(risk_level => risk_level >= 2.5 && risk_level <= 5.0).length;
+            this.chartDataPLG.datasets[0].data[2] = this.propensity_level_female.filter(risk_level => risk_level >= 5.1 && risk_level <= 7.5).length;
+            this.chartDataPLG.datasets[0].data[3] = this.propensity_level_female.filter(risk_level => risk_level >= 7.5).length;
+
+            this.chartDataPLG.datasets[1].data[0] = this.propensity_level_male.filter(risk_level => risk_level < 2.5).length;
+            this.chartDataPLG.datasets[1].data[1] = this.propensity_level_male.filter(risk_level => risk_level >= 2.5 && risk_level <= 5.0).length;
+            this.chartDataPLG.datasets[1].data[2] = this.propensity_level_male.filter(risk_level => risk_level >= 5.1 && risk_level <= 7.5).length;
+            this.chartDataPLG.datasets[1].data[3] = this.propensity_level_male.filter(risk_level => risk_level >= 7.5).length;
+
+            this.chartDataPLG.datasets[2].data[0] = this.propensity_level_other.filter(risk_level => risk_level < 2.5).length;
+            this.chartDataPLG.datasets[2].data[1] = this.propensity_level_other.filter(risk_level => risk_level >= 2.5 && risk_level <= 5.0).length;
+            this.chartDataPLG.datasets[2].data[2] = this.propensity_level_other.filter(risk_level => risk_level >= 5.1 && risk_level <= 7.5).length;
+            this.chartDataPLG.datasets[2].data[3] = this.propensity_level_other.filter(risk_level => risk_level >= 7.5).length;
 
             this.chartData.datasets[0].data[0] = this.ages_of_beneficiaries_selected.filter(age => age < 11).length;
             this.chartData.datasets[0].data[1] = this.ages_of_beneficiaries_selected.filter(age => age >= 12 && age <= 15).length;
